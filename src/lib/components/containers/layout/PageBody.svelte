@@ -18,15 +18,21 @@
 		margin: 0 auto;
 		padding-bottom: var(--spacing15);
 	}
-	.full {
+	.full, .thin, .wide {
 		align-items: start;
-		padding: 0 var(--spacing14);
-		width: 100%;
+		padding: 0 var(--spacing09);
 	}
-	.thin {
-		width: var(--spacing27);
-	}
-	.wide {
-		width: var(--spacing33);
+
+	@media screen and (min-width: 768px) {
+		.full {
+			padding: 0 var(--spacing14);
+			width: 100%;
+		}
+		.thin {
+			width: var(--spacing27);
+		}
+		.wide {
+			width: var(--spacing33);
+		}
 	}
 </style>
