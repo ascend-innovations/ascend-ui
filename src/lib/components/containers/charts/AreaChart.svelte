@@ -31,8 +31,13 @@
             domain, 
             range,
             seriesKey,
-            line = false,
-            stacked = false,
+            fullDate,
+            yearOnly,
+            monthOnly,
+            monthDay,
+            monthYear,
+            line,
+            stacked,
             chartHeight = null
 
     let width = 1344
@@ -42,72 +47,65 @@
     let marginTop = 24
     let marginBottom = 24
 
-    let formatTime, mouseDateSnap, areaxScale, areayScale, strokeGenerator, stack, areaGenerator, lines =[]
+    let mouseDateSnap, xScale, yScale, stroke, stack, area, lines =[]
+    let formatFull = d3.utcFormat("%B %d, %Y")
+    let formatYear = d3.utcFormat("%Y")
+    let formatMonth = d3.utcFormat("%B")
+    let formatMonthDay = d3.utcFormat("%B %d")
+    let formatMonthYear = d3.utcFormat("%B %Y")
 
-    $: stack = areaStack
-    $: xScale = areaxScale
-    $: yScale = areayScale
-    $: area = areaGenerator
-    $: stroke = strokeGenerator
-
-    if (stacked) {
-        if (domain === 'date') {
+    $: {
+        if (stacked) {
             for (let obj of data) {
                 obj[domain] = new Date(obj[domain])
             }
 
-            formatTime = d3.utcFormat("%B %d, %Y")
-            
-            areaStack = d3.stack()
+            stack = d3.stack()
             .keys(d3.union(data.map((d) => d[seriesKey])))
             .value(([, D], key) => D.get(key)[range])
             (d3.index(data, (d) => d[domain], (d) => d[seriesKey]))
 
-            areaxScale = d3.scaleTime()
+            xScale = d3.scaleTime()
             .domain(d3.extent(data, (d) => d[domain]))
             .range([marginLeft, width - marginRight])
             
-            areayScale = d3.scaleLinear()
+            yScale = d3.scaleLinear()
             .domain([0, d3.max(stack, (d) => d3.max(d, (d) => d[1]))])
             .range([height - marginBottom, marginTop])
             
-            areaGenerator = d3.area()
+            area = d3.area()
             .x((d) => xScale(d.data[0]))
             .y0((d) => yScale(d[0]))
             .y1((d) => yScale(d[1]))
             
-            strokeGenerator = d3.line()
+            stroke = d3.line()
             .x((d) => xScale(d.data[0]))
             .y((d) => yScale(d[1]))
-        }
-
-        //
-    } else {
-        if (domain === 'date') {
+            
+            //
+        } else {
             for (let obj of data) {
                 obj[domain] = new Date(obj[domain])
             }
-
-            formatTime = d3.utcFormat("%B %d, %Y");
     
-            areaxScale = d3.scaleTime()
+            xScale = d3.scaleTime()
                 .domain(d3.extent(data, (d) => d[domain]))
                 .range([marginLeft, width - marginRight])
-            areayScale = d3.scaleLinear()
+            yScale = d3.scaleLinear()
                 .domain([0, d3.max(data, (d) => d[range])])
                 .range([height - marginBottom, marginTop])
 
-            areaGenerator = d3.area()
+            area = d3.area()
                 .x((d) => xScale(d[domain]))
                 .y0(yScale(0))
                 .y1((d) => yScale(d[range]))
         
-            strokeGenerator = d3.line()
+            stroke = d3.line()
                 .x((d) => d[domain])
                 .y((d) => d[range])
+    
+            // 
         }
-
-        // 
     }
 
     let tooltip, tooltipData = { top: 0, left: 0, series: '', domain: 0, range: 0}
@@ -124,7 +122,7 @@
         tooltipData.top = e.offsetY - 85
         tooltipData.left = e.offsetX - 60
         tooltipData.series = s
-        tooltipData.domain = formatTime(xScale.invert(x))
+        tooltipData.domain = fullDate ? formatFull(xScale.invert(x)) : yearOnly ? formatYear(xScale.invert(x)) : monthOnly ? formatMonth(xScale.invert(x)) : monthDay ? formatMonthDay(xScale.invert(x)) : monthYear ? formatMonthYear(xScale.invert(x)) : formatFull(xScale.invert(x))
         tooltipData.range = yScale.invert(y)
 
         mouseDateSnap = d3.timeYear.floor(xScale.invert(x))
@@ -212,15 +210,17 @@
     <g transform="translate(0,{height - marginBottom})">
         {#if stacked}
             {#each stack as series, i}
-                <text
-                    class="axis-label"
-                    fill="gray"
-                    text-anchor="start"
-                    x={xScale(series[i].data[0])}
-                    y={22}
-                >
-                    {formatTime(series[i].data[0])}
-                </text>
+                {#each series as item}
+                    <text
+                        class="axis-label"
+                        fill="gray"
+                        text-anchor="start"
+                        x={xScale(item.data[0])}
+                        y={22}
+                    >
+                        {fullDate ? formatFull(item.data[0]) : yearOnly ? formatYear(item.data[0]) : monthOnly ? formatMonth(item.data[0]) : monthDay ? formatMonthDay(item.data[0]) : monthYear ? formatMonthYear(item.data[0]) : formatFull(item.data[0])}
+                    </text>
+                {/each}
             {/each}
         {:else}
             {#each data as d, i}
@@ -231,7 +231,7 @@
                     x={(width/data.length) * i}
                     y={22}
                 >
-                    {formatTime(d[domain])}
+                    {fullDate ? formatFull(d[domain]) : yearOnly ? formatYear(d[domain]) : monthOnly ? formatMonth(d[domain]) : monthDay ? formatMonthDay(d[domain]) : monthYear ? formatMonthYear(d[domain]) : formatFull(d[domain])}
                 </text>
             {/each}
         {/if}

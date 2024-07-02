@@ -11,6 +11,11 @@
         title = 'Title',
         domain = '',
         range = '',
+        fullDate = false,
+        yearOnly = false,
+        monthOnly = false,
+        monthDay = false,
+        monthYear = false,
         tooltipId = '',
         barColors = ['var(--secondary-600)', 'var(--secondary-base)', 'var(--secondary-400)', 'var(--secondary-300)', 'var(--secondary-200)', 'var(--secondary-100)', 'var(--secondary-050)'],
         areaColors = ['var(--secondary-trans-600)', 'var(--secondary-trans-500)', 'var(--secondary-trans-400)', 'var(--secondary-trans-300)', 'var(--secondary-trans-200)', 'var(--secondary-trans-100)'],
@@ -84,6 +89,11 @@
                 {stacked}
                 {line}
                 {height}
+                {fullDate}
+                {yearOnly}
+                {monthOnly}
+                {monthDay}
+                {monthYear}
                 width={chartWidth}
             />
             {#if stacked}
