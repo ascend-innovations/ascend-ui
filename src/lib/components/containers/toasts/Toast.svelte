@@ -1,5 +1,5 @@
 <script>
-	import { AlertCircleSmallIcon, CloseToastButton, SuccessCheckCircleSmallIcon } from '$lib/index.js'
+	import { AlertCircleSmallIcon, CloseToastButton, SuccessCheckCircleSmallIcon, Copy01SmallIcon } from '$lib/index.js'
 	import { createEventDispatcher, onMount } from 'svelte'
 	import { fade } from 'svelte/transition'
 
@@ -28,6 +28,8 @@
 				<SuccessCheckCircleSmallIcon />
 			{:else if toast.purpose === 'error'}
 				<AlertCircleSmallIcon />
+			{:else if toast.purpose === 'copy'}
+				<Copy01SmallIcon colorOverride="var(--neutral-400)" />
 			{/if}
 		</div>
 		<div class="text-column">

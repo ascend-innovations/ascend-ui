@@ -23,15 +23,21 @@
 		// 	purpose: 'error',
 		// 	title: 'Error!',
 		// },
-		// {
-		// 	body: 'More problems!',
-		// 	category: 'action',
-		// 	id: 3,
-		// 	purpose: 'error',
-		// 	title: 'Error!',
-		// },
 		{
+			id: 2,
+			category: 'dismiss',
+			title: 'Copied to Clipboard',
 			body: '',
+			purpose: 'copy'
+		},
+		{
+			body: 'More problems!',
+			category: 'action',
+			id: 4,
+			purpose: 'error',
+			title: 'Error!',
+		},
+		{
 			category: 'action',
 			id: 3,
 			purpose: 'success',
