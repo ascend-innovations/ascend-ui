@@ -44,6 +44,7 @@ export { default as ChevronSingleUpSmallIcon } from '$lib/assets/icons/s/Chevron
 export { default as ClockRefreshIcon } from '$lib/assets/icons/s/ClockRefreshIcon.svelte'
 export { default as CloseSmallIcon } from '$lib/assets/icons/s/CloseSmallIcon.svelte'
 export { default as CloseSmallWhiteIcon } from '$lib/assets/icons/s/CloseSmallWhiteIcon.svelte'
+export { default as Copy01SmallIcon } from '$lib/assets/icons/s/Copy01SmallIcon.svelte'
 export { default as CreditCardSearchSmallIcon } from '$lib/assets/icons/s/CreditCardSearchSmallIcon.svelte'
 export { default as CurrencyDollarCircleSmallIcon } from '$lib/assets/icons/s/CurrencyDollarCircleSmallIcon.svelte'
 export { default as Edit01SmallIcon } from '$lib/assets/icons/s/Edit01SmallIcon.svelte'

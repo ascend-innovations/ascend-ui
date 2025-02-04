@@ -2,11 +2,12 @@
 	import { Tag } from '$lib/index.js'
 
 	export let status = '',
+		map = null,
 		time = ''
 
 	$: statusKey = status ? status.replace(' ', '').toLowerCase() : 'default'
 
-	const statusColorMap = {
+	const statusColorMap = map ? map : {
 		approved: 'success',
 		complete: 'success',
 		default: 'neutral',
