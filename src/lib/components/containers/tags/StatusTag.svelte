@@ -1,5 +1,5 @@
 <script>
-	import { Tag } from '$lib/index.js'
+	import { Tag, TooltipElement } from '$lib/index.js'
 
 	export let status = '',
 		map = null,
@@ -28,10 +28,31 @@
 		else return status
 	}
 
+	function getTooltip(status) {
+		if (statusColorMap.tooltips) return statusColorMap.tooltips[status]
+		else return ''
+	} 
+
 	$: displayStatus = getStatus(status, time)
+
+	$: tooltipText = getTooltip(statusKey)
 </script>
 
-<Tag
-	type={`${statusType}-subtle`}
-	bind:content={displayStatus}
-/>
+{#if statusColorMap?.tooltips}
+	<TooltipElement>
+		<div slot="element">
+			<Tag
+				type={`${statusType}-subtle`}
+				bind:content={displayStatus}
+			/>
+		</div>
+		<div slot="content">
+			{tooltipText}
+		</div>
+	</TooltipElement>
+{:else}
+	<Tag
+		type={`${statusType}-subtle`}
+		bind:content={displayStatus}
+	/>
+{/if}
