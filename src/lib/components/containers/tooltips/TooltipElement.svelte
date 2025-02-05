@@ -23,6 +23,7 @@
 		font-weight: 700;
 		text-align: center;
 		border-radius: 12px;
+		line-height: 150%;
 	}
 	.tooltip-frame:hover .default-tooltip {
 		visibility: visible;
