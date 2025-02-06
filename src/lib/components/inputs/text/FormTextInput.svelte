@@ -3,7 +3,7 @@
 
 	export let value,
 		label = '',
-		name = '',
+		name = label,
 		type = 'text',
 		validValue,
 		validationCallback
