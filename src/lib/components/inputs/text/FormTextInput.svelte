@@ -3,6 +3,7 @@
 
 	export let value,
 		label = '',
+		name = '',
 		type = 'text',
 		validValue,
 		validationCallback
@@ -21,7 +22,7 @@
 			bind:value
 			class={validValue === false ? 'error' : ''}
 			id={label}
-			name={label}
+			name={name}
 			on:blur={validationCallback}
 			placeholder={`Enter your ${label}`}
 			type="text"
@@ -32,7 +33,7 @@
 			bind:value
 			class={validValue === false ? 'error' : ''}
 			id={label}
-			name={label}
+			name={name}
 			on:blur={validationCallback}
 			placeholder={`Enter your ${label}`}
 			type="email"
@@ -43,7 +44,7 @@
 			bind:value
 			class={validValue === false ? 'error' : ''}
 			id={label}
-			name={label}
+			name={name}
 			on:blur={validationCallback}
 			placeholder={`Enter your ${label}`}
 			type="password"
