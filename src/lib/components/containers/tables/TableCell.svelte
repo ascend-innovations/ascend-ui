@@ -61,7 +61,10 @@
 			bind:row
 		/>
 	{:else if column?.type === 'tag'}
-		<TagCell bind:row />
+		<TagCell
+			bind:column
+			bind:row 
+		/>
 	{:else if column?.editable}
 		<EditableCell
 			bind:column

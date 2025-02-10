@@ -1,7 +1,7 @@
 <script>
 	import { ErrorTag, RoleTag, StatusTag } from '$lib/index.js'
 
-	export let row
+	export let column, row
 </script>
 
 {#if row?.status === 'Error'}
@@ -9,5 +9,7 @@
 {:else if row?.role?.length}
 	<RoleTag role={row?.role} />
 {:else if row?.status}
-	<StatusTag status={row?.status} map={row?.tagMap} />
+	<StatusTag status={row?.status} map={column?.tagMap} />
+{:else}
+	<StatusTag status={row?.status} />
 {/if}

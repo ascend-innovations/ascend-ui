@@ -35,3 +35,7 @@ Go into the `package.json` file and increment the version then run the following
 ```bash
 npm publish
 ```
+
+# Changelog
+
+2/10/2025 - Status Tag component now uses column key for mapping overrides and tooltip copy declarations.

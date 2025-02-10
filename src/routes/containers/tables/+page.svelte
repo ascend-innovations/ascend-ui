@@ -26,7 +26,6 @@
 			editable: 'A Editable Text',
 			radio: false,
 			status: 'Approved',
-			tagMap: { approved: 'warning', tooltips: { approved: 'Provider listing has been published to the external LocalHelpNow directory.' }},
 			logoKey: '/src/lib/assets/images/default-logo.png',
 			textKey: 'Text Two',
 			linkKey: '',
@@ -68,6 +67,7 @@
 			component: StatusTag,
 			key: 'status',
 			type: 'tag',
+			tagMap: { approved: 'warning', pending: 'neutral', tooltips: { approved: 'Provider listing has been published to the external LocalHelpNow directory.' }},
 			styles: ['flex: 1'],
 		},
 		{
