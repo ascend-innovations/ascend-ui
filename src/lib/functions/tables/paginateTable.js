@@ -4,7 +4,7 @@ export default function paginateTable(data, direction, pageSize = 10) {
 			data.leftIndex -= pageSize
 			data.rightIndex -= pageSize
 			data.currentPage -= 1
-			data.pageData = data.tableData.slice(leftIndex, rightIndex)
+			data.pageData = data.tableData.slice(data.leftIndex, data.rightIndex)
 		}
 	}
 
@@ -13,7 +13,7 @@ export default function paginateTable(data, direction, pageSize = 10) {
 			data.leftIndex += pageSize
 			data.rightIndex += pageSize
 			data.currentPage += 1
-			data.pageData = data.tableData.slice(leftIndex, rightIndex)
+			data.pageData = data.tableData.slice(data.leftIndex, data.rightIndex)
 		}
 	}
 
