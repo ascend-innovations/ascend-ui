@@ -10,16 +10,3 @@
 		<slot />
 	</div>
 </div>
-
-<style>
-	.dialog-section {
-		width: 100%;
-	}
-	.dialog-section-heading {
-		color: var(--neutral-base);
-		margin: var(--spacing06) 0;
-	}
-	.dialog-section-content {
-		margin-bottom: var(--spacing09);
-	}
-</style>

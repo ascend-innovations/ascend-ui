@@ -7,6 +7,7 @@
 	<Card
 		classes={['card-s']}
 		title="Example Card"
+		url={'/'}
 		icon={NewNotificationIcon}
 	>
 		<p>Description of an example card</p>

@@ -1,5 +1,6 @@
 <script>
 	import AlertCircleSmallIcon from '$lib/assets/icons/s/AlertCircleSmallIcon.svelte'
+	import ErrorAlert from '$lib/components/containers/alerts/ErrorAlert.svelte'
 	import ExportDataButton from '$lib/components/inputs/buttons/ExportDataButton.svelte'
 	import { Page, Alert, PageBody, HandshakeSmallIcon, Button } from '$lib/index.js'
 
@@ -20,6 +21,12 @@
 			body="Please do something. I'm telling you necessary information."
 			button={ExportDataButton}
 			styles={colors ? activeStyles : inactiveStyles}
+		/>
+		<ErrorAlert 
+			icon={AlertCircleSmallIcon}
+			title="This is an Alert!"
+			body="Please do something. I'm telling you necessary information."
+			button={ExportDataButton}
 		/>
 		<Button
 			text="toggle"

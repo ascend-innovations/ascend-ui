@@ -12,23 +12,10 @@
 	`}
 >
 	<div
-		class="text-content"
+		class="text-message-content"
 		style={`padding:${padding}`}
 	>
 		<slot />
 	</div>
-	<div class="text-arrow" />
+	<div class="text-message-arrow" />
 </div>
-
-<style>
-	.text-content {
-		background-color: var(--neutral-100);
-		border-radius: var(--spacing06) var(--spacing06) var(--spacing06) 0px;
-		overflow: hidden;
-	}
-	.text-arrow {
-		background-color: var(--neutral-100);
-		border-left: var(--spacing08) solid transparent;
-		border-bottom: var(--spacing06) solid white;
-	}
-</style>
