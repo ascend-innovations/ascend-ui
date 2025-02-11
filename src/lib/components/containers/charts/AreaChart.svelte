@@ -292,7 +292,7 @@
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <svg
-	class="area-chart-svg"
+	class="chart-svg"
 	viewBox="0 0 {width} {height}"
 	on:mouseleave={() => resetOpacity()}
 >
@@ -304,7 +304,7 @@
 			y={height / 2 - 40}
 			transform="rotate(-90, {marginLeft - 15}, {height / 2})"
 			fill="var(--neutral-400)"
-			class="axis-label"
+			class="chart-axis-label"
 		>
 			{rangeLabel}
 		</text>
@@ -318,7 +318,7 @@
 			y2={yScale(tick)}
 		/>
 		<text
-			class="axis-label"
+			class="chart-axis-label"
 			fill="var(--neutral-400)"
 			text-anchor="end"
 			x={marginLeft - 15}
@@ -347,7 +347,7 @@
 			</defs>
 
 			<path
-				class="line-path"
+				class="line-chart-path"
 				stroke={lineColors[i]}
 				stroke-width={2}
 				fill="none"
@@ -356,7 +356,7 @@
 			/>
 			{#if !line}
 				<path
-					class="area-path"
+					class="area-chart-path"
 					fill={`url(#${gradient}`}
 					d={area(series)}
 					opacity={opacity[i]}
@@ -393,14 +393,14 @@
 				</linearGradient>
 			</defs>
 		<path
-			class="line-path"
+			class="line-chart-path"
 			stroke={lineColors[0]}
 			stroke-width="2"
 			fill="none"
 			d={stroke(chartData)}
 		/>
 		<path
-			class="area-path"
+			class="area-chart-path"
 			fill={line ? 'rgba(0,0,0,0)' : "url(#area-gradient)"}
 			d={area(chartData)}
 		/>
@@ -430,7 +430,7 @@
 				text-anchor="middle"
 				x={width / 2}
 				y={45}
-				class="axis-label"
+				class="chart-axis-label"
 				fill="var(--neutral-400)"
 			>
 				{domainLabel}
@@ -448,7 +448,7 @@
 						y2={height - marginBottom}
 					/>
 					<text
-						class="axis-label"
+						class="chart-axis-label"
 						fill="gray"
 						text-anchor="middle"
 						fill-opacity={textOpacitySwitch ? (i % 2 === 1 ? '0' : '1') : '1'}
@@ -467,7 +467,7 @@
 		{:else}
 			{#each xScale.ticks(tickFormat) as tick, i}
 				<text
-					class="axis-label"
+					class="chart-axis-label"
 					fill="gray"
 					text-anchor="middle"
 					fill-opacity={textOpacitySwitch ? (i % 2 === 1 ? '0' : '1') : '1'}
@@ -489,7 +489,7 @@
 	<!-- Tooltip Line -->
 	<line
 		id={`${tooltipId}-line`}
-		class="line"
+		class="area-chart-tooltip-line"
 		stroke="var(--neutral-trans-100)"
 		stroke-dasharray="2 3"
 		x1={$coords.x}
@@ -503,7 +503,7 @@
 	<!-- Tooltip Circle -->
 	<circle
 		id={`${tooltipId}-outer-circle`}
-		class="circle"
+		class="area-chart-tooltip-circle"
 		fill="white"
 		cx={$coords.x}
 		cy={$coords.y}
@@ -511,7 +511,7 @@
 	/>
 	<circle
 		id={`${tooltipId}-inner-circle`}
-		class="circle"
+		class="area-chart-tooltip-circle"
 		fill={tooltipData.color}
 		cx={$coords.x}
 		cy={$coords.y}
@@ -540,25 +540,3 @@
 	/>
 {/if}
 <ChartTooltip tooltipInfo={tooltipData} />
-
-<style>
-	.area-chart-svg {
-		display: block;
-		width: 100%;
-		height: 100%;
-	}
-
-	.axis-label {
-		font-size: 11px;
-	}
-
-	.area-path,
-	.line-path {
-		transition: all ease-out 300ms;
-	}
-
-	.line,
-	.circle {
-		opacity: 0;
-	}
-</style>

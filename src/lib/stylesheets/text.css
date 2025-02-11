@@ -1,0 +1,89 @@
+.text-message-content {
+    background-color: var(--neutral-100);
+    border-radius: var(--spacing06) var(--spacing06) var(--spacing06) 0px;
+    overflow: hidden;
+}
+.text-message-arrow {
+    background-color: var(--neutral-100);
+    border-left: var(--spacing08) solid transparent;
+    border-bottom: var(--spacing06) solid white;
+}
+.login-element {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing05);
+    width: 100%;
+}
+.form-text-input {
+    border-radius: var(--spacing04);
+    border: var(--spacing01) solid var(--neutral-100);
+    padding: var(--spacing05) var(--spacing09);
+    width: 100%;
+}
+.form-text-input:invalid {
+    border: var(--spacing01) solid var(--error-base);
+}
+.form-text-input-error {
+    border-color: var(--error-500);
+}
+.search-bar-input-control {
+    align-items: center;
+    border-radius: var(--spacing05);
+    border: var(--neutral-stroke-100-s);
+    display: flex;
+    gap: var(--spacing05);
+    padding: var(--spacing03) var(--spacing05);
+}
+.search-bar-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.search-bar {
+    all: unset;
+    background: none;
+    border: none;
+    width: var(--spacing18);
+}
+.textarea-title {
+    display: flex;
+    gap: var(--spacing05);
+    justify-content: flex-start;
+    width: 100%;
+}
+.textarea-control {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing03);
+    width: 100%;
+}
+.textarea-content {
+    background-color: transparent;
+    border-radius: var(--border-radius-s);
+    border: var(--neutral-stroke-100-s);
+    padding: var(--spacing05) var(--spacing09);
+    resize: none;
+}
+.text-control {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing03);
+    width: 100%;
+}
+
+.text-title {
+    display: flex;
+    gap: var(--spacing05);
+    justify-content: flex-start;
+    width: 100%;
+}
+.text-message-bubble {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
+}
+.text-counter {
+    position: relative;
+    top: calc(var(--spacing03) * -1);
+}

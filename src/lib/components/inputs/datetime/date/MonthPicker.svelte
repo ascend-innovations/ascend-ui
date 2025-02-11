@@ -29,11 +29,3 @@
 		<InputError text={`${validationText}`} />
 	{/if}
 </div>
-
-<style>
-	.month-picker {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing03);
-	}
-</style>

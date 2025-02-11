@@ -84,7 +84,7 @@
 	/>
 	<div class="chart-content">
 		{#if (type === 'geo' && geoJSON?.length === 0) || (type !== 'geo' && data.length === 0)}
-			<div class="no-data-panel">
+			<div class="no-chart-data-panel">
 				<AlertCircleSmallIcon colorOverride="var(--neutral-400)" />
 				<p>No data to display</p>
 			</div>
@@ -94,9 +94,9 @@
 					<slot name="chart-header" />
 				</div>
 			{/if}
-			<div class="visualization-container">
+			<div class="chart-visualization-container">
 				<div
-					class="chart-sizer {type === 'table' ? 'table-position' : ''}"
+					class="chart-sizer {type === 'table' ? 'table-chart-position' : ''}"
 					bind:clientWidth={chartWidth}
 					bind:clientHeight={chartHeight}
 				>
@@ -214,50 +214,3 @@
 		{/if}
 	</div>
 </div>
-
-<style>
-	.chart {
-		height: 100%;
-		border: 1px solid var(--neutral-100);
-		border-radius: 24px;
-		padding: var(--spacing09);
-		position: relative;
-
-		display: flex;
-		flex-direction: column;
-	}
-	.chart-content {
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-	}
-	.visualization-container {
-		position: relative;
-		flex-grow: 1;
-	}
-	.chart-sizer {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-	}
-	.table-position {
-		position: relative;
-	}
-	.no-data-panel {
-		border-radius: 12px;
-		background-color: var(--neutral-050);
-		height: 100%;
-		margin-top: var(--spacing09);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		gap: var(--spacing03);
-
-		& p {
-			color: var(--neutral-400);
-		}
-	}
-</style>

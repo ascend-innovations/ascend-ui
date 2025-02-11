@@ -45,18 +45,3 @@
 		<InputError text={`Please enter your ${label}`} />
 	{/if}
 </div>
-
-<style>
-	.email-control {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing03);
-	}
-
-	.email-title {
-		display: flex;
-		gap: var(--spacing05);
-		justify-content: flex-start;
-		width: 100%;
-	}
-</style>

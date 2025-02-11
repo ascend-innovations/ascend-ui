@@ -30,7 +30,7 @@
 		slot="menu-header"
 	>
 		<ProfileIcon />
-		<div class="user-info">
+		<div class="menu-user-info">
 			{`${username} ${role}`}
 		</div>
 	</div>
@@ -41,14 +41,3 @@
 		<LogoutMenuButton callback={logoutCallback} />
 	</div>
 </Menu>
-
-<style>
-	.menu-header {
-		display: flex;
-		gap: var(--spacing05);
-	}
-	.user-info {
-		display: flex;
-		flex-direction: column;
-	}
-</style>

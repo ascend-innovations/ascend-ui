@@ -35,11 +35,3 @@
 		/>
 	{/each}
 </div>
-
-<style>
-	.table-header-row {
-		align-items: flex-start;
-		border-bottom: var(--neutral-stroke-100-s);
-		display: flex;
-	}
-</style>

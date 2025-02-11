@@ -1,5 +1,5 @@
 <script>
-	import { DefaultTooltipElement, Button, ChevronSingleRightSmallIcon, CardHeader } from '$lib/index.js'
+	import { CardHeader } from '$lib/index.js'
 
 	export let callback = undefined,
 		classes = [],
@@ -30,21 +30,3 @@
 		<slot />
 	</div>
 </div>
-
-<style>
-	.card-wrapper {
-		gap: var(--spacing05);
-		display: flex;
-		flex-direction: column;
-	}
-	.card-content {
-		display: flex;
-		flex-direction: column;
-		height: 100%;
-		justify-content: space-between;
-	}
-	.hover-link:hover {
-		box-shadow: var(--neutral-shadow-m);
-		text-decoration: none;
-	}
-</style>

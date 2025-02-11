@@ -8,7 +8,7 @@
 
 <button
 	on:click={callback}
-	class="semibold"
+	class="table-column-header-button semibold"
 >
 	{text}
 	{#if order === 'newest'}
@@ -17,16 +17,3 @@
 		<ArrowDownExtraSmallIcon />
 	{/if}
 </button>
-
-<style>
-	button {
-		align-items: center;
-		background-color: transparent;
-		border: none;
-		cursor: pointer;
-		display: flex;
-		gap: var(--spacing05);
-		padding: 0;
-		width: 100%;
-	}
-</style>

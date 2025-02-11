@@ -16,12 +16,6 @@
 	{styles}
 	{url}
 >
-	<div class="body-s semibold">{title}</div>
+	<div class="body-s metric-card-text-color semibold">{title}</div>
 	<div class="headline-l-xl semibold">{value}</div>
 </Card>
-
-<style>
-	.body-s {
-		color: var(--neutral-400);
-	}
-</style>

@@ -13,9 +13,3 @@
 	{id}
 	{required}
 />
-
-<style>
-	.month-input {
-		width: 100%;
-	}
-</style>

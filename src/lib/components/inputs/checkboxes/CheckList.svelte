@@ -42,16 +42,3 @@
 		<InputError text={`${validationText}`} />
 	{/if}
 </div>
-
-<style>
-	.check-list {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing10);
-	}
-	.check-item {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing05);
-	}
-</style>

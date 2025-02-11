@@ -44,11 +44,3 @@
 		<slot />
 	</div>
 </div>
-
-<style>
-	.page-header {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing09);
-	}
-</style>

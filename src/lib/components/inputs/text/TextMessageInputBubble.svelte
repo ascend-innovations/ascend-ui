@@ -40,15 +40,3 @@
 		</div>
 	{/if}
 </div>
-
-<style>
-	.text-message-bubble {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing);
-	}
-	.text-counter {
-		position: relative;
-		top: calc(var(--spacing03) * -1);
-	}
-</style>

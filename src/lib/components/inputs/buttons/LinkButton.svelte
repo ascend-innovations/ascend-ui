@@ -18,6 +18,7 @@
 	target={target ? '_blank' : ''}
 	{disabled}
 	class={`
+		link-button-link
 		semibold
 		${classes?.includes('btn-full') ? 'btn-full' : 'btn-fit'}
 	`}
@@ -40,16 +41,3 @@
 		/>
 	</div>
 </a>
-
-<style>
-	a {
-		align-items: center;
-		background-color: transparent;
-		border-radius: var(--btn-border-radius);
-		border: none;
-		color: inherit;
-		cursor: pointer;
-		display: flex;
-		text-decoration: none;
-	}
-</style>

@@ -16,11 +16,3 @@
 		<slot />
 	</svg>
 </div>
-
-<style>
-	.icon-wrapper {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-</style>

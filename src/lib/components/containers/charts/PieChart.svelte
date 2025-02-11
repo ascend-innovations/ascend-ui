@@ -92,7 +92,7 @@
 	}
 </script>
 
-<div class="svg-container">
+<div class="pie-chart-svg-container">
 	<svg
 		class="pie-chart-svg"
 		viewBox="{-width / 2} {-height / 2} {width} {height}"
@@ -112,22 +112,3 @@
 	</svg>
 	<ChartTooltip tooltipInfo={tooltipData} />
 </div>
-
-<style>
-	.svg-container {
-		display: block;
-		min-width: 200px;
-		min-height: 200px;
-		max-width: 280px;
-		max-height: 280px;
-
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
-
-	.pie-chart-svg {
-		width: 100%;
-	}
-</style>

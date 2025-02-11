@@ -23,16 +23,3 @@
 		{/if}
 	</div>
 </div>
-
-<style>
-	.tab-container {
-		align-items: center;
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing06);
-		width: 100%;
-	}
-	.tab-content {
-		width: 100%;
-	}
-</style>

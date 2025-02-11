@@ -6,7 +6,7 @@
 		chart = false
 </script>
 
-<section class="no-gap {chart ? '' : 'table-container'}">
+<section class="no-table-gap {chart ? '' : 'table-container'}">
 	<TableHeaders
 		bind:list
 		{columns}
@@ -16,13 +16,3 @@
 		{columns}
 	/>
 </section>
-
-<style>
-	.no-gap {
-		gap: 0;
-	}
-	.table-container {
-		border: var(--neutral-stroke-100-s);
-		border-radius: var(--border-radius-s);
-	}
-</style>

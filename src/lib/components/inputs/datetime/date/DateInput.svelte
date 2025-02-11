@@ -15,9 +15,3 @@
 	{required}
 	{name}
 />
-
-<style>
-	.date-input {
-		width: 100%;
-	}
-</style>

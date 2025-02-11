@@ -17,28 +17,3 @@
 		style={`width: ${percentageComplete}%`}
 	/>
 </div>
-
-<style>
-	.progress-bar {
-		background-color: var(--neutral-050);
-		border-radius: var(--spacing04);
-		height: var(--spacing02);
-		overflow: hidden;
-		width: 100%;
-	}
-	.progress-bar-fill {
-		height: 100%;
-	}
-	.alert {
-		background-color: var(--primary-base);
-	}
-	.error {
-		background-color: var(--error-base);
-	}
-	.info {
-		background-color: var(--info-base);
-	}
-	.success {
-		background-color: var(--success-base);
-	}
-</style>

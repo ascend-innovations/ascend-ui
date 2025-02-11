@@ -1,0 +1,75 @@
+.tooltip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 70px;
+    min-width: 120px;
+    white-space: nowrap;
+    background-color: var(--neutral-base);
+    border-radius: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity ease-out 300ms;
+}
+.tooltip-text {
+    font-size: 11px;
+    height: 100%;
+    width: 100%;
+    padding: var(--spacing03) var(--spacing06);
+    color: white;
+    text-align: center;
+    line-height: 150%;
+
+    & .tooltip-title {
+        font-size: 13px;
+        margin-bottom: var(--spacing01);
+    }
+}
+.tooltip-values {
+    font-size: 11px;
+    overflow: hidden;
+
+    & span {
+        color: var(--neutral-300);
+    }
+}
+.rule-tip {
+    width: fit-content;
+    padding: 0 var(--spacing02);
+    background-color: var(--neutral-400);
+    border-radius: 4px;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    opacity: 1;
+
+    & p {
+        font-size: 11px;
+        color: white;
+    }
+}
+.tooltip-frame {
+    position: relative;
+    width: fit-content;
+}
+.default-tooltip {
+    position: absolute;
+    z-index: 1;
+    visibility: hidden;
+    background-color: var(--neutral-base);
+    padding: var(--spacing03) var(--spacing06);
+    width: max-content;
+    max-width: 240px;
+    color: white;
+    font-size: var(--body-xxs-font-size);
+    font-weight: 700;
+    text-align: center;
+    border-radius: 12px;
+    line-height: 150%;
+}
+.tooltip-frame:hover .default-tooltip {
+    visibility: visible;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+}

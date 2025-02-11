@@ -1,0 +1,22 @@
+.accordion-details {
+    width: 100%;
+}
+
+.accordion-title {
+    padding: var(--spacing09) 0;
+    list-style: none;
+    display: flex;
+}
+
+.accordion-icon {
+    display: inline-block;
+    margin-left: auto;
+}
+
+.accordion-content {
+    margin-bottom: var(--spacing09);
+}
+
+::-webkit-details-marker {
+    display: none;
+}

@@ -7,7 +7,7 @@
 </script>
 
 {#if icon || title || titleTooltip}
-	<div class="icon-title-wrapper">
+	<div class="card-icon-title-wrapper">
 		{#if icon}
 			<div class="card-icon">
 				<svelte:component this={icon} />
@@ -24,7 +24,7 @@
 			</DefaultTooltipElement>
 		{/if}
 		{#if titleButton}
-			<div class="additional-information-button">
+			<div class="card-additional-information-button">
 				<Button
 					classes={['btn-link', 'btn-m']}
 					rightIcon={ChevronSingleRightSmallIcon}
@@ -35,26 +35,3 @@
 		{/if}
 	</div>
 {/if}
-
-<style>
-	.icon-title-wrapper {
-		display: flex;
-		gap: var(--spacing06);
-		align-items: center;
-	}
-	.card-title {
-		font-size: var(--heading-s-m-font-size);
-	}
-	.additional-information-button {
-		margin-left: auto;
-	}
-	.additional-information-button {
-		margin-left: auto;
-	}
-
-	@media screen and (min-width: 768px) {
-		.card-title {
-			font-size: var(--heading-s-l-font-size);
-		}
-	}
-</style>

@@ -16,7 +16,7 @@
 	class="date-picker-selector"
 	style={styles.join(';')}
 >
-	<div class="date-picker {fill ? 'full-width' : ''}">
+	<div class="date-picker {fill ? 'date-picker-full-width' : ''}">
 		<Label
 			{id}
 			{label}
@@ -33,14 +33,3 @@
 		<InputError text={`${validationText}`} />
 	{/if}
 </div>
-
-<style>
-	.date-picker {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing03);
-	}
-	.full-width {
-		width: 100%;
-	}
-</style>

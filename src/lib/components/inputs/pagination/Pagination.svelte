@@ -24,18 +24,3 @@
 		/>
 	</div>
 </div>
-
-<style>
-	.pagination-bar {
-		align-items: center;
-		background-color: var(--background-base);
-		bottom: 0;
-		display: flex;
-		height: var(--spacing12);
-		justify-content: space-between;
-		padding: var(--spacing09);
-	}
-	.page-number {
-		color: var(--neutral-400);
-	}
-</style>

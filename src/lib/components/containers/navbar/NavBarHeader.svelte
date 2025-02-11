@@ -22,12 +22,3 @@
 		<svelte:component this={closedHeaderComponent} />
 	{/if}
 </div>
-
-<style>
-	.nav-header {
-		display: flex;
-		height: var(--spacing14);
-		justify-content: space-between;
-		padding: var(--spacing09) var(--spacing06) var(--spacing09) var(--spacing10);
-	}
-</style>

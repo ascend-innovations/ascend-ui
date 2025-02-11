@@ -38,12 +38,3 @@
 		<InputError text={`${validationText}`} />
 	{/if}
 </div>
-
-<style>
-	.zip-control {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing03);
-		width: 12ch;
-	}
-</style>

@@ -9,13 +9,3 @@
 		<FilterLabel {filter} />
 	{/each}
 </div>
-
-<style>
-	.filter-container {
-		display: flex;
-		gap: var(--spacing06);
-		align-items: center;
-		color: var(--neutral-400);
-		flex-wrap: wrap;
-	}
-</style>

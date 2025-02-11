@@ -33,14 +33,3 @@
 		<InputError text={`${validationText}`} />
 	{/if}
 </div>
-
-<style>
-	.date-time-selector {
-		width: 100%;
-	}
-	.date-time {
-		display: flex;
-		gap: var(--spacing09);
-		width: 100%;
-	}
-</style>

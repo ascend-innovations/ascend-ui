@@ -16,7 +16,7 @@
 >
 	<StandardCard
 		{callback}
-		classes={[...classes, 'hover-link']}
+		classes={[...classes, 'card-hover-link']}
 		{icon}
 		{styles}
 		{title}
@@ -25,10 +25,3 @@
 		<slot />
 	</StandardCard>
 </a>
-
-<style>
-	.link-card {
-		color: var(--neutral-light-base);
-		text-decoration: none;
-	}
-</style>

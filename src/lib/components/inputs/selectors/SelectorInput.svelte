@@ -42,21 +42,3 @@
 		<InputError text={`${validationText}`} />
 	{/if}
 </div>
-
-<style>
-	.selector-control {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing03);
-		width: 100%;
-	}
-	select {
-		background: none;
-		border-radius: var(--spacing05);
-		border: var(--spacing00) solid var(--neutral-100);
-		padding: var(--spacing05) var(--spacing09);
-	}
-	select:hover {
-		background: var(--neutral-100);
-	}
-</style>

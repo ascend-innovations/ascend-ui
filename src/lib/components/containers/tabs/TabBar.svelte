@@ -70,32 +70,3 @@
 		</div>
 	{/if}
 </div>
-
-<style>
-	.tab-bar {
-		align-items: center;
-		display: flex;
-		max-height: var(--spacing13);
-		width: 100%;
-	}
-	.tab-list {
-		align-items: center;
-		border-bottom: var(--border-neutral);
-		display: flex;
-		gap: var(--spacing09);
-		overflow-x: hidden;
-		padding-left: 1px;
-		padding-top: 1px;
-		width: 100%;
-	}
-	.tab-nav-left-button,
-	.tab-nav-right-button {
-		position: relative;
-	}
-	.tab-nav-left-button {
-		left: 10px;
-	}
-	.tab-nav-right-button {
-		right: 10px;
-	}
-</style>

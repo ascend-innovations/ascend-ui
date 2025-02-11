@@ -6,18 +6,3 @@
 		<slot name="rightSide" />
 	</div>
 </div>
-
-<style>
-	.action-bar {
-		background-color: white;
-		border-radius: var(--border-radius-m) 0 0 0;
-		border: var(--spacing00) solid var(--neutral-100);
-		box-shadow: var(--neutral-shadow-s);
-		display: flex;
-		height: var(--spacing15);
-		justify-content: space-between;
-		padding: var(--spacing09);
-		position: sticky;
-		width: 100%;
-	}
-</style>

@@ -26,23 +26,3 @@
 		</div>
 	</div>
 {/if}
-
-<style>
-	.toast-area {
-		display: flex;
-		justify-content: center;
-		position: absolute;
-		width: 100%;
-	}
-	.toast-list {
-		align-items: center;
-		border-radius: var(--spacing09);
-		bottom: 5%;
-		display: flex;
-		flex-direction: column-reverse;
-		gap: var(--spacing05);
-		overflow: auto;
-		padding: var(--spacing09);
-		position: fixed;
-	}
-</style>

@@ -14,14 +14,3 @@
 		/>
 	{/each}
 </div>
-
-<style>
-	.table-body-row {
-		align-items: flex-start;
-		border-bottom: var(--neutral-stroke-100-s);
-		display: flex;
-	}
-	.table-body-row:last-child {
-		border-bottom: none;
-	}
-</style>

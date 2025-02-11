@@ -14,14 +14,3 @@
 		{value}
 	</label>
 </div>
-
-<style>
-	.custom-select-option {
-		padding: var(--spacing03);
-	}
-	.custom-select-label {
-		display: flex;
-		gap: var(--spacing05);
-		font-weight: 700;
-	}
-</style>

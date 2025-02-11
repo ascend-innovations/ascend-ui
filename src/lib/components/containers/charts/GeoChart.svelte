@@ -104,14 +104,7 @@
 
 <div
 	id={mapId}
-	class="border-radius-s map"
+	class="border-radius-s map-chart"
 >
 	<!-- Map is drawn here -->
 </div>
-
-<style>
-	.map {
-		position: relative;
-		height: 100%;
-	}
-</style>

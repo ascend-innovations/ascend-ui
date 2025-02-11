@@ -8,6 +8,7 @@
 <input
 	type="submit"
 	class={`
+		submit-button
 		${classes.includes('btn-full') ? 'btn-full' : 'btn-fit'}
 		${classes.join(' ')}
 		${disabled ? 'btn-disabled' : ''}
@@ -17,13 +18,3 @@
 	{disabled}
 	on:submit={callback}
 />
-
-<style>
-	input {
-		align-items: center;
-		border-radius: var(--btn-border-radius);
-		border: none;
-		cursor: pointer;
-		text-decoration: none;
-	}
-</style>

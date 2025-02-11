@@ -82,13 +82,3 @@
 		/>
 	{/if}
 </div>
-
-<style>
-	.table-column-body-cell {
-		align-items: center;
-		align-self: stretch;
-		display: flex;
-		gap: var(--spacing03);
-		padding: var(--spacing06);
-	}
-</style>
