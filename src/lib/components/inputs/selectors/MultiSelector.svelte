@@ -59,7 +59,7 @@
 		aria="select"
 	>
 		<div
-			class="label-wrapper"
+			class="multiselect-label-wrapper"
 			on:click={openToggle}
 		>
 			<Label
@@ -73,16 +73,16 @@
 			{/if}
 		</div>
 		{#if open}
-			<div class="list-content">
+			<div class="multiselect-list-content">
 				{#if searchable}
-					<div class="search-bar-wrapper">
+					<div class="multiselect-search-bar-wrapper">
 						<SearchBar
 							bind:query
 							callback={searchCallback}
 						/>
 					</div>
 				{/if}
-				<div class="options-list">
+				<div class="multiselect-options-list">
 					{#each optionList as optionItem}
 						<CheckboxSelectOption
 							id={optionItem.value}
@@ -98,49 +98,3 @@
 		<InputError text={validationText} />
 	{/if}
 </div>
-
-<style>
-	.multi-selector {
-		position: relative;
-	}
-	.multi-selector-control {
-		min-width: 260px;
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-		background: none;
-		overflow: hidden;
-	}
-	.open-selector-control {
-		border-radius: var(--spacing05);
-	}
-	.label-wrapper {
-		display: flex;
-		justify-content: space-between;
-		padding: var(--spacing05) var(--spacing05) var(--spacing05) var(--spacing09);
-		border-radius: var(--spacing05);
-		border: var(--spacing00) solid var(--neutral-100);
-		cursor: pointer;
-	}
-	.list-content {
-		width: 100%;
-		top: 100%;
-		left: 0;
-		margin-top: var(--spacing03);
-		background-color: white;
-		/* border-top: var(--spacing00) solid var(--neutral-100); */
-		border-radius: var(--spacing05);
-		border: var(--spacing00) solid var(--neutral-100);
-		z-index: 1;
-	}
-	.search-bar-wrapper {
-		padding-left: var(--spacing05);
-		padding-right: var(--spacing05);
-		padding-top: var(--spacing05);
-	}
-	.options-list {
-		padding: var(--spacing05);
-		max-height: 220px;
-		overflow-y: scroll;
-	}
-</style>

@@ -1,0 +1,94 @@
+.toggle-button input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.toggle-button {
+    cursor: pointer;
+    position: relative;
+    width: 48px;
+    height: 48px;
+    background-color: white;
+}
+.toggle-icon-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+}
+.toggle-button-icon {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+input:checked + .toggle-icon-container {
+    border: 1px solid var(--neutral-100);
+}
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.toggle-switch {
+    position: relative;
+    width: 96px;
+    height: 48px;
+    border: 1px solid var(--neutral-100);
+    background-color: var(--neutral-100);
+}
+.slider-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.toggle-switch-icon-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+}
+.toggle-switch-icon {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.toggle-switch-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 46px;
+    height: 46px;
+    opacity: 1;
+    background-color: white;
+    transition: ease-out 300ms;
+}
+.toggle-switch-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 46px;
+    height: 46px;
+    opacity: 0;
+    background-color: white;
+    transition: ease-out 300ms;
+}
+input:checked + .slider-container .toggle-switch-left {
+    opacity: 0;
+    transition: ease-out 300ms;
+}
+input:checked + .slider-container .toggle-switch-right {
+    opacity: 1;
+    transition: ease-out 300ms;
+}

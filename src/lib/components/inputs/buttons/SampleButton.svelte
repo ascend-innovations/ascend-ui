@@ -8,14 +8,3 @@
 	</div>
 	<slot />
 </div>
-
-<style>
-	.sample-button {
-		margin: 50px 0;
-	}
-	.button-name {
-		font-weight: bold;
-		font-size: 24px;
-		margin-bottom: 12px;
-	}
-</style>

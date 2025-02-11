@@ -152,7 +152,6 @@ export { default as LogoutConfirmationDialog } from '$lib/components/containers/
 
 // Footers
 export { default as FooterBar } from '$lib/components/containers/footers/FooterBar.svelte'
-export { default as FooterNavigation } from '$lib/components/containers/footers/FooterNavigation.svelte'
 
 // Grids
 export { default as CardGrid } from '$lib/components/containers/grids/CardGrid.svelte'

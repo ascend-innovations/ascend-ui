@@ -24,12 +24,3 @@
 		{label}
 	</div>
 </div>
-
-<style>
-	.radio-option {
-		align-items: center;
-		display: flex;
-		flex-direction: row;
-		gap: var(--spacing04);
-	}
-</style>

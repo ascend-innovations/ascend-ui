@@ -78,21 +78,3 @@
 		</div>
 	{/if}
 </div>
-
-<style>
-	.button-contents,
-	.block-content,
-	.inline-content {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	.block-content {
-		flex-direction: column;
-		gap: var(--spacing03);
-	}
-	.inline-content {
-		flex-direction: row;
-		gap: var(--spacing05);
-	}
-</style>

@@ -15,6 +15,7 @@
 <button
 	{disabled}
 	class={`
+		standard-button
 		semibold
 		${classes.includes('btn-full') ? 'btn-full' : 'btn-fit'}
 		${disabled ? 'btn-disabled' : ''}
@@ -40,15 +41,3 @@
 		/>
 	</div>
 </button>
-
-<style>
-	button {
-		align-items: center;
-		background-color: transparent;
-		border-radius: var(--btn-border-radius);
-		border: none;
-		cursor: pointer;
-		display: flex;
-		text-decoration: none;
-	}
-</style>
