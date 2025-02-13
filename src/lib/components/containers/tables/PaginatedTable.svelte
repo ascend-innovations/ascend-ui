@@ -1,6 +1,5 @@
 <script>
-	import { page } from '$app/stores'
-    import { Table, Pagination, paginateTable } from '$lib/index.js'
+    import { Table, Pagination, paginateTable, sortArray } from '$lib/index.js'
 
     export let columns, list, pageLength = 10, sortCallback = sortTable
 
@@ -43,7 +42,7 @@
     <Table 
         {columns}
         {sortCallback}
-        bind:list={pageData.pageData}
+        list={pageData.pageData}
     />
     
     {#if pageData.totalPages > 1}
