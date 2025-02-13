@@ -13,7 +13,7 @@
 			radio: true,
 			status: 'pending',
 			logoKey: '/src/lib/assets/images/default-logo.png',
-			textKey: 'Text One',
+			key: 'Text One',
 			linkKey: '1234567890',
 		},
 		{
@@ -27,7 +27,7 @@
 			radio: false,
 			status: 'Approved',
 			logoKey: '/src/lib/assets/images/default-logo.png',
-			textKey: 'Text Two',
+			key: 'Text Two',
 			linkKey: '',
 		},
 		// {
@@ -94,7 +94,7 @@
 			title: 'Logo Link',
 			type: 'logolink',
 			logoKey: 'logoKey',
-			textKey: 'textKey',
+			key: 'key',
 			linkKey: 'linkKey',
 			styles: ['flex: 3'],
 		},

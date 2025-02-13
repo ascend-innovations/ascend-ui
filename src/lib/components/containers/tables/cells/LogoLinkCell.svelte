@@ -34,7 +34,7 @@
 		</div>
 	{/if}
 	<div class="text-container {row[column.linkKey] ? 'link-height' : ''}">
-		<p>{row[column.textKey]}</p>
+		<p>{row[column.key]}</p>
 		{#if row[column.linkKey]}
 			<p class="link">
 				<a

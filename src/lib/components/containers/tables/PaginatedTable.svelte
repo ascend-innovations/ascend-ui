@@ -1,0 +1,69 @@
+<script>
+	import { page } from '$app/stores'
+    import { Table, Pagination, paginateTable } from '$lib/index.js'
+
+    export let columns, list, pageLength = 10, sortCallback = sortTable
+
+    $: pageData = {
+        tableData: list,
+		pageData: list.slice(0, pageLength - 1),
+		currentPage: 1,
+		leftIndex: 0,
+		rightIndex: pageLength - 1,
+		totalPages: Math.ceil(list.length / pageLength),
+    }
+
+    // create sortMap object with keys that match the column's key with a value of empty string
+	const sortMap = {}
+	Object.values(columns).forEach((column) => {
+		if (column.key !== undefined) sortMap[column.key] = ''
+	})
+
+    function sortTable(columnKey, columnType) {
+		// save the last sort order for this column
+		const previousSortOrder = sortMap[columnKey]
+
+		// reset all sortMap values to empty string
+		Object.keys(sortMap).forEach((sortKey) => (sortMap[sortKey] = ''))
+
+		// set the new sorting order for this column
+		if (previousSortOrder === 'oldest') sortMap[columnKey] = 'newest'
+		else sortMap[columnKey] = 'oldest'
+
+		// sort the array on the store for this table type
+		pageData.tableData = sortArray(pageData.tableData, columnKey, columnType, sortMap[columnKey])
+        pageData.pageData = pageData.tableData.slice(0, pageLength - 1)
+        pageData.currentPage = 1,
+        pageData.leftIndex = 0,
+        pageData.rightIndex = pageLength - 1
+	}
+</script>
+
+<div class="table-container">
+    <Table 
+        {columns}
+        {sortCallback}
+        bind:list={pageData.pageData}
+    />
+    
+    {#if pageData.totalPages > 1}
+		<div class="pagination-container">
+			<Pagination
+				currentPage={pageData.currentPage}
+				totalPages={pageData.totalPages}
+				leftClickCallback={() => (pageData = paginateTable(pageData, 'previous'))}
+				rightClickCallback={() => (pageData = paginateTable(pageData, 'next'))}
+			/>
+		</div>
+	{/if}
+</div>
+
+<style>
+    .table-container {
+		width: 100%;
+	}
+
+	.pagination-container {
+		margin-top: var(--spacing09);
+	}
+</style>

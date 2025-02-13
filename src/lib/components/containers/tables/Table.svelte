@@ -3,19 +3,18 @@
 
 	export let columns = [],
 		list = [],
-		all = [],
+		sortCallback,
 		chart = false
 </script>
 
 <section class="no-gap {chart ? '' : 'table-container'}">
 	<TableHeaders
 		bind:list
-		bind:all
+		{sortCallback}
 		{columns}
 	/>
 	<TableBody
 		bind:list
-		bind:all
 		{columns}
 	/>
 </section>

@@ -1,7 +1,7 @@
 <script>
 	import { TableColumnHeaderCell, sortArray } from '$lib/index.js'
 
-	export let columns, list, all
+	export let columns, list, sortCallback = sortTable
 
 	// create sortMap object with keys that match the column's key with a value of empty string
 	const sortMap = {}
@@ -21,8 +21,7 @@
 		else sortMap[columnKey] = 'oldest'
 
 		// sort the array on the store for this table type
-		// list = sortArray(list, columnKey, columnType, sortMap[columnKey])
-		all = sortArray(all, columnKey, columnType, sortMap[columnKey])
+		list = sortArray(list, columnKey, columnType, sortMap[columnKey])
 	}
 </script>
 
@@ -30,10 +29,9 @@
 	{#each columns as column}
 		<TableColumnHeaderCell
 			bind:list
-			bind:all
 			order={sortMap[column.key]}
 			{column}
-			{sortTable}
+			sortTable={sortCallback}
 		/>
 	{/each}
 </div>
