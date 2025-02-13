@@ -208,6 +208,7 @@ export { default as TabContainer } from '$lib/components/containers/tabs/TabCont
 export { default as TabContents } from '$lib/components/containers/tabs/TabContents.svelte'
 
 // Tables
+export { default as PaginatedTable } from '$lib/components/containers/tables/PaginatedTable.svelte'
 export { default as Table } from '$lib/components/containers/tables/Table.svelte'
 export { default as TableBody } from '$lib/components/containers/tables/TableBody.svelte'
 export { default as TableHeaders } from '$lib/components/containers/tables/TableHeaders.svelte'
