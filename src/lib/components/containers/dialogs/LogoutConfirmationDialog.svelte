@@ -1,7 +1,7 @@
 <script>
 	import { closeDialog, CancelButton, CloseDialogButton, ConfirmButton, Dialog } from '$lib/index.js'
 
-	export let store, callback
+	export let store, callback, cancelCallback=cancel
 
 	let loading = false
 
@@ -24,7 +24,7 @@
 	>
 		<div class="headline-l-xl">Log Out</div>
 		<form method="dialog">
-			<CloseDialogButton callback={cancel} />
+			<CloseDialogButton callback={cancelCallback} />
 		</form>
 	</div>
 	<div
@@ -37,7 +37,7 @@
 		class="dialog-footer-slot-contents"
 		slot="footer"
 	>
-		<CancelButton callback={cancel} />
+		<CancelButton callback={cancelCallback} />
 		<ConfirmButton
 			{loading}
 			callback={confirmLogout}
