@@ -45,7 +45,7 @@
 		justify-content: center;
 		position: fixed;
 		width: 100%;
-		z-index: 410;
+		z-index: 420;
 	}
 	dialog {
 		border-radius: var(--spacing10);

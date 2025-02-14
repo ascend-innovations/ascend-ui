@@ -66,7 +66,7 @@
 		right: var(--spacing09);
 		top: var(--spacing14);
 		width: var(--spacing21);
-		z-index: 420;
+		z-index: 410;
 	}
 	.menu-header {
 		display: flex;
