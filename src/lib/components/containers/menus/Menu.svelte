@@ -52,7 +52,7 @@
 		position: absolute;
 		right: 0;
 		top: 0;
-		z-index: 420;
+		z-index: 410;
 	}
 	.closed-overlay {
 		display: none;
