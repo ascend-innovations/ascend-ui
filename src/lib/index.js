@@ -134,6 +134,7 @@ export { default as LinkCard } from '$lib/components/containers/cards/LinkCard.s
 export { default as LoginCard } from '$lib/components/containers/cards/LoginCard.svelte'
 export { default as MetricCard } from '$lib/components/containers/cards/MetricCard.svelte'
 export { default as RegistrationCard } from '$lib/components/containers/cards/RegistrationCard.svelte'
+export { default as SSOCard } from '$lib/components/containers/cards/SSOCard.svelte'
 export { default as StandardCard } from '$lib/components/containers/cards/StandardCard.svelte'
 
 // Charts
@@ -195,6 +196,7 @@ export { default as PageDescription } from '$lib/components/containers/pages/Pag
 export { default as PageFooter } from '$lib/components/containers/pages/PageFooter.svelte'
 export { default as PageHeader } from '$lib/components/containers/pages/PageHeader.svelte'
 export { default as RegistrationPage } from '$lib/components/containers/pages/RegistrationPage.svelte'
+export { default as SSOLandingPage } from '$lib/components/containers/pages/SSOLandingPage.svelte'
 
 // Progress
 export { default as ProgressBar } from '$lib/components/containers/progress/ProgressBar.svelte'
