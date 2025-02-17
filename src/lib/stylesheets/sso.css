@@ -10,7 +10,6 @@
     align-items: center;
     justify-content: center;
     gap: var(--spacing06);
-    background: center/cover url($lib/assets/images/AscendLoginBackground.webp);
     background-position-y: 45%;
 }
 .sso-sections-container {

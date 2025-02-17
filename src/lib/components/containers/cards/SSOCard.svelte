@@ -5,6 +5,7 @@
 
 <a 
     href={data.link}
+    target="_blank"
     class="sso-link"
 >
     <div 
