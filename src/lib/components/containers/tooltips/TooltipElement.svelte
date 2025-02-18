@@ -12,6 +12,8 @@
 	}
 	.default-tooltip {
 		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
 		z-index: 1;
 		visibility: hidden;
 		background-color: var(--neutral-base);
