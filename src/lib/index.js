@@ -108,6 +108,7 @@ export { default as AscendLoginBackground } from '$lib/assets/images/AscendLogin
 export { default as AscendLogo } from '$lib/assets/images/AscendLogo.svelte'
 export { default as AscendSymbol } from '$lib/assets/images/AscendSymbol.svelte'
 export { default as Error404Graphic } from '$lib/assets/images/Error404Graphic.svelte'
+export { default as Error401Graphic } from '$lib/assets/images/Error401Graphic.svelte'
 
 // Stylesheets
 export { default as GlobalCSS } from '$lib/stylesheets/global.css?inline'
@@ -189,6 +190,7 @@ export { default as SimpleNavBar } from '$lib/components/containers/navbar/Simpl
 // Pages
 export { default as DashboardPageTitle } from '$lib/components/containers/pages/DashboardPageTitle.svelte'
 export { default as Error404Page } from '$lib/components/containers/pages/Error404Page.svelte'
+export { default as Error401Page } from '$lib/components/containers/pages/Error401Page.svelte'
 export { default as LoginPage } from '$lib/components/containers/pages/LoginPage.svelte'
 export { default as Page } from '$lib/components/containers/pages/Page.svelte'
 export { default as PageBody } from '$lib/components/containers/pages/PageBody.svelte'
