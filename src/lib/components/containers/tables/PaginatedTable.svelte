@@ -5,10 +5,10 @@
 
     $: pageData = {
         tableData: list,
-		pageData: list.slice(0, pageLength - 1),
+		pageData: list.slice(0, pageLength),
 		currentPage: 1,
 		leftIndex: 0,
-		rightIndex: pageLength - 1,
+		rightIndex: pageLength,
 		totalPages: Math.ceil(list.length / pageLength),
     }
 
@@ -31,10 +31,10 @@
 
 		// sort the array on the store for this table type
 		pageData.tableData = sortArray(pageData.tableData, columnKey, columnType, sortMap[columnKey])
-        pageData.pageData = pageData.tableData.slice(0, pageLength - 1)
+        pageData.pageData = pageData.tableData.slice(0, pageLength)
         pageData.currentPage = 1,
         pageData.leftIndex = 0,
-        pageData.rightIndex = pageLength - 1
+        pageData.rightIndex = pageLength
 	}
 </script>
 
