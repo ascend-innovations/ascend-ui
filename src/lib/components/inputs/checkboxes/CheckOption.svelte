@@ -8,7 +8,7 @@
 
 	function checkBox() {
 		checked = !checked
-		if (callback) callback(checked, value)
+		if (callback) callback(checked, name)
 	}
 </script>
 
