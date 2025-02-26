@@ -260,6 +260,12 @@ export { default as TooltipElement } from '$lib/components/containers/tooltips/T
 
 // --- FUNCTIONS --- //
 
+// Auth
+export { default as login } from '$lib/functions/auth/login.js'
+export { default as resendOtp } from '$lib/functions/auth/resendOtp.js'
+export { default as resetPassword } from '$lib/functions/auth/resetPassword.js'
+export { default as verifyOtp } from '$lib/functions/auth/verifyOtp.js'
+
 // Filtering
 export { default as withinDateRange } from '$lib/functions/filtering/withinDateRange.js'
 export { default as withinTimeRange } from '$lib/functions/filtering/withinTimeRange.js'
