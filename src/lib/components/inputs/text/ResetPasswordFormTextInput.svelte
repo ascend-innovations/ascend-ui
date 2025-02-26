@@ -24,7 +24,9 @@
         placeholder={`Enter your ${label}`}
         type="password"
     />
-	{#if validValue === false}
+	{#if !value }
+		<InputError text={`Please enter new password.`} />
+	{:else if validValue === false}
 		<InputError text={`New password does not meet below criteria.`} />
 	{/if}
 </div>
