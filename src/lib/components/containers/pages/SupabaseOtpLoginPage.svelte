@@ -1,19 +1,22 @@
 <script>
 	import { FormTextInput, LoginPage, InputError, validateSupabaseOtp } from '$lib/index.js'
+	import { createEventDispatcher } from 'svelte'
 	import { onMount } from 'svelte'
 
-	export let form, store, resendCallback
+	export let form
 
 	let otp, validOtp
+
+	const dispatch = createEventDispatcher()
 
 	function otpValidation() {
 	    validOtp = validateSupabaseOtp(otp)
 		return validOtp
 	}
 
-	onMount(() => {
-	    if (form.otp_resend_message) {
-            resendCallback
+    onMount(() => {
+        if (form?.otp_resend_message) {
+            dispatch('otpResent', form)
         }
 	})
 

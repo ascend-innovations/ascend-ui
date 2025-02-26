@@ -2,12 +2,12 @@
 	import { onMount } from "svelte"
 	import { InputError, openDialog, validateCredentials, validateEmail, validateSupabasePassword, Button, FormTextInput, LoginPage } from '$lib/index.js'
 
-	export let form, store, openCreateAccountDialog
+	export let form, openCreateAccountDialog
 
-	let validEmail, validPassword, password
+	let validEmail, validPassword, password, email
 
 	function emailValidation() {
-	    validEmail = validateEmail(store.user.email)
+	    validEmail = validateEmail(email)
 		return validEmail
 	}
 
@@ -28,7 +28,7 @@
 		<FormTextInput
 			label="email"
 			type="email"
-			bind:value={store.user.email}
+			bind:value={email}
 			validValue={validEmail}
 			validationCallback={emailValidation}
 		/>
