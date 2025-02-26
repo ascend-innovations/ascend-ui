@@ -200,9 +200,8 @@ export { default as PageFooter } from '$lib/components/containers/pages/PageFoot
 export { default as PageHeader } from '$lib/components/containers/pages/PageHeader.svelte'
 export { default as RegistrationPage } from '$lib/components/containers/pages/RegistrationPage.svelte'
 export { default as SSOLandingPage } from '$lib/components/containers/pages/SSOLandingPage.svelte'
-export { default as SSOLandingPage } from '$lib/components/containers/pages/SSOLandingPage.svelte'
-export { default as SSOLandingPage } from '$lib/components/containers/pages/SupabaseLoginPage.svelte'
-export { default as SSOLandingPage } from '$lib/components/containers/pages/SupabaseOtpLoginPage.svelte'
+export { default as SupabaseLoginPage } from '$lib/components/containers/pages/SupabaseLoginPage.svelte'
+export { default as SupabaseOtpLoginPage } from '$lib/components/containers/pages/SupabaseOtpLoginPage.svelte'
 
 // Progress
 export { default as ProgressBar } from '$lib/components/containers/progress/ProgressBar.svelte'

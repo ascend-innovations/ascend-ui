@@ -18,8 +18,8 @@
                     body: 'Check your email for your new passcode',
                     title: form.otp_resend_message,
                     purpose: 'success',
-                    category: 'action',
-                },
+                    category: 'action'
+                }
             ]
 	    } else {
             store.toasts.list = []
