@@ -48,7 +48,7 @@ export default async function resetPassword(supabase, type, tokenHash, accessTok
         console.error('Error updating password:', updateError.message)
         return {
             success: false,
-            message: updateError.message,
+            message: 'Please review requirements below and try again.',
             accessToken,
             refreshToken
         }

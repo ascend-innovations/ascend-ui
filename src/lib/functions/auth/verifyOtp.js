@@ -1,6 +1,6 @@
 export default async function verifyOtp(supabase, email, otp) {
 	if (!email || !otp) {
-		return { success: false, message: 'One-Time Passcode is required' }
+		return { success: false, message: 'Passcode is required' }
 	}
 
 	let otpResponse = await supabase.auth.verifyOtp({
@@ -12,7 +12,7 @@ export default async function verifyOtp(supabase, email, otp) {
 
 	if (otpError) {
 		console.error('OTP verification error:', otpError.message)
-		return { success: false, message: 'Invalid One-Time Passcode. Please ensure the correct code was used. If needed, resend the code and try again.' }
+		return { success: false, message: 'Invalid Passcode. Please try again.' }
 	}
 
 	// Mark the user as having completed MFA
