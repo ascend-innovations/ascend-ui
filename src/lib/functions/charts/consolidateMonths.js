@@ -12,5 +12,8 @@ export default function consolidateMonths(data, domain, range) {
 			months.push(monthsData[i])
 		}
 	}
+	for (let month of months) {
+		month[range] = Math.round(month[range] * 100) / 100
+	}
 	return months
 }
