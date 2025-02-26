@@ -1,29 +1,30 @@
 import { fail, redirect } from '@sveltejs/kit'
-import type { SupabaseClient } from '@supabase/supabase-js'
 
-export async function verifyOtp(supabase: SupabaseClient, email: string, otp: string) {
+export async function verifyOtp(supabase, email, otp) {
 	if (!email || !otp) {
 		return fail(400, { otp_auth_message: 'One-Time Passcode is required' })
 	}
 
-	const { error } = await supabase.auth.verifyOtp({
+	let otpResponse = await supabase.auth.verifyOtp({
 		email,
 		token: otp,
 		type: 'email',
 	})
+	let otpError = updateUserResponse.error
 
-	if (error) {
-		console.error('OTP verification error:', error.message)
+	if (otpError) {
+		console.error('OTP verification error:', otpError.message)
 		return fail(400, { otp_auth_message: 'Invalid One-Time Passcode. Please ensure the correct code was used. If needed, resend the code and try again.' })
 	}
 
 	// Mark the user as having completed MFA
-	const { error: updateError } = await supabase.auth.updateUser({
+	let updateUserResponse = await supabase.auth.updateUser({
 		data: { mfa_completed: true },
 	})
+	let updateUserError = updateUserResponse.error
 
-	if (updateError) {
-		console.error('Error updating MFA status:', updateError.message)
+	if (updateUserError) {
+		console.error('Error updating MFA status:', updateUserError.message)
 		return fail(400, { otp_auth_message: 'Failed to update authentication status.' })
 	}
 

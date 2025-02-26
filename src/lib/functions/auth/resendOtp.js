@@ -1,14 +1,14 @@
 import { fail } from '@sveltejs/kit'
-import type { SupabaseClient } from '@supabase/supabase-js'
 
-export async function resendOtp(supabase: SupabaseClient, email: string) {
-	const { error: otpError } = await supabase.auth.signInWithOtp({
+export async function resendOtp(supabase, email) {
+	let response = await supabase.auth.signInWithOtp({
 		email,
 		options: { shouldCreateUser: false },
 	})
+	let error = response.error
 
-	if (otpError) {
-		console.error('OTP error:', otpError.message)
+	if (error) {
+		console.error('OTP error:', error.message)
 		return fail(400, { otp_send_message: 'Failed to send One-Time Passcode. Try again.' })
 	}
 

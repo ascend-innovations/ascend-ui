@@ -1,57 +1,62 @@
 import { fail, redirect } from '@sveltejs/kit'
 import type { SupabaseClient } from '@supabase/supabase-js'
 
-export async function verifyOtp(supabase: SupabaseClient, type: string, tokenHash: string, accessToken: string, refreshToken: string, password: string) {
+export async function resetPassword(supabase, type, tokenHash, accessToken, refreshToken, password) {
     if (tokenHash && type) {
-        const { data: session, error: sessionError } = await locals.supabase.auth.verifyOtp({
+        let otpResponse = await supabase.auth.verifyOtp({
             type,
             token_hash: tokenHash,
         })
+        let otpError = otpResponse.error
+        let session = otpResponse.data
 
-        if (sessionError) {
-            console.error('One-Time Passcode Verification Failed:', sessionError.message)
+        if (otpError) {
+            console.error('One-Time Passcode Verification Failed:', otpError.message)
 
             return {
                 success: false,
-                message: sessionError.message,
-                accessToken: accessToken,
-                refreshToken: refreshToken,
+                message: otpError.message,
+                accessToken,
+                refreshToken,
             }
         }
 
         accessToken = session.session.access_token
         refreshToken = session.session.refresh_token
     } else {
-        const { data: session, error: sessionError } = await locals.supabase.auth.setSession({
-            refresh_token: refreshToken,
+        let sessionResponse = await supabase.auth.setSession({
             access_token: accessToken,
+            refresh_token: refreshToken,
         })
+        let sessionError = sessionResponse.error
 
         if (sessionError) {
             console.error('Error verifying token:', sessionError.message)
             return {
                 success: false,
                 message: sessionError.message,
-                accessToken: accessToken,
-                refreshToken: refreshToken,
+                accessToken,
+                refreshToken,
             }
         }
     }
     console.log('Token Verified')
 
     // Step 1: Update the user password
-    const { data, error } = await locals.supabase.auth.updateUser({ password })
+    let updateResponse = await supabase.auth.updateUser({ password })
+    let updateError = updateResponse.error
+    let data = updateResponse.data
     console.log(data)
 
-    if (error) {
-        console.error('Error updating password:', error.message)
-        return { success: false, message: error.message, accessToken: accessToken, refreshToken: refreshToken }
+    if (updateError) {
+        console.error('Error updating password:', updateError.message)
+        return { success: false, message: error.message, accessToken, refreshToken }
     }
 
     console.log('Password updated successfully')
 
     // Step 3: Sign out the user
-    await locals.supabase.auth.signOut()
+    await supabase.auth.signOut()
 
     throw redirect(303, '/login')
 }

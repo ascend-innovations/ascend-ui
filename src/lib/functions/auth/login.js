@@ -1,30 +1,32 @@
 import { fail, redirect } from '@sveltejs/kit'
-import type { SupabaseClient } from '@supabase/supabase-js'
 
-export async function verifyOtp(supabase: SupabaseClient, email: string, password: string) {
+export async function login(supabase, email, password) {
     // Step 1: Authenticate user with password
-    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    let loginResponse = await supabase.auth.signInWithPassword({ email, password })
+    let loginError = loginResponse.error
 
-    if (error) {
-        console.error('Login error:', error.message)
+    if (loginError) {
+        console.error('Login error:', loginError.message)
         return fail(400, { login_message: 'Invalid email and/or password' })
     }
 
     // Step 2: Mark the user as starting MFA
-    const { user, error: updateError } = await supabase.auth.updateUser({
+    let userUpdateResponse = await supabase.auth.updateUser({
         data: { mfa_completed: false },
     })
+    let userUpdateError = userUpdateResponse.error
 
-    if (updateError) {
-        console.error('Error updating MFA status:', updateError.message)
+    if (userUpdateError) {
+        console.error('Error updating MFA status:', userUpdateError.message)
         return fail(400, { message: 'Failed to update authentication status.' })
     }
 
     // Step 3: Send OTP
-    const { error: otpError } = await supabase.auth.signInWithOtp({
+    let otpResponse = await supabase.auth.signInWithOtp({
         email,
         options: { shouldCreateUser: false },
     })
+    let otpError = otpResponse.error
 
     if (otpError) {
         console.error('OTP error:', otpError.message)
