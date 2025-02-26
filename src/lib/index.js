@@ -151,6 +151,7 @@ export { default as ScatterplotChart } from '$lib/components/containers/charts/S
 export { default as Dialog } from '$lib/components/containers/dialogs/Dialog.svelte'
 export { default as DialogSection } from '$lib/components/containers/dialogs/DialogSection.svelte'
 export { default as LogoutConfirmationDialog } from '$lib/components/containers/dialogs/LogoutConfirmationDialog.svelte'
+export { default as CreateAccountInfoDialog } from '$lib/components/containers/dialogs/CreateAccountInfoDialog.svelte'
 
 // Footers
 export { default as FooterBar } from '$lib/components/containers/footers/FooterBar.svelte'
@@ -199,6 +200,9 @@ export { default as PageFooter } from '$lib/components/containers/pages/PageFoot
 export { default as PageHeader } from '$lib/components/containers/pages/PageHeader.svelte'
 export { default as RegistrationPage } from '$lib/components/containers/pages/RegistrationPage.svelte'
 export { default as SSOLandingPage } from '$lib/components/containers/pages/SSOLandingPage.svelte'
+export { default as SSOLandingPage } from '$lib/components/containers/pages/SSOLandingPage.svelte'
+export { default as SSOLandingPage } from '$lib/components/containers/pages/SupabaseLoginPage.svelte'
+export { default as SSOLandingPage } from '$lib/components/containers/pages/SupabaseOtpLoginPage.svelte'
 
 // Progress
 export { default as ProgressBar } from '$lib/components/containers/progress/ProgressBar.svelte'
@@ -281,6 +285,8 @@ export { default as sanitizeUserInput } from '$lib/functions/security/sanitizeUs
 export { default as validateCredentials } from '$lib/functions/security/sanitizeUserInput.js'
 export { default as validateEmail } from '$lib/functions/security/validateEmail.js'
 export { default as validatePassword } from '$lib/functions/security/validatePassword.js'
+export { default as validateSupabaseOtp } from '$lib/functions/security/validateSupabaseOtp.js'
+export { default as validateSupabasePassword } from '$lib/functions/security/validateSupabasePassword.js'
 
 // Sorting
 export { default as sortArray } from '$lib/functions/sorting/sortArray.js'

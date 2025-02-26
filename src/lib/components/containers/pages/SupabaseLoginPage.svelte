@@ -1,7 +1,22 @@
 <script>
-	import { Button, FormTextInput, LoginPage, InputError } from '$lib/index.js'
+	import { onMount } from "svelte"
+	import { InputError, openDialog, validateCredentials, validateEmail, validateSupabasePassword, Button, FormTextInput, LoginPage } from '$lib/index.js'
 
-	export let form
+	export let form, store, openCreateAccountDialog
+
+	let validEmail, validPassword, password
+
+	function emailValidation() {
+	    validEmail = validateEmail(store.user.email)
+		return validEmail
+	}
+
+	function passwordValidation() {
+		validPassword = validateSupabasePassword(password)
+		return validPassword
+	}
+
+	$: disabled = validEmail && validPassword ? '' : 'disabled'
 </script>
 
 <LoginPage>
@@ -13,12 +28,16 @@
 		<FormTextInput
 			label="email"
 			type="email"
-			name="email"
+			bind:value={store.user.email}
+			validValue={validEmail}
+			validationCallback={emailValidation}
 		/>
 		<FormTextInput
 			label="password"
 			type="password"
-			name="password"
+			bind:value={password}
+			validValue={validPassword}
+			validationCallback={passwordValidation}
 		/>
 
 		{#if form?.login_message}
@@ -27,12 +46,20 @@
 
 		<div class="login-button-row">
 			<input
-				class={`btn-full btn-l btn-primary btn-rect	semibold`}
+				class={`btn-full btn-l btn-primary btn-rect	semibold  ${disabled ? 'btn-disabled' : ''}`}
 				type="submit"
 				value="Login"
+				{disabled}
 			/>
 		</div>
 	</form>
+	<div class="account-info">
+		<Button
+			callback={openCreateAccountDialog}
+			classes={['btn-link']}
+			text="Create Account or Change Profile Info"
+		/>
+	</div>
 </LoginPage>
 
 <style>
@@ -52,5 +79,10 @@
 		border: none;
 		cursor: pointer;
 		text-decoration: none;
+	}
+	.account-info {
+		display: flex;
+		justify-content: center;
+		width: 100%;
 	}
 </style>

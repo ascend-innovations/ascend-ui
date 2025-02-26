@@ -1,9 +1,32 @@
 <script>
 	import { FormTextInput, LoginPage, InputError } from '$lib/index.js'
 
-	export let form
+	export let form, store
 
-	let otp = ''
+	let otp, validOtp
+
+	function otpValidation() {
+	    validOtp = validateSupabaseOtp(otp)
+		return validOtp
+	}
+
+	onMount(() => {
+	    if (form.otp_resend_message) {
+            store.toasts.list = [
+                {
+                    id: 0,
+                    body: 'Check your email for your new passcode',
+                    title: form.otp_resend_message,
+                    purpose: 'success',
+                    category: 'action',
+                },
+            ]
+	    } else {
+            store.toasts.list = []
+	    }
+	})
+
+	$: disabled = validOtp ? '' : 'disabled'
 </script>
 
 <LoginPage>
@@ -16,7 +39,8 @@
 			bind:value={otp}
 			label="One-Time Passcode"
 			type="password"
-			required
+			validValue={validOtp}
+			validationCallback={otpValidation}
 		/>
 
 		{#if form?.otp_auth_message}
@@ -25,9 +49,10 @@
 
 		<div class="login-button-row">
 			<input
-				class="btn-full btn-l btn-primary btn-rect semibold"
+				class="btn-full btn-l btn-primary btn-rect semibold  ${disabled ? 'btn-disabled' : ''}"
 				type="submit"
 				value="Verify"
+				{disabled}
 			/>
 		</div>
 	</form>
