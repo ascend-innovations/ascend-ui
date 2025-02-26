@@ -1,7 +1,8 @@
 <script>
-	import { FormTextInput, LoginPage, InputError } from '$lib/index.js'
+	import { FormTextInput, LoginPage, InputError, validateSupabaseOtp } from '$lib/index.js'
+	import { onMount } from 'svelte'
 
-	export let form, store
+	export let form, store, resendCallback
 
 	let otp, validOtp
 
@@ -12,18 +13,8 @@
 
 	onMount(() => {
 	    if (form.otp_resend_message) {
-            store.toasts.list = [
-                {
-                    id: 0,
-                    body: 'Check your email for your new passcode',
-                    title: form.otp_resend_message,
-                    purpose: 'success',
-                    category: 'action'
-                }
-            ]
-	    } else {
-            store.toasts.list = []
-	    }
+            resendCallback
+        }
 	})
 
 	$: disabled = validOtp ? '' : 'disabled'
