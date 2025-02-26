@@ -1,8 +1,6 @@
-import { fail, redirect } from '@sveltejs/kit'
-
-export async function verifyOtp(supabase, email, otp) {
+export default async function verifyOtp(supabase, email, otp) {
 	if (!email || !otp) {
-		return fail(400, { otp_auth_message: 'One-Time Passcode is required' })
+		return { success: false, message: 'One-Time Passcode is required' }
 	}
 
 	let otpResponse = await supabase.auth.verifyOtp({
@@ -10,11 +8,11 @@ export async function verifyOtp(supabase, email, otp) {
 		token: otp,
 		type: 'email',
 	})
-	let otpError = updateUserResponse.error
+	let otpError = otpResponse.error
 
 	if (otpError) {
 		console.error('OTP verification error:', otpError.message)
-		return fail(400, { otp_auth_message: 'Invalid One-Time Passcode. Please ensure the correct code was used. If needed, resend the code and try again.' })
+		return { success: false, message: 'Invalid One-Time Passcode. Please ensure the correct code was used. If needed, resend the code and try again.' }
 	}
 
 	// Mark the user as having completed MFA
@@ -25,9 +23,9 @@ export async function verifyOtp(supabase, email, otp) {
 
 	if (updateUserError) {
 		console.error('Error updating MFA status:', updateUserError.message)
-		return fail(400, { otp_auth_message: 'Failed to update authentication status.' })
+		return { success: false, message: 'Failed to update authentication status.' }
 	}
 
 	// Redirect to dashboard after successful authentication
-	throw redirect(303, '/')
+	return { success: true }
 }

@@ -1,7 +1,4 @@
-import { fail, redirect } from '@sveltejs/kit'
-import type { SupabaseClient } from '@supabase/supabase-js'
-
-export async function resetPassword(supabase, type, tokenHash, accessToken, refreshToken, password) {
+export default async function resetPassword(supabase, type, tokenHash, accessToken, refreshToken, password) {
     if (tokenHash && type) {
         let otpResponse = await supabase.auth.verifyOtp({
             type,
@@ -12,7 +9,6 @@ export async function resetPassword(supabase, type, tokenHash, accessToken, refr
 
         if (otpError) {
             console.error('One-Time Passcode Verification Failed:', otpError.message)
-
             return {
                 success: false,
                 message: otpError.message,
@@ -50,7 +46,12 @@ export async function resetPassword(supabase, type, tokenHash, accessToken, refr
 
     if (updateError) {
         console.error('Error updating password:', updateError.message)
-        return { success: false, message: error.message, accessToken, refreshToken }
+        return {
+            success: false,
+            message: updateError.message,
+            accessToken,
+            refreshToken
+        }
     }
 
     console.log('Password updated successfully')
@@ -58,5 +59,5 @@ export async function resetPassword(supabase, type, tokenHash, accessToken, refr
     // Step 3: Sign out the user
     await supabase.auth.signOut()
 
-    throw redirect(303, '/login')
+    return { success: true }
 }

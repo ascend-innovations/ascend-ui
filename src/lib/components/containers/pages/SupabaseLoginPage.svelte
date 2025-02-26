@@ -39,8 +39,8 @@
 			validationCallback={passwordValidation}
 		/>
 
-		{#if form?.login_message}
-			<InputError text={form.login_message} />
+		{#if form?.message}
+			<InputError text={form.message} />
 		{/if}
 
 		<div class="login-button-row">

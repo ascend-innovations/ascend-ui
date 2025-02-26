@@ -37,8 +37,8 @@
 			validationCallback={otpValidation}
 		/>
 
-		{#if form?.otp_auth_message}
-			<InputError text={form.otp_auth_message} />
+		{#if form?.message}
+			<InputError text={form.message} />
 		{/if}
 
 		<div class="login-button-row">
@@ -54,8 +54,8 @@
 		method="POST"
 		action="?/resendOtp"
 	>
-		{#if form?.otp_send_message}
-			<InputError text={form.otp_send_message} />
+		{#if form?.resend_message}
+			<InputError text={form.resend_message} />
 		{/if}
 
 		<div class="login-button-row resend-section">

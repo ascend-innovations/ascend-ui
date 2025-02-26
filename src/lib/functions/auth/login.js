@@ -1,13 +1,11 @@
-import { fail, redirect } from '@sveltejs/kit'
-
-export async function login(supabase, email, password) {
+export default async function login(supabase, email, password) {
     // Step 1: Authenticate user with password
     let loginResponse = await supabase.auth.signInWithPassword({ email, password })
     let loginError = loginResponse.error
 
     if (loginError) {
         console.error('Login error:', loginError.message)
-        return fail(400, { login_message: 'Invalid email and/or password' })
+        return { success: false, message: 'Invalid email and/or password' }
     }
 
     // Step 2: Mark the user as starting MFA
@@ -18,7 +16,7 @@ export async function login(supabase, email, password) {
 
     if (userUpdateError) {
         console.error('Error updating MFA status:', userUpdateError.message)
-        return fail(400, { message: 'Failed to update authentication status.' })
+        return { success: false, message: 'Failed to update authentication status.' }
     }
 
     // Step 3: Send OTP
@@ -30,9 +28,9 @@ export async function login(supabase, email, password) {
 
     if (otpError) {
         console.error('OTP error:', otpError.message)
-        return fail(400, { login_message: 'Failed to send OTP. Try again.' })
+        return { success: false, message: 'Failed to send OTP. Try again.' }
     }
 
-    // Step 3: Redirect to OTP verification page
-    throw redirect(303, `/login/verify-otp`)
+    // Step 4: Redirect to OTP verification page
+    return { success: true }
 }
