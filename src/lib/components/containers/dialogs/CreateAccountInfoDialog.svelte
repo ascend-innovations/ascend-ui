@@ -8,7 +8,7 @@
 	}
 </script>
 
-<Dialog bind:store={$store}>
+<Dialog bind:store={store}>
 	<div
 		class="dialog-header-slot-contents"
 		slot="header"

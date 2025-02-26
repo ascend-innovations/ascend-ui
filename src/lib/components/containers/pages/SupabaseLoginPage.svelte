@@ -1,8 +1,7 @@
 <script>
-	import { onMount } from "svelte"
-	import { InputError, openDialog, validateCredentials, validateEmail, validateSupabasePassword, Button, FormTextInput, LoginPage } from '$lib/index.js'
+	import { InputError, validateCredentials, validateEmail, validateSupabasePassword, Button, FormTextInput, LoginPage } from '$lib/index.js'
 
-	export let form, openCreateAccountDialog
+	export let form, dialogCallback
 
 	let validEmail, validPassword, password, email
 
@@ -55,7 +54,7 @@
 	</form>
 	<div class="account-info">
 		<Button
-			callback={openCreateAccountDialog}
+			callback={dialogCallback}
 			classes={['btn-link']}
 			text="Create Account or Change Profile Info"
 		/>
