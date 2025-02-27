@@ -32,6 +32,7 @@
 		areaColors = [],
 		domain,
 		range,
+		currency,
 		domainLabel = '',
 		rangeLabel = '',
 		rule = null,
@@ -215,7 +216,7 @@
 		tooltipLine,
 		tooltipInnerCircle,
 		tooltipOuterCircle,
-		tooltipData = { y: 0, x: 0, line: 0, circlePosition: 0, color: '', title: '', tooltipId, valueOneLabel, valueOne: 0 }
+		tooltipData = { y: 0, x: 0, line: 0, circlePosition: 0, color: '', title: '', tooltipId, valueOneLabel, valueOne: 0, currency }
 
 	if (valueTwoLabel) {
 		tooltipData.valueTwoLabel = valueTwoLabel

@@ -7,6 +7,7 @@
 		data = [],
 		domain,
 		range,
+		currency = false,
 		domainLabel,
 		rangeLabel,
 		valueOneLabel,
@@ -105,6 +106,7 @@
 							{data}
 							{domain}
 							{range}
+							{currency}
 							{domainLabel}
 							{rangeLabel}
 							{seriesKey}
@@ -126,6 +128,7 @@
 							{data}
 							{domain}
 							{range}
+							{currency}
 							{domainLabel}
 							{rangeLabel}
 							{seriesKey}
@@ -152,6 +155,7 @@
 							{data}
 							{domain}
 							{range}
+							{currency}
 							{tooltipId}
 							{valueOneLabel}
 							{valueTwoLabel}
@@ -183,6 +187,7 @@
 							{data}
 							{domain}
 							{range}
+							{currency}
 							{seriesKey}
 							{valueOneLabel}
 							{valueTwoLabel}

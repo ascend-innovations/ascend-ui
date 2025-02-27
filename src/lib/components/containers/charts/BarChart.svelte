@@ -32,6 +32,7 @@
 		sort = null,
 		domain,
 		range,
+		currency,
 		domainLabel = '',
 		rangeLabel = '',
 		valueOneLabel,
@@ -234,7 +235,7 @@
 	}
 
 	let tooltip,
-		tooltipData = { y: 0, x: 0, title: '', valueOneLabel, tooltipId, valueOne: 0 }
+		tooltipData = { y: 0, x: 0, title: '', valueOneLabel, tooltipId, valueOne: 0, currency }
 
 	if (valueTwoLabel) {
 		tooltipData.valueTwoLabel = valueTwoLabel

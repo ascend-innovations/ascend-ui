@@ -24,6 +24,7 @@
 		arcColors = [],
 		domain,
 		range,
+		currency,
 		valueOneLabel,
 		valueTwoLabel,
 		sort = null,
@@ -62,7 +63,7 @@
 	}
 
 	let tooltip,
-		tooltipData = { y: 0, x: 0, title: '', tooltipId, valueOneLabel, valueOne: 0 }
+		tooltipData = { y: 0, x: 0, title: '', tooltipId, valueOneLabel, valueOne: 0, currency }
 	if (valueTwoLabel) {
 		tooltipData.valueTwoLabel = valueTwoLabel
 		tooltipData.valueTwo = 0

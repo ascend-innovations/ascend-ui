@@ -493,6 +493,7 @@
 					title="Simple Area Chart"
 					domain="date"
 					range="value"
+					currency
 					yearOnly
 					valueOneLabel="date"
 					valueTwoLabel="value"
