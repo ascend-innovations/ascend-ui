@@ -13,7 +13,7 @@ export default function consolidateYears(data, domain, range) {
 		}
 	}
 	for (let year of years) {
-		year[range] = Math.round(year[range] * 100) / 100
+		year[range] = Math.round(year[range])
 	}
 	return years
 }
