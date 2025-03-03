@@ -3,7 +3,6 @@
 
 	export let value,
 		label = '',
-		name = label,
 		validValue,
 		validationCallback
 </script>
@@ -19,7 +18,7 @@
         bind:value
         class={validValue === false ? 'error' : ''}
         id={label}
-        name={name}
+        name="password"
         on:blur={validationCallback}
         placeholder={`Enter your ${label}`}
         type="password"
