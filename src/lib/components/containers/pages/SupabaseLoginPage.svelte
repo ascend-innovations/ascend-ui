@@ -43,7 +43,7 @@
 
 		<div class="login-button-row">
 			<input
-				class={`btn-full btn-l btn-primary btn-rect	semibold  ${disabled ? 'btn-disabled' : ''}`}
+				class="btn-full btn-l btn-primary btn-rect semibold"
 				type="submit"
 				value="Login"
 			/>
