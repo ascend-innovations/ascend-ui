@@ -14,8 +14,6 @@
 		validPassword = validateSupabasePassword(password)
 		return validPassword
 	}
-
-	$: disabled = validEmail && validPassword ? '' : 'disabled'
 </script>
 
 <LoginPage>
@@ -48,7 +46,6 @@
 				class={`btn-full btn-l btn-primary btn-rect	semibold  ${disabled ? 'btn-disabled' : ''}`}
 				type="submit"
 				value="Login"
-				{disabled}
 			/>
 		</div>
 	</form>
