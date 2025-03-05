@@ -7,7 +7,7 @@
 <PageFooter>
 	<div class="footer-bar">
 		<div class="company-signature">
-			Powered by <strong>Ascend Innovations</strong>
+			Powered by <strong><a href="https://ascend-innovations.com/" target="_blank">Ascend Innovations</a></strong>
 		</div>
 		<div class="link-buttons">
 			{#if termsAndConditionsURL}

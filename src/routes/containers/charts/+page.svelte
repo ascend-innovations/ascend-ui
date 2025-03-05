@@ -423,6 +423,7 @@
 					valueTwoLabel="value"
 					domainLabel="Blue"
 					rangeLabel="Big Measure"
+					barColors={['var(--secondary-base']}
 					rule="avg"
 					seriesKey="series"
 				/>

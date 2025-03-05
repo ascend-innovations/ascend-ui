@@ -2,6 +2,7 @@
     import { Page, PageBody, SSOLandingPage } from '$lib/index.js'
     
     let data = {
+        has_apps: true,
         dashboards: [
             {
                 icon: 'https://ascnd.s3.us-east-2.amazonaws.com/app-icons/pop-dash-icon.svg',
