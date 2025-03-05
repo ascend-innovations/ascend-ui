@@ -3,16 +3,29 @@
 
 	export let form, dialogCallback
 
-	let validEmail, validPassword, password, email
+	let emailValidationMessage, validEmail, validPassword, password, email
 
 	function emailValidation() {
-	    validEmail = validateEmail(email)
-		return validEmail
+        validEmail = validateEmail(email)
+
+	    if(!email) {
+	        emailValidationMessage = 'Please enter your email'
+	    } else {
+            if (!validEmail) {
+	            emailValidationMessage = 'Invalid email'
+            }
+	    }
+
+        return validEmail
 	}
 
 	function passwordValidation() {
-		validPassword = validateSupabasePassword(password)
-		return validPassword
+	    if (!password) {
+            validPassword = validateSupabasePassword(password)
+            return validPassword
+		}
+
+		validPassword = true
 	}
 </script>
 
@@ -28,6 +41,7 @@
 			bind:value={email}
 			validValue={validEmail}
 			validationCallback={emailValidation}
+			validationMessage={emailValidationMessage}
 		/>
 		<FormTextInput
 			label="password"

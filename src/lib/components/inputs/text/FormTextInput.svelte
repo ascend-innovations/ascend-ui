@@ -5,6 +5,7 @@
 		label = '',
 		name = label,
 		type = 'text',
+		validationMessage = `Please enter your ${label}`,
 		validValue,
 		validationCallback
 </script>
@@ -51,7 +52,7 @@
 		/>
 	{/if}
 	{#if validValue === false}
-		<InputError text={`Please enter your ${label}`} />
+		<InputError text={validationMessage} />
 	{/if}
 </div>
 

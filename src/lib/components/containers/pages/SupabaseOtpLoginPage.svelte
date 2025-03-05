@@ -5,12 +5,21 @@
 
 	export let form
 
-	let otp, validOtp
+	let otp, validOtp, otpValidationMessage
 
 	const dispatch = createEventDispatcher()
 
 	function otpValidation() {
 	    validOtp = validateSupabaseOtp(otp)
+
+	    if(!otp) {
+	        otpValidationMessage = 'Please enter your One-Time Passcode'
+	    } else {
+            if (!validEmail) {
+	            otpValidationMessage = 'Invalid passcode. Please try again'
+            }
+	    }
+
 		return validOtp
 	}
 
@@ -33,6 +42,7 @@
 			type="password"
 			validValue={validOtp}
 			validationCallback={otpValidation}
+			validationMessage={otpValidationMessage}
 		/>
 
 		{#if form?.message}
