@@ -15,7 +15,7 @@
 	    if(!otp) {
 	        otpValidationMessage = 'Please enter your One-Time Passcode'
 	    } else {
-            if (!validEmail) {
+            if (!validOtp) {
 	            otpValidationMessage = 'Invalid passcode. Please try again'
             }
 	    }
