@@ -1,12 +1,12 @@
 <script>
-	import { InputError, validateCredentials, validateEmail, validateSupabasePassword, Button, FormTextInput, LoginPage } from '$lib/index.js'
+	import { InputError, validateCredentials, isValidEmail, validateSupabasePassword, Button, FormTextInput, LoginPage } from '$lib/index.js'
 
 	export let form, dialogCallback
 
 	let emailValidationMessage, validEmail, validPassword, password, email
 
 	function emailValidation() {
-        validEmail = validateEmail(email)
+        validEmail = isValidEmail(email)
 
 	    if(!email) {
 	        emailValidationMessage = 'Please enter your email'
