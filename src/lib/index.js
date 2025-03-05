@@ -403,7 +403,6 @@ export { default as PhoneNumberInput } from '$lib/components/inputs/tel/PhoneNum
 
 // Text
 export { default as FormTextInput } from '$lib/components/inputs/text/FormTextInput.svelte'
-export { default as ResetPasswordFormTextInput } from '$lib/components/inputs/text/ResetPasswordFormTextInput.svelte'
 export { default as SearchBar } from '$lib/components/inputs/text/SearchBar.svelte'
 export { default as TextAreaInput } from '$lib/components/inputs/text/TextAreaInput.svelte'
 export { default as TextInput } from '$lib/components/inputs/text/TextInput.svelte'
