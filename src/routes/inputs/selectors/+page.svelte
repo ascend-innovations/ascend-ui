@@ -1,5 +1,6 @@
 <script>
 	import Button from '$lib/components/inputs/buttons/Button.svelte'
+	import convertToCurrency from '$lib/functions/formatting/convertToCurrency'
 	import { Page, PageBody, MultiSelector } from '$lib/index.js'
 
 	const optionList = [
@@ -11,6 +12,9 @@
 		{ value: 'What?', selected: false },
 		{ value: 'Last', selected: false },
 	]
+
+	let number = 123456
+	let currency = convertToCurrency(number)
 </script>
 
 <Page>
@@ -28,5 +32,7 @@
 			This should get moved.
 			<Button callback={() => console.log(optionList)} />
 		</div>
+
+		<p>{number} : {currency}</p>
 	</PageBody>
 </Page>
