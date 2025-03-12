@@ -1,4 +1,4 @@
-export default function convertToCurrency(number) {
+export default function convertToCurrency(amount) {
     if (isNaN(amount)) {
         throw new Error("Invalid number");
     }
