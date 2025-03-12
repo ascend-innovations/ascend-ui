@@ -2,7 +2,7 @@
 	import { getGlobalColorPalette, Icon } from '$lib/index.js'
 	import { onMount } from 'svelte'
 
-	export let styles = []
+	export let styles = [], colorOverride
 
 	let palette = {}
 
@@ -26,6 +26,6 @@
 		stroke-linecap="round"
 		stroke-linejoin="round"
 		stroke-width="2"
-		stroke={palette.primary}
+		stroke={colorOverride || palette.primary}
 	/>
 </Icon>

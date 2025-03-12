@@ -2,7 +2,7 @@
 	import { getGlobalColorPalette, Icon } from '$lib/index.js'
 	import { onMount } from 'svelte'
 
-	export let styles = []
+	export let styles = [], colorOverride
 
 	let palette = {}
 
@@ -20,7 +20,7 @@
 	/>
 	<path
 		d="M2 11C2 9.34315 3.34315 8 5 8H27C28.6569 8 30 9.34315 30 11V21C30 22.6569 28.6569 24 27 24H8L3.5547 26.9635C2.89014 27.4066 2 26.9302 2 26.1315V11Z"
-		fill={palette.secondary}
+		fill={colorOverride || palette.secondary}
 	/>
 	<path
 		d="M16 20V12"
