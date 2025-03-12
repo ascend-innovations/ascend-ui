@@ -1,4 +1,4 @@
-export default function convertToCurrency(amount) {
+export default function convertToCurrency(amount, showCents = true) {
     if (isNaN(amount)) {
         throw new Error("Invalid number");
     }
