@@ -1,3 +1,6 @@
 export default function convertToCurrency(number) {
-    return number.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+    console.log(number)
+    const currency = number.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+    console.log(currency)
+    return currency
 }
