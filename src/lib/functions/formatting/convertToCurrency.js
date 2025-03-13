@@ -1,7 +1,7 @@
 export default function convertToCurrency(amount, showCents = true) {
-    // if (isNaN(amount)) {
-    //     throw new Error("Invalid number");
-    // }
+    if (isNaN(amount)) {
+        throw new Error("Invalid number");
+    }
     // Ensure it's a number and round appropriately
     amount = parseFloat(amount);
     if (!showCents) {
@@ -11,7 +11,6 @@ export default function convertToCurrency(amount, showCents = true) {
     const [whole, decimal = "00"] = amount.toFixed(2).split(".");
     // Add commas for thousands
     const formattedWhole = whole.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    console.log(`$${formattedWhole}.${decimal}`)
     return showCents ? `$${formattedWhole}.${decimal}` : `$${formattedWhole}`
 }
     
