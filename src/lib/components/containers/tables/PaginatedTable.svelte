@@ -1,7 +1,7 @@
 <script>
     import { Table, Pagination, paginateTable, sortArray } from '$lib/index.js'
 
-    export let columns, list, pageLength = 10, sortCallback = sortTable
+    export let columns, list, totalPages = null, fetchNext = null, pageLength = 10, sortCallback = sortTable
 
     $: pageData = {
         tableData: list,
@@ -9,7 +9,7 @@
 		currentPage: 1,
 		leftIndex: 0,
 		rightIndex: pageLength,
-		totalPages: Math.ceil(list.length / pageLength),
+		totalPages: totalPages || Math.ceil(list.length / pageLength),
     }
 
     // create sortMap object with keys that match the column's key with a value of empty string
@@ -51,7 +51,7 @@
 				currentPage={pageData.currentPage}
 				totalPages={pageData.totalPages}
 				leftClickCallback={() => (pageData = paginateTable(pageData, 'previous'))}
-				rightClickCallback={() => (pageData = paginateTable(pageData, 'next'))}
+				rightClickCallback={() => (pageData = paginateTable(pageData, 'next', fetchNext))}
 			/>
 		</div>
 	{/if}
