@@ -36,6 +36,12 @@
         pageData.leftIndex = 0,
         pageData.rightIndex = pageLength
 	}
+
+	async function serverFetchNext() {
+		const response = await fetchNext()
+		const body = await response.json()
+		pageData.tableData = pageData.tableData.cat(body.results)
+	}
 </script>
 
 <div class="table-container">
@@ -51,7 +57,7 @@
 				currentPage={pageData.currentPage}
 				totalPages={pageData.totalPages}
 				leftClickCallback={() => (pageData = paginateTable(pageData, 'previous'))}
-				rightClickCallback={() => (pageData = paginateTable(pageData, 'next', fetchNext))}
+				rightClickCallback={() => (pageData = paginateTable(pageData, 'next', fetchNext ? serverFetchNext : null))}
 			/>
 		</div>
 	{/if}

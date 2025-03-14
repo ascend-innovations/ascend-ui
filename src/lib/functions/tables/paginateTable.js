@@ -1,4 +1,4 @@
-export default async function paginateTable(data, direction, fetchNext = null, pageSize = 10) {
+export default function paginateTable(data, direction, fetchNext = null, pageSize = 10) {
 	if (direction === 'previous') {
 		if (data.currentPage !== 1) {
 			data.leftIndex -= pageSize
@@ -10,9 +10,7 @@ export default async function paginateTable(data, direction, fetchNext = null, p
 
 	if (direction === 'next') {
 		if (fetchNext) {
-			const response = await fetchNext()
-			const body = await response.json()
-			data.tableData = data.tableData.cat(body.results)
+			fetchNext()
 		}
 		if (data.currentPage < data.totalPages) {
 			data.leftIndex += pageSize
