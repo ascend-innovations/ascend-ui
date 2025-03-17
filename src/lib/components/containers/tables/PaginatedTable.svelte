@@ -1,4 +1,5 @@
 <script>
+	import { page } from '$app/stores'
     import { Table, Pagination, paginateTable, sortArray } from '$lib/index.js'
 
     export let columns, list, totalPages = null, fetchNext = null, pageLength = 10, sortCallback = sortTable
@@ -38,9 +39,11 @@
 	}
 
 	async function serverFetchNext() {
-		const response = await fetchNext()
-		const body = await response.json()
-		pageData.tableData = pageData.tableData.cat(body.results)
+		if (pageData.currentPage % pageLength === 0) {
+			const response = await fetchNext()
+			const body = await response.json()
+			pageData.tableData = pageData.tableData.cat(body.results)
+		}
 	}
 </script>
 
