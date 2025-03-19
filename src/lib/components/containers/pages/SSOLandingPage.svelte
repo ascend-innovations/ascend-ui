@@ -11,6 +11,7 @@
     </div>
     <div class="sso-sections-container">
         {#if !data.has_apps}
+         <!-- My have no content. -->
         {:else}
             {#if data.dashboards?.length}
             <div class="sso-section">

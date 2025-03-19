@@ -5,6 +5,7 @@
 		label = '',
 		name = label,
 		type = 'text',
+		placeholder = '',
 		validationMessage = `Please enter your ${label}`,
 		validValue,
 		validationCallback
@@ -25,7 +26,7 @@
 			id={label}
 			name={name}
 			on:blur={validationCallback}
-			placeholder={`Enter your ${label}`}
+			placeholder={placeholder || `Enter your ${label}`}
 			type="text"
 		/>
 	{:else if type === 'email'}
@@ -36,7 +37,7 @@
 			id={label}
 			name={name}
 			on:blur={validationCallback}
-			placeholder={`Enter your ${label}`}
+			placeholder={placeholder || `Enter your ${label}`}
 			type="email"
 		/>
 	{:else if type === 'password'}
@@ -47,7 +48,7 @@
 			id={label}
 			name={name}
 			on:blur={validationCallback}
-			placeholder={`Enter your ${label}`}
+			placeholder={placeholder || `Enter your ${label}`}
 			type="password"
 		/>
 	{/if}

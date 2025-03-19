@@ -29,7 +29,7 @@
 	}
 </script>
 
-<LoginPage>
+<LoginPage ascendLogo>
 	<form
 		method="post"
 		name="login"
@@ -62,14 +62,18 @@
 				value="Login"
 			/>
 		</div>
+		<div class="miscellaneous-links">
+			<a class="body-xs" target="_blank" href="https://ascend-innovations.com/legal/terms-and-conditions"><b>Terms & Conditions</b></a>
+			<a class="body-xs" target="_blank" href="https://ascend-innovations.com/legal/privacy-policy"><b>Privacy Policy</b></a>
+		</div>
 	</form>
-	<div class="account-info">
+	<!-- <div class="account-info">
 		<Button
 			callback={dialogCallback}
 			classes={['btn-link']}
 			text="Create Account or Change Profile Info"
 		/>
-	</div>
+	</div> -->
 </LoginPage>
 
 <style>
@@ -90,9 +94,18 @@
 		cursor: pointer;
 		text-decoration: none;
 	}
-	.account-info {
+	/* .account-info {
 		display: flex;
 		justify-content: center;
 		width: 100%;
+	} */
+	.miscellaneous-links {
+		color: var(--neutral-400);
+		display: flex;
+		gap: var(--spacing06);
+
+		& a {
+			color: inherit;
+		}
 	}
 </style>

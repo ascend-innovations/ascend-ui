@@ -1,9 +1,15 @@
 <script>
-	export let dialogCallback
+	import { AscendLogoWithText } from "$lib/index.js"
+	export let dialogCallback, loginHeader = 'Login', ascendLogo = false
 </script>
 
 <div class="login">
-	<div class="headline-l-xxl">Login</div>
+	{#if ascendLogo}
+		<div class="ascend-icon">
+			<img src={AscendLogoWithText} alt="ascend-logo">
+		</div>
+	{/if}
+	<div class="headline-l-xxl header">{loginHeader}</div>
 	<slot />
 	{#if dialogCallback}
 		<div class="account-change-slot">
@@ -32,6 +38,18 @@
 		height: fit-content;
 		padding: var(--spacing13);
 		width: var(--spacing27);
+	}
+	.ascend-icon {
+		width: 100%;
+
+		& img {
+			display: block;
+			margin: auto;
+		}
+	}
+	.header {
+		width: 100%;
+		text-align: center;
 	}
 	.account-change-slot {
 		width: 100%;
