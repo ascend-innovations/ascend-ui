@@ -2,7 +2,6 @@
 	import GeoChart from '$lib/components/containers/charts/GeoChart.svelte'
 	import SelectorInput from '$lib/components/inputs/selectors/SelectorInput.svelte'
 	import { Chart, Page, PageBody, NextButton, StatusTag, Card } from '$lib/index.js'
-	import { afterUpdate } from 'svelte'
 
 	let barData = [
 		{ x: 'Hospital 1', series: 'Source', value: 10 },
@@ -193,6 +192,7 @@
 			count: 15,
 			type: 'hospital',
 			url: 'https://www.example.com',
+			marker: 'https://ascnd.s3.us-east-2.amazonaws.com/local-help-now/mcadamhs/Map-Pin-MCADAMHS.svg'
 		},
 		{
 			full_address: '405 W Grand Ave, Dayton, OH 45405',
@@ -206,6 +206,7 @@
 			count: 10,
 			type: 'hospital',
 			url: 'https://www.example.com',
+			marker: 'https://ascnd.s3.us-east-2.amazonaws.com/local-help-now/mcadamhs/Map-Pin-MCADAMHS.svg'
 		},
 		{
 			full_address: '3535 Southern Blvd, Kettering, OH 45429',
@@ -219,6 +220,7 @@
 			count: 1,
 			type: 'hospital',
 			url: 'https://www.example.com',
+			marker: 'https://ascnd.s3.us-east-2.amazonaws.com/local-help-now/mcadamhs/Map-Pin-MCADAMHS.svg'
 		},
 		{
 			full_address: '3417 Marshall Rd, Dayton, OH 45429',
@@ -232,6 +234,7 @@
 			count: 407,
 			type: 'provider',
 			url: 'https://www.example.com',
+			marker: 'https://ascnd.s3.us-east-2.amazonaws.com/local-help-now/mcadamhs/Map-Pin-MCADAMHS.svg'
 		},
 		{
 			full_address: '3095 Kettering Blvd, Moraine, OH 45439',
@@ -245,6 +248,7 @@
 			count: 868,
 			type: 'provider',
 			url: 'https://www.example.com',
+			marker: 'https://ascnd.s3.us-east-2.amazonaws.com/local-help-now/mcadamhs/Map-Pin-MCADAMHS.svg'
 		},
 		{
 			full_address: '707 S Edwin C Moses Blvd, Dayton, OH 45417',
@@ -258,6 +262,7 @@
 			count: 2,
 			type: 'provider',
 			url: 'https://www.example.com',
+			marker: 'https://ascnd.s3.us-east-2.amazonaws.com/local-help-now/mcadamhs/Map-Pin-MCADAMHS.svg'
 		},
 		{
 			full_address: '11 W Monument Ave, Dayton, OH 45402',
@@ -271,6 +276,7 @@
 			count: 64,
 			type: 'provider',
 			url: 'https://www.example.com',
+			marker: 'https://ascnd.s3.us-east-2.amazonaws.com/local-help-now/mcadamhs/Map-Pin-MCADAMHS.svg'
 		},
 		{
 			full_address: '330 W 2nd St, Dayton, OH 45422',
@@ -284,6 +290,7 @@
 			count: 58,
 			type: 'jail',
 			url: 'https://www.example.com',
+			marker: 'https://ascnd.s3.us-east-2.amazonaws.com/local-help-now/mcadamhs/Map-Pin-MCADAMHS.svg'
 		},
 	]
 
@@ -617,12 +624,12 @@
 					title="Map With Multiple Markers"
 					type="geo"
 					mapId="first-map"
-					pillText="Total"
+					pillText="Active Children"
 					pillKey="count"
 					addressKey="full_address"
-					infoTitleKey="zip"
-					{markers}
-					geoJSON={data.zipCodes}
+					contentKey="zip"
+					data={realData}
+					geoJSON={null}
 				/>
 			</div>
 			<!-- <div class="geo-chart">
