@@ -264,8 +264,8 @@
 			tooltipData.valueOne = d.data[0]
 			if (tooltipData.valueTwoLabel) tooltipData.valueTwo = d[1] - d[0]
 		} else {
-			tooltipData.valueOne = d[tooltipData.valueOneLabel]
-			if (tooltipData.valueTwoLabel) tooltipData.valueTwo = d[tooltipData.valueTwoLabel]
+			tooltipData.valueOne = d[domain]
+			if (tooltipData.valueTwoLabel) tooltipData.valueTwo = d[range]
 		}
 	}
 

@@ -419,8 +419,8 @@
 					data={barData}
 					domain="x"
 					range="value"
-					valueOneLabel="x"
-					valueTwoLabel="value"
+					valueOneLabel="Date"
+					valueTwoLabel="Value"
 					domainLabel="Blue"
 					rangeLabel="Big Measure"
 					barColors={['var(--secondary-base']}

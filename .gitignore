@@ -13,3 +13,4 @@
 node_modules
 package-lock.json
 vite.config.js.timestamp-*
+.qodo
