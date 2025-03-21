@@ -72,6 +72,7 @@ export { default as MentalHealthHeartSmallIcon } from '$lib/assets/icons/s/Menta
 export { default as MessageDotsSquareSmallIcon } from '$lib/assets/icons/s/MessageDotsSquareSmallIcon.svelte'
 export { default as MessageTextSquare01SmallIcon } from '$lib/assets/icons/s/MessageTextSquare01SmallIcon.svelte'
 export { default as MessageQuestionSquareSmallIcon } from '$lib/assets/icons/s/MessageQuestionSquareSmallIcon.svelte'
+export { default as MessageXSquareSmallIcon } from '$lib/assets/icons/s/MessageXSquareSmallIcon.svelte'
 export { default as NavButtonChevronDownIcon } from '$lib/assets/icons/s/NavButtonChevronDownIcon.svelte'
 export { default as NavButtonChevronUpIcon } from '$lib/assets/icons/s/NavButtonChevronUpIcon.svelte'
 export { default as NeutralAlertCircleSmallIcon } from '$lib/assets/icons/s/NeutralAlertCircleSmallIcon.svelte'
