@@ -21,6 +21,7 @@
 			data.push({
 				name: name,
 				email: email,
+				link: 'https://google.com',
 				status: status,
 				date: date
 			});
@@ -98,7 +99,8 @@
 		{
 			title: 'Name',
 			key: 'name',
-			type: 'text',
+			linkKey: 'link',
+			type: 'link',
 			styles: ['flex: 2', 'max-width: 223px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
 		},
 		{
