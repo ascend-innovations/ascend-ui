@@ -33,6 +33,7 @@
 		infoTitleKey = '',
 		infoLink,
 		linkKey,
+		contentKey,
 		tableColumns = [],
 		fullDate = false,
 		yearOnly = false,
@@ -181,6 +182,7 @@
 							{infoTitleKey}
 							{infoLink}
 							{linkKey}
+							{contentKey}
 						/>
 					{:else if type === 'scatter'}
 						<ScatterplotChart

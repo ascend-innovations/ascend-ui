@@ -11,6 +11,7 @@
 		infoTitleKey,
 		infoLink = false,
 		linkKey = '',
+		contentKey,
 		geoJSON = null
 
 	$: data = data
@@ -87,6 +88,7 @@
 								`<div {id} class="geo-chart-tooltip" style="max-width:260px;">` +
 								`<p style="font-size:16px;"><b>${point.type === 'home' ? 'Home Address' : point[infoTitleKey]}</b></p>` +
 								`<div>` +
+								`${contentKey ? `<p>${point[contentKey]}</p>` : ""}` + 
 								`${point.type === 'home' ? `<p style="font-size:14px;">${point[addressKey]}</p>` : `<p style="font-size:14px;">${pillText}: ${point[pillKey]}</p>`}` +
 								`</div>` +
 								`</div>` +
