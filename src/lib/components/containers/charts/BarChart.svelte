@@ -1,8 +1,8 @@
 <script>
 	import * as d3 from 'd3'
-	import { abbreviateNumber, ChartTooltip, RuleTip } from '$lib/index.js'
+	import { abbreviateNumber, ChartTooltip, RuleTip, XCircleCloseExtraSmallIcon } from '$lib/index.js'
 	import { browser } from '$app/environment'
-	import { onMount } from 'svelte'
+	import { afterUpdate, onMount } from 'svelte'
 
 	/**
 	 *  @param {array} data
@@ -55,7 +55,10 @@
 	let xScale,
 		yScale,
 		stack,
-		opacity = []
+		opacity = [],
+		charactersPerBand,
+		tickVals, 
+		scaleWidth
 	$: chartData = JSON.parse(JSON.stringify(data)) // copies and removes references to original data
 
 	let formatFull = d3.utcFormat('%-m/%-d/%Y')
@@ -248,6 +251,20 @@
 		}
 	})
 
+	afterUpdate(() => {
+		tickVals = xScale.domain()
+		scaleWidth = xScale.bandwidth()
+		charactersPerBand = scaleWidth / 6
+	})
+
+	function truncateTicks(tick) {
+		let value = tick
+		if (value.length > charactersPerBand) {
+			return value.slice(0, charactersPerBand) + '...'
+		}
+		return value
+	}
+
 	function enterTooltip(e) {
 		tooltip.style('opacity', 1)
 	}
@@ -376,13 +393,13 @@
 			{#if innerWidth >= 500}
 				{#each chartData as d}
 					<text
-						class="axis-label"
+						class="axis-label domain-ticks"
 						fill="gray"
 						text-anchor="middle"
 						x={xScale(d[domain]) + xScale.bandwidth() / 2}
 						y={20}
 					>
-						{d[domain]}
+						{truncateTicks(d[domain])}
 					</text>
 				{/each}
 			{/if}

@@ -4,9 +4,9 @@
 	import { Chart, Page, PageBody, NextButton, StatusTag, Card } from '$lib/index.js'
 
 	let barData = [
-		{ x: 'Hospital 1', series: 'Source', value: 10 },
+		{ x: 'M', series: 'Source', value: 10 },
 		{ x: 'Hospital 2', series: 'Source', value: 15 },
-		{ x: 'Hospital 3', series: 'Source', value: 13 },
+		{ x: 'Hospital 3, the biggest hospital of them all. How crazy is it that it has such a long name', series: 'Source', value: 13 },
 		{ x: 'Hospital 4', series: 'Source', value: 4 },
 		{ x: 'Hospital 5', series: 'Source', value: 20 },
 	]
