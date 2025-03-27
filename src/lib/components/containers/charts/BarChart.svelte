@@ -270,11 +270,12 @@
 	}
 
 	function movingTooltip(e, d, s, i) {
+		let tooltipHeight = tooltip.node().getBoundingClientRect().height
 		let tooltipWidth = tooltip.node().getBoundingClientRect().width
 		const [x, y] = d3.pointer(e)
 		tooltipData.x = e.offsetX - tooltipWidth / 2
 		tooltipData.title = s
-		tooltipData.y = e.offsetY - 85
+		tooltipData.y = e.offsetY - tooltipHeight - 20
 		changeOpacityOnHover(i)
 
 		if (stacked) {

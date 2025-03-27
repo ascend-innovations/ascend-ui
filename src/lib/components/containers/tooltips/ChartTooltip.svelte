@@ -25,7 +25,7 @@
 		left: 0;
 		min-height: 70px;
 		min-width: 120px;
-		white-space: nowrap;
+		max-width: 230px;
 		background-color: var(--neutral-base);
 		border-radius: 12px;
 		opacity: 0;
@@ -50,7 +50,7 @@
 
 	.values {
 		font-size: 11px;
-		overflow: hidden;
+		/* overflow: hidden; */
 
 		& span {
 			color: var(--neutral-300);
