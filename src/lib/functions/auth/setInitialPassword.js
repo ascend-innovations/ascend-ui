@@ -1,8 +1,11 @@
-export default async function resetPassword(supabase, sessionData, accessToken, refreshToken, password) {
+import { jwtDecode } from 'jwt-decode'
+
+export default async function setInitialPassword(supabase, sessionData, accessToken, refreshToken, password, userId) {
 	if (sessionData) {
 		let decodedTokenData = JSON.parse(atob(sessionData))
 		accessToken = decodedTokenData.access_token
 		refreshToken = decodedTokenData.refresh_token
+		userId = jwtDecode(accessToken).sub
 	}
 
 	let sessionResponse = await supabase.auth.setSession({
@@ -18,6 +21,7 @@ export default async function resetPassword(supabase, sessionData, accessToken, 
 			message: sessionError.message,
 			accessToken,
 			refreshToken,
+			userId,
 		}
 	}
 	console.log('Token Verified')
@@ -41,10 +45,13 @@ export default async function resetPassword(supabase, sessionData, accessToken, 
 			message: message,
 			accessToken,
 			refreshToken,
+			userId,
 		}
 	}
 
 	console.log('Password updated successfully')
+
+    const { error: profileError } = await supabase.from('profiles').update({setup_completed: true}).eq('id', userId)
 
 	// Step 3: Sign out the user
 	await supabase.auth.signOut()
