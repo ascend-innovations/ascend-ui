@@ -85,17 +85,22 @@
 		{titleButton}
 	/>
 	<div class="chart-content">
-		{#if $$slots['chart-header']}
+		{#if $$slots['chart-filter-header']}
 			<div class="chart-header">
-				<slot name="chart-header" />
+				<slot name="chart-filter-header" />
 			</div>
 		{/if}
 		{#if (type === 'geo' && geoJSON?.length === 0) || (type !== 'geo' && data.length === 0)}
-			<div class="no-data-panel">
-				<AlertCircleSmallIcon colorOverride="var(--neutral-400)" />
-				<p>No data to display</p>
-			</div>
+		<div class="no-data-panel">
+			<AlertCircleSmallIcon colorOverride="var(--neutral-400)" />
+			<p>No data to display</p>
+		</div>
 		{:else}
+			{#if $$slots['chart-header']}
+				<div class="chart-header">
+					<slot name="chart-header" />
+				</div>
+			{/if}
 			<div class="visualization-container">
 				<div
 					class="chart-sizer {type === 'table' ? 'table-position' : ''}"
