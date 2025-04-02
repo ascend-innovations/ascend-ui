@@ -551,7 +551,7 @@
 					stacked
 				/>
 			</div>
-			<!-- <div class="pie-chart">
+			<div class="pie-chart">
 				<Chart
 					tooltipId="pie"
 					type="pie"
@@ -562,49 +562,20 @@
 					seriesKey="name"
 					sort="descending"
 				/>
-			</div> -->
-			<!-- <div class="ring-chart">
-				<div style="width: 75%">
-					<Chart
-						tooltipId="simple-v"
-						type="bar"
-						vertical
-						sort="descending"
-						title="Simple Vertical Bar Chart"
-						titleTooltip={{ content: 'This is a tooltip that will probably wrap. Maybe even twice.' }}
-						data={barData}
-						domain="x"
-						range="value"
-						rule='avg'
-						seriesKey="series"
-					>
-						<div slot="chart-header" style="margin-top: var(--spacing09)">
-							<SelectorInput 
-								id="bar-selector"
-								label="Random Selector"
-								defaultOptionName={'realData'}
-								defaultOptionValue={'realData'}
-								optionList={[
-									'secondGeoData'
-								]}
-								bind:selectedValue={geoData}
-							/>
-						</div>
-					</Chart>
-				</div> -->
-			<!-- <div style="width: 25%">
-					<Chart
-						tooltipId="ring"
-						type="pie"
-						data={pieData}
-						title="Ring Chart"
-						domain="name"
-						range="value"
-						seriesKey="name"
-						ring
-					/>
-				</div> -->
-			<!-- </div> -->
+			</div>
+			<div class="ring-chart">
+				<Chart
+					tooltipId="ring"
+					type="pie"
+					data={pieData}
+					title="Ring Chart"
+					domain="name"
+					range="value"
+					seriesKey="name"
+					valueTwoLabel="Count"
+					ring
+				/>
+			</div>
 			<div class="scatterplot-chart">
 				<Chart
 					tooltipId="scatter"
@@ -619,7 +590,7 @@
 					monthDay
 				/>
 			</div>
-			<div class="geo-chart">
+			<!-- <div class="geo-chart">
 				<Chart
 					title="Map With Multiple Markers"
 					type="geo"
@@ -631,7 +602,7 @@
 					data={realData}
 					geoJSON={null}
 				/>
-			</div>
+			</div> -->
 			<!-- <div class="geo-chart">
 				<Chart 
 					title="Map With Multiple Markers"
@@ -684,11 +655,6 @@
 		& details {
 			padding-top: var(--spacing04);
 		}
-	}
-	.ring-chart {
-		display: flex;
-		gap: var(--spacing09);
-		height: 500px;
 	}
 	.table-chart {
 		height: fit-content;
