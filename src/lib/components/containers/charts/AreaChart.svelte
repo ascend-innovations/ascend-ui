@@ -46,6 +46,7 @@
 		monthYear,
 		quarters = false,
 		fiscalQuarters = false,
+		fiscalYears = false,
 		line = false,
 		stacked = false,
 		chartWidth = 700,
@@ -83,6 +84,7 @@
 			return `Q${Number(d3.utcFormat('%q')(d)) - 2} SFY${Number(d3.utcFormat('%Y')(d)) + 1}`
 		}
 	} // offset by 2 quarters
+	let formatFiscalYear = (d) => `SFY${d3.utcFormat(`%Y`)(d)}`
 
 	let tickFormat = d3.timeDay,
 		labelFormat = formatFull,
@@ -120,6 +122,9 @@
 			} else if (fiscalQuarters) {
 				labelFormat = formatFiscalQuarter
 				tickFormat = d3.timeQuarter
+			} else if (fiscalYears) {
+				labelFormat = formatFiscalYear
+				tickFormat = d3.timeYear
 			} else if (yearInterval >= 2 && yearInterval <= 20) {
 				labelFormat = formatYear
 				tickFormat = d3.timeYear
@@ -462,7 +467,7 @@
 						{:else}
 							{labelFormat(tick)}
 						{/if} -->
-						{fullDate ? formatFull(item.data[0]) : yearOnly ? formatYear(item.data[0]) : monthOnly ? formatMonth(item.data[0]) : monthDay ? formatMonthDay(item.data[0]) : monthYear ? formatMonthYear(item.data[0]) : quarters ? formatQuarter(item.data[0]) : formatFull(item.data[0])}
+						{fullDate ? formatFull(item.data[0]) : yearOnly ? formatYear(item.data[0]) : monthOnly ? formatMonth(item.data[0]) : monthDay ? formatMonthDay(item.data[0]) : monthYear ? formatMonthYear(item.data[0]) : quarters ? formatQuarter(item.data[0]) : fiscalYears ? formatFiscalYear(item.data[0]) : formatFull(item.data[0])}
 					</text>
 				{/each}
 			{/each}
