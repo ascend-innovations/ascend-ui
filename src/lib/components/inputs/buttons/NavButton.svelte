@@ -24,10 +24,11 @@
 		<div class="nav-button">
 			<Button
 				callback={toggleSubNav}
-				classes={['btn-left', 'btn-full', 'btn-l', 'btn-white']}
+				classes={['btn-left', 'btn-full', 'btn-l', 'btn-white', 'btn-nav-hover']}
 				leftIcon={pageData?.icon ?? null}
 				text={navBarOpen ? pageData?.text : ''}
 				url={pageData?.url ?? ''}
+				styles={['text-decoration: none']}
 				rightIcon={pageData.sublinks?.length > 0 ? (open ? NavButtonChevronUpIcon : NavButtonChevronDownIcon) : ''}
 			/>
 		</div>
@@ -61,6 +62,7 @@
 		background-color: var(--primary-base);
 	}
 	.sub-nav-wrapper {
+		margin-top: var(--spacing03);
 		overflow-y: hidden;
 	}
 	.closed {

@@ -4,16 +4,17 @@
 
 	export let sublink
 
-	$: currentPageLink = $page.url.pathname === sublink.url
+	$: currentPageLink = $page.url.pathname === sublink?.url
 </script>
 
 <div class="subnav-button-wrapper">
 	<div class={`current-page-indicator ${currentPageLink ? 'current-page-link' : ''}`}></div>
-	<div class="nav-button">
+	<div class="nav-button body-xs">
 		<Button
-			classes={['padding-left', 'btn-full', 'btn-left', 'btn-l', 'btn-full', 'btn-white']}
+			classes={['padding-left', 'btn-full', 'btn-left', 'btn-l', 'btn-full', 'btn-white', 'btn-nav-hover']}
 			text={sublink.text}
 			url={sublink?.url ?? ''}
+			styles={['padding-top: var(--spacing03)', 'padding-bottom: var(--spacing03)', 'text-decoration: none', `${currentPageLink ? 'font-weight:bold' : ''}`]}
 		/>
 	</div>
 </div>

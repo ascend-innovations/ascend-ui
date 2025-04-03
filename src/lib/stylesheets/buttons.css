@@ -195,6 +195,12 @@ button {
 	text-decoration: underline var(--primary-500) var(--spacing01);
 }
 
+/* Nav */
+
+.btn-nav-hover:hover {
+	background-color: var(--neutral-050);
+}
+
 /* Disabled */
 
 .btn-disabled {

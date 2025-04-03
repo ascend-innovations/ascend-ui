@@ -60,7 +60,6 @@
 			.innerRadius(ring ? width / 3.8 : 0)
 			.outerRadius(Math.min(width, height) / 2)
 
-		console.log(chartData)
 		arcs = pie(chartData)
 
 		opacity = Array(chartData.length).fill(1)

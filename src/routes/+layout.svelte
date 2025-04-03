@@ -14,19 +14,19 @@
 				sublinks: [
 					{
 						text: 'Alerts',
-						url: '/containers/alerts',
+						url: '/containers/alerts/',
 					},
 					{
 						text: 'Charts',
-						url: '/containers/charts',
+						url: '/containers/charts/',
 					},
 					{
 						text: 'Tooltips',
-						url: '/containers/tooltips',
+						url: '/containers/tooltips/',
 					},
 					{
 						text: 'Accordions',
-						url: '/containers/accordions',
+						url: '/containers/accordions/',
 					},
 				],
 			},
