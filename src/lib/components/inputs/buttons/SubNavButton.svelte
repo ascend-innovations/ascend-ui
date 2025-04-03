@@ -11,10 +11,10 @@
 	<div class={`current-page-indicator ${currentPageLink ? 'current-page-link' : ''}`}></div>
 	<div class="nav-button body-xs">
 		<Button
-			classes={['padding-left', 'btn-full', 'btn-left', 'btn-l', 'btn-full', 'btn-white', 'btn-nav-hover']}
+			classes={['padding-left', 'btn-full', 'btn-left', 'btn-l', 'btn-white', 'btn-nav-hover']}
 			text={sublink.text}
 			url={sublink?.url ?? ''}
-			styles={['padding-top: var(--spacing03)', 'padding-bottom: var(--spacing03)', 'text-decoration: none', `${currentPageLink ? 'font-weight:bold' : ''}`]}
+			styles={['padding-top: var(--spacing02)', 'padding-bottom: var(--spacing02)', 'text-decoration: none', `${currentPageLink ? 'font-weight:bold' : ''}`]}
 		/>
 	</div>
 </div>
