@@ -65,6 +65,7 @@
 			<Label
 				{id}
 				{label}
+				cursor
 			/>
 			{#if open}
 				<ChevronSingleUpSmallIcon />
@@ -79,17 +80,22 @@
 						<SearchBar
 							bind:query
 							callback={searchCallback}
+							styles={['width:100%']}
 						/>
 					</div>
 				{/if}
 				<div class="options-list">
-					{#each optionList as optionItem}
-						<CheckboxSelectOption
-							id={optionItem.value}
-							bind:checked={optionItem.selected}
-							value={optionItem.value}
-						/>
-					{/each}
+					{#if optionList.length === 0}
+						<p>No results available</p>
+					{:else}
+						{#each optionList as optionItem}
+							<CheckboxSelectOption
+								id={optionItem.value}
+								bind:checked={optionItem.selected}
+								value={optionItem.value}
+							/>
+						{/each}
+					{/if}
 				</div>
 			</div>
 		{/if}
@@ -102,6 +108,8 @@
 <style>
 	.multi-selector {
 		position: relative;
+		border-radius: var(--spacing05);
+		border: var(--spacing00) solid var(--neutral-100);
 	}
 	.multi-selector-control {
 		min-width: 260px;
@@ -110,6 +118,7 @@
 		width: 100%;
 		background: none;
 		overflow: hidden;
+		border-radius: var(--spacing05);
 	}
 	.open-selector-control {
 		border-radius: var(--spacing05);
@@ -118,19 +127,19 @@
 		display: flex;
 		justify-content: space-between;
 		padding: var(--spacing05) var(--spacing05) var(--spacing05) var(--spacing09);
-		border-radius: var(--spacing05);
-		border: var(--spacing00) solid var(--neutral-100);
+		border-radius: var(--spacing05) var(--spacing05) 0 0;
+		/* border: var(--spacing00) solid var(--neutral-100); */
 		cursor: pointer;
 	}
 	.list-content {
 		width: 100%;
 		top: 100%;
 		left: 0;
-		margin-top: var(--spacing03);
+		/* margin-top: var(--spacing03); */
 		background-color: white;
-		/* border-top: var(--spacing00) solid var(--neutral-100); */
-		border-radius: var(--spacing05);
-		border: var(--spacing00) solid var(--neutral-100);
+		border-top: var(--spacing00) solid var(--neutral-100);
+		border-radius: 0 0 var(--spacing05) var(--spacing05);
+		/* border: var(--spacing00) solid var(--neutral-100); */
 		z-index: 1;
 	}
 	.search-bar-wrapper {
@@ -140,7 +149,13 @@
 	}
 	.options-list {
 		padding: var(--spacing05);
-		max-height: 220px;
+		height: 220px;
 		overflow-y: scroll;
+
+		& p {
+			text-align: center;
+			color: var(--neutral-400);
+			padding-top: var(--spacing05);
+		}
 	}
 </style>
