@@ -37,7 +37,7 @@ export default async function setInitialPassword(supabase, sessionData, accessTo
 		let message = 'Please review requirements below and try again.'
 
 		if (updateError.message.includes('Password is known to be weak')) {
-		    message = 'Password is known to be weak and easy to guess, please choose a different one.'
+			message = 'Password is known to be weak and easy to guess, please choose a different one.'
 		}
 
 		return {
@@ -51,7 +51,7 @@ export default async function setInitialPassword(supabase, sessionData, accessTo
 
 	console.log('Password updated successfully')
 
-    const { error: profileError } = await supabase.from('profiles').update({setup_completed: true}).eq('id', userId)
+	const { error: profileError } = await supabase.from('profiles').update({ setup_completed: true }).eq('id', userId)
 
 	// Step 3: Sign out the user
 	await supabase.auth.signOut()

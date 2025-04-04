@@ -24,7 +24,7 @@
 			bind:value
 			class={validValue === false ? 'error' : ''}
 			id={label}
-			name={name}
+			{name}
 			on:blur={validationCallback}
 			placeholder={placeholder || `Enter your ${label}`}
 			type="text"
@@ -35,7 +35,7 @@
 			bind:value
 			class={validValue === false ? 'error' : ''}
 			id={label}
-			name={name}
+			{name}
 			on:blur={validationCallback}
 			placeholder={placeholder || `Enter your ${label}`}
 			type="email"
@@ -46,7 +46,7 @@
 			bind:value
 			class={validValue === false ? 'error' : ''}
 			id={label}
-			name={name}
+			{name}
 			on:blur={validationCallback}
 			placeholder={placeholder || `Enter your ${label}`}
 			type="password"

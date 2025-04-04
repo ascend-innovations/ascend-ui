@@ -6,23 +6,23 @@
 	let emailValidationMessage, validEmail, validPassword, password, email
 
 	function emailValidation() {
-        validEmail = isValidEmail(email)
+		validEmail = isValidEmail(email)
 
-	    if(!email) {
-	        emailValidationMessage = 'Please enter your email'
-	    } else {
-            if (!validEmail) {
-	            emailValidationMessage = 'Invalid email'
-            }
-	    }
+		if (!email) {
+			emailValidationMessage = 'Please enter your email'
+		} else {
+			if (!validEmail) {
+				emailValidationMessage = 'Invalid email'
+			}
+		}
 
-        return validEmail
+		return validEmail
 	}
 
 	function passwordValidation() {
-	    if (!password) {
-            validPassword = validateSupabasePassword(password)
-            return validPassword
+		if (!password) {
+			validPassword = validateSupabasePassword(password)
+			return validPassword
 		}
 
 		validPassword = true
@@ -63,8 +63,16 @@
 			/>
 		</div>
 		<div class="miscellaneous-links">
-			<a class="body-xs" target="_blank" href="https://ascend-innovations.com/legal/terms-and-conditions"><b>Terms & Conditions</b></a>
-			<a class="body-xs" target="_blank" href="https://ascend-innovations.com/legal/privacy-policy"><b>Privacy Policy</b></a>
+			<a
+				class="body-xs"
+				target="_blank"
+				href="https://ascend-innovations.com/legal/terms-and-conditions"><b>Terms & Conditions</b></a
+			>
+			<a
+				class="body-xs"
+				target="_blank"
+				href="https://ascend-innovations.com/legal/privacy-policy"><b>Privacy Policy</b></a
+			>
 		</div>
 	</form>
 	<!-- <div class="account-info">

@@ -92,10 +92,10 @@
 			</div>
 		{/if}
 		{#if (type === 'geo' && geoJSON?.length === 0) || (type !== 'geo' && data.length === 0)}
-		<div class="no-data-panel">
-			<AlertCircleSmallIcon colorOverride="var(--neutral-400)" />
-			<p>No data to display</p>
-		</div>
+			<div class="no-data-panel">
+				<AlertCircleSmallIcon colorOverride="var(--neutral-400)" />
+				<p>No data to display</p>
+			</div>
 		{:else}
 			{#if $$slots['chart-header']}
 				<div class="chart-header">

@@ -57,7 +57,7 @@
 		stack,
 		opacity = [],
 		charactersPerBand,
-		tickVals, 
+		tickVals,
 		scaleWidth
 	$: chartData = JSON.parse(JSON.stringify(data)) // copies and removes references to original data
 

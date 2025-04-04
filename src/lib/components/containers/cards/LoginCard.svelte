@@ -1,12 +1,17 @@
 <script>
-	import { AscendLogoWithText } from "$lib/index.js"
-	export let dialogCallback, loginHeader = 'Login', ascendLogo = false
+	import { AscendLogoWithText } from '$lib/index.js'
+	export let dialogCallback,
+		loginHeader = 'Login',
+		ascendLogo = false
 </script>
 
 <div class="login">
 	{#if ascendLogo}
 		<div class="ascend-icon">
-			<img src={AscendLogoWithText} alt="ascend-logo">
+			<img
+				src={AscendLogoWithText}
+				alt="ascend-logo"
+			/>
 		</div>
 	{/if}
 	<div class="headline-l-xxl header">{loginHeader}</div>

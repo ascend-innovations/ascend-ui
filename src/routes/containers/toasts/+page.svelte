@@ -28,7 +28,7 @@
 			category: 'dismiss',
 			title: 'Copied to Clipboard',
 			body: '',
-			purpose: 'copy'
+			purpose: 'copy',
 		},
 		{
 			body: 'More problems!',

@@ -34,7 +34,10 @@
 
 	let width = 306
 	let height = chartHeight
-	let pie, arcPath, arcs, opacity = []
+	let pie,
+		arcPath,
+		arcs,
+		opacity = []
 	$: chartData = JSON.parse(JSON.stringify(data)) // copies and removes references to original data
 
 	$: {
@@ -112,11 +115,11 @@
 	}
 </script>
 
-<div class="svg-container" >
+<div class="svg-container">
 	<svg
 		class="pie-chart-svg"
 		width={height}
-		height={height}
+		{height}
 		viewBox="{-height / 2} {-height / 2} {height} {height}"
 	>
 		<g>

@@ -1,7 +1,9 @@
 <script>
 	import { closeDialog, CancelButton, CloseDialogButton, ConfirmButton, Dialog } from '$lib/index.js'
 
-	export let store, callback, cancelCallback=cancel
+	export let store,
+		callback,
+		cancelCallback = cancel
 
 	let loading = false
 

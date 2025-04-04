@@ -10,27 +10,30 @@
 	const dispatch = createEventDispatcher()
 
 	function otpValidation() {
-	    validOtp = validateSupabaseOtp(otp)
+		validOtp = validateSupabaseOtp(otp)
 
-	    if(!otp) {
-	        otpValidationMessage = 'Please enter your One-Time Passcode'
-	    } else {
-            if (!validOtp) {
-	            otpValidationMessage = 'Invalid passcode. Please try again'
-            }
-	    }
+		if (!otp) {
+			otpValidationMessage = 'Please enter your One-Time Passcode'
+		} else {
+			if (!validOtp) {
+				otpValidationMessage = 'Invalid passcode. Please try again'
+			}
+		}
 
 		return validOtp
 	}
 
-    onMount(() => {
-        if (form?.otp_resend_message) {
-            dispatch('otpResent', form)
-        }
+	onMount(() => {
+		if (form?.otp_resend_message) {
+			dispatch('otpResent', form)
+		}
 	})
 </script>
 
-<LoginPage loginHeader="Enter Passcode" ascendLogo>
+<LoginPage
+	loginHeader="Enter Passcode"
+	ascendLogo
+>
 	<div class="form-container">
 		<form
 			method="POST"
@@ -47,11 +50,11 @@
 				validationCallback={otpValidation}
 				validationMessage={otpValidationMessage}
 			/>
-	
+
 			{#if form?.message}
 				<InputError text={form.message} />
 			{/if}
-	
+
 			<div class="login-button-row">
 				<input
 					class="btn-full btn-l btn-primary btn-rect semibold"
@@ -68,7 +71,7 @@
 			{#if form?.resend_message}
 				<InputError text={form.resend_message} />
 			{/if}
-	
+
 			<div class="login-button-row resend-section">
 				<p class="body-xs">Didn't get an email?</p>
 				<input
@@ -78,8 +81,16 @@
 				/>
 			</div>
 			<div class="miscellaneous-links">
-				<a class="body-xs" target="_blank" href="https://ascend-innovations.com/legal/terms-and-conditions"><b>Terms & Conditions</b></a>
-				<a class="body-xs" target="_blank" href="https://ascend-innovations.com/legal/privacy-policy"><b>Privacy Policy</b></a>
+				<a
+					class="body-xs"
+					target="_blank"
+					href="https://ascend-innovations.com/legal/terms-and-conditions"><b>Terms & Conditions</b></a
+				>
+				<a
+					class="body-xs"
+					target="_blank"
+					href="https://ascend-innovations.com/legal/privacy-policy"><b>Privacy Policy</b></a
+				>
 			</div>
 		</form>
 	</div>

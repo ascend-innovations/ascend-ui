@@ -10,5 +10,5 @@ export default async function resendOtp(supabase, email) {
 		return { success: false, message: 'Failed to send One-Time Passcode. Try again.' }
 	}
 
-	return { success: true , otp_resend_message: 'New Passcode Sent' }
+	return { success: true, otp_resend_message: 'New Passcode Sent' }
 }

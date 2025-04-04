@@ -1,6 +1,5 @@
 export default async function getOrgInfo(supabase) {
-    let org = await supabase.from('organizations')
-        .select('*')
+	let org = await supabase.from('organizations').select('*')
 
-    return org
+	return org
 }

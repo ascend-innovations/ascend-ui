@@ -1,7 +1,9 @@
 <script>
 	import { TableColumnHeaderCell, sortArray } from '$lib/index.js'
 
-	export let columns, list, sortCallback = sortTable
+	export let columns,
+		list,
+		sortCallback = sortTable
 
 	// create sortMap object with keys that match the column's key with a value of empty string
 	const sortMap = {}

@@ -63,7 +63,7 @@
 	{:else if column?.type === 'tag'}
 		<TagCell
 			bind:column
-			bind:row 
+			bind:row
 		/>
 	{:else if column?.editable}
 		<EditableCell
@@ -76,7 +76,7 @@
 			bind:row
 		/>
 	{:else if column?.type === 'link'}
-		<LinkCell 
+		<LinkCell
 			bind:column
 			bind:row
 		/>

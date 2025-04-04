@@ -29,18 +29,18 @@
 		class="menu-header"
 		slot="menu-header"
 	>
-	    <div class="profile-container">
-            <ProfileIcon />
-            <div class="user-info">
-                {`${username} ${role}`}
-            </div>
-	    </div>
+		<div class="profile-container">
+			<ProfileIcon />
+			<div class="user-info">
+				{`${username} ${role}`}
+			</div>
+		</div>
 		{#if $$slots['profile-switcher']}
 			<div class="profile-switcher">
 				<slot name="profile-switcher" />
 			</div>
 		{/if}
-    </div>
+	</div>
 	<div
 		class="menu-footer"
 		slot="menu-footer"

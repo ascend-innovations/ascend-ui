@@ -2,56 +2,55 @@
 	import { EditButton, Page, PageBody, RadioInput, StatusTag, Table, PaginatedTable } from '$lib/index'
 
 	function generateRandomData() {
-		const names = ["John Doe", "Jane Smith", "Michael Johnson", "Emily Davis", "David Wilson"];
-		const domains = ["example.com", "randommail.com", "testemail.com", "fakeemail.com"];
-		const statuses = ["Approved", "Pending"];
-		
+		const names = ['John Doe', 'Jane Smith', 'Michael Johnson', 'Emily Davis', 'David Wilson']
+		const domains = ['example.com', 'randommail.com', 'testemail.com', 'fakeemail.com']
+		const statuses = ['Approved', 'Pending']
+
 		function getRandomItem(arr) {
-			return arr[Math.floor(Math.random() * arr.length)];
+			return arr[Math.floor(Math.random() * arr.length)]
 		}
 
-		const data = [];
-		
+		const data = []
+
 		for (let i = 0; i < 50; i++) {
-			const name = getRandomItem(names);
-			const email = `${name.split(' ').join('.').toLowerCase()}@${getRandomItem(domains)}`;
-			const status = getRandomItem(statuses);
-			const date = generateRandomDate();
-			
+			const name = getRandomItem(names)
+			const email = `${name.split(' ').join('.').toLowerCase()}@${getRandomItem(domains)}`
+			const status = getRandomItem(statuses)
+			const date = generateRandomDate()
+
 			data.push({
 				name: name,
 				email: email,
 				link: 'https://google.com',
 				status: status,
-				date: date
-			});
+				date: date,
+			})
 		}
 
-		return data;
+		return data
 	}
 
-	const randomData = generateRandomData();
+	const randomData = generateRandomData()
 	let list = randomData
 
 	function generateRandomDate() {
-		const startDate = new Date(2000, 0, 1); // Start from January 1, 2000
-		const endDate = new Date(); // Current date
+		const startDate = new Date(2000, 0, 1) // Start from January 1, 2000
+		const endDate = new Date() // Current date
 
 		// Generate a random timestamp between start and end date
-		const randomTimestamp = startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime());
+		const randomTimestamp = startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime())
 
 		// Create a new Date object with the random timestamp
-		const randomDate = new Date(randomTimestamp);
+		const randomDate = new Date(randomTimestamp)
 
 		// Extract the date components
-		const month = String(randomDate.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
-		const day = String(randomDate.getDate()).padStart(2, '0');
-		const year = randomDate.getFullYear();
+		const month = String(randomDate.getMonth() + 1).padStart(2, '0') // Months are 0-indexed
+		const day = String(randomDate.getDate()).padStart(2, '0')
+		const year = randomDate.getFullYear()
 
 		// Return the formatted date
-		return `${month}-${day}-${year}`;
+		return `${month}-${day}-${year}`
 	}
-
 
 	// let list = [
 	// 	{
@@ -107,7 +106,7 @@
 			title: 'Email',
 			key: 'email',
 			type: 'text',
-			styles: ['flex: 1']
+			styles: ['flex: 1'],
 		},
 		// {
 		// 	title: 'Array',
@@ -126,15 +125,15 @@
 			component: StatusTag,
 			key: 'status',
 			type: 'tag',
-			tagMap: { approved: 'warning', pending: 'neutral', tooltips: { approved: 'Provider listing has been published to the external LocalHelpNow directory.' }},
+			tagMap: { approved: 'warning', pending: 'neutral', tooltips: { approved: 'Provider listing has been published to the external LocalHelpNow directory.' } },
 			styles: ['flex: 1'],
 		},
 		{
 			title: 'Date',
 			type: 'datetime',
 			key: 'date',
-			styles: ['flex: 1']
-		}
+			styles: ['flex: 1'],
+		},
 		// {
 		// 	title: 'Editable',
 		// 	key: 'editable',

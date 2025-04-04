@@ -2,7 +2,8 @@
 	import { getGlobalColorPalette, Icon } from '$lib/index.js'
 	import { onMount } from 'svelte'
 
-	export let styles = [], colorOverride
+	export let styles = [],
+		colorOverride
 
 	let palette = {}
 

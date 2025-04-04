@@ -2,7 +2,7 @@
 	import { Button } from '$lib/index.js'
 	import { page } from '$app/stores'
 
-	export let sublink
+	export let callback, sublink
 
 	$: currentPageLink = $page.url.pathname === sublink?.url
 </script>
@@ -11,6 +11,7 @@
 	<div class={`current-page-indicator ${currentPageLink ? 'current-page-link' : ''}`}></div>
 	<div class="nav-button body-xs">
 		<Button
+			{callback}
 			classes={['padding-left', 'btn-full', 'btn-left', 'btn-l', 'btn-white', 'btn-nav-hover']}
 			text={sublink.text}
 			url={sublink?.url ?? ''}

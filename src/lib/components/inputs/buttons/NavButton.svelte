@@ -3,9 +3,15 @@
 	import { page } from '$app/stores'
 	import { onMount } from 'svelte'
 
-	export let pageData = undefined,
+	export let callback,
+		pageData = undefined,
 		navBarOpen,
 		open = false
+
+	function callbackWrapperFunction() {
+		toggleSubNav()
+		if (callback) callback()
+	}
 
 	function toggleSubNav() {
 		open = !open
@@ -23,7 +29,7 @@
 		<div class={`current-page-indicator ${currentPageLink ? 'current-page-link' : ''}`} />
 		<div class="nav-button">
 			<Button
-				callback={toggleSubNav}
+				callback={callbackWrapperFunction}
 				classes={['btn-left', 'btn-full', 'btn-l', 'btn-white', 'btn-nav-hover']}
 				leftIcon={pageData?.icon ?? null}
 				text={navBarOpen ? pageData?.text : ''}
@@ -36,7 +42,10 @@
 	{#if pageData.sublinks?.length > 0}
 		<div class="sub-nav-wrapper {open ? 'open' : 'closed'}">
 			{#each pageData.sublinks as sublink}
-				<SubNavButton {sublink} />
+				<SubNavButton
+					{callbackWrapperFunction}
+					{sublink}
+				/>
 			{/each}
 		</div>
 	{/if}
