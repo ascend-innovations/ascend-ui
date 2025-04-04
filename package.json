@@ -1,6 +1,6 @@
 {
 	"name": "ascend-ui",
-	"version": "0.1.481",
+	"version": "0.1.482",
 	"scripts": {
 		"build": "npm i && npm run format && vite build",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",

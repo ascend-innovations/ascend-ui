@@ -9,7 +9,6 @@
 		open = false
 
 	function callbackWrapperFunction() {
-		console.log('callbackWrapperFunction')
 		toggleSubNav()
 		if (callback) callback()
 	}
