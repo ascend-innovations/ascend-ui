@@ -8,8 +8,8 @@
 		navBarOpen,
 		open = false
 
-	function callbackWrapperFunction() {
-		if (callback) callback()
+	function toggleSubNav() {
+		open = !open
 	}
 
 	onMount(() => {
@@ -24,7 +24,7 @@
 		<div class={`current-page-indicator ${currentPageLink ? 'current-page-link' : ''}`} />
 		<div class="nav-button">
 			<Button
-				callback={callbackWrapperFunction}
+				callback={pageData.sublinks?.length > 0 ? toggleSubNav : callback}
 				classes={['btn-left', 'btn-full', 'btn-l', 'btn-white', 'btn-nav-hover']}
 				leftIcon={pageData?.icon ?? null}
 				text={navBarOpen ? pageData?.text : ''}
@@ -38,7 +38,7 @@
 		<div class="sub-nav-wrapper {open ? 'open' : 'closed'}">
 			{#each pageData.sublinks as sublink}
 				<SubNavButton
-					callback={callbackWrapperFunction}
+					callback={callback}
 					{sublink}
 				/>
 			{/each}
