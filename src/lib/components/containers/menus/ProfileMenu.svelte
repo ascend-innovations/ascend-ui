@@ -33,6 +33,11 @@
 		<div class="user-info">
 			{`${username} ${role}`}
 		</div>
+		{#if $$slots['profile-switcher']}
+			<div class="profile-switcher">
+				<slot name="profile-switcher" />
+			</div>
+		{/if}
 	</div>
 	<div
 		class="menu-footer"
@@ -50,5 +55,8 @@
 	.user-info {
 		display: flex;
 		flex-direction: column;
+	}
+	.profile-switcher {
+		padding: var(--spacing06);
 	}
 </style>
