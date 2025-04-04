@@ -2,7 +2,7 @@
 	import { NavBarHeader, NavButton } from '$lib/index.js'
 	import { slide } from 'svelte/transition'
 
-	export let callback = null,
+	export let navClickCallback,
 		hoverOpen = false,
 		keepOpen = true,
 		navBarContents,
@@ -49,7 +49,7 @@
 					{#each navBarContents.primaryPageList as pageData}
 						<div class="nav-button">
 							<NavButton
-								{callback}
+								callback={navClickCallback}
 								{pageData}
 								{navBarOpen}
 							/>
@@ -61,7 +61,7 @@
 					{#each navBarContents?.secondaryPageList as pageData}
 						<div class="nav-button">
 							<NavButton
-								{callback}
+								callback={navClickCallback}
 								{pageData}
 								{navBarOpen}
 							/>

@@ -9,6 +9,7 @@
 		open = false
 
 	function callbackWrapperFunction() {
+		console.log('callbackWrapperFunction')
 		toggleSubNav()
 		if (callback) callback()
 	}
@@ -43,7 +44,7 @@
 		<div class="sub-nav-wrapper {open ? 'open' : 'closed'}">
 			{#each pageData.sublinks as sublink}
 				<SubNavButton
-					{callbackWrapperFunction}
+					callback={callbackWrapperFunction}
 					{sublink}
 				/>
 			{/each}
