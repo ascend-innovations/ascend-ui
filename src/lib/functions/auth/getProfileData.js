@@ -34,6 +34,11 @@ export default async function getProfileData(locals, current_app_id) {
     profile.apps = extractApplications(profile.application_list)
     profile.current_app = profile.apps.find((a) => a.id === current_app_id)
     profile.access_token = locals.session.access_token
+    profile.headers = {
+        'content-type': 'application/json',
+        'X-Application-ID': current_app_id,
+        Authorization: `Bearer ${locals.session.access_token}`,
+    }
 
     if (profile.current_app) {
         // const appProfile = profile.app_profiles.find((p) => p.application_id === current_app_id)
