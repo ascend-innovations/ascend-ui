@@ -9,12 +9,7 @@
 		open = false
 
 	function callbackWrapperFunction() {
-		toggleSubNav()
 		if (callback) callback()
-	}
-
-	function toggleSubNav() {
-		open = !open
 	}
 
 	onMount(() => {
