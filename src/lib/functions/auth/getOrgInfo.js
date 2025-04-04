@@ -1,8 +1,6 @@
-export default async function getOrgInfo(supabase, orgName) {
+export default async function getOrgInfo(supabase) {
     let org = await supabase.from('organizations')
         .select('*')
-        .eq('name', orgName)
-        .single()
 
     return org
 }
