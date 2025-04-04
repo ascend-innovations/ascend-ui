@@ -4,15 +4,15 @@ export default async function getProfileData(locals, currentAppId) {
 		let allApps = orgApps.map((app) => app.application)
 		allApps.map((a) => (a.settings = orgApps.find((oa) => oa.application_id === a.id).settings))
 
-		return allApps
-	}
-	const extractRoles = (currentApp) => currentApp?.roles?.map((r) => r.name) || []
-	const extractOrg = (orgList) => (orgList.length == 1 ? orgList[0].organizations : {})
-	const response = await locals.supabase
-		.from('profiles')
-		.select(
-			`
-            id, email, name,
+        return allApps
+    }
+    const extractRoles = (currentApp) => currentApp?.roles?.map((r) => r.name) || []
+    const extractOrg = (orgList) => (orgList.length == 1 ? orgList[0].organizations : {})
+    const response = await locals.supabase
+        .from('profiles')
+        .select(
+            `
+            id, email, name, active_organization,
               organization:organization_users!inner(
                 organizations(*)
               ),
