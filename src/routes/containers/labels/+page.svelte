@@ -1,5 +1,5 @@
 <script>
-	import {
+import {
 		FilterContainer,
 		Page,
 		PageBody,
@@ -22,6 +22,7 @@
 		SearchSmallIcon,
 		NotificationTextSmallIcon,
 		StarEmptySmallIcon,
+		AutoSaveIndicator
 	} from '$lib/index.js'
 
 	const filters = [
@@ -52,6 +53,9 @@
 		<h1>Filters</h1>
 		<div>
 			<FilterContainer {filters} />
+		</div>
+		<div>
+			<AutoSaveIndicator saving={true} />
 		</div>
 	</PageBody>
 </Page>

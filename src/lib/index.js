@@ -82,6 +82,7 @@ export { default as PlusSmallIcon } from '$lib/assets/icons/s/PlusSmallIcon.svel
 export { default as ProfileSmallIcon } from '$lib/assets/icons/s/ProfileSmallIcon.svelte'
 export { default as ProfilePlusSmallIcon } from '$lib/assets/icons/s/ProfilePlusSmallIcon.svelte'
 export { default as RaceSmallIcon } from '$lib/assets/icons/s/RaceSmallIcon.svelte'
+export { default as RefreshCCW05SmallIcon } from '$lib/assets/icons/s/RefreshCCW05SmallIcon.svelte'
 export { default as SearchSmallIcon } from '$lib/assets/icons/s/SearchSmallIcon.svelte'
 export { default as SexSmallIcon } from '$lib/assets/icons/s/SexSmallIcon.svelte'
 export { default as StarEmptySmallIcon } from '$lib/assets/icons/s/StarEmptySmallIcon.svelte'
@@ -170,6 +171,7 @@ export { default as HeaderBar } from '$lib/components/containers/headers/HeaderB
 export { default as Icon } from '$lib/components/containers/icons/Icon.svelte'
 
 // Labels
+export { default as AutoSaveIndicator } from '$lib/components/containers/labels/AutoSaveIndicator.svelte'
 export { default as Label } from '$lib/components/containers/labels/Label.svelte'
 export { default as ChartKey } from '$lib/components/containers/labels/ChartKey.svelte'
 export { default as ChartKeyContainer } from '$lib/components/containers/labels/ChartKeyContainer.svelte'
