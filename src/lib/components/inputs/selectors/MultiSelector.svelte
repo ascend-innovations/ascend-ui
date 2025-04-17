@@ -68,7 +68,6 @@
 				}
 			}
 		}
-		console.log("workCheck", optionList)
 	})
 </script>
 
