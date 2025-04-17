@@ -28,8 +28,12 @@
 	}
 
 	beforeUpdate(() => {
+		let allTrue = true
 		for (let option of optionList) {
-			if (option.value === 'All' && option.selected === true) {
+			if(option?.value != "All"){
+				allTrue = allTrue && option.selected
+			}
+			if (option.value === 'All' && option.selected === true && allUnselected) {
 				optionList = optionList.map((option) => {
 					option.selected = true
 					return option
@@ -45,7 +49,26 @@
 					allUnselected = true
 				}
 			}
+			if(!allUnselected && option.selected === false){ //Unselects the 'All' option if it was previously selected and a box was unchecked.
+				optionList = optionList.map((option) => {
+						if(option?.value === 'All'){
+							option.selected = false
+						}
+						return option
+					})	
+					allUnselected = true
+			}
 		}
+		if(allTrue === true){
+			for(let option of optionList){
+				if(option?.value === "All"){
+					option.selected = true
+					allUnselected = false
+					break
+				}
+			}
+		}
+		console.log("workCheck", optionList)
 	})
 </script>
 
