@@ -1,15 +1,24 @@
 <script>
+	import { browser } from '$app/environment'
 	import { ChevronSingleDownSmallIcon, ChevronSingleUpSmallIcon } from '$lib/index.js'
+	import { onMount } from 'svelte'
 
-	export let title
+	export let title, defaultOpen = false
 
 	let detailsElement,
-		open = false
+		open = defaultOpen
 
 	function detailsClick(e) {
 		detailsElement = document.getElementById(e.target.id)
 		open = !detailsElement.parentElement.open
 	}
+	
+	onMount(() => {
+		if (browser) {
+			const detailsElement = document.querySelector('.category-details')
+			detailsElement.open = defaultOpen
+		}
+	})
 </script>
 
 <details class="category-details">
