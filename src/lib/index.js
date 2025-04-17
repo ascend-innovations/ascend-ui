@@ -271,6 +271,8 @@ export { default as resendOtp } from '$lib/functions/auth/resendOtp.js'
 export { default as setInitialPassword } from '$lib/functions/auth/setInitialPassword.js'
 export { default as verifyOtp } from '$lib/functions/auth/verifyOtp.js'
 export { default as getProfileData } from '$lib/functions/auth/getProfileData.js'
+export { default as getAllProfiles } from '$lib/functions/auth/getAllProfiles.js'
+export { default as updateAppProfile } from '$lib/functions/auth/updateAppProfile.js'
 export { default as getOrgInfo } from '$lib/functions/auth/getOrgInfo.js'
 
 // Filtering
