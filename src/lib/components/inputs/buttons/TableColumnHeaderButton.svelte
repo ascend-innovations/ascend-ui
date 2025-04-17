@@ -21,6 +21,7 @@
 <style>
 	button {
 		align-items: center;
+		text-align: start;
 		background-color: transparent;
 		border: none;
 		cursor: pointer;
