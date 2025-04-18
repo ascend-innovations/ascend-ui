@@ -71,6 +71,7 @@
 		}
 
 		selectedValues = getChecklistSelections(optionList)
+		if (callback) callback()
 	})
 </script>
 
