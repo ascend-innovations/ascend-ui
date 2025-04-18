@@ -317,6 +317,7 @@ export { default as setStyles } from '$lib/functions/styling/setStyles.js'
 export { default as paginateTable } from '$lib/functions/tables/paginateTable.js'
 
 // Utility
+export { default as getChecklistSelections } from '$lib/functions/utils/getChecklistSelections.js'
 export { default as hexToRGB } from '$lib/functions/utils/hexToRGB.js'
 export { default as todaysDate } from '$lib/functions/utils/todaysDate.js'
 

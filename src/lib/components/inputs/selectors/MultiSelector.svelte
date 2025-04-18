@@ -1,5 +1,5 @@
 <script>
-	import { Label, CheckboxSelectOption, ChevronSingleUpSmallIcon, ChevronSingleDownSmallIcon, InputError, SearchBar } from '$lib/index.js'
+	import { Label, CheckboxSelectOption, ChevronSingleUpSmallIcon, ChevronSingleDownSmallIcon, InputError, SearchBar, getChecklistSelections } from '$lib/index.js'
 	import { beforeUpdate } from 'svelte'
 
 	export let id = '',
@@ -11,6 +11,7 @@
 		validationCallback = null,
 		validationText = '',
 		optionList = [],
+		selectedValues = [],
 		query = '',
 		searchable = false
 
@@ -68,6 +69,8 @@
 				}
 			}
 		}
+
+		selectedValues = getChecklistSelections(optionList)
 	})
 </script>
 

@@ -28,11 +28,5 @@
 				{optionList}
 			/>
 		</div>
-		<div>
-			This should get moved.
-			<Button callback={() => console.log(optionList)} />
-		</div>
-
-		<p>{number} : {currency}</p>
 	</PageBody>
 </Page>
