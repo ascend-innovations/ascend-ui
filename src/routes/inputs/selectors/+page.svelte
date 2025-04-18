@@ -12,9 +12,6 @@
 		{ value: 'What?', selected: false },
 		{ value: 'Last', selected: false },
 	]
-
-	let number = 123456
-	let currency = convertToCurrency(number)
 </script>
 
 <Page>

@@ -71,7 +71,6 @@
 		}
 
 		selectedValues = getChecklistSelections(optionList)
-		if (callback) callback()
 	})
 </script>
 
@@ -119,6 +118,7 @@
 								id={optionItem.value}
 								bind:checked={optionItem.selected}
 								value={optionItem.value}
+								{callback}
 							/>
 						{/each}
 					{/if}
