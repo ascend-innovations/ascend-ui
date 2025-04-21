@@ -14,14 +14,17 @@
 </script>
 
 <a
-	href={disabled ? '#' : url}
-	target={target ? '_blank' : ''}
-	{disabled}
 	class={`
 		semibold
 		${classes?.includes('btn-full') ? 'btn-full' : 'btn-fit'}
 	`}
+	data-sveltekit-preload-code="off"
+	data-sveltekit-preload-data="off"
+	data-sveltekit-reload
+	href={disabled ? '#' : url}
 	style={styles.join(';')}
+	target={target ? '_blank' : ''}
+	{disabled}
 >
 	<div
 		class={`
