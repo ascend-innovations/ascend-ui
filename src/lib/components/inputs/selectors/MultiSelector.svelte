@@ -1,6 +1,6 @@
 <script>
 	import { Label, CheckboxSelectOption, ChevronSingleUpSmallIcon, ChevronSingleDownSmallIcon, InputError, SearchBar, getChecklistSelections } from '$lib/index.js'
-	import { beforeUpdate } from 'svelte'
+	import { afterUpdate, beforeUpdate } from 'svelte'
 
 	export let id = '',
 		label = '',
@@ -11,7 +11,7 @@
 		validationCallback = null,
 		validationText = '',
 		optionList = [],
-		selectedValues = [],
+		selectedValues = '',
 		query = '',
 		searchable = false
 
@@ -69,8 +69,6 @@
 				}
 			}
 		}
-
-		selectedValues = getChecklistSelections(optionList)
 	})
 </script>
 
@@ -109,7 +107,7 @@
 						/>
 					</div>
 				{/if}
-				<div class="options-list">
+				<div class="options-list" on:click={() => selectedValues = optionList}>
 					{#if optionList.length === 0}
 						<p>No results available</p>
 					{:else}
