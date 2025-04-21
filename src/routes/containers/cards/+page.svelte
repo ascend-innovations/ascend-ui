@@ -20,14 +20,12 @@
 		/>
 		<MetricCard
 			styles={['border: none']}
-			title="Unique Individuals"
+			title="This is super duper long to test something that I think is really really coooooooooooooooool.
+			This is even more text just to see how far the component could possibly stretch if need be by the wonderful UX designers at Ascend Innovations. "
 			value={10}
 		/>
 	</div>
 </Page>
-
-
-
 
 <style>
 	.metrics-header {
