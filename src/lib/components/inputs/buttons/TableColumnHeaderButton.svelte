@@ -15,6 +15,8 @@
 		<ArrowUpExtraSmallIcon />
 	{:else if order === 'oldest'}
 		<ArrowDownExtraSmallIcon />
+	{:else}
+		<ArrowDownExtraSmallIcon />
 	{/if}
 </button>
 

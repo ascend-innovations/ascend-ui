@@ -55,6 +55,7 @@
 		{columns}
 		{sortCallback}
 		list={pageData.pageData}
+		{sortMap}
 	/>
 
 	{#if pageData.totalPages > 1}

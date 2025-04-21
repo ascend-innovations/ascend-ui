@@ -3,13 +3,17 @@
 
 	export let columns,
 		list,
-		sortCallback = sortTable
+		sortCallback = sortTable,
+		sortMap = {}
 
 	// create sortMap object with keys that match the column's key with a value of empty string
-	const sortMap = {}
-	Object.values(columns).forEach((column) => {
-		if (column.key !== undefined) sortMap[column.key] = ''
-	})
+		
+	if(sortMap.length == undefined || sortMap.length <= 0){
+		Object.values(columns).forEach((column) => {
+			if (column.key !== undefined) sortMap[column.key] = ''
+		})
+	}
+
 
 	function sortTable(columnKey, columnType) {
 		// save the last sort order for this column
@@ -24,6 +28,10 @@
 
 		// sort the array on the store for this table type
 		list = sortArray(list, columnKey, columnType, sortMap[columnKey])
+
+		console.log("sortTable: sortMap", sortMap)
+		console.log("sortTable: List", list)
+		console.log("sortTable: previousSortOrder", previousSortOrder)
 	}
 </script>
 
