@@ -7,7 +7,7 @@
 		sortMap = {}
 
 	// create sortMap object with keys that match the column's key with a value of empty string
-	if(sortMap.length == undefined || sortMap.length <= 0){
+	if(sortMap.length === undefined || sortMap.length <= 0){
 		Object.values(columns).forEach((column) => {
 			if (column.key !== undefined) sortMap[column.key] = ''
 		})
@@ -16,7 +16,7 @@
 
 	function sortTable(columnKey, columnType) {
 		//This sort only works if sortCallback is null.
-		
+
 		// save the last sort order for this column
 		const previousSortOrder = sortMap[columnKey]
 
@@ -29,10 +29,6 @@
 
 		// sort the array on the store for this table type
 		list = sortArray(list, columnKey, columnType, sortMap[columnKey])
-
-		console.log("sortTable: sortMap", sortMap)
-		console.log("sortTable: List", list)
-		console.log("sortTable: previousSortOrder", previousSortOrder)
 	}
 </script>
 
