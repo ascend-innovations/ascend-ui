@@ -12,12 +12,16 @@
 >
 	{text}
 	{#if order === 'newest'}
-		<ArrowUpExtraSmallIcon colorOverride="var(--neutral-400)"/>
+	<div class="show-chevron">	
+		<ArrowUpExtraSmallIcon />
+	</div>
 	{:else if order === 'oldest'}
-		<ArrowDownExtraSmallIcon colorOverride="var(--neutral-400)"/>
+	<div class="show-chevron">	
+		<ArrowDownExtraSmallIcon/>
+	</div>
 	{:else if order === ""}
 		<div class="fade-chevron">
-			<ChevronSelectorVerticalExtraSmallIcon colorOverride="var(--neutral-400)" />
+			<ChevronSelectorVerticalExtraSmallIcon/>
 		</div>
 	{/if}
 </button>
@@ -34,15 +38,22 @@
 		padding: 0;
 		width: 100%;
 		color:var(--neutral-400);
+		transition: color 300ms ease-in-out; 
 	}
 	.fade-chevron{
 		opacity:0;
-		transition: opacity 300ms ease-in-out; 
-		
+		transition: all 300ms ease-in-out;
+		color: var(--neutral-400) 
 	}
-	button:hover .fade-chevron {
+	.show-chevron{
+		transition: all 300ms ease-in-out;
+		color: var(--neutral-400) 
+	}
+	button:hover .fade-chevron, .show-chevron {
 		opacity: 1;
+		color: var(--Neutral-800---Base, #140D31);
 	}
-	
-
+	button:hover {
+		color: var(--Neutral-800---Base, #140D31);
+	}
 </style>
