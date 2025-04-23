@@ -38,7 +38,7 @@
 		<div class="sub-nav-wrapper {open ? 'open' : 'closed'}">
 			{#each pageData.sublinks as sublink}
 				<SubNavButton
-					callback={callback}
+					{callback}
 					{sublink}
 				/>
 			{/each}

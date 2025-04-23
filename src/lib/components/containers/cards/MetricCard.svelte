@@ -27,6 +27,6 @@
 		color: var(--neutral-400);
 	}
 	.card-wrapper {
-		gap:0px
+		gap: 0px;
 	}
 </style>

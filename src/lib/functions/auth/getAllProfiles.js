@@ -5,6 +5,5 @@ export default async function getAllProfiles(locals, currentAppId, userOrg) {
 	})
 	const profiles = response.data
 
-
 	return profiles
 }

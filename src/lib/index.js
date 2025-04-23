@@ -100,7 +100,7 @@ export { default as ArrowRightExtraSmallIcon } from '$lib/assets/icons/xs/ArrowR
 export { default as ArrowUpExtraSmallIcon } from '$lib/assets/icons/xs/ArrowUpExtraSmallIcon.svelte'
 export { default as BulletListIcon } from '$lib/assets/icons/xs/BulletListIcon.svelte'
 export { default as CheckExtraSmallIcon } from '$lib/assets/icons/xs/CheckExtraSmallIcon.svelte'
-export {default as ChevronSelectorVerticalExtraSmallIcon} from "$lib/assets/icons/xs/ChevronSelectorVerticalExtraSmallIcon.svelte"
+export { default as ChevronSelectorVerticalExtraSmallIcon } from '$lib/assets/icons/xs/ChevronSelectorVerticalExtraSmallIcon.svelte'
 export { default as NeutralExtraSmallIcon } from '$lib/assets/icons/xs/NeutralExtraSmallIcon.svelte'
 export { default as ProfileExtraSmallIcon } from '$lib/assets/icons/xs/ProfileExtraSmallIcon.svelte'
 export { default as XCircleCloseExtraSmallIcon } from '$lib/assets/icons/xs/XCircleCloseExtraSmallIcon.svelte'
@@ -198,6 +198,7 @@ export { default as DashboardPageTitle } from '$lib/components/containers/pages/
 export { default as Error404Page } from '$lib/components/containers/pages/Error404Page.svelte'
 export { default as Error401Page } from '$lib/components/containers/pages/Error401Page.svelte'
 export { default as LoginPage } from '$lib/components/containers/pages/LoginPage.svelte'
+export { default as MetaData } from '$lib/components/containers/pages/MetaData.svelte'
 export { default as Page } from '$lib/components/containers/pages/Page.svelte'
 export { default as PageBody } from '$lib/components/containers/pages/PageBody.svelte'
 export { default as PageDescription } from '$lib/components/containers/pages/PageDescription.svelte'
