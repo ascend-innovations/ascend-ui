@@ -84,7 +84,7 @@
 
 <style>
 	.navbar {
-		background-color: var(--background-base);
+		background-color: white;
 		color: var(--white-900);
 		display: flex;
 		flex-direction: column;
