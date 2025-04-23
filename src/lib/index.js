@@ -204,6 +204,7 @@ export { default as PageBody } from '$lib/components/containers/pages/PageBody.s
 export { default as PageDescription } from '$lib/components/containers/pages/PageDescription.svelte'
 export { default as PageFooter } from '$lib/components/containers/pages/PageFooter.svelte'
 export { default as PageHeader } from '$lib/components/containers/pages/PageHeader.svelte'
+export { default as PageTransitionWrapper } from '$lib/components/containers/pages/PageTransitionWrapper.svelte'
 export { default as RegistrationPage } from '$lib/components/containers/pages/RegistrationPage.svelte'
 export { default as SSOLandingPage } from '$lib/components/containers/pages/SSOLandingPage.svelte'
 export { default as SupabaseLoginPage } from '$lib/components/containers/pages/SupabaseLoginPage.svelte'
