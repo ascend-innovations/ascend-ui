@@ -1,10 +1,14 @@
 <script>
-    export let title, favicon, image, url, description = ''
+	export let title,
+		favicon,
+		image,
+		url,
+		description = ''
 </script>
 
 <svelte:head>
 	<title>{title}</title>
-    <meta
+	<meta
 		property="og:title"
 		content={title}
 	/>
@@ -13,19 +17,19 @@
 		type="image/x-icon"
 		href={favicon}
 	/>
-    <link
+	<link
 		rel="canonical"
 		href={url}
 	/>
 	<meta
 		property="og:url"
 		content={url}
-	/>   
+	/>
 	<meta
 		property="og:description"
 		content={description}
 	/>
-    <meta
+	<meta
 		name="image"
 		content={image}
 	/>
@@ -33,16 +37,16 @@
 		property="og:image"
 		content={image}
 	/>
-    <meta
-        property="og:image:secure_url"
-        content={image}
-    />
 	<meta
 		property="og:image:secure_url"
 		content={image}
 	/>
-    <meta
-        property="og:type"
-        content="website"
-    />
+	<meta
+		property="og:image:secure_url"
+		content={image}
+	/>
+	<meta
+		property="og:type"
+		content="website"
+	/>
 </svelte:head>

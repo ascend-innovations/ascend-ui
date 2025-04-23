@@ -8,6 +8,7 @@
 		disabled = false,
 		icon = arrow ? ArrowRightSmallIcon : null,
 		loading = false,
+		preload,
 		// loadingIcon = ProgressSpinner,
 		text = '',
 		url = ''
@@ -24,6 +25,7 @@
 	{classes}
 	{disabled}
 	{loading}
+	{preload}
 	{text}
 	{url}
 />
