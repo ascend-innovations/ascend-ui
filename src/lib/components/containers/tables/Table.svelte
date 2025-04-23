@@ -4,7 +4,8 @@
 	export let columns = [],
 		list = [],
 		sortCallback,
-		chart = false
+		chart = false,
+		sortMap = {}
 </script>
 
 <section class="no-gap {chart ? '' : 'table-container'}">
@@ -12,6 +13,7 @@
 		bind:list
 		{sortCallback}
 		{columns}
+		{sortMap}
 	/>
 	<TableBody
 		bind:list

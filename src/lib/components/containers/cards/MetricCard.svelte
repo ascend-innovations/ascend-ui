@@ -16,12 +16,17 @@
 	{styles}
 	{url}
 >
-	<div class="body-s semibold">{title}</div>
-	<div class="headline-l-xl semibold">{value}</div>
+	<div class="card-wrapper">
+		<div class="body-bold-body-xs semibold card-color-override">{title}</div>
+		<div class="headline-l-xl">{value}</div>
+	</div>
 </Card>
 
 <style>
-	.body-s {
+	.card-color-override {
 		color: var(--neutral-400);
+	}
+	.card-wrapper {
+		gap:0px
 	}
 </style>
