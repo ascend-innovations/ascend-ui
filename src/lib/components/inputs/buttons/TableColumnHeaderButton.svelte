@@ -12,12 +12,12 @@
 >
 	{text}
 	{#if order === 'newest'}
-	<div class="show-chevron">	
-		<ArrowUpExtraSmallIcon/>
+	<div class="arrow-display-override">	
+		<ArrowUpExtraSmallIcon colorOverride="var(--icon-color-override)"/>
 	</div>
 	{:else if order === 'oldest'}
-	<div class="show-chevron">	
-		<ArrowDownExtraSmallIcon />
+	<div class="arrow-display-override">	
+		<ArrowDownExtraSmallIcon colorOverride="var(--icon-color-override)"/>
 	</div>
 	{:else if order === ""}
 		<div class="fade-chevron">
@@ -45,20 +45,21 @@
 		transition: all 300ms ease-in-out;
 		color: var(--neutral-400) 
 	}
-	.show-chevron {
-		opacity: 1;
+	.arrow-display-override {
+		opacity: 0.65;
 		--icon-color-override: var(--neutral-400);
 		transition: all 300ms ease-in-out;
 	}
 	button:hover .fade-chevron{
 		opacity: 1;
-		color: var(--Neutral-800---Base, #140D31);
+		color: var(--Neutral-800);
 	}
-	button:hover .show-chevron {
-		--icon-color-override: var(--Neutral-800---Base, #140D31);
+	button:hover .arrow-display-override {
+		opacity: 1;
+		--icon-color-override: var(--neutral-800);
 	}
 	button:hover {
-		color: var(--Neutral-800---Base, #140D31);
+		color: var(--Neutral-800);
 	}
 	
 </style>
