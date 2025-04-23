@@ -17,13 +17,13 @@
 	{url}
 >
 	<div class="card-wrapper">
-		<div class="body-bold-body-xs semibold text-fade">{title}</div>
+		<div class="body-bold-body-xs semibold card-color-override">{title}</div>
 		<div class="headline-l-xl">{value}</div>
 	</div>
 </Card>
 
 <style>
-	.text-fade {
+	.card-color-override {
 		color: var(--neutral-400);
 	}
 	.card-wrapper {
