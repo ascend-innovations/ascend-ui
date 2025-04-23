@@ -5,7 +5,7 @@
 <style>
 	.header-bar {
 		align-items: center;
-		background: var(--neutral-000);
+		background: white;
 		display: flex;
 		height: var(--spacing14);
 		justify-content: flex-end;
