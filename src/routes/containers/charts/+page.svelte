@@ -413,11 +413,11 @@
 	]
 
 	let pieData = [
-		{ name: 'MCADAMHS', value: 45 },
-		{ name: 'Tri-County', value: 33 },
-		{ name: '317 Board', value: 10 },
-		{ name: 'AAH', value: 13 },
-		{ name: 'Logan-Champaign', value: 65 },
+		{ name: 'MCADAMHS', value: 45, Percentage: '234' },
+		{ name: 'Tri-County', value: 33, Percentage: '123' },
+		{ name: '317 Board', value: 10, Percentage: '34' },
+		{ name: 'AAH', value: 13, Percentage: '24' },
+		{ name: 'Logan-Champaign', value: 65, Percentage: '23' },
 	]
 
 	let firstGeoData = [
@@ -859,7 +859,8 @@
 					domain="name"
 					range="value"
 					seriesKey="name"
-					valueTwoLabel="Count"
+					valueOneLabel="Count"
+					valueTwoLabel="Percentage"
 					ring
 				/>
 			</div>

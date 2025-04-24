@@ -90,8 +90,8 @@
 		tooltipData.y = e.offsetY - 85
 		tooltipData.x = e.offsetX - 10
 		tooltipData.title = d.data[domain]
-		tooltipData.valueOne = d.data[domain]
-		if (valueTwoLabel) tooltipData.valueTwo = d.data[range]
+		tooltipData.valueOne = d.data[range]
+		if (valueTwoLabel) tooltipData.valueTwo = d.data[valueTwoLabel]
 		changeOpacityOnHover(i)
 	}
 
