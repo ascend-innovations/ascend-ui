@@ -178,6 +178,7 @@ export { default as ChartKey } from '$lib/components/containers/labels/ChartKey.
 export { default as ChartKeyContainer } from '$lib/components/containers/labels/ChartKeyContainer.svelte'
 export { default as FilterContainer } from '$lib/components/containers/labels/FilterContainer.svelte'
 export { default as FilterLabel } from '$lib/components/containers/labels/FilterLabel.svelte'
+export { default as MapColorKey } from '$lib/components/containers/labels/MapColorKey.svelte'
 
 // Layout
 export { default as Main } from '$lib/components/containers/layout/Main.svelte'
