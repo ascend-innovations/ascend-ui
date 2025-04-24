@@ -338,7 +338,7 @@
 	<!-- Areas -->
 	{#if stacked}
 		{#each stack as series, i}
-			{@const gradient = `area-gradient-${i}`}
+			{@const gradient = `area-gradient-${i}-${tooltipId}`}
 			<!-- gradient -->
 			<defs>
 				<linearGradient
@@ -395,7 +395,7 @@
 		<!-- gradient -->
 		<defs>
 			<linearGradient
-				id="area-gradient"
+				id="area-gradient-{tooltipId}"
 				x1="0%"
 				x2="0%"
 				y1="0%"
