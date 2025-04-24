@@ -86,9 +86,11 @@
 	}
 
 	function movingTooltip(e, d, i) {
-		const [x, y] = d3.pointer(e)
-		tooltipData.y = e.offsetY - 85
-		tooltipData.x = e.offsetX - 10
+		let tooltipHeight = tooltip.node().getBoundingClientRect().height
+		let tooltipWidth = tooltip.node().getBoundingClientRect().width
+		
+		tooltipData.y = e.offsetY - tooltipHeight - 20
+		tooltipData.x = e.offsetX - tooltipWidth / 2
 		tooltipData.title = d.data[domain]
 		tooltipData.valueOne = d.data[range]
 		if (valueTwoLabel) tooltipData.valueTwo = d.data[valueTwoLabel]
