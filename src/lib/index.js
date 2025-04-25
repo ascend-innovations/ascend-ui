@@ -212,6 +212,7 @@ export { default as SupabaseLoginPage } from '$lib/components/containers/pages/S
 export { default as SupabaseOtpLoginPage } from '$lib/components/containers/pages/SupabaseOtpLoginPage.svelte'
 
 // Progress
+export { default as PageLoadingSpinner } from '$lib/components/containers/progress/PageLoadingSpinner.svelte'
 export { default as ProgressBar } from '$lib/components/containers/progress/ProgressBar.svelte'
 export { default as ProgressSpinner } from '$lib/components/containers/progress/ProgressSpinner.svelte'
 
