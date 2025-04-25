@@ -101,6 +101,7 @@ export { default as ArrowUpExtraSmallIcon } from '$lib/assets/icons/xs/ArrowUpEx
 export { default as BulletListIcon } from '$lib/assets/icons/xs/BulletListIcon.svelte'
 export { default as CheckExtraSmallIcon } from '$lib/assets/icons/xs/CheckExtraSmallIcon.svelte'
 export { default as ChevronSelectorVerticalExtraSmallIcon } from '$lib/assets/icons/xs/ChevronSelectorVerticalExtraSmallIcon.svelte'
+export { default as LinkBrokenExtraSmallIcon } from '$lib/assets/icons/xs/LinkBrokenExtraSmallIcon.svelte'
 export { default as NeutralExtraSmallIcon } from '$lib/assets/icons/xs/NeutralExtraSmallIcon.svelte'
 export { default as ProfileExtraSmallIcon } from '$lib/assets/icons/xs/ProfileExtraSmallIcon.svelte'
 export { default as XCircleCloseExtraSmallIcon } from '$lib/assets/icons/xs/XCircleCloseExtraSmallIcon.svelte'
