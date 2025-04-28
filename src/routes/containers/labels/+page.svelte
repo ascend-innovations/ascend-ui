@@ -1,5 +1,5 @@
 <script>
-import {
+	import {
 		FilterContainer,
 		Page,
 		PageBody,
@@ -22,7 +22,7 @@ import {
 		SearchSmallIcon,
 		NotificationTextSmallIcon,
 		StarEmptySmallIcon,
-		AutoSaveIndicator
+		AutoSaveIndicator,
 	} from '$lib/index.js'
 
 	const filters = [

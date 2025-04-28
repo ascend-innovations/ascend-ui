@@ -1,7 +1,293 @@
 <script>
-	import GeoChart from '$lib/components/containers/charts/GeoChart.svelte'
 	import SelectorInput from '$lib/components/inputs/selectors/SelectorInput.svelte'
-	import { Chart, Page, PageBody, NextButton, StatusTag, Card } from '$lib/index.js'
+	import { Chart, Page, PageBody, StatusTag, PageTransitionWrapper } from '$lib/index.js'
+
+	let newGeoData = [
+    {
+        "count": 2,
+        "type": "provider",
+        "name": "CompDrug Youth to Youth",
+        "address": {
+            "full_address": "118 E Main St, Columbus, OH 43215",
+            "street": "118 E Main St",
+            "city": "Columbus",
+            "state": "OH",
+            "zip": "43215"
+        },
+        "lat": "39.956579705882355",
+        "lng": "-82.99637",
+        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+    },
+    {
+        "count": 1,
+        "type": "provider",
+        "name": "DayMont Behavioral Health Care",
+        "address": {
+            "full_address": "1520 Germantown St, Dayton, OH 45417",
+            "street": "1520 Germantown St",
+            "city": "Dayton",
+            "state": "OH",
+            "zip": "45417"
+        },
+        "lat": "39.7466037790724",
+        "lng": "-84.21846334262618",
+        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+    },
+    {
+        "count": 1,
+        "type": "provider",
+        "name": "Dayton Children’s Hospital",
+        "address": {
+            "full_address": "1 Childrens Plaza, Dayton, OH 45404",
+            "street": "1 Childrens Plaza",
+            "city": "Dayton",
+            "state": "OH",
+            "zip": "45404"
+        },
+        "lat": "39.774028",
+        "lng": "-84.169785",
+        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+    },
+    {
+        "count": 1,
+        "type": "provider",
+        "name": "Life Essentials",
+        "address": {
+            "full_address": "40 S. Perry St, Dayton, OH, 45402",
+            "street": "40 S. Perry St",
+            "city": "Dayton",
+            "state": "OH",
+            "zip": "45402"
+        },
+        "lat": "39.7577977",
+        "lng": "-84.1958771",
+        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+    },
+    {
+        "count": 1,
+        "type": "provider",
+        "name": "Miami Valley Hospital",
+        "address": {
+            "full_address": "1 Wyoming St, Dayton, OH 45409",
+            "street": "1 Wyoming St",
+            "city": "Dayton",
+            "state": "OH",
+            "zip": "45409"
+        },
+        "lat": "39.74524605",
+        "lng": "-84.18604426125285",
+        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+    },
+    {
+        "count": 1,
+        "type": "provider",
+        "name": "Naphcare",
+        "address": {
+            "full_address": "330 West 2Nd St, Dayton, OH 45422",
+            "street": "330 West 2Nd St",
+            "city": "Dayton",
+            "state": "OH",
+            "zip": "45422"
+        },
+        "lat": "39.75999523076923",
+        "lng": "-84.19780969230769",
+        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+    },
+    {
+        "count": 2,
+        "type": "provider",
+        "name": "Nova Behavioral Health",
+        "address": {
+            "full_address": "732 Beckman St, Dayton, OH 45410",
+            "street": "732 Beckman St",
+            "city": "Dayton",
+            "state": "OH",
+            "zip": "45410"
+        },
+        "lat": "39.73863097959184",
+        "lng": "-84.1649025510204",
+        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+    },
+    {
+        "count": 2,
+        "type": "provider",
+        "name": "Places Inc",
+        "address": {
+            "full_address": "11 W Monument Ave, Dayton, OH 45402",
+            "street": "11 W Monument Ave",
+            "city": "Dayton",
+            "state": "OH",
+            "zip": "45402"
+        },
+        "lat": "39.7638755",
+        "lng": "-84.1935741",
+        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+    },
+    {
+        "count": 1,
+        "type": "provider",
+        "name": "RI International",
+        "address": {
+            "full_address": "601 S Edwin C Moses Blvd, Dayton, Ohio 45417",
+            "street": "601 S Edwin C Moses Blvd",
+            "city": "Dayton",
+            "state": "Ohio",
+            "zip": "45417"
+        },
+        "lat": "39.749291",
+        "lng": "-84.199271",
+        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+    },
+    {
+        "count": 1,
+        "type": "provider",
+        "name": "Samaritan Behavioral Health",
+        "address": {
+            "full_address": "707 S Edwin C Moses Blvd, Dayton, OH 45417",
+            "street": "707 S Edwin C Moses Blvd",
+            "city": "Dayton",
+            "state": "OH",
+            "zip": "45417"
+        },
+        "lat": "39.74467867805528",
+        "lng": "-84.19565849496281",
+        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+    },
+    {
+        "count": 1,
+        "type": "provider",
+        "name": "Sojourner Recovery Services",
+        "address": {
+            "full_address": "294 N Fair Ave, Hamilton, OH 45011",
+            "street": "294 N Fair Ave",
+            "city": "Hamilton",
+            "state": "OH",
+            "zip": "45011"
+        },
+        "lat": "39.39595183513435",
+        "lng": "-84.54178957396414",
+        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+    },
+    {
+        "count": 2,
+        "type": "provider",
+        "name": "South Community",
+        "address": {
+            "full_address": "3095 Kettering Blvd, Moraine, OH 45439",
+            "street": "3095 Kettering Blvd",
+            "city": "Moraine",
+            "state": "OH",
+            "zip": "45439"
+        },
+        "lat": "39.705709526484625",
+        "lng": "-84.20325425252015",
+        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+    },
+    {
+        "count": 1,
+        "type": "provider",
+        "name": "We Care Arts",
+        "address": {
+            "full_address": "3035 Wilmington Pike, Kettering, OH 45429",
+            "street": "3035 Wilmington Pike",
+            "city": "Kettering",
+            "state": "OH",
+            "zip": "45429"
+        },
+        "lat": "39.70296976384365",
+        "lng": "-84.14193812556123",
+        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+    },
+    {
+        "count": 1,
+        "type": "provider",
+        "name": "Women's Recovery Center",
+        "address": {
+            "full_address": "6209 Storer Ave, Cleveland, OH 44102",
+            "street": "6209 Storer Ave",
+            "city": "Cleveland",
+            "state": "OH",
+            "zip": "44102"
+        },
+        "lat": "41.46226081818182",
+        "lng": "-81.72850972727272",
+        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+    },
+    {
+        "count": 1,
+        "type": "jail",
+        "name": "Putnam County Sheriff's Office",
+        "address": {
+            "full_address": "1035 Heritage Trail, Ottawa, OH 45875",
+            "street": "1035 Heritage Trail",
+            "city": "Ottawa",
+            "state": "OH",
+            "zip": "45875"
+        },
+        "lat": "41.0057956",
+        "lng": "-84.03914312838722",
+        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/jail-pin.svg"
+    },
+    {
+        "count": 1,
+        "type": "jail",
+        "name": "Highland County Jail",
+        "address": {
+            "full_address": "130 Homestead Dr, Hillsboro, OH 45133",
+            "street": "130 Homestead Dr",
+            "city": "Hillsboro",
+            "state": "OH",
+            "zip": "45133"
+        },
+        "lat": "39.234917439995485",
+        "lng": "-83.61752128580763",
+        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/jail-pin.svg"
+    },
+    {
+        "count": 1,
+        "type": "jail",
+        "name": "Clermont County Jail",
+        "address": {
+            "full_address": "4700 E Filager Rd, Batavia, OH 45103",
+            "street": "4700 E Filager Rd",
+            "city": "Batavia",
+            "state": "OH",
+            "zip": "45103"
+        },
+        "lat": "39.094554",
+        "lng": "-84.185891",
+        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/jail-pin.svg"
+    },
+    {
+        "count": 1,
+        "type": "jail",
+        "name": "Shelby County Jail",
+        "address": {
+            "full_address": "555 Gearhart Rd, Sidney, OH 45365",
+            "street": "555 Gearhart Rd",
+            "city": "Sidney",
+            "state": "OH",
+            "zip": "45365"
+        },
+        "lat": "40.2725665",
+        "lng": "-84.1511522",
+        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/jail-pin.svg"
+    },
+    {
+        "type": "home",
+        "address": {
+            "street": "5804 Prince Edward Way",
+            "city": "Huber Heights",
+            "state": "OH",
+            "zip": "45424",
+            "full_address": "5804 Prince Edward Way, Huber Heights OH 45424"
+        },
+        "full_address": "5804 Prince Edward Way, Huber Heights OH 45424",
+        "lat": "39.83767198475636",
+        "lng": "-84.13616387494658",
+        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/home-pin.svg"
+    }
+]
 
 	let barData = [
 		{ x: 'M', series: 'Source', value: 10 },
@@ -127,11 +413,11 @@
 	]
 
 	let pieData = [
-		{ name: 'MCADAMHS', value: 45 },
-		{ name: 'Tri-County', value: 33 },
-		{ name: '317 Board', value: 10 },
-		{ name: 'AAH', value: 13 },
-		{ name: 'Logan-Champaign', value: 65 },
+		{ name: 'MCADAMHS', value: 45, Percentage: '234' },
+		{ name: 'Tri-County', value: 33, Percentage: '123' },
+		{ name: '317 Board', value: 10, Percentage: '34' },
+		{ name: 'AAH', value: 13, Percentage: '24' },
+		{ name: 'Logan-Champaign', value: 65, Percentage: '23' },
 	]
 
 	let firstGeoData = [
@@ -407,6 +693,7 @@
 </script>
 
 <Page>
+	<PageTransitionWrapper>
 	<PageBody
 		size="full"
 		styles={['max-width: 1440px', 'margin: auto']}
@@ -572,7 +859,8 @@
 					domain="name"
 					range="value"
 					seriesKey="name"
-					valueTwoLabel="Count"
+					valueOneLabel="Count"
+					valueTwoLabel="Percentage"
 					ring
 				/>
 			</div>
@@ -603,7 +891,7 @@
 					geoJSON={null}
 				/>
 			</div> -->
-			<!-- <div class="geo-chart">
+			<div class="geo-chart">
 				<Chart 
 					title="Map With Multiple Markers"
 					type="geo"
@@ -613,11 +901,13 @@
 					addressKey="full_address"
 					infoTitleKey="name"
 					markers={markers}
-					data={realData}
+					geoJSON={null}
+					data={newGeoData}
 				/>
-			</div> -->
+			</div>
 		</div>
 	</PageBody>
+	</PageTransitionWrapper>
 </Page>
 
 <style>

@@ -4,9 +4,10 @@
 	import { onMount } from 'svelte'
 
 	export let callback,
-		pageData = undefined,
 		navBarOpen,
-		open = false
+		open = false,
+		pageData = undefined,
+		preload
 
 	function toggleSubNav() {
 		open = !open
@@ -38,8 +39,9 @@
 		<div class="sub-nav-wrapper {open ? 'open' : 'closed'}">
 			{#each pageData.sublinks as sublink}
 				<SubNavButton
-					callback={callback}
+					{callback}
 					{sublink}
+					{preload}
 				/>
 			{/each}
 		</div>

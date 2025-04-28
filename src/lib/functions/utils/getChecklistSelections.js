@@ -1,5 +1,5 @@
 export default function getChecklistSelections(list, parameter = 'value') {
-    const selected = []
+	const selected = []
 	for (let item of list) {
 		if (item[parameter] === 'All') continue
 		if (item.selected) {

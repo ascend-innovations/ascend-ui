@@ -1,7 +1,9 @@
 <script>
 	import { CheckboxInput } from '$lib/index.js'
 
-	export let value, checked, callback = null
+	export let value,
+		checked,
+		callback = null
 </script>
 
 <div class="custom-select-option">
