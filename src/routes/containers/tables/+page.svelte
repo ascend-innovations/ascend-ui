@@ -147,12 +147,11 @@
 				{columns}
 				bind:list
 			/> -->
-			<!--
+
 			<PaginatedTable
 				{columns}
 				{list}
 			/>
-			-->
 			<PaginatedTable
 			{columns}
 			list={list2}

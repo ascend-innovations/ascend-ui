@@ -4,7 +4,7 @@
 
 	export let arrow = true,
 		callback = null,
-		classes = ['btn-fit', 'btn-l', 'btn-square'],
+		classes = ['btn-fit', 'btn-l', 'btn-outline', 'btn-square'],
 		disabled = false,
 		icon = arrow ? ArrowRightSmallIcon : null,
 		loading = false,
