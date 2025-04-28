@@ -1,6 +1,12 @@
 export default function abbreviateNumber(number, start = 10000) {
 	let abvNumber = ''
-	if (number >= 1000000000000) {
+
+	let isPositive = (number >= 0)
+	number = Math.abs(number)
+	if(!number){
+		return abvNumber = "0"
+	}
+	else if (number >= 1000000000000) {
 		abvNumber = `${(number * 0.000000000001).toFixed(1)}T`
 	} else if (number >= 1000000000) {
 		abvNumber = `${(number * 0.000000001).toFixed(1)}B`
@@ -21,5 +27,8 @@ export default function abbreviateNumber(number, start = 10000) {
 	} else {
 		abvNumber = number.toString()
 	}
+
+	if(isPositive !== true){abvNumber = "-" + abvNumber}
+
 	return abvNumber
 }
