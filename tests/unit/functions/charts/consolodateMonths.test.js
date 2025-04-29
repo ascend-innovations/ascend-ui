@@ -54,7 +54,9 @@ describe("Tests that consolodateMonths proerly handles bad data ", () =>{
     }
     let testDate = new Date("2023-01-01T05:00:00.000Z")
     let consolodatedMonths = consolidateMonths(chartData, "date", "value")
-    console.log(consolodatedMonths)
+    
+    //console.log(consolodatedMonths)
+    
     it('Tests consolodateMonths with proper input', () =>{
         
         expect(consolodatedMonths[0]).toEqual(
@@ -123,7 +125,20 @@ describe("Tests that consolodateMonths proerly handles bad data ", () =>{
         let testDate2 = new Date("2023-01-01T05:00:00.000Z")
         let consolodatedMonths2 = consolidateMonths(chartData2, "date", "value")
 
-        console.log(consolodatedMonths2)
-
+        // console.log(consolodatedMonths2)
+    })
+    it("Tests that consolodateMonths does not crash on too few entries", ()=> {
+        let data3 = [
+            { date: '2023-01-01T00:00:00-05:00', series: 'CIT', value: 1400.33 }
+            ]
+        
+        let chartData3 = JSON.parse(JSON.stringify(data3))
+        for (let obj of chartData3) {
+            obj[domain] = new Date(obj[domain])
+        }
+        let testDate3 = new Date("2023-01-01T05:00:00.000Z")
+        let consolodatedMonths3 = consolidateMonths(chartData3, "date", "value")
+        
+        // console.log(consolodatedMonths3)
     })
 })
