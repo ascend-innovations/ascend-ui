@@ -2,6 +2,19 @@
 	import SelectorInput from '$lib/components/inputs/selectors/SelectorInput.svelte'
 	import { Chart, Page, PageBody, StatusTag, PageTransitionWrapper } from '$lib/index.js'
 
+	let svgpin = `<div style="position:relative;">
+			<svg width="48" height="61" viewBox="0 0 48 61" fill="none">
+				<path d="M4.6144 36.9987C-6.21162 21.3611 4.98056 0 23.9999 0C43.0193 0 54.2115 21.3611 43.3855 36.9987L28.5877 58.3733C26.3688 61.5783 21.6311 61.5783 19.4122 58.3733L4.6144 36.9987Z" fill="#A04B4B"/>
+  				<path fill-rule="evenodd" clip-rule="evenodd" d="M6.25879 35.8603L21.0566 57.2349C22.4801 59.2911 25.5197 59.2911 26.9433 57.2349L41.7411 35.8602C51.6488 21.5491 41.406 2 23.9999 2C6.59389 2 -3.64892 21.5491 6.25879 35.8603ZM23.9999 0C4.98056 0 -6.21162 21.3611 4.6144 36.9987L19.4122 58.3733C21.6311 61.5783 26.3688 61.5783 28.5877 58.3733L43.3855 36.9987C54.2115 21.3611 43.0193 0 23.9999 0Z" fill="#F8EDEB"/>
+				<circle cx="24" cy="24" r="16" fill="white"/>
+			</svg>
+			<svg style="position: absolute;left:24px;top: 19%;transform:translateX(-50%);" width="24" height="24" viewBox="0 0 24 24" fill="none">
+				<path d="M15.5 11.5H14.5L13 14.5L11 8.5L9.5 11.5H8.5M11.9932 5.13581C9.9938 2.7984 6.65975 2.16964 4.15469 4.31001C1.64964 6.45038 1.29697 10.029 3.2642 12.5604C4.75009 14.4724 8.97129 18.311 10.948 20.0749C11.3114 20.3991 11.4931 20.5613 11.7058 20.6251C11.8905 20.6805 12.0958 20.6805 12.2805 20.6251C12.4932 20.5613 12.6749 20.3991 13.0383 20.0749C15.015 18.311 19.2362 14.4724 20.7221 12.5604C22.6893 10.029 22.3797 6.42787 19.8316 4.31001C17.2835 2.19216 13.9925 2.7984 11.9932 5.13581Z" stroke="#140D31" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+		</div>`
+
+	let pin = 'https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/hospital-pin.svg'
+
 	let newGeoData = [
     {
         "count": 2,
@@ -16,7 +29,8 @@
         },
         "lat": "39.956579705882355",
         "lng": "-82.99637",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+		"html": "true",
+        "marker": svgpin
     },
     {
         "count": 1,
@@ -31,7 +45,7 @@
         },
         "lat": "39.7466037790724",
         "lng": "-84.21846334262618",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+        "marker": pin
     },
     {
         "count": 1,
@@ -46,7 +60,7 @@
         },
         "lat": "39.774028",
         "lng": "-84.169785",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+        "marker": pin
     },
     {
         "count": 1,
@@ -61,7 +75,7 @@
         },
         "lat": "39.7577977",
         "lng": "-84.1958771",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+        "marker": pin
     },
     {
         "count": 1,
@@ -76,7 +90,7 @@
         },
         "lat": "39.74524605",
         "lng": "-84.18604426125285",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+        "marker": pin
     },
     {
         "count": 1,
@@ -91,7 +105,7 @@
         },
         "lat": "39.75999523076923",
         "lng": "-84.19780969230769",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+        "marker": pin
     },
     {
         "count": 2,
@@ -106,7 +120,7 @@
         },
         "lat": "39.73863097959184",
         "lng": "-84.1649025510204",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+        "marker": pin
     },
     {
         "count": 2,
@@ -121,7 +135,7 @@
         },
         "lat": "39.7638755",
         "lng": "-84.1935741",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+        "marker": pin
     },
     {
         "count": 1,
@@ -136,7 +150,7 @@
         },
         "lat": "39.749291",
         "lng": "-84.199271",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+        "marker": pin
     },
     {
         "count": 1,
@@ -151,7 +165,7 @@
         },
         "lat": "39.74467867805528",
         "lng": "-84.19565849496281",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+        "marker": pin
     },
     {
         "count": 1,
@@ -166,7 +180,7 @@
         },
         "lat": "39.39595183513435",
         "lng": "-84.54178957396414",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+        "marker": pin
     },
     {
         "count": 2,
@@ -181,111 +195,7 @@
         },
         "lat": "39.705709526484625",
         "lng": "-84.20325425252015",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
-    },
-    {
-        "count": 1,
-        "type": "provider",
-        "name": "We Care Arts",
-        "address": {
-            "full_address": "3035 Wilmington Pike, Kettering, OH 45429",
-            "street": "3035 Wilmington Pike",
-            "city": "Kettering",
-            "state": "OH",
-            "zip": "45429"
-        },
-        "lat": "39.70296976384365",
-        "lng": "-84.14193812556123",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
-    },
-    {
-        "count": 1,
-        "type": "provider",
-        "name": "Women's Recovery Center",
-        "address": {
-            "full_address": "6209 Storer Ave, Cleveland, OH 44102",
-            "street": "6209 Storer Ave",
-            "city": "Cleveland",
-            "state": "OH",
-            "zip": "44102"
-        },
-        "lat": "41.46226081818182",
-        "lng": "-81.72850972727272",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
-    },
-    {
-        "count": 1,
-        "type": "jail",
-        "name": "Putnam County Sheriff's Office",
-        "address": {
-            "full_address": "1035 Heritage Trail, Ottawa, OH 45875",
-            "street": "1035 Heritage Trail",
-            "city": "Ottawa",
-            "state": "OH",
-            "zip": "45875"
-        },
-        "lat": "41.0057956",
-        "lng": "-84.03914312838722",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/jail-pin.svg"
-    },
-    {
-        "count": 1,
-        "type": "jail",
-        "name": "Highland County Jail",
-        "address": {
-            "full_address": "130 Homestead Dr, Hillsboro, OH 45133",
-            "street": "130 Homestead Dr",
-            "city": "Hillsboro",
-            "state": "OH",
-            "zip": "45133"
-        },
-        "lat": "39.234917439995485",
-        "lng": "-83.61752128580763",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/jail-pin.svg"
-    },
-    {
-        "count": 1,
-        "type": "jail",
-        "name": "Clermont County Jail",
-        "address": {
-            "full_address": "4700 E Filager Rd, Batavia, OH 45103",
-            "street": "4700 E Filager Rd",
-            "city": "Batavia",
-            "state": "OH",
-            "zip": "45103"
-        },
-        "lat": "39.094554",
-        "lng": "-84.185891",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/jail-pin.svg"
-    },
-    {
-        "count": 1,
-        "type": "jail",
-        "name": "Shelby County Jail",
-        "address": {
-            "full_address": "555 Gearhart Rd, Sidney, OH 45365",
-            "street": "555 Gearhart Rd",
-            "city": "Sidney",
-            "state": "OH",
-            "zip": "45365"
-        },
-        "lat": "40.2725665",
-        "lng": "-84.1511522",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/jail-pin.svg"
-    },
-    {
-        "type": "home",
-        "address": {
-            "street": "5804 Prince Edward Way",
-            "city": "Huber Heights",
-            "state": "OH",
-            "zip": "45424",
-            "full_address": "5804 Prince Edward Way, Huber Heights OH 45424"
-        },
-        "full_address": "5804 Prince Edward Way, Huber Heights OH 45424",
-        "lat": "39.83767198475636",
-        "lng": "-84.13616387494658",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/home-pin.svg"
+        "marker": pin
     }
 ]
 
@@ -686,10 +596,6 @@
 	$: geoData = 'realData'
 
 	export let data
-
-	let emptyData
-
-	// $: combinedData = JSON.parse(JSON.stringify(data.boardDemographics.age_group))
 </script>
 
 <Page>
