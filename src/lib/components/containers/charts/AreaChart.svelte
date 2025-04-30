@@ -258,14 +258,16 @@
 			mouseValue = d[1] - d[0]
 			tooltipData.line = xScale(d.data[0])
 			tooltipData.circlePosition = yScale(d[1])
-			tooltipData.valueOne = fullDate ? formatFull(d.data[0]) : yearOnly ? formatYear(d.data[0]) : monthOnly ? formatMonth(d.data[0]) : monthDay ? formatMonthDay(d.data[0]) : monthYear ? formatMonthYear(d.data[0]) : quarters ? formatQuarter(d.data[0]) : formatFull(d.data[0])
+			tooltipData.valueOne = labelFormat(d.data[0])
+			// tooltipData.valueOne = fullDate ? formatFull(d.data[0]) : yearOnly ? formatYear(d.data[0]) : monthOnly ? formatMonth(d.data[0]) : monthDay ? formatMonthDay(d.data[0]) : monthYear ? formatMonthYear(d.data[0]) : quarters ? formatQuarter(d.data[0]) : formatFull(d.data[0])
 			coords.set({ x: xScale(d.data[0]), y: yScale(d[1]) })
 			tooltipData.x = $coords.x - tooltipWidth / 2
 			tooltipData.y = $coords.y - tooltipHeight - 40
 		} else {
 			mouseValue = chartData[i][range]
 			tooltipData.circlePosition = yScale(mouseValue)
-			tooltipData.valueOne = fullDate ? formatFull(chartData[i][domain]) : yearOnly ? formatYear(chartData[i][domain]) : monthOnly ? formatMonth(chartData[i][domain]) : monthDay ? formatMonthDay(chartData[i][domain]) : monthYear ? formatMonthYear(chartData[i][domain]) : quarters ? formatQuarter(d.data[0]) : formatFull(chartData[i][domain])
+			tooltipData.valueOne = labelFormat(chartData[i][domain])
+			// tooltipData.valueOne = fullDate ? formatFull(chartData[i][domain]) : yearOnly ? formatYear(chartData[i][domain]) : monthOnly ? formatMonth(chartData[i][domain]) : monthDay ? formatMonthDay(chartData[i][domain]) : monthYear ? formatMonthYear(chartData[i][domain]) : quarters ? formatQuarter(d.data[0]) : formatFull(chartData[i][domain])
 			coords.set({ x: xScale(chartData[i][domain]), y: yScale(mouseValue) })
 			tooltipData.x = $coords.x - tooltipWidth / 2
 			tooltipData.y = $coords.y - tooltipHeight - 40
