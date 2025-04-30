@@ -107,6 +107,7 @@
 	$: if (chartData !== undefined) {
 		for (let obj of chartData) {
 			obj[domain] = new Date(obj[domain])
+			obj[range] = parseFloat(obj[range])
 		}
 		const min = d3.min(chartData, (d) => d[domain])
 		const max = d3.max(chartData, (d) => d[domain])
