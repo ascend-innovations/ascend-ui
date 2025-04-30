@@ -109,13 +109,40 @@
 			obj[domain] = new Date(obj[domain])
 			obj[range] = parseFloat(obj[range])
 		}
+		chartData.sort((a, b) => a[domain] - b[domain])
 		const min = d3.min(chartData, (d) => d[domain])
 		const max = d3.max(chartData, (d) => d[domain])
 		dayInterval = d3.timeDay.count(min, max)
 		monthInterval = d3.timeMonth.count(min, max)
 		yearInterval = d3.timeYear.count(min, max)
 		if (stacked) {
-			// todo
+			// if (quarters) {
+			// 	labelFormat = formatQuarter
+			// 	tickFormat = d3.timeQuarter
+			// } else if (fiscalQuarters) {
+			// 	labelFormat = formatFiscalQuarter
+			// 	tickFormat = d3.timeQuarter
+			// } else if (fiscalYears) {
+			// 	labelFormat = formatFiscalYear
+			// 	tickFormat = d3.timeYear
+			// } else if (yearInterval >= 2 && yearInterval <= 20) {
+			// 	console.log('years')
+			// 	labelFormat = formatYear
+			// 	tickFormat = d3.timeYear
+			// 	everyOther = false
+			// 	chartData = [...consolidateYears(chartData, domain, range)]
+			// 	if (yearInterval >= 11) everyOther = true
+			// } else if (monthInterval >= 2 && monthInterval <= 23) {
+			// 	labelFormat = formatMonthYear // eo
+			// 	tickFormat = d3.timeMonth
+			// 	everyOther = false
+			// 	chartData = [...consolidateMonths(chartData, domain, range)]
+			// 	if (monthInterval >= 13) everyOther = true
+			// } else if (dayInterval <= 31) {
+			// 	labelFormat = formatMonthDay
+			// 	tickFormat = d3.timeDay
+			// 	everyOther = false
+			// }
 		} else {
 			if (quarters) {
 				labelFormat = formatQuarter
@@ -334,7 +361,7 @@
 			x={marginLeft - 15}
 			y={yScale(tick) + 5}
 		>
-			{abbreviateNumber(tick, 1000)}
+			{currency ? '$' + abbreviateNumber(tick, 1000) : '' + abbreviateNumber(tick, 1000)}
 		</text>
 	{/each}
 
