@@ -57,7 +57,7 @@
 	$: height = chartHeight
 	$: textOpacitySwitch = innerWidth < 678
 	let marginLeft = 50
-	let marginRight = 15
+	let marginRight = 20
 	let marginTop = 24
 	let marginBottom = domainLabel ? 50 : 24
 	let avgArray = []
