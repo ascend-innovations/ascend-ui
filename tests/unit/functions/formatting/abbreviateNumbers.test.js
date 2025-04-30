@@ -54,5 +54,20 @@ describe("Test that numbers are properly abbreviated nulls are handled properly.
         expect(abbreviateNumber("1000")).toBe("1,000")
         expect(abbreviateNumber("100000")).toBe("100.0K")
 
-    })     
+    })
+
+    it('Tests abbreviate function empty arrays and objects', () =>{
+        
+        console.log("Abbreviate number", abbreviateNumber([]))
+        console.log("Abbreviate number", abbreviateNumber({}))
+        console.log("Abbreviate number", abbreviateNumber(['100']))
+        console.log("Abbreviate number", abbreviateNumber({number:'100'}))
+
+        console.log("Abbreviate number", abbreviateNumber(['10000000']))
+        console.log("Abbreviate number", abbreviateNumber({number:'10000000'}))
+
+        console.log("Abbreviate number", abbreviateNumber(['10000000', '20000000']))
+        console.log("Abbreviate number", abbreviateNumber({number:10000000}))
+
+    }) 
 })
