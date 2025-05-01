@@ -26,6 +26,7 @@
 	export let data,
 		domain,
 		range,
+		currency,
 		domainLabel = '',
 		rangeLabel = '',
 		tooltipId,
@@ -157,7 +158,7 @@
 
 	let tooltip,
 		tooltipOuterCircle,
-		tooltipData = { y: 0, x: 0, circlePosition: 0, title: '', tooltipId, valueOneLabel, valueOne: 0 }
+		tooltipData = { y: 0, x: 0, circlePosition: 0, title: '', tooltipId, valueOneLabel, valueOne: 0, currency }
 
 	if (valueTwoLabel) {
 		tooltipData.valueTwoLabel = valueTwoLabel

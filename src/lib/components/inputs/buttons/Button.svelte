@@ -7,6 +7,7 @@
 		disabled = false,
 		leftIcon = null,
 		loading = false,
+		preload,
 		rightIcon = null,
 		styles = [],
 		text = '',
@@ -31,6 +32,7 @@
 			{classes}
 			{disabled}
 			{leftIcon}
+			{preload}
 			{rightIcon}
 			{styles}
 			{text}

@@ -1,5 +1,5 @@
 <script>
-	import { ArrowDownExtraSmallIcon, ArrowUpExtraSmallIcon } from '$lib/index.js'
+	import { ArrowDownExtraSmallIcon, ArrowUpExtraSmallIcon, ChevronSelectorVerticalExtraSmallIcon } from '$lib/index.js'
 
 	export let callback,
 		order,
@@ -12,8 +12,16 @@
 >
 	{text}
 	{#if order === 'newest'}
-		<ArrowUpExtraSmallIcon />
+		<div class="arrow-display-override">
+			<ArrowUpExtraSmallIcon colorOverride="var(--icon-color-override)" />
+		</div>
 	{:else if order === 'oldest'}
-		<ArrowDownExtraSmallIcon />
+		<div class="arrow-display-override">
+			<ArrowDownExtraSmallIcon colorOverride="var(--icon-color-override)" />
+		</div>
+	{:else if order === ''}
+		<div class="fade-chevron">
+			<ChevronSelectorVerticalExtraSmallIcon />
+		</div>
 	{/if}
 </button>

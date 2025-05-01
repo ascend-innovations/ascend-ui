@@ -1,13 +1,208 @@
 <script>
-	import GeoChart from '$lib/components/containers/charts/GeoChart.svelte'
 	import SelectorInput from '$lib/components/inputs/selectors/SelectorInput.svelte'
-	import { Chart, Page, PageBody, NextButton, StatusTag, Card } from '$lib/index.js'
-	import { afterUpdate } from 'svelte'
+	import { Chart, Page, PageBody, StatusTag, PageTransitionWrapper } from '$lib/index.js'
+
+	let svgpin = `<div style="position:relative;">
+			<svg width="48" height="61" viewBox="0 0 48 61" fill="none">
+				<path d="M4.6144 36.9987C-6.21162 21.3611 4.98056 0 23.9999 0C43.0193 0 54.2115 21.3611 43.3855 36.9987L28.5877 58.3733C26.3688 61.5783 21.6311 61.5783 19.4122 58.3733L4.6144 36.9987Z" fill="#A04B4B"/>
+  				<path fill-rule="evenodd" clip-rule="evenodd" d="M6.25879 35.8603L21.0566 57.2349C22.4801 59.2911 25.5197 59.2911 26.9433 57.2349L41.7411 35.8602C51.6488 21.5491 41.406 2 23.9999 2C6.59389 2 -3.64892 21.5491 6.25879 35.8603ZM23.9999 0C4.98056 0 -6.21162 21.3611 4.6144 36.9987L19.4122 58.3733C21.6311 61.5783 26.3688 61.5783 28.5877 58.3733L43.3855 36.9987C54.2115 21.3611 43.0193 0 23.9999 0Z" fill="#F8EDEB"/>
+				<circle cx="24" cy="24" r="16" fill="white"/>
+			</svg>
+			<svg style="position: absolute;left:24px;top: 19%;transform:translateX(-50%);" width="24" height="24" viewBox="0 0 24 24" fill="none">
+				<path d="M15.5 11.5H14.5L13 14.5L11 8.5L9.5 11.5H8.5M11.9932 5.13581C9.9938 2.7984 6.65975 2.16964 4.15469 4.31001C1.64964 6.45038 1.29697 10.029 3.2642 12.5604C4.75009 14.4724 8.97129 18.311 10.948 20.0749C11.3114 20.3991 11.4931 20.5613 11.7058 20.6251C11.8905 20.6805 12.0958 20.6805 12.2805 20.6251C12.4932 20.5613 12.6749 20.3991 13.0383 20.0749C15.015 18.311 19.2362 14.4724 20.7221 12.5604C22.6893 10.029 22.3797 6.42787 19.8316 4.31001C17.2835 2.19216 13.9925 2.7984 11.9932 5.13581Z" stroke="#140D31" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+		</div>`
+
+	let pin = 'https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/hospital-pin.svg'
+
+	let newGeoData = [
+    {
+        "count": 2,
+        "type": "provider",
+        "name": "CompDrug Youth to Youth",
+        "address": {
+            "full_address": "118 E Main St, Columbus, OH 43215",
+            "street": "118 E Main St",
+            "city": "Columbus",
+            "state": "OH",
+            "zip": "43215"
+        },
+        "lat": "39.956579705882355",
+        "lng": "-82.99637",
+		"html": "true",
+        "marker": svgpin
+    },
+    {
+        "count": 1,
+        "type": "provider",
+        "name": "DayMont Behavioral Health Care",
+        "address": {
+            "full_address": "1520 Germantown St, Dayton, OH 45417",
+            "street": "1520 Germantown St",
+            "city": "Dayton",
+            "state": "OH",
+            "zip": "45417"
+        },
+        "lat": "39.7466037790724",
+        "lng": "-84.21846334262618",
+        "marker": pin
+    },
+    {
+        "count": 1,
+        "type": "provider",
+        "name": "Dayton Children’s Hospital",
+        "address": {
+            "full_address": "1 Childrens Plaza, Dayton, OH 45404",
+            "street": "1 Childrens Plaza",
+            "city": "Dayton",
+            "state": "OH",
+            "zip": "45404"
+        },
+        "lat": "39.774028",
+        "lng": "-84.169785",
+        "marker": pin
+    },
+    {
+        "count": 1,
+        "type": "provider",
+        "name": "Life Essentials",
+        "address": {
+            "full_address": "40 S. Perry St, Dayton, OH, 45402",
+            "street": "40 S. Perry St",
+            "city": "Dayton",
+            "state": "OH",
+            "zip": "45402"
+        },
+        "lat": "39.7577977",
+        "lng": "-84.1958771",
+        "marker": pin
+    },
+    {
+        "count": 1,
+        "type": "provider",
+        "name": "Miami Valley Hospital",
+        "address": {
+            "full_address": "1 Wyoming St, Dayton, OH 45409",
+            "street": "1 Wyoming St",
+            "city": "Dayton",
+            "state": "OH",
+            "zip": "45409"
+        },
+        "lat": "39.74524605",
+        "lng": "-84.18604426125285",
+        "marker": pin
+    },
+    {
+        "count": 1,
+        "type": "provider",
+        "name": "Naphcare",
+        "address": {
+            "full_address": "330 West 2Nd St, Dayton, OH 45422",
+            "street": "330 West 2Nd St",
+            "city": "Dayton",
+            "state": "OH",
+            "zip": "45422"
+        },
+        "lat": "39.75999523076923",
+        "lng": "-84.19780969230769",
+        "marker": pin
+    },
+    {
+        "count": 2,
+        "type": "provider",
+        "name": "Nova Behavioral Health",
+        "address": {
+            "full_address": "732 Beckman St, Dayton, OH 45410",
+            "street": "732 Beckman St",
+            "city": "Dayton",
+            "state": "OH",
+            "zip": "45410"
+        },
+        "lat": "39.73863097959184",
+        "lng": "-84.1649025510204",
+        "marker": pin
+    },
+    {
+        "count": 2,
+        "type": "provider",
+        "name": "Places Inc",
+        "address": {
+            "full_address": "11 W Monument Ave, Dayton, OH 45402",
+            "street": "11 W Monument Ave",
+            "city": "Dayton",
+            "state": "OH",
+            "zip": "45402"
+        },
+        "lat": "39.7638755",
+        "lng": "-84.1935741",
+        "marker": pin
+    },
+    {
+        "count": 1,
+        "type": "provider",
+        "name": "RI International",
+        "address": {
+            "full_address": "601 S Edwin C Moses Blvd, Dayton, Ohio 45417",
+            "street": "601 S Edwin C Moses Blvd",
+            "city": "Dayton",
+            "state": "Ohio",
+            "zip": "45417"
+        },
+        "lat": "39.749291",
+        "lng": "-84.199271",
+        "marker": pin
+    },
+    {
+        "count": 1,
+        "type": "provider",
+        "name": "Samaritan Behavioral Health",
+        "address": {
+            "full_address": "707 S Edwin C Moses Blvd, Dayton, OH 45417",
+            "street": "707 S Edwin C Moses Blvd",
+            "city": "Dayton",
+            "state": "OH",
+            "zip": "45417"
+        },
+        "lat": "39.74467867805528",
+        "lng": "-84.19565849496281",
+        "marker": pin
+    },
+    {
+        "count": 1,
+        "type": "provider",
+        "name": "Sojourner Recovery Services",
+        "address": {
+            "full_address": "294 N Fair Ave, Hamilton, OH 45011",
+            "street": "294 N Fair Ave",
+            "city": "Hamilton",
+            "state": "OH",
+            "zip": "45011"
+        },
+        "lat": "39.39595183513435",
+        "lng": "-84.54178957396414",
+        "marker": pin
+    },
+    {
+        "count": 2,
+        "type": "provider",
+        "name": "South Community",
+        "address": {
+            "full_address": "3095 Kettering Blvd, Moraine, OH 45439",
+            "street": "3095 Kettering Blvd",
+            "city": "Moraine",
+            "state": "OH",
+            "zip": "45439"
+        },
+        "lat": "39.705709526484625",
+        "lng": "-84.20325425252015",
+        "marker": pin
+    }
+]
 
 	let barData = [
-		{ x: 'Hospital 1', series: 'Source', value: 10 },
+		{ x: 'M', series: 'Source', value: 10 },
 		{ x: 'Hospital 2', series: 'Source', value: 15 },
-		{ x: 'Hospital 3', series: 'Source', value: 13 },
+		{ x: 'Hospital 3, the biggest hospital of them all. How crazy is it that it has such a long name', series: 'Source', value: 13 },
 		{ x: 'Hospital 4', series: 'Source', value: 4 },
 		{ x: 'Hospital 5', series: 'Source', value: 20 },
 	]
@@ -40,46 +235,46 @@
 	]
 
 	let citData = [
-		{ date: '2023-01-01T00:00:00-05:00', series: 'CIT', value: 1400 },
-		{ date: '2023-01-15T00:00:00-05:00', series: 'CIT', value: 1600 },
-		{ date: '2023-01-25T00:00:00-05:00', series: 'CIT', value: 1300 },
-		{ date: '2023-02-01T00:00:00-05:00', series: 'CIT', value: 1000 },
-		{ date: '2023-02-15T00:00:00-05:00', series: 'CIT', value: 900 },
-		{ date: '2023-02-25T00:00:00-05:00', series: 'CIT', value: 700 },
-		{ date: '2023-03-01T00:00:00-05:00', series: 'CIT', value: 1300 },
-		{ date: '2023-03-15T00:00:00-05:00', series: 'CIT', value: 1500 },
-		{ date: '2023-03-20T00:00:00-05:00', series: 'CIT', value: 1500 },
-		{ date: '2023-03-25T00:00:00-05:00', series: 'CIT', value: 1400 },
-		{ date: '2023-04-01T00:00:00-05:00', series: 'CIT', value: 1900 },
-		{ date: '2023-04-10T00:00:00-05:00', series: 'CIT', value: 2100 },
-		{ date: '2023-04-15T00:00:00-05:00', series: 'CIT', value: 2000 },
-		{ date: '2023-04-20T00:00:00-05:00', series: 'CIT', value: 1900 },
-		{ date: '2023-04-25T00:00:00-05:00', series: 'CIT', value: 1900 },
-		{ date: '2023-05-01T00:00:00-05:00', series: 'CIT', value: 3100 },
-		{ date: '2023-05-15T00:00:00-05:00', series: 'CIT', value: 3000 },
-		{ date: '2023-06-01T00:00:00-05:00', series: 'CIT', value: 1700 },
-		{ date: '2023-06-10T00:00:00-05:00', series: 'CIT', value: 1500 },
-		{ date: '2023-06-20T00:00:00-05:00', series: 'CIT', value: 1600 },
-		{ date: '2023-06-27T00:00:00-05:00', series: 'CIT', value: 1900 },
-		{ date: '2023-07-01T00:00:00-05:00', series: 'CIT', value: 2000 },
-		{ date: '2023-07-15T00:00:00-05:00', series: 'CIT', value: 2300 },
-		{ date: '2023-07-25T00:00:00-05:00', series: 'CIT', value: 800 },
-		{ date: '2023-08-01T00:00:00-05:00', series: 'CIT', value: 500 },
-		{ date: '2023-08-15T00:00:00-05:00', series: 'CIT', value: 340 },
-		{ date: '2023-08-25T00:00:00-05:00', series: 'CIT', value: 300 },
-		{ date: '2023-09-01T00:00:00-05:00', series: 'CIT', value: 200 },
-		{ date: '2023-09-15T00:00:00-05:00', series: 'CIT', value: 250 },
-		{ date: '2023-09-25T00:00:00-05:00', series: 'CIT', value: 300 },
-		{ date: '2023-10-01T00:00:00-05:00', series: 'CIT', value: 700 },
-		{ date: '2023-10-20T00:00:00-05:00', series: 'CIT', value: 1000 },
-		{ date: '2023-11-01T00:00:00-05:00', series: 'CIT', value: 2200 },
-		{ date: '2023-11-10T00:00:00-05:00', series: 'CIT', value: 2400 },
-		{ date: '2023-11-15T00:00:00-05:00', series: 'CIT', value: 2600 },
-		{ date: '2023-11-20T00:00:00-05:00', series: 'CIT', value: 2700 },
-		{ date: '2023-11-25T00:00:00-05:00', series: 'CIT', value: 2500 },
-		{ date: '2023-12-01T00:00:00-05:00', series: 'CIT', value: 2300 },
-		{ date: '2023-12-15T00:00:00-05:00', series: 'CIT', value: 2400 },
-		{ date: '2023-12-25T00:00:00-05:00', series: 'CIT', value: 2000 },
+		{ date: '2023-01-01T00:00:00-05:00', series: 'CIT', value: 1400.33 },
+		{ date: '2023-01-15T00:00:00-05:00', series: 'CIT', value: 1600.12 },
+		{ date: '2023-01-25T00:00:00-05:00', series: 'CIT', value: 1300.05 },
+		{ date: '2023-02-01T00:00:00-05:00', series: 'CIT', value: 1000.99 },
+		{ date: '2023-02-15T00:00:00-05:00', series: 'CIT', value: 900.56 },
+		{ date: '2023-02-25T00:00:00-05:00', series: 'CIT', value: 700.65 },
+		{ date: '2023-03-01T00:00:00-05:00', series: 'CIT', value: 1300.12 },
+		{ date: '2023-03-15T00:00:00-05:00', series: 'CIT', value: 1500.42 },
+		{ date: '2023-03-20T00:00:00-05:00', series: 'CIT', value: 1500.97 },
+		{ date: '2023-03-25T00:00:00-05:00', series: 'CIT', value: 1400.66 },
+		{ date: '2023-04-01T00:00:00-05:00', series: 'CIT', value: 1900.17 },
+		{ date: '2023-04-10T00:00:00-05:00', series: 'CIT', value: 2100.71 },
+		{ date: '2023-04-15T00:00:00-05:00', series: 'CIT', value: 2000.28 },
+		{ date: '2023-04-20T00:00:00-05:00', series: 'CIT', value: 1900.83 },
+		{ date: '2023-04-25T00:00:00-05:00', series: 'CIT', value: 1900.92 },
+		{ date: '2023-05-01T00:00:00-05:00', series: 'CIT', value: 3100.01 },
+		{ date: '2023-05-15T00:00:00-05:00', series: 'CIT', value: 3000.11 },
+		{ date: '2023-06-01T00:00:00-05:00', series: 'CIT', value: 1700.54 },
+		{ date: '2023-06-10T00:00:00-05:00', series: 'CIT', value: 1500.33 },
+		{ date: '2023-06-20T00:00:00-05:00', series: 'CIT', value: 1600.42 },
+		{ date: '2023-06-27T00:00:00-05:00', series: 'CIT', value: 1900.53 },
+		{ date: '2023-07-01T00:00:00-05:00', series: 'CIT', value: 2000.75 },
+		{ date: '2023-07-15T00:00:00-05:00', series: 'CIT', value: 2300.91 },
+		{ date: '2023-07-25T00:00:00-05:00', series: 'CIT', value: 800.19 },
+		{ date: '2023-08-01T00:00:00-05:00', series: 'CIT', value: 500.07 },
+		{ date: '2023-08-15T00:00:00-05:00', series: 'CIT', value: 340.04 },
+		{ date: '2023-08-25T00:00:00-05:00', series: 'CIT', value: 300.12 },
+		{ date: '2023-09-01T00:00:00-05:00', series: 'CIT', value: 200.99 },
+		{ date: '2023-09-15T00:00:00-05:00', series: 'CIT', value: 250.99 },
+		{ date: '2023-09-25T00:00:00-05:00', series: 'CIT', value: 300.99 },
+		{ date: '2023-10-01T00:00:00-05:00', series: 'CIT', value: 700.86 },
+		{ date: '2023-10-20T00:00:00-05:00', series: 'CIT', value: 1000.47 },
+		{ date: '2023-11-01T00:00:00-05:00', series: 'CIT', value: 2200.46 },
+		{ date: '2023-11-10T00:00:00-05:00', series: 'CIT', value: 2400.84 },
+		{ date: '2023-11-15T00:00:00-05:00', series: 'CIT', value: 2600.32 },
+		{ date: '2023-11-20T00:00:00-05:00', series: 'CIT', value: 2700.14 },
+		{ date: '2023-11-25T00:00:00-05:00', series: 'CIT', value: 2500.71 },
+		{ date: '2023-12-01T00:00:00-05:00', series: 'CIT', value: 2300.17 },
+		{ date: '2023-12-15T00:00:00-05:00', series: 'CIT', value: 2400.99 },
+		{ date: '2023-12-25T00:00:00-05:00', series: 'CIT', value: 2000.07 },
 	]
 
 	let realStacked = [
@@ -128,11 +323,11 @@
 	]
 
 	let pieData = [
-		{ name: 'MCADAMHS', value: 45 },
-		{ name: 'Tri-County', value: 33 },
-		{ name: '317 Board', value: 10 },
-		{ name: 'AAH', value: 13 },
-		{ name: 'Logan-Champaign', value: 65 },
+		{ name: 'MCADAMHS', value: 45, Percentage: '234' },
+		{ name: 'Tri-County', value: 33, Percentage: '123' },
+		{ name: '317 Board', value: 10, Percentage: '34' },
+		{ name: 'AAH', value: 13, Percentage: '24' },
+		{ name: 'Logan-Champaign', value: 65, Percentage: '23' },
 	]
 
 	let firstGeoData = [
@@ -193,6 +388,7 @@
 			count: 15,
 			type: 'hospital',
 			url: 'https://www.example.com',
+			marker: 'https://ascnd.s3.us-east-2.amazonaws.com/local-help-now/mcadamhs/Map-Pin-MCADAMHS.svg',
 		},
 		{
 			full_address: '405 W Grand Ave, Dayton, OH 45405',
@@ -206,6 +402,7 @@
 			count: 10,
 			type: 'hospital',
 			url: 'https://www.example.com',
+			marker: 'https://ascnd.s3.us-east-2.amazonaws.com/local-help-now/mcadamhs/Map-Pin-MCADAMHS.svg',
 		},
 		{
 			full_address: '3535 Southern Blvd, Kettering, OH 45429',
@@ -219,6 +416,7 @@
 			count: 1,
 			type: 'hospital',
 			url: 'https://www.example.com',
+			marker: 'https://ascnd.s3.us-east-2.amazonaws.com/local-help-now/mcadamhs/Map-Pin-MCADAMHS.svg',
 		},
 		{
 			full_address: '3417 Marshall Rd, Dayton, OH 45429',
@@ -232,6 +430,7 @@
 			count: 407,
 			type: 'provider',
 			url: 'https://www.example.com',
+			marker: 'https://ascnd.s3.us-east-2.amazonaws.com/local-help-now/mcadamhs/Map-Pin-MCADAMHS.svg',
 		},
 		{
 			full_address: '3095 Kettering Blvd, Moraine, OH 45439',
@@ -245,6 +444,7 @@
 			count: 868,
 			type: 'provider',
 			url: 'https://www.example.com',
+			marker: 'https://ascnd.s3.us-east-2.amazonaws.com/local-help-now/mcadamhs/Map-Pin-MCADAMHS.svg',
 		},
 		{
 			full_address: '707 S Edwin C Moses Blvd, Dayton, OH 45417',
@@ -258,6 +458,7 @@
 			count: 2,
 			type: 'provider',
 			url: 'https://www.example.com',
+			marker: 'https://ascnd.s3.us-east-2.amazonaws.com/local-help-now/mcadamhs/Map-Pin-MCADAMHS.svg',
 		},
 		{
 			full_address: '11 W Monument Ave, Dayton, OH 45402',
@@ -271,6 +472,7 @@
 			count: 64,
 			type: 'provider',
 			url: 'https://www.example.com',
+			marker: 'https://ascnd.s3.us-east-2.amazonaws.com/local-help-now/mcadamhs/Map-Pin-MCADAMHS.svg',
 		},
 		{
 			full_address: '330 W 2nd St, Dayton, OH 45422',
@@ -284,6 +486,7 @@
 			count: 58,
 			type: 'jail',
 			url: 'https://www.example.com',
+			marker: 'https://ascnd.s3.us-east-2.amazonaws.com/local-help-now/mcadamhs/Map-Pin-MCADAMHS.svg',
 		},
 	]
 
@@ -390,16 +593,1272 @@
 		{ date: '2025-4-30', value: 16, series: 'Scatter' },
 	]
 
+	let floatData = [
+    {
+      "date": "2025-03-24",
+      "value": "4.00"
+    },
+    {
+      "date": "2025-03-21",
+      "value": "5.00"
+    },
+    {
+      "date": "2025-03-20",
+      "value": "19.00"
+    },
+    {
+      "date": "2025-03-19",
+      "value": "29.00"
+    },
+    {
+      "date": "2025-03-18",
+      "value": "24.00"
+    },
+    {
+      "date": "2025-03-17",
+      "value": "23.00"
+    },
+    {
+      "date": "2025-03-16",
+      "value": "2.00"
+    },
+    {
+      "date": "2025-03-15",
+      "value": "3.00"
+    },
+    {
+      "date": "2025-03-14",
+      "value": "7.00"
+    },
+    {
+      "date": "2025-03-13",
+      "value": "31.00"
+    },
+    {
+      "date": "2025-03-12",
+      "value": "30.00"
+    },
+    {
+      "date": "2025-03-11",
+      "value": "22.00"
+    },
+    {
+      "date": "2025-03-10",
+      "value": "27.00"
+    },
+    {
+      "date": "2025-03-07",
+      "value": "20.00"
+    },
+    {
+      "date": "2025-03-06",
+      "value": "33.00"
+    },
+    {
+      "date": "2025-03-05",
+      "value": "19.00"
+    },
+    {
+      "date": "2025-03-04",
+      "value": "31.00"
+    },
+    {
+      "date": "2025-03-03",
+      "value": "24.00"
+    },
+    {
+      "date": "2025-03-02",
+      "value": "1.00"
+    },
+    {
+      "date": "2025-03-01",
+      "value": "6.00"
+    },
+    {
+      "date": "2025-02-28",
+      "value": "26.00"
+    },
+    {
+      "date": "2025-02-27",
+      "value": "46.00"
+    },
+    {
+      "date": "2025-02-26",
+      "value": "36.00"
+    },
+    {
+      "date": "2025-02-25",
+      "value": "24.00"
+    },
+    {
+      "date": "2025-02-24",
+      "value": "27.00"
+    },
+    {
+      "date": "2025-02-23",
+      "value": "1.00"
+    },
+    {
+      "date": "2025-02-21",
+      "value": "11.00"
+    },
+    {
+      "date": "2025-02-20",
+      "value": "42.00"
+    },
+    {
+      "date": "2025-02-19",
+      "value": "44.00"
+    },
+    {
+      "date": "2025-02-18",
+      "value": "33.00"
+    },
+    {
+      "date": "2025-02-17",
+      "value": "10.00"
+    },
+    {
+      "date": "2025-02-16",
+      "value": "1.00"
+    },
+    {
+      "date": "2025-02-14",
+      "value": "23.00"
+    },
+    {
+      "date": "2025-02-13",
+      "value": "44.00"
+    },
+    {
+      "date": "2025-02-12",
+      "value": "42.00"
+    },
+    {
+      "date": "2025-02-11",
+      "value": "49.00"
+    },
+    {
+      "date": "2025-02-10",
+      "value": "37.00"
+    },
+    {
+      "date": "2025-02-08",
+      "value": "1.00"
+    },
+    {
+      "date": "2025-02-07",
+      "value": "16.00"
+    },
+    {
+      "date": "2025-02-06",
+      "value": "55.00"
+    },
+    {
+      "date": "2025-02-05",
+      "value": "40.00"
+    },
+    {
+      "date": "2025-02-04",
+      "value": "47.00"
+    },
+    {
+      "date": "2025-02-03",
+      "value": "37.00"
+    },
+    {
+      "date": "2025-02-02",
+      "value": "2.00"
+    },
+    {
+      "date": "2025-02-01",
+      "value": "3.00"
+    },
+    {
+      "date": "2025-01-31",
+      "value": "23.00"
+    },
+    {
+      "date": "2025-01-30",
+      "value": "64.00"
+    },
+    {
+      "date": "2025-01-29",
+      "value": "42.00"
+    },
+    {
+      "date": "2025-01-28",
+      "value": "42.00"
+    },
+    {
+      "date": "2025-01-27",
+      "value": "36.00"
+    },
+    {
+      "date": "2025-01-26",
+      "value": "1.00"
+    },
+    {
+      "date": "2025-01-24",
+      "value": "27.00"
+    },
+    {
+      "date": "2025-01-23",
+      "value": "54.00"
+    },
+    {
+      "date": "2025-01-22",
+      "value": "30.00"
+    },
+    {
+      "date": "2025-01-21",
+      "value": "36.00"
+    },
+    {
+      "date": "2025-01-20",
+      "value": "17.00"
+    },
+    {
+      "date": "2025-01-19",
+      "value": "4.00"
+    },
+    {
+      "date": "2025-01-17",
+      "value": "20.00"
+    },
+    {
+      "date": "2025-01-16",
+      "value": "59.00"
+    },
+    {
+      "date": "2025-01-15",
+      "value": "40.00"
+    },
+    {
+      "date": "2025-01-14",
+      "value": "44.00"
+    },
+    {
+      "date": "2025-01-13",
+      "value": "44.00"
+    },
+    {
+      "date": "2025-01-12",
+      "value": "2.00"
+    },
+    {
+      "date": "2025-01-11",
+      "value": "2.00"
+    },
+    {
+      "date": "2025-01-10",
+      "value": "31.00"
+    },
+    {
+      "date": "2025-01-09",
+      "value": "65.00"
+    },
+    {
+      "date": "2025-01-08",
+      "value": "54.00"
+    },
+    {
+      "date": "2025-01-07",
+      "value": "43.00"
+    },
+    {
+      "date": "2025-01-06",
+      "value": "14.00"
+    },
+    {
+      "date": "2025-01-05",
+      "value": "2.00"
+    },
+    {
+      "date": "2025-01-04",
+      "value": "1.00"
+    },
+    {
+      "date": "2025-01-03",
+      "value": "17.00"
+    },
+    {
+      "date": "2025-01-02",
+      "value": "34.00"
+    },
+    {
+      "date": "2025-01-01",
+      "value": "9.00"
+    },
+    {
+      "date": "2024-12-31",
+      "value": "18.00"
+    },
+    {
+      "date": "2024-12-30",
+      "value": "26.00"
+    },
+    {
+      "date": "2024-12-29",
+      "value": "1.00"
+    },
+    {
+      "date": "2024-12-28",
+      "value": "2.00"
+    },
+    {
+      "date": "2024-12-27",
+      "value": "10.00"
+    },
+    {
+      "date": "2024-12-26",
+      "value": "14.00"
+    },
+    {
+      "date": "2024-12-25",
+      "value": "1.00"
+    },
+    {
+      "date": "2024-12-24",
+      "value": "6.00"
+    },
+    {
+      "date": "2024-12-23",
+      "value": "17.00"
+    },
+    {
+      "date": "2024-12-22",
+      "value": "1.00"
+    },
+    {
+      "date": "2024-12-21",
+      "value": "2.00"
+    },
+    {
+      "date": "2024-12-20",
+      "value": "15.00"
+    },
+    {
+      "date": "2024-12-19",
+      "value": "61.00"
+    },
+    {
+      "date": "2024-12-18",
+      "value": "40.00"
+    },
+    {
+      "date": "2024-12-17",
+      "value": "55.00"
+    },
+    {
+      "date": "2024-12-16",
+      "value": "43.00"
+    },
+    {
+      "date": "2024-12-15",
+      "value": "1.00"
+    },
+    {
+      "date": "2024-12-13",
+      "value": "31.00"
+    },
+    {
+      "date": "2024-12-12",
+      "value": "64.00"
+    },
+    {
+      "date": "2024-12-11",
+      "value": "48.00"
+    },
+    {
+      "date": "2024-12-10",
+      "value": "52.00"
+    },
+    {
+      "date": "2024-12-09",
+      "value": "40.00"
+    },
+    {
+      "date": "2024-12-06",
+      "value": "27.00"
+    },
+    {
+      "date": "2024-12-05",
+      "value": "70.00"
+    },
+    {
+      "date": "2024-12-04",
+      "value": "47.00"
+    },
+    {
+      "date": "2024-12-03",
+      "value": "59.00"
+    },
+    {
+      "date": "2024-12-02",
+      "value": "44.00"
+    },
+    {
+      "date": "2024-12-01",
+      "value": "9.00"
+    },
+    {
+      "date": "2024-11-29",
+      "value": "8.00"
+    },
+    {
+      "date": "2024-11-28",
+      "value": "2.00"
+    },
+    {
+      "date": "2024-11-27",
+      "value": "32.00"
+    },
+    {
+      "date": "2024-11-26",
+      "value": "49.00"
+    },
+    {
+      "date": "2024-11-25",
+      "value": "32.00"
+    },
+    {
+      "date": "2024-11-24",
+      "value": "3.00"
+    },
+    {
+      "date": "2024-11-23",
+      "value": "4.00"
+    },
+    {
+      "date": "2024-11-22",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-11-21",
+      "value": "65.00"
+    },
+    {
+      "date": "2024-11-20",
+      "value": "42.00"
+    },
+    {
+      "date": "2024-11-19",
+      "value": "45.00"
+    },
+    {
+      "date": "2024-11-18",
+      "value": "34.00"
+    },
+    {
+      "date": "2024-11-17",
+      "value": "3.00"
+    },
+    {
+      "date": "2024-11-15",
+      "value": "23.00"
+    },
+    {
+      "date": "2024-11-14",
+      "value": "60.00"
+    },
+    {
+      "date": "2024-11-13",
+      "value": "49.00"
+    },
+    {
+      "date": "2024-11-12",
+      "value": "54.00"
+    },
+    {
+      "date": "2024-11-11",
+      "value": "37.00"
+    },
+    {
+      "date": "2024-11-10",
+      "value": "2.00"
+    },
+    {
+      "date": "2024-11-08",
+      "value": "22.00"
+    },
+    {
+      "date": "2024-11-07",
+      "value": "58.00"
+    },
+    {
+      "date": "2024-11-06",
+      "value": "53.00"
+    },
+    {
+      "date": "2024-11-05",
+      "value": "54.00"
+    },
+    {
+      "date": "2024-11-04",
+      "value": "48.00"
+    },
+    {
+      "date": "2024-11-03",
+      "value": "1.00"
+    },
+    {
+      "date": "2024-11-02",
+      "value": "1.00"
+    },
+    {
+      "date": "2024-11-01",
+      "value": "39.00"
+    },
+    {
+      "date": "2024-10-31",
+      "value": "100.00"
+    },
+    {
+      "date": "2024-10-30",
+      "value": "96.00"
+    },
+    {
+      "date": "2024-10-29",
+      "value": "113.00"
+    },
+    {
+      "date": "2024-10-28",
+      "value": "81.00"
+    },
+    {
+      "date": "2024-10-27",
+      "value": "29.00"
+    },
+    {
+      "date": "2024-10-26",
+      "value": "24.00"
+    },
+    {
+      "date": "2024-10-25",
+      "value": "67.00"
+    },
+    {
+      "date": "2024-10-24",
+      "value": "86.00"
+    },
+    {
+      "date": "2024-10-23",
+      "value": "101.00"
+    },
+    {
+      "date": "2024-10-22",
+      "value": "102.00"
+    },
+    {
+      "date": "2024-10-21",
+      "value": "79.00"
+    },
+    {
+      "date": "2024-10-20",
+      "value": "29.00"
+    },
+    {
+      "date": "2024-10-19",
+      "value": "27.00"
+    },
+    {
+      "date": "2024-10-18",
+      "value": "65.00"
+    },
+    {
+      "date": "2024-10-17",
+      "value": "101.00"
+    },
+    {
+      "date": "2024-10-16",
+      "value": "109.00"
+    },
+    {
+      "date": "2024-10-15",
+      "value": "128.00"
+    },
+    {
+      "date": "2024-10-14",
+      "value": "97.00"
+    },
+    {
+      "date": "2024-10-13",
+      "value": "26.00"
+    },
+    {
+      "date": "2024-10-12",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-10-11",
+      "value": "67.00"
+    },
+    {
+      "date": "2024-10-10",
+      "value": "91.00"
+    },
+    {
+      "date": "2024-10-09",
+      "value": "102.00"
+    },
+    {
+      "date": "2024-10-08",
+      "value": "117.00"
+    },
+    {
+      "date": "2024-10-07",
+      "value": "98.00"
+    },
+    {
+      "date": "2024-10-06",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-10-05",
+      "value": "24.00"
+    },
+    {
+      "date": "2024-10-04",
+      "value": "83.00"
+    },
+    {
+      "date": "2024-10-03",
+      "value": "105.00"
+    },
+    {
+      "date": "2024-10-02",
+      "value": "112.00"
+    },
+    {
+      "date": "2024-10-01",
+      "value": "110.00"
+    },
+    {
+      "date": "2024-09-30",
+      "value": "94.00"
+    },
+    {
+      "date": "2024-09-29",
+      "value": "27.00"
+    },
+    {
+      "date": "2024-09-28",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-09-27",
+      "value": "87.00"
+    },
+    {
+      "date": "2024-09-26",
+      "value": "98.00"
+    },
+    {
+      "date": "2024-09-25",
+      "value": "114.00"
+    },
+    {
+      "date": "2024-09-24",
+      "value": "114.00"
+    },
+    {
+      "date": "2024-09-23",
+      "value": "100.00"
+    },
+    {
+      "date": "2024-09-22",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-09-21",
+      "value": "26.00"
+    },
+    {
+      "date": "2024-09-20",
+      "value": "84.00"
+    },
+    {
+      "date": "2024-09-19",
+      "value": "125.00"
+    },
+    {
+      "date": "2024-09-18",
+      "value": "110.00"
+    },
+    {
+      "date": "2024-09-17",
+      "value": "130.00"
+    },
+    {
+      "date": "2024-09-16",
+      "value": "121.00"
+    },
+    {
+      "date": "2024-09-15",
+      "value": "27.00"
+    },
+    {
+      "date": "2024-09-14",
+      "value": "28.00"
+    },
+    {
+      "date": "2024-09-13",
+      "value": "78.00"
+    },
+    {
+      "date": "2024-09-12",
+      "value": "137.00"
+    },
+    {
+      "date": "2024-09-11",
+      "value": "126.00"
+    },
+    {
+      "date": "2024-09-10",
+      "value": "148.00"
+    },
+    {
+      "date": "2024-09-09",
+      "value": "129.00"
+    },
+    {
+      "date": "2024-09-08",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-09-07",
+      "value": "27.00"
+    },
+    {
+      "date": "2024-09-06",
+      "value": "101.00"
+    },
+    {
+      "date": "2024-09-05",
+      "value": "108.00"
+    },
+    {
+      "date": "2024-09-04",
+      "value": "124.00"
+    },
+    {
+      "date": "2024-09-03",
+      "value": "135.00"
+    },
+    {
+      "date": "2024-09-02",
+      "value": "26.00"
+    },
+    {
+      "date": "2024-09-01",
+      "value": "34.00"
+    },
+    {
+      "date": "2024-08-31",
+      "value": "26.00"
+    },
+    {
+      "date": "2024-08-30",
+      "value": "75.00"
+    },
+    {
+      "date": "2024-08-29",
+      "value": "119.00"
+    },
+    {
+      "date": "2024-08-28",
+      "value": "126.00"
+    },
+    {
+      "date": "2024-08-27",
+      "value": "141.00"
+    },
+    {
+      "date": "2024-08-26",
+      "value": "99.00"
+    },
+    {
+      "date": "2024-08-25",
+      "value": "26.00"
+    },
+    {
+      "date": "2024-08-24",
+      "value": "26.00"
+    },
+    {
+      "date": "2024-08-23",
+      "value": "73.00"
+    },
+    {
+      "date": "2024-08-22",
+      "value": "109.00"
+    },
+    {
+      "date": "2024-08-21",
+      "value": "125.00"
+    },
+    {
+      "date": "2024-08-20",
+      "value": "118.00"
+    },
+    {
+      "date": "2024-08-19",
+      "value": "95.00"
+    },
+    {
+      "date": "2024-08-18",
+      "value": "26.00"
+    },
+    {
+      "date": "2024-08-17",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-08-16",
+      "value": "80.00"
+    },
+    {
+      "date": "2024-08-15",
+      "value": "121.00"
+    },
+    {
+      "date": "2024-08-14",
+      "value": "118.00"
+    },
+    {
+      "date": "2024-08-13",
+      "value": "127.00"
+    },
+    {
+      "date": "2024-08-12",
+      "value": "104.00"
+    },
+    {
+      "date": "2024-08-11",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-08-10",
+      "value": "24.00"
+    },
+    {
+      "date": "2024-08-09",
+      "value": "90.00"
+    },
+    {
+      "date": "2024-08-08",
+      "value": "141.00"
+    },
+    {
+      "date": "2024-08-07",
+      "value": "143.00"
+    },
+    {
+      "date": "2024-08-06",
+      "value": "138.00"
+    },
+    {
+      "date": "2024-08-05",
+      "value": "101.00"
+    },
+    {
+      "date": "2024-08-04",
+      "value": "24.00"
+    },
+    {
+      "date": "2024-08-03",
+      "value": "24.00"
+    },
+    {
+      "date": "2024-08-02",
+      "value": "72.00"
+    },
+    {
+      "date": "2024-08-01",
+      "value": "116.00"
+    },
+    {
+      "date": "2024-07-31",
+      "value": "108.00"
+    },
+    {
+      "date": "2024-07-30",
+      "value": "128.00"
+    },
+    {
+      "date": "2024-07-29",
+      "value": "104.00"
+    },
+    {
+      "date": "2024-07-28",
+      "value": "24.00"
+    },
+    {
+      "date": "2024-07-27",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-07-26",
+      "value": "91.00"
+    },
+    {
+      "date": "2024-07-25",
+      "value": "97.00"
+    },
+    {
+      "date": "2024-07-24",
+      "value": "121.00"
+    },
+    {
+      "date": "2024-07-23",
+      "value": "137.00"
+    },
+    {
+      "date": "2024-07-22",
+      "value": "101.00"
+    },
+    {
+      "date": "2024-07-21",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-07-20",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-07-19",
+      "value": "82.00"
+    },
+    {
+      "date": "2024-07-18",
+      "value": "129.00"
+    },
+    {
+      "date": "2024-07-17",
+      "value": "112.00"
+    },
+    {
+      "date": "2024-07-16",
+      "value": "128.00"
+    },
+    {
+      "date": "2024-07-15",
+      "value": "102.00"
+    },
+    {
+      "date": "2024-07-14",
+      "value": "26.00"
+    },
+    {
+      "date": "2024-07-13",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-07-12",
+      "value": "81.00"
+    },
+    {
+      "date": "2024-07-11",
+      "value": "112.00"
+    },
+    {
+      "date": "2024-07-10",
+      "value": "130.00"
+    },
+    {
+      "date": "2024-07-09",
+      "value": "109.00"
+    },
+    {
+      "date": "2024-07-08",
+      "value": "103.00"
+    },
+    {
+      "date": "2024-07-07",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-07-06",
+      "value": "28.00"
+    },
+    {
+      "date": "2024-07-05",
+      "value": "78.00"
+    },
+    {
+      "date": "2024-07-04",
+      "value": "24.00"
+    },
+    {
+      "date": "2024-07-03",
+      "value": "109.00"
+    },
+    {
+      "date": "2024-07-02",
+      "value": "119.00"
+    },
+    {
+      "date": "2024-07-01",
+      "value": "96.00"
+    },
+    {
+      "date": "2024-06-30",
+      "value": "28.00"
+    },
+    {
+      "date": "2024-06-29",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-06-28",
+      "value": "98.00"
+    },
+    {
+      "date": "2024-06-27",
+      "value": "112.00"
+    },
+    {
+      "date": "2024-06-26",
+      "value": "118.00"
+    },
+    {
+      "date": "2024-06-25",
+      "value": "108.00"
+    },
+    {
+      "date": "2024-06-24",
+      "value": "100.00"
+    },
+    {
+      "date": "2024-06-23",
+      "value": "31.00"
+    },
+    {
+      "date": "2024-06-22",
+      "value": "27.00"
+    },
+    {
+      "date": "2024-06-21",
+      "value": "93.00"
+    },
+    {
+      "date": "2024-06-20",
+      "value": "115.00"
+    },
+    {
+      "date": "2024-06-19",
+      "value": "83.00"
+    },
+    {
+      "date": "2024-06-18",
+      "value": "143.00"
+    },
+    {
+      "date": "2024-06-17",
+      "value": "103.00"
+    },
+    {
+      "date": "2024-06-16",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-06-15",
+      "value": "27.00"
+    },
+    {
+      "date": "2024-06-14",
+      "value": "90.00"
+    },
+    {
+      "date": "2024-06-13",
+      "value": "125.00"
+    },
+    {
+      "date": "2024-06-12",
+      "value": "133.00"
+    },
+    {
+      "date": "2024-06-11",
+      "value": "112.00"
+    },
+    {
+      "date": "2024-06-10",
+      "value": "106.00"
+    },
+    {
+      "date": "2024-06-09",
+      "value": "30.00"
+    },
+    {
+      "date": "2024-06-08",
+      "value": "29.00"
+    },
+    {
+      "date": "2024-06-07",
+      "value": "98.00"
+    },
+    {
+      "date": "2024-06-06",
+      "value": "105.00"
+    },
+    {
+      "date": "2024-06-05",
+      "value": "107.00"
+    },
+    {
+      "date": "2024-06-04",
+      "value": "117.00"
+    },
+    {
+      "date": "2024-06-03",
+      "value": "103.00"
+    },
+    {
+      "date": "2024-06-02",
+      "value": "27.00"
+    },
+    {
+      "date": "2024-06-01",
+      "value": "34.00"
+    },
+    {
+      "date": "2024-05-31",
+      "value": "86.00"
+    },
+    {
+      "date": "2024-05-30",
+      "value": "104.00"
+    },
+    {
+      "date": "2024-05-29",
+      "value": "125.00"
+    },
+    {
+      "date": "2024-05-28",
+      "value": "139.00"
+    },
+    {
+      "date": "2024-05-27",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-05-26",
+      "value": "22.00"
+    },
+    {
+      "date": "2024-05-25",
+      "value": "24.00"
+    },
+    {
+      "date": "2024-05-24",
+      "value": "82.00"
+    },
+    {
+      "date": "2024-05-23",
+      "value": "107.00"
+    },
+    {
+      "date": "2024-05-22",
+      "value": "106.00"
+    },
+    {
+      "date": "2024-05-21",
+      "value": "133.00"
+    },
+    {
+      "date": "2024-05-20",
+      "value": "104.00"
+    },
+    {
+      "date": "2024-05-19",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-05-18",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-05-17",
+      "value": "88.00"
+    },
+    {
+      "date": "2024-05-16",
+      "value": "113.00"
+    },
+    {
+      "date": "2024-05-15",
+      "value": "128.00"
+    },
+    {
+      "date": "2024-05-14",
+      "value": "135.00"
+    },
+    {
+      "date": "2024-05-13",
+      "value": "93.00"
+    },
+    {
+      "date": "2024-05-12",
+      "value": "23.00"
+    },
+    {
+      "date": "2024-05-11",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-05-10",
+      "value": "86.00"
+    },
+    {
+      "date": "2024-05-09",
+      "value": "120.00"
+    },
+    {
+      "date": "2024-05-08",
+      "value": "143.00"
+    },
+    {
+      "date": "2024-05-07",
+      "value": "138.00"
+    },
+    {
+      "date": "2024-05-06",
+      "value": "110.00"
+    },
+    {
+      "date": "2024-05-05",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-05-04",
+      "value": "24.00"
+    },
+    {
+      "date": "2024-05-03",
+      "value": "91.00"
+    },
+    {
+      "date": "2024-05-02",
+      "value": "126.00"
+    },
+    {
+      "date": "2024-05-01",
+      "value": "138.00"
+    },
+    {
+      "date": "2024-04-30",
+      "value": "127.00"
+    }
+  ]
+
 	$: geoData = 'realData'
 
 	export let data
-
-	let emptyData
-
-	// $: combinedData = JSON.parse(JSON.stringify(data.boardDemographics.age_group))
 </script>
 
 <Page>
+	<PageTransitionWrapper>
 	<PageBody
 		size="full"
 		styles={['max-width: 1440px', 'margin: auto']}
@@ -419,10 +1878,11 @@
 					data={barData}
 					domain="x"
 					range="value"
-					valueOneLabel="x"
-					valueTwoLabel="value"
+					valueOneLabel="Date"
+					valueTwoLabel="Value"
 					domainLabel="Blue"
 					rangeLabel="Big Measure"
+					barColors={['var(--secondary-base']}
 					rule="avg"
 					seriesKey="series"
 				/>
@@ -489,10 +1949,11 @@
 				<Chart
 					tooltipId="area"
 					type="area"
-					data={citData}
+					data={floatData}
 					title="Simple Area Chart"
 					domain="date"
 					range="value"
+					currency
 					yearOnly
 					valueOneLabel="date"
 					valueTwoLabel="value"
@@ -542,7 +2003,7 @@
 					stacked
 				/>
 			</div>
-			<!-- <div class="pie-chart">
+			<div class="pie-chart">
 				<Chart
 					tooltipId="pie"
 					type="pie"
@@ -553,49 +2014,21 @@
 					seriesKey="name"
 					sort="descending"
 				/>
-			</div> -->
-			<!-- <div class="ring-chart">
-				<div style="width: 75%">
-					<Chart
-						tooltipId="simple-v"
-						type="bar"
-						vertical
-						sort="descending"
-						title="Simple Vertical Bar Chart"
-						titleTooltip={{ content: 'This is a tooltip that will probably wrap. Maybe even twice.' }}
-						data={barData}
-						domain="x"
-						range="value"
-						rule='avg'
-						seriesKey="series"
-					>
-						<div slot="chart-header" style="margin-top: var(--spacing09)">
-							<SelectorInput 
-								id="bar-selector"
-								label="Random Selector"
-								defaultOptionName={'realData'}
-								defaultOptionValue={'realData'}
-								optionList={[
-									'secondGeoData'
-								]}
-								bind:selectedValue={geoData}
-							/>
-						</div>
-					</Chart>
-				</div> -->
-			<!-- <div style="width: 25%">
-					<Chart
-						tooltipId="ring"
-						type="pie"
-						data={pieData}
-						title="Ring Chart"
-						domain="name"
-						range="value"
-						seriesKey="name"
-						ring
-					/>
-				</div> -->
-			<!-- </div> -->
+			</div>
+			<div class="ring-chart">
+				<Chart
+					tooltipId="ring"
+					type="pie"
+					data={pieData}
+					title="Ring Chart"
+					domain="name"
+					range="value"
+					seriesKey="name"
+					valueOneLabel="Count"
+					valueTwoLabel="Percentage"
+					ring
+				/>
+			</div>
 			<div class="scatterplot-chart">
 				<Chart
 					tooltipId="scatter"
@@ -610,20 +2043,20 @@
 					monthDay
 				/>
 			</div>
-			<div class="geo-chart">
+			<!-- <div class="geo-chart">
 				<Chart
 					title="Map With Multiple Markers"
 					type="geo"
 					mapId="first-map"
-					pillText="Total"
+					pillText="Active Children"
 					pillKey="count"
 					addressKey="full_address"
-					infoTitleKey="zip"
-					{markers}
-					geoJSON={data.zipCodes}
+					contentKey="zip"
+					data={realData}
+					geoJSON={null}
 				/>
-			</div>
-			<!-- <div class="geo-chart">
+			</div> -->
+			<div class="geo-chart">
 				<Chart 
 					title="Map With Multiple Markers"
 					type="geo"
@@ -633,11 +2066,13 @@
 					addressKey="full_address"
 					infoTitleKey="name"
 					markers={markers}
-					data={realData}
+					geoJSON={null}
+					data={newGeoData}
 				/>
-			</div> -->
+			</div>
 		</div>
 	</PageBody>
+	</PageTransitionWrapper>
 </Page>
 
 <style>
@@ -675,11 +2110,6 @@
 		& details {
 			padding-top: var(--spacing04);
 		}
-	}
-	.ring-chart {
-		display: flex;
-		gap: var(--spacing09);
-		height: 500px;
 	}
 	.table-chart {
 		height: fit-content;

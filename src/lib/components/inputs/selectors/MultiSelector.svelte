@@ -1,6 +1,6 @@
 <script>
-	import { Label, CheckboxSelectOption, ChevronSingleUpSmallIcon, ChevronSingleDownSmallIcon, InputError, SearchBar } from '$lib/index.js'
-	import { beforeUpdate } from 'svelte'
+	import { Label, CheckboxSelectOption, ChevronSingleUpSmallIcon, ChevronSingleDownSmallIcon, InputError, SearchBar, getChecklistSelections } from '$lib/index.js'
+	import { afterUpdate, beforeUpdate } from 'svelte'
 
 	export let id = '',
 		label = '',
@@ -11,6 +11,7 @@
 		validationCallback = null,
 		validationText = '',
 		optionList = [],
+		selectedValues = '',
 		query = '',
 		searchable = false
 
@@ -28,8 +29,12 @@
 	}
 
 	beforeUpdate(() => {
+		let allTrue = true
 		for (let option of optionList) {
-			if (option.value === 'All' && option.selected === true) {
+			if (option?.value !== 'All') {
+				allTrue = allTrue && option.selected
+			}
+			if (option.value === 'All' && option.selected === true && allUnselected) {
 				optionList = optionList.map((option) => {
 					option.selected = true
 					return option
@@ -43,6 +48,25 @@
 						return option
 					})
 					allUnselected = true
+				}
+			}
+			if (!allUnselected && option.selected === false) {
+				//Unselects the 'All' option if it was previously selected and a box was unchecked.
+				optionList = optionList.map((option) => {
+					if (option?.value === 'All') {
+						option.selected = false
+					}
+					return option
+				})
+				allUnselected = true
+			}
+		}
+		if (allTrue === true) {
+			for (let option of optionList) {
+				if (option?.value === 'All') {
+					option.selected = true
+					allUnselected = false
+					break
 				}
 			}
 		}
@@ -65,6 +89,7 @@
 			<Label
 				{id}
 				{label}
+				cursor
 			/>
 			{#if open}
 				<ChevronSingleUpSmallIcon />
@@ -79,17 +104,26 @@
 						<SearchBar
 							bind:query
 							callback={searchCallback}
+							styles={['width:100%']}
 						/>
 					</div>
 				{/if}
-				<div class="multiselect-options-list">
-					{#each optionList as optionItem}
-						<CheckboxSelectOption
-							id={optionItem.value}
-							bind:checked={optionItem.selected}
-							value={optionItem.value}
-						/>
-					{/each}
+				<div
+					class="options-list"
+					on:click={() => (selectedValues = optionList)}
+				>
+					{#if optionList.length === 0}
+						<p>No results available</p>
+					{:else}
+						{#each optionList as optionItem}
+							<CheckboxSelectOption
+								id={optionItem.value}
+								bind:checked={optionItem.selected}
+								value={optionItem.value}
+								{callback}
+							/>
+						{/each}
+					{/if}
 				</div>
 			</div>
 		{/if}
@@ -98,3 +132,58 @@
 		<InputError text={validationText} />
 	{/if}
 </div>
+
+<style>
+	.multi-selector {
+		position: relative;
+		border-radius: var(--spacing05);
+		border: var(--spacing00) solid var(--neutral-100);
+	}
+	.multi-selector-control {
+		min-width: 260px;
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		background: none;
+		overflow: hidden;
+		border-radius: var(--spacing05);
+	}
+	.open-selector-control {
+		border-radius: var(--spacing05);
+	}
+	.label-wrapper {
+		display: flex;
+		justify-content: space-between;
+		padding: var(--spacing05) var(--spacing05) var(--spacing05) var(--spacing09);
+		border-radius: var(--spacing05) var(--spacing05) 0 0;
+		/* border: var(--spacing00) solid var(--neutral-100); */
+		cursor: pointer;
+	}
+	.list-content {
+		width: 100%;
+		top: 100%;
+		left: 0;
+		/* margin-top: var(--spacing03); */
+		background-color: white;
+		border-top: var(--spacing00) solid var(--neutral-100);
+		border-radius: 0 0 var(--spacing05) var(--spacing05);
+		/* border: var(--spacing00) solid var(--neutral-100); */
+		z-index: 1;
+	}
+	.search-bar-wrapper {
+		padding-left: var(--spacing05);
+		padding-right: var(--spacing05);
+		padding-top: var(--spacing05);
+	}
+	.options-list {
+		padding: var(--spacing05);
+		height: 220px;
+		overflow-y: scroll;
+
+		& p {
+			text-align: center;
+			color: var(--neutral-400);
+			padding-top: var(--spacing05);
+		}
+	}
+</style>

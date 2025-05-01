@@ -3,13 +3,17 @@
 
 	export let columns = [],
 		list = [],
-		chart = false
+		sortCallback,
+		chart = false,
+		sortMap = {}
 </script>
 
 <section class="no-table-gap {chart ? '' : 'table-container'}">
 	<TableHeaders
 		bind:list
+		{sortCallback}
 		{columns}
+		{sortMap}
 	/>
 	<TableBody
 		bind:list

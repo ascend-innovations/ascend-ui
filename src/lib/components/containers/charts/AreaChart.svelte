@@ -32,6 +32,7 @@
 		areaColors = [],
 		domain,
 		range,
+		currency,
 		domainLabel = '',
 		rangeLabel = '',
 		rule = null,
@@ -45,6 +46,7 @@
 		monthYear,
 		quarters = false,
 		fiscalQuarters = false,
+		fiscalYears = false,
 		line = false,
 		stacked = false,
 		chartWidth = 700,
@@ -55,7 +57,7 @@
 	$: height = chartHeight
 	$: textOpacitySwitch = innerWidth < 678
 	let marginLeft = 50
-	let marginRight = 15
+	let marginRight = 20
 	let marginTop = 24
 	let marginBottom = domainLabel ? 50 : 24
 	let avgArray = []
@@ -82,6 +84,7 @@
 			return `Q${Number(d3.utcFormat('%q')(d)) - 2} SFY${Number(d3.utcFormat('%Y')(d)) + 1}`
 		}
 	} // offset by 2 quarters
+	let formatFiscalYear = (d) => `SFY${d3.utcFormat(`%Y`)(d)}`
 
 	let tickFormat = d3.timeDay,
 		labelFormat = formatFull,
@@ -104,14 +107,42 @@
 	$: if (chartData !== undefined) {
 		for (let obj of chartData) {
 			obj[domain] = new Date(obj[domain])
+			obj[range] = parseFloat(obj[range])
 		}
+		chartData.sort((a, b) => a[domain] - b[domain])
 		const min = d3.min(chartData, (d) => d[domain])
 		const max = d3.max(chartData, (d) => d[domain])
 		dayInterval = d3.timeDay.count(min, max)
 		monthInterval = d3.timeMonth.count(min, max)
 		yearInterval = d3.timeYear.count(min, max)
 		if (stacked) {
-			// todo
+			// if (quarters) {
+			// 	labelFormat = formatQuarter
+			// 	tickFormat = d3.timeQuarter
+			// } else if (fiscalQuarters) {
+			// 	labelFormat = formatFiscalQuarter
+			// 	tickFormat = d3.timeQuarter
+			// } else if (fiscalYears) {
+			// 	labelFormat = formatFiscalYear
+			// 	tickFormat = d3.timeYear
+			// } else if (yearInterval >= 2 && yearInterval <= 20) {
+			// 	console.log('years')
+			// 	labelFormat = formatYear
+			// 	tickFormat = d3.timeYear
+			// 	everyOther = false
+			// 	chartData = [...consolidateYears(chartData, domain, range)]
+			// 	if (yearInterval >= 11) everyOther = true
+			// } else if (monthInterval >= 2 && monthInterval <= 23) {
+			// 	labelFormat = formatMonthYear // eo
+			// 	tickFormat = d3.timeMonth
+			// 	everyOther = false
+			// 	chartData = [...consolidateMonths(chartData, domain, range)]
+			// 	if (monthInterval >= 13) everyOther = true
+			// } else if (dayInterval <= 31) {
+			// 	labelFormat = formatMonthDay
+			// 	tickFormat = d3.timeDay
+			// 	everyOther = false
+			// }
 		} else {
 			if (quarters) {
 				labelFormat = formatQuarter
@@ -119,6 +150,9 @@
 			} else if (fiscalQuarters) {
 				labelFormat = formatFiscalQuarter
 				tickFormat = d3.timeQuarter
+			} else if (fiscalYears) {
+				labelFormat = formatFiscalYear
+				tickFormat = d3.timeYear
 			} else if (yearInterval >= 2 && yearInterval <= 20) {
 				labelFormat = formatYear
 				tickFormat = d3.timeYear
@@ -215,7 +249,7 @@
 		tooltipLine,
 		tooltipInnerCircle,
 		tooltipOuterCircle,
-		tooltipData = { y: 0, x: 0, line: 0, circlePosition: 0, color: '', title: '', tooltipId, valueOneLabel, valueOne: 0 }
+		tooltipData = { y: 0, x: 0, line: 0, circlePosition: 0, color: '', title: '', tooltipId, valueOneLabel, valueOne: 0, currency }
 
 	if (valueTwoLabel) {
 		tooltipData.valueTwoLabel = valueTwoLabel
@@ -239,6 +273,7 @@
 	}
 
 	function movingTooltip(e, d, s, series, i, c) {
+		let tooltipHeight = tooltip.node().getBoundingClientRect().height
 		let tooltipWidth = tooltip.node().getBoundingClientRect().width
 		tooltipData.color = c
 		tooltipData.line = xScale(chartData[i][domain])
@@ -250,17 +285,19 @@
 			mouseValue = d[1] - d[0]
 			tooltipData.line = xScale(d.data[0])
 			tooltipData.circlePosition = yScale(d[1])
-			tooltipData.valueOne = fullDate ? formatFull(d.data[0]) : yearOnly ? formatYear(d.data[0]) : monthOnly ? formatMonth(d.data[0]) : monthDay ? formatMonthDay(d.data[0]) : monthYear ? formatMonthYear(d.data[0]) : quarters ? formatQuarter(d.data[0]) : formatFull(d.data[0])
+			tooltipData.valueOne = labelFormat(d.data[0])
+			// tooltipData.valueOne = fullDate ? formatFull(d.data[0]) : yearOnly ? formatYear(d.data[0]) : monthOnly ? formatMonth(d.data[0]) : monthDay ? formatMonthDay(d.data[0]) : monthYear ? formatMonthYear(d.data[0]) : quarters ? formatQuarter(d.data[0]) : formatFull(d.data[0])
 			coords.set({ x: xScale(d.data[0]), y: yScale(d[1]) })
 			tooltipData.x = $coords.x - tooltipWidth / 2
-			tooltipData.y = $coords.y - 120
+			tooltipData.y = $coords.y - tooltipHeight - 40
 		} else {
 			mouseValue = chartData[i][range]
 			tooltipData.circlePosition = yScale(mouseValue)
-			tooltipData.valueOne = fullDate ? formatFull(chartData[i][domain]) : yearOnly ? formatYear(chartData[i][domain]) : monthOnly ? formatMonth(chartData[i][domain]) : monthDay ? formatMonthDay(chartData[i][domain]) : monthYear ? formatMonthYear(chartData[i][domain]) : quarters ? formatQuarter(d.data[0]) : formatFull(chartData[i][domain])
+			tooltipData.valueOne = labelFormat(chartData[i][domain])
+			// tooltipData.valueOne = fullDate ? formatFull(chartData[i][domain]) : yearOnly ? formatYear(chartData[i][domain]) : monthOnly ? formatMonth(chartData[i][domain]) : monthDay ? formatMonthDay(chartData[i][domain]) : monthYear ? formatMonthYear(chartData[i][domain]) : quarters ? formatQuarter(d.data[0]) : formatFull(chartData[i][domain])
 			coords.set({ x: xScale(chartData[i][domain]), y: yScale(mouseValue) })
 			tooltipData.x = $coords.x - tooltipWidth / 2
-			tooltipData.y = $coords.y - 120
+			tooltipData.y = $coords.y - tooltipHeight - 40
 		}
 
 		if (tooltipData.valueTwoLabel) tooltipData.valueTwo = mouseValue
@@ -324,14 +361,14 @@
 			x={marginLeft - 15}
 			y={yScale(tick) + 5}
 		>
-			{abbreviateNumber(tick, 1000)}
+			{currency ? '$' + abbreviateNumber(tick, 1000) : '' + abbreviateNumber(tick, 1000)}
 		</text>
 	{/each}
 
 	<!-- Areas -->
 	{#if stacked}
 		{#each stack as series, i}
-			{@const gradient = `area-gradient-${i}`}
+			{@const gradient = `area-gradient-${i}-${tooltipId}`}
 			<!-- gradient -->
 			<defs>
 				<linearGradient
@@ -341,8 +378,14 @@
 					y1="0%"
 					y2="100%"
 				>
-					<stop offset="0%" stop-color={areaColors[i]} />
-					<stop offset="100%" stop-color="rgba(255,255,255,0)" />
+					<stop
+						offset="0%"
+						stop-color={areaColors[i]}
+					/>
+					<stop
+						offset="100%"
+						stop-color="rgba(255,255,255,0)"
+					/>
 				</linearGradient>
 			</defs>
 
@@ -379,19 +422,25 @@
 			{/each}
 		{/each}
 	{:else}
-			<!-- gradient -->
-			<defs>
-				<linearGradient
-					id="area-gradient"
-					x1="0%"
-					x2="0%"
-					y1="0%"
-					y2="100%"
-				>
-					<stop offset="0%" stop-color={areaColors[0]} />
-					<stop offset="100%" stop-color="rgba(255,255,255,0)" />
-				</linearGradient>
-			</defs>
+		<!-- gradient -->
+		<defs>
+			<linearGradient
+				id="area-gradient-{tooltipId}"
+				x1="0%"
+				x2="0%"
+				y1="0%"
+				y2="100%"
+			>
+				<stop
+					offset="0%"
+					stop-color={areaColors[0]}
+				/>
+				<stop
+					offset="100%"
+					stop-color="rgba(255,255,255,0)"
+				/>
+			</linearGradient>
+		</defs>
 		<path
 			class="line-chart-path"
 			stroke={lineColors[0]}
@@ -400,8 +449,8 @@
 			d={stroke(chartData)}
 		/>
 		<path
-			class="area-chart-path"
-			fill={line ? 'rgba(0,0,0,0)' : "url(#area-gradient)"}
+			class="area-path"
+			fill={line ? 'rgba(0,0,0,0)' : `url(#area-gradient-${tooltipId})`}
 			d={area(chartData)}
 		/>
 		{#each chartData as d, i}
@@ -460,7 +509,7 @@
 						{:else}
 							{labelFormat(tick)}
 						{/if} -->
-						{fullDate ? formatFull(item.data[0]) : yearOnly ? formatYear(item.data[0]) : monthOnly ? formatMonth(item.data[0]) : monthDay ? formatMonthDay(item.data[0]) : monthYear ? formatMonthYear(item.data[0]) : quarters ? formatQuarter(item.data[0]) : formatFull(item.data[0])}
+						{fullDate ? formatFull(item.data[0]) : yearOnly ? formatYear(item.data[0]) : monthOnly ? formatMonth(item.data[0]) : monthDay ? formatMonthDay(item.data[0]) : monthYear ? formatMonthYear(item.data[0]) : quarters ? formatQuarter(item.data[0]) : fiscalYears ? formatFiscalYear(item.data[0]) : formatFull(item.data[0])}
 					</text>
 				{/each}
 			{/each}

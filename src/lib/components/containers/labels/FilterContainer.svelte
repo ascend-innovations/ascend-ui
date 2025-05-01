@@ -4,8 +4,10 @@
 </script>
 
 <div class="filter-container">
-	<p class="body-bold-xs">Displaying results for</p>
-	{#each filters as filter (filter.tooltip)}
-		<FilterLabel {filter} />
-	{/each}
+	{#if filters.length > 0}
+		<p class="body-bold-xs">Displaying results for</p>
+		{#each filters as filter (filter.tooltip)}
+			<FilterLabel {filter} />
+		{/each}
+	{/if}
 </div>

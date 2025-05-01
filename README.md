@@ -39,3 +39,4 @@ npm publish
 # Changelog
 
 2/10/2025 - Status Tag component now uses column key for mapping overrides and tooltip copy declarations.
+3/31/2025 - Added chart-filter-header slot to charts for chart-level filter components (i.e. selectors). Separate from chart-header slot.

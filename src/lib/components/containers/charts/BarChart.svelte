@@ -1,8 +1,8 @@
 <script>
 	import * as d3 from 'd3'
-	import { abbreviateNumber, ChartTooltip, RuleTip } from '$lib/index.js'
+	import { abbreviateNumber, ChartTooltip, RuleTip, XCircleCloseExtraSmallIcon } from '$lib/index.js'
 	import { browser } from '$app/environment'
-	import { onMount } from 'svelte'
+	import { afterUpdate, onMount } from 'svelte'
 
 	/**
 	 *  @param {array} data
@@ -32,6 +32,7 @@
 		sort = null,
 		domain,
 		range,
+		currency,
 		domainLabel = '',
 		rangeLabel = '',
 		valueOneLabel,
@@ -54,7 +55,10 @@
 	let xScale,
 		yScale,
 		stack,
-		opacity = []
+		opacity = [],
+		charactersPerBand,
+		tickVals,
+		scaleWidth
 	$: chartData = JSON.parse(JSON.stringify(data)) // copies and removes references to original data
 
 	let formatFull = d3.utcFormat('%-m/%-d/%Y')
@@ -234,7 +238,7 @@
 	}
 
 	let tooltip,
-		tooltipData = { y: 0, x: 0, title: '', valueOneLabel, tooltipId, valueOne: 0 }
+		tooltipData = { y: 0, x: 0, title: '', valueOneLabel, tooltipId, valueOne: 0, currency }
 
 	if (valueTwoLabel) {
 		tooltipData.valueTwoLabel = valueTwoLabel
@@ -247,24 +251,39 @@
 		}
 	})
 
+	afterUpdate(() => {
+		tickVals = xScale.domain()
+		scaleWidth = xScale.bandwidth()
+		charactersPerBand = scaleWidth / 6
+	})
+
+	function truncateTicks(tick) {
+		let value = tick
+		if (value.length > charactersPerBand) {
+			return value.slice(0, charactersPerBand) + '...'
+		}
+		return value
+	}
+
 	function enterTooltip(e) {
 		tooltip.style('opacity', 1)
 	}
 
 	function movingTooltip(e, d, s, i) {
+		let tooltipHeight = tooltip.node().getBoundingClientRect().height
 		let tooltipWidth = tooltip.node().getBoundingClientRect().width
 		const [x, y] = d3.pointer(e)
 		tooltipData.x = e.offsetX - tooltipWidth / 2
 		tooltipData.title = s
-		tooltipData.y = e.offsetY - 85
+		tooltipData.y = e.offsetY - tooltipHeight - 20
 		changeOpacityOnHover(i)
 
 		if (stacked) {
 			tooltipData.valueOne = d.data[0]
 			if (tooltipData.valueTwoLabel) tooltipData.valueTwo = d[1] - d[0]
 		} else {
-			tooltipData.valueOne = d[tooltipData.valueOneLabel]
-			if (tooltipData.valueTwoLabel) tooltipData.valueTwo = d[tooltipData.valueTwoLabel]
+			tooltipData.valueOne = d[domain]
+			if (tooltipData.valueTwoLabel) tooltipData.valueTwo = d[range]
 		}
 	}
 
@@ -375,13 +394,13 @@
 			{#if innerWidth >= 500}
 				{#each chartData as d}
 					<text
-						class="chart-axis-label"
+						class="axis-label domain-ticks"
 						fill="gray"
 						text-anchor="middle"
 						x={xScale(d[domain]) + xScale.bandwidth() / 2}
 						y={20}
 					>
-						{d[domain]}
+						{truncateTicks(d[domain])}
 					</text>
 				{/each}
 			{/if}

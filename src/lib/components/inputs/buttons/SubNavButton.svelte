@@ -2,18 +2,21 @@
 	import { Button } from '$lib/index.js'
 	import { page } from '$app/stores'
 
-	export let sublink
+	export let callback, preload, sublink
 
-	$: currentPageLink = sublink.url === '/' ? $page.url.pathname === sublink.url : $page.url.pathname.includes(sublink.url)
+	$: currentPageLink = $page.url.pathname === sublink?.url
 </script>
 
 <div class="subnav-button-wrapper">
 	<div class={`subnav-current-page-indicator ${currentPageLink ? 'subnav-current-page-link' : ''}`}></div>
 	<div class="subnav-button">
 		<Button
-			classes={['padding-left', 'btn-full', 'btn-left', 'btn-l', 'btn-full', 'btn-white']}
+			classes={['padding-left', 'btn-full', 'btn-left', 'btn-l', 'btn-white', 'btn-nav-hover']}
+			styles={['padding-top: var(--spacing02)', 'padding-bottom: var(--spacing02)', 'text-decoration: none', `${currentPageLink ? 'font-weight:bold' : ''}`]}
 			text={sublink.text}
 			url={sublink?.url ?? ''}
+			{callback}
+			{preload}
 		/>
 	</div>
 </div>

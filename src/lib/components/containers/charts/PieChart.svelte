@@ -24,6 +24,7 @@
 		arcColors = [],
 		domain,
 		range,
+		currency,
 		valueOneLabel,
 		valueTwoLabel,
 		sort = null,
@@ -33,7 +34,11 @@
 
 	let width = 306
 	let height = chartHeight
-	let pie, arcPath, arcs
+	let pie,
+		arcPath,
+		arcs,
+		opacity = []
+	$: chartData = JSON.parse(JSON.stringify(data)) // copies and removes references to original data
 
 	$: {
 		if (sort === 'ascending') {
@@ -58,11 +63,13 @@
 			.innerRadius(ring ? width / 3.8 : 0)
 			.outerRadius(Math.min(width, height) / 2)
 
-		arcs = pie(data)
+		arcs = pie(chartData)
+
+		opacity = Array(chartData.length).fill(1)
 	}
 
 	let tooltip,
-		tooltipData = { y: 0, x: 0, title: '', tooltipId, valueOneLabel, valueOne: 0 }
+		tooltipData = { y: 0, x: 0, title: '', tooltipId, valueOneLabel, valueOne: 0, currency }
 	if (valueTwoLabel) {
 		tooltipData.valueTwoLabel = valueTwoLabel
 		tooltipData.valueTwo = 0
@@ -78,33 +85,55 @@
 		tooltip.style('opacity', 1)
 	}
 
-	function movingTooltip(e, d) {
-		const [x, y] = d3.pointer(e)
-		tooltipData.y = e.offsetY - 85
-		tooltipData.x = e.offsetX - 10
+	function movingTooltip(e, d, i) {
+		let tooltipHeight = tooltip.node().getBoundingClientRect().height
+		let tooltipWidth = tooltip.node().getBoundingClientRect().width
+		
+		tooltipData.y = e.offsetY - tooltipHeight - 20
+		tooltipData.x = e.offsetX - tooltipWidth / 2
 		tooltipData.title = d.data[domain]
-		tooltipData.valueOne = d.data[valueOneLabel]
-		if (valueTwoLabel) tooltipData.valueTwo = d.data[tooltipData.valueTwoLabel]
+		tooltipData.valueOne = d.data[range]
+		if (valueTwoLabel) tooltipData.valueTwo = d.data[valueTwoLabel]
+		changeOpacityOnHover(i)
 	}
 
 	function leaveTooltip(e) {
 		tooltip.style('opacity', 0)
+		resetOpacity()
+	}
+
+	function changeOpacityOnHover(i) {
+		opacity = opacity.map((o, index) => {
+			o = index === i ? 1 : 0.5
+			return o
+		})
+	}
+
+	function resetOpacity() {
+		opacity = opacity.map((o) => {
+			o = 1
+			return o
+		})
 	}
 </script>
 
 <div class="pie-chart-svg-container">
 	<svg
 		class="pie-chart-svg"
-		viewBox="{-width / 2} {-height / 2} {width} {height}"
+		width={height}
+		{height}
+		viewBox="{-height / 2} {-height / 2} {height} {height}"
 	>
 		<g>
 			{#each arcs as slice, i}
 				<!-- svelte-ignore a11y-no-static-element-interactions -->
 				<path
+					class="arc"
 					on:mouseenter={enterTooltip}
-					on:mousemove={(e) => movingTooltip(e, slice)}
+					on:mousemove={(e) => movingTooltip(e, slice, i)}
 					on:mouseleave={leaveTooltip}
 					fill={arcColors[i]}
+					opacity={opacity[i]}
 					d={arcPath(slice)}
 				/>
 			{/each}
@@ -112,3 +141,20 @@
 	</svg>
 	<ChartTooltip tooltipInfo={tooltipData} />
 </div>
+
+<style>
+	.svg-container {
+		display: block;
+		position: absolute;
+		width: 100%;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	.pie-chart-svg {
+		width: 100%;
+	}
+	.arc {
+		transition: all ease-out 300ms;
+	}
+</style>

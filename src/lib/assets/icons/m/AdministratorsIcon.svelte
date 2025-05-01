@@ -2,7 +2,8 @@
 	import { getGlobalColorPalette, Icon } from '$lib/index.js'
 	import { onMount } from 'svelte'
 
-	export let styles = []
+	export let styles = [],
+		colorOverride
 
 	let palette = {}
 
@@ -23,6 +24,6 @@
 		fill-rule="evenodd"
 		clip-rule="evenodd"
 		d="M18 22.4649C19.1956 21.7733 20 20.4806 20 19C20 16.7909 18.2091 15 16 15C13.7909 15 12 16.7909 12 19C12 20.4806 12.8044 21.7733 14 22.4649V25C14 25.5523 14.4477 26 15 26H17C17.5523 26 18 25.5523 18 25V22.4649Z"
-		fill={palette.secondary}
+		fill={colorOverride || palette.secondary}
 	/>
 </Icon>

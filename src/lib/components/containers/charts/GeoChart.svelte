@@ -11,6 +11,7 @@
 		infoTitleKey,
 		infoLink = false,
 		linkKey = '',
+		contentKey,
 		geoJSON = null
 
 	$: data = data
@@ -74,9 +75,18 @@
 			// Construct and render markers with their info popups attached
 			if (data.type !== 'Feature') {
 				for (let point of data) {
-					const icon = L.icon({
-						iconUrl: point.marker,
-					})
+					let icon
+					if (point.html) {
+						icon = L.divIcon({
+							className: 'map-marker',
+							html: point.marker,
+						})
+					} else {
+						icon = L.icon({
+							iconUrl: point.marker,
+						})
+					}
+
 
 					const popup = L.popup({
 						offset: [24, 24],
@@ -87,6 +97,7 @@
 								`<div {id} class="geo-chart-tooltip" style="max-width:260px;">` +
 								`<p style="font-size:16px;"><b>${point.type === 'home' ? 'Home Address' : point[infoTitleKey]}</b></p>` +
 								`<div>` +
+								`${contentKey ? `<p>${point[contentKey]}</p>` : ''}` +
 								`${point.type === 'home' ? `<p style="font-size:14px;">${point[addressKey]}</p>` : `<p style="font-size:14px;">${pillText}: ${point[pillKey]}</p>`}` +
 								`</div>` +
 								`</div>` +

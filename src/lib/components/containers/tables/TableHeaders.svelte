@@ -1,15 +1,21 @@
 <script>
 	import { TableColumnHeaderCell, sortArray } from '$lib/index.js'
 
-	export let columns, list
+	export let columns,
+		list,
+		sortCallback = sortTable,
+		sortMap = {}
 
 	// create sortMap object with keys that match the column's key with a value of empty string
-	const sortMap = {}
-	Object.values(columns).forEach((column) => {
-		if (column.key !== undefined) sortMap[column.key] = ''
-	})
+	if (sortMap.length === undefined || sortMap.length <= 0) {
+		Object.values(columns).forEach((column) => {
+			if (column.key !== undefined) sortMap[column.key] = ''
+		})
+	}
 
 	function sortTable(columnKey, columnType) {
+		//This sort only works if sortCallback is null.
+
 		// save the last sort order for this column
 		const previousSortOrder = sortMap[columnKey]
 
@@ -31,7 +37,7 @@
 			bind:list
 			order={sortMap[column.key]}
 			{column}
-			{sortTable}
+			sortTable={sortCallback}
 		/>
 	{/each}
 </div>

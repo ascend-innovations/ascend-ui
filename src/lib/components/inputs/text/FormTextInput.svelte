@@ -5,6 +5,8 @@
 		label = '',
 		name = label,
 		type = 'text',
+		placeholder = '',
+		validationMessage = `Please enter your ${label}`,
 		validValue,
 		validationCallback
 </script>
@@ -22,9 +24,9 @@
 			bind:value
 			class="form-text-input {validValue === false ? 'form-text-input-error' : ''}"
 			id={label}
-			name={name}
+			{name}
 			on:blur={validationCallback}
-			placeholder={`Enter your ${label}`}
+			placeholder={placeholder || `Enter your ${label}`}
 			type="text"
 		/>
 	{:else if type === 'email'}
@@ -33,9 +35,9 @@
 			bind:value
 			class="form-text-input {validValue === false ? 'form-text-input-error' : ''}"
 			id={label}
-			name={name}
+			{name}
 			on:blur={validationCallback}
-			placeholder={`Enter your ${label}`}
+			placeholder={placeholder || `Enter your ${label}`}
 			type="email"
 		/>
 	{:else if type === 'password'}
@@ -44,13 +46,13 @@
 			bind:value
 			class="form-text-input {validValue === false ? 'form-text-input-error' : ''}"
 			id={label}
-			name={name}
+			{name}
 			on:blur={validationCallback}
-			placeholder={`Enter your ${label}`}
+			placeholder={placeholder || `Enter your ${label}`}
 			type="password"
 		/>
 	{/if}
 	{#if validValue === false}
-		<InputError text={`Please enter your ${label}`} />
+		<InputError text={validationMessage} />
 	{/if}
 </div>

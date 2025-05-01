@@ -4,10 +4,11 @@
 
 	export let arrow = true,
 		callback = null,
-		classes = ['btn-fit', 'btn-l', 'btn-square'],
+		classes = ['btn-fit', 'btn-m', 'btn-square', 'btn-outline'],
 		disabled = false,
 		icon = arrow ? ArrowRightSmallIcon : null,
 		loading = false,
+		preload,
 		// loadingIcon = ProgressSpinner,
 		text = '',
 		url = ''
@@ -24,6 +25,7 @@
 	{classes}
 	{disabled}
 	{loading}
+	{preload}
 	{text}
 	{url}
 />

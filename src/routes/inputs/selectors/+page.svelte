@@ -1,5 +1,6 @@
 <script>
 	import Button from '$lib/components/inputs/buttons/Button.svelte'
+	import convertToCurrency from '$lib/functions/formatting/convertToCurrency'
 	import { Page, PageBody, MultiSelector } from '$lib/index.js'
 
 	const optionList = [
@@ -23,10 +24,6 @@
 				searchable
 				{optionList}
 			/>
-		</div>
-		<div>
-			This should get moved.
-			<Button callback={() => console.log(optionList)} />
 		</div>
 	</PageBody>
 </Page>

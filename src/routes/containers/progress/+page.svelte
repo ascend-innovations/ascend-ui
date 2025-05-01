@@ -1,5 +1,5 @@
 <script>
-	import { Card, ConfirmButton, Page, ProgressBar, ProgressSpinner } from '$lib/index.js'
+	import { Card, ConfirmButton, Page, ProgressBar, ProgressSpinner, PageLoadingSpinner } from '$lib/index.js'
 
 	let progress = 0
 </script>
@@ -65,4 +65,6 @@
 		<ProgressSpinner active="true" />
 		<ConfirmButton loading={true} />
 	</Card>
+
+	<PageLoadingSpinner />
 </Page>

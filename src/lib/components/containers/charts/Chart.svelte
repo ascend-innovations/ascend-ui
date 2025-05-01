@@ -7,6 +7,7 @@
 		data = [],
 		domain,
 		range,
+		currency = false,
 		domainLabel,
 		rangeLabel,
 		valueOneLabel,
@@ -32,6 +33,7 @@
 		infoTitleKey = '',
 		infoLink,
 		linkKey,
+		contentKey,
 		tableColumns = [],
 		fullDate = false,
 		yearOnly = false,
@@ -40,6 +42,7 @@
 		monthYear = false,
 		quarters,
 		fiscalQuarters,
+		fiscalYears,
 		titleTooltip = null,
 		titleButton = false,
 		barColors = ['var(--secondary-600)', 'var(--secondary-base)', 'var(--secondary-400)', 'var(--secondary-300)', 'var(--secondary-200)', 'var(--secondary-100)', 'var(--secondary-050)'],
@@ -83,8 +86,13 @@
 		{titleButton}
 	/>
 	<div class="chart-content">
-		{#if (type === 'geo' && geoJSON?.length === 0) || (type !== 'geo' && data.length === 0)}
-			<div class="no-chart-data-panel">
+		{#if $$slots['chart-filter-header']}
+			<div class="chart-header">
+				<slot name="chart-filter-header" />
+			</div>
+		{/if}
+		{#if (type === 'geo' && geoJSON?.length === 0) || (type !== 'geo' && data?.length === 0)}
+			<div class="no-data-panel">
 				<AlertCircleSmallIcon colorOverride="var(--neutral-400)" />
 				<p>No data to display</p>
 			</div>
@@ -105,6 +113,7 @@
 							{data}
 							{domain}
 							{range}
+							{currency}
 							{domainLabel}
 							{rangeLabel}
 							{seriesKey}
@@ -126,6 +135,7 @@
 							{data}
 							{domain}
 							{range}
+							{currency}
 							{domainLabel}
 							{rangeLabel}
 							{seriesKey}
@@ -142,6 +152,7 @@
 							{monthYear}
 							{quarters}
 							{fiscalQuarters}
+							{fiscalYears}
 							{lineColors}
 							{areaColors}
 							{chartWidth}
@@ -152,6 +163,7 @@
 							{data}
 							{domain}
 							{range}
+							{currency}
 							{tooltipId}
 							{valueOneLabel}
 							{valueTwoLabel}
@@ -177,12 +189,14 @@
 							{infoTitleKey}
 							{infoLink}
 							{linkKey}
+							{contentKey}
 						/>
 					{:else if type === 'scatter'}
 						<ScatterplotChart
 							{data}
 							{domain}
 							{range}
+							{currency}
 							{seriesKey}
 							{valueOneLabel}
 							{valueTwoLabel}
