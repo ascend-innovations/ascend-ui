@@ -10,14 +10,3 @@
 	<p>More sample dialog content</p>
 	<OkButton callback={closeDialog} />
 </div>
-
-<style>
-	.sample-dialog {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-		gap: var(--spacing05);
-	}
-</style>

@@ -119,9 +119,6 @@ button {
 	flex-direction: column;
 	width: 100%;
 }
-.navbar-button {
-	width: 100%;
-}
 .nav-indicator-wrapper {
 	display: flex;
 }

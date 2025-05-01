@@ -214,7 +214,7 @@
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <svg
-	class="chart-svg"
+	class="chart-svg width-100"
 	viewBox="0 0 {width} {height}"
 >
 	<!-- Range Axis -->

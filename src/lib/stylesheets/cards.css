@@ -69,6 +69,12 @@
 	padding: var(--spacing13);
 	width: var(--spacing27);
 }
+.login-card-ascend-icon {
+	& img {
+		display: block;
+		margin: auto;
+	}
+}
 .card-title {
 	color: var(--neutral-base);
 	font-size: var(--heading-s-m-font-size);
@@ -81,18 +87,11 @@
 .card-content {
 	display: flex;
 	flex-direction: column;
-	width: 100%;
 	height: 100%;
 	justify-content: space-between;
 }
-.metric-card-text-color {
-	color: var(--neutral-400);
-}
 .card-additional-information-button {
 	margin-left: auto;
-}
-.account-change-card-slot {
-	width: 100%;
 }
 .account-profile-card-link {
 	border-bottom: var(--neutral-stroke-100-m);

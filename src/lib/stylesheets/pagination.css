@@ -7,6 +7,3 @@
     justify-content: space-between;
     padding: var(--spacing09);
 }
-.page-number {
-    color: var(--neutral-400);
-}

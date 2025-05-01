@@ -19,8 +19,8 @@
 		validationCallback
 </script>
 
-<div class="password-control">
-	<div class="password-title">
+<div class="password-control width-100">
+	<div class="password-title width-100">
 		{#if label}
 			<Label
 				{id}

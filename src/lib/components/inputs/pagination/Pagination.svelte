@@ -17,7 +17,7 @@
 			disabled={backButtonDisabled}
 		/>
 	</div>
-	<div class="page-number">
+	<div class="neutral-400-text">
 		Page {currentPage} of {totalPages}
 	</div>
 	<div class="next-button">

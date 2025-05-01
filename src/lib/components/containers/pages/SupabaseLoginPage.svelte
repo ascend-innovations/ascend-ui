@@ -31,6 +31,7 @@
 
 <LoginPage ascendLogo>
 	<form
+		class="sso-login-form"
 		method="post"
 		name="login"
 		action="?/login"
@@ -55,14 +56,14 @@
 			<InputError text={form.message} />
 		{/if}
 
-		<div class="login-button-row">
+		<div class="sso-login-button-row">
 			<input
-				class="btn-full btn-l btn-primary btn-rect semibold"
+				class="btn-full btn-l btn-primary btn-rect semibold sso-login-submit"
 				type="submit"
 				value="Login"
 			/>
 		</div>
-		<div class="miscellaneous-links">
+		<div class="sso-login-miscellaneous-links">
 			<a
 				class="body-xs"
 				target="_blank"
@@ -75,7 +76,7 @@
 			>
 		</div>
 	</form>
-	<!-- <div class="account-info">
+	<!-- <div class="sso-login-account-info">
 		<Button
 			callback={dialogCallback}
 			classes={['btn-link']}
@@ -83,37 +84,3 @@
 		/>
 	</div> -->
 </LoginPage>
-
-<style>
-	.login-button-row {
-		width: 100%;
-	}
-	form {
-		align-items: center;
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing10);
-		width: 100%;
-	}
-	input[type='submit'] {
-		align-items: center;
-		border-radius: var(--btn-border-radius);
-		border: none;
-		cursor: pointer;
-		text-decoration: none;
-	}
-	/* .account-info {
-		display: flex;
-		justify-content: center;
-		width: 100%;
-	} */
-	.miscellaneous-links {
-		color: var(--neutral-400);
-		display: flex;
-		gap: var(--spacing06);
-
-		& a {
-			color: inherit;
-		}
-	}
-</style>

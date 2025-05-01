@@ -33,11 +33,12 @@
 			/>
 		</div>
 	{/if}
-	<div class="logo-link-text-container {row[column.linkKey] ? 'logo-link-link-height' : ''}">
-		<p>{row[column.textKey]}</p>
+	<div class="logo-link-text-container truncate-text {row[column.linkKey] ? 'logo-link-link-height' : ''}">
+		<p class="truncate-text">{row[column.textKey]}</p>
 		{#if row[column.linkKey]}
-			<p class="logo-link-link">
+			<p class="logo-link-link truncate-text body-xxs">
 				<a
+					class="neutral-400-text"
 					href={`${prefix}${prefix === 'tel:' ? phone : row[column.linkKey]}`}
 					target="_blank">{row[column.linkKey]}</a
 				>

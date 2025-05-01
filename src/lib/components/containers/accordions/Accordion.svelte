@@ -21,7 +21,7 @@
 	})
 </script>
 
-<details bind:this={detailsElement} class="category-details">
+<details bind:this={detailsElement} class="width-100">
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<summary

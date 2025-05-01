@@ -1,3 +1,12 @@
+.alert {
+    border-radius: var(--spacing09);
+    padding: var(--spacing09);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--spacing06);
+}
+
 .alert-component {
     border-radius: var(--spacing09);
     display: flex;
@@ -23,6 +32,9 @@
 }
 
 @media screen and (min-width: 768px) {
+    .alert {
+        flex-direction: row;
+    }
     .alert-component {
         border: var(--spacing01) solid var(--neutral-050);
         flex-direction: row;

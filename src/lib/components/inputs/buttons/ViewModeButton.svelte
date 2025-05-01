@@ -20,7 +20,3 @@
 		G
 	</button>
 </div>
-
-<style>
-	
-</style>

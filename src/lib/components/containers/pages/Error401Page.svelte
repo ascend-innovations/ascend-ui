@@ -37,34 +37,3 @@
 		</div>
 	</div>
 </div>
-
-<style>
-	.error-401-page {
-		align-items: center;
-		display: flex;
-		flex-direction: column;
-	}
-	.error-401-banner-wrapper {
-		width: var(--spacing32);
-	}
-	.error-401-content {
-		align-items: center;
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing10);
-		justify-content: space-between;
-		text-align: center;
-		width: var(--spacing27);
-	}
-	.error-401-button-row {
-		align-items: space-between;
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing09);
-		width: 100%;
-	}
-	a {
-		color: var(--neutral-800);
-		font-weight: bold;
-	}
-</style>

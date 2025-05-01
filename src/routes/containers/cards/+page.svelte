@@ -1,5 +1,5 @@
 <script>
-	import { Card, NewNotificationIcon, Page, MetricCard } from '$lib/index.js'
+	import { Card, NewNotificationIcon, Page, MetricCard, LoginCard } from '$lib/index.js'
 </script>
 
 <Page>
@@ -13,6 +13,8 @@
 		<p>Description of an example card</p>
 	</Card>
 
+	<LoginCard  ascendLogo />
+
 	<div class="metrics-header">
 		<MetricCard
 			styles={['border: none']}
@@ -25,6 +27,7 @@
 			This is even more text just to see how far the component could possibly stretch if need be by the wonderful UX designers at Ascend Innovations. "
 			value={10}
 		/>
+		
 	</div>
 </Page>
 

@@ -92,7 +92,7 @@
 			</div>
 		{/if}
 		{#if (type === 'geo' && geoJSON?.length === 0) || (type !== 'geo' && data?.length === 0)}
-			<div class="no-data-panel">
+			<div class="chart-no-data-panel neutral-400-text">
 				<AlertCircleSmallIcon colorOverride="var(--neutral-400)" />
 				<p>No data to display</p>
 			</div>

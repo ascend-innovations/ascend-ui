@@ -14,7 +14,7 @@
 		{tabList}
 		on:tabselect={(event) => handleTabSelection(event)}
 	/>
-	<div class="tab-content">
+	<div class="width-100">
 		{#if tabList[currentTab]?.content && tabList[currentTab]?.data}
 			<svelte:component
 				this={tabList[currentTab].content}

@@ -4,7 +4,7 @@
 	export let text
 </script>
 
-<div class="validation-error">
+<div class="validation-error width-100">
 	<div class="error-icon">
 		<AlertCircleSmallIcon />
 	</div>

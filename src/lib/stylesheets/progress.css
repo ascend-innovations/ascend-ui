@@ -27,11 +27,26 @@
     justify-content: center;
     width: 100%;
 }
+.page-loading-spinner {
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing03);
+    animation: fadeIn 500ms linear 1;
+}
 .progress-spinner {
     animation-iteration-count: infinite;
     animation-name: spin;
     animation-timing-function: linear;
     transition-property: transform;
+}
+.page-loading-spinner-spinner {
+    animation: spin 600ms linear infinite;
+	transition-property: transform;
 }
 @keyframes spin {
     from {
@@ -39,5 +54,13 @@
     }
     to {
         transform: rotate(360deg);
+    }
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }

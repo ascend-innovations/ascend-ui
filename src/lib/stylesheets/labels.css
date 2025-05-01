@@ -39,7 +39,26 @@
 }
 .filter-label-text {
     max-width: 300px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+}
+.autosave-indicator {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing03);
+    color: var(--neutral-400);
+    font-weight: 700;
+}
+.map-color-key {
+    margin-top: var(--spacing09);
+    display: flex;
+    gap: var(--spacing05);
+}
+.map-color-key-color-block {
+    display: flex;
+	align-items: center;
+	gap: var(--spacing03);
+}
+.map-color-key-shade {
+    height: 8px;
+    width: 8px;
+    border-radius: 4px;
 }

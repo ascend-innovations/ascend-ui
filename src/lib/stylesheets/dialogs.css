@@ -84,6 +84,11 @@ dialog[open]::backdrop {
 	gap: var(--spacing09);
 	overflow-y: auto;
 }
+.create-account-dialog-margin {
+	& p {
+		margin-top: 6px;
+	}
+}
 .sample-dialog {
 	display: flex;
 	flex-direction: column;

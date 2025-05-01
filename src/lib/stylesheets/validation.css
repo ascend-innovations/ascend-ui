@@ -1,6 +1,5 @@
 .validation-error {
     display: flex;
     gap: var(--spacing05);
-    width: 100%;
     border-radius: var(--spacing04);
 }

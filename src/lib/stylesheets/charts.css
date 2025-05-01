@@ -24,14 +24,16 @@
     right: 0;
     bottom: 0;
 }
-
 .chart-svg {
     display: block;
-    width: 100%;
     height: 100%;
 }
-.pie-chart-svg {
-    width: 100%;
+.pie-chart-svg-container {
+    display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 .pie-chart-svg-container {
     display: block;
@@ -51,7 +53,8 @@
 .area-chart-path,
 .line-chart-path,
 .bar-chart-path,
-.scatterplot-point {
+.scatterplot-point,
+.arc-path {
     transition: all ease-out 300ms;
 }
 .area-chart-tooltip-line,
@@ -69,7 +72,7 @@
     position: relative;
     height: 100%;
 }
-.no-chart-data-panel {
+.chart-no-data-panel {
     border-radius: 12px;
     background-color: var(--neutral-050);
     height: 100%;
@@ -79,8 +82,4 @@
     justify-content: center;
     flex-direction: column;
     gap: var(--spacing03);
-
-    & p {
-        color: var(--neutral-400);
-    }
 }

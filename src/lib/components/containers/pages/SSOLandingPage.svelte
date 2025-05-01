@@ -48,8 +48,8 @@
 	</div>
 </div>
 
-<footer>
-	<div class="footer-bar body-xs">
+<footer class="sso-landing-footer">
+	<div class="sso-landing-footer-bar body-xs">
 		<div class="company-signature">
 			Powered by <strong
 				><a
@@ -58,7 +58,7 @@
 				></strong
 			>
 		</div>
-		<div class="link-buttons">
+		<div class="sso-landing-footer-link-buttons">
 			<a
 				href="https://ascend-innovations.com/legal/terms-and-conditions"
 				target="_blank">Terms & Conditions</a
@@ -70,28 +70,3 @@
 		</div>
 	</div>
 </footer>
-
-<style>
-	footer {
-		width: 100%;
-	}
-	.footer-bar {
-		color: var(--neutral-400);
-		align-items: center;
-		background-color: var(--background-base);
-		display: flex;
-		height: var(--spacing13);
-		justify-content: space-between;
-		margin-top: auto;
-		padding: 0 var(--spacing09);
-		width: 100%;
-
-		& a {
-			color: inherit;
-		}
-	}
-	.link-buttons {
-		display: flex;
-		gap: var(--spacing06);
-	}
-</style>

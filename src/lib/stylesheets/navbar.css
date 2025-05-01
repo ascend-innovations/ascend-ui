@@ -29,9 +29,6 @@
     max-height: 100vh;
     overflow-y: auto;
 }
-.nav-button {
-    width: 100%;
-}
 .nav-page-list {
     align-items: flex-start;
     background-color: var(--background-base);

@@ -26,7 +26,7 @@
 		{titleButton}
 		{titleButtonText}
 	/>
-	<div class="card-content body-s-s">
+	<div class="card-content width-100 body-s-s">
 		<slot />
 	</div>
 </div>

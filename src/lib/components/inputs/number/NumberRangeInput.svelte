@@ -28,7 +28,7 @@
 </script>
 
 <div
-	class="number-range-input"
+	class="width-100"
 	style={styles?.join(';')}
 >
 	<Label

@@ -20,7 +20,7 @@
 </script>
 
 <div
-	class="number-control"
+	class="number-control width-100"
 	style={styles.join(';')}
 >
 	<div class="text-title">

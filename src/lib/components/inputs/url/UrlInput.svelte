@@ -17,11 +17,11 @@
 </script>
 
 <div
-	class="url-control"
+	class="url-control width-100"
 	style={styles.join(';')}
 >
 	<div class="url-title">
-		<div class="url-title">
+		<div class="url-title width-100">
 			<Label
 				{id}
 				{label}
@@ -43,7 +43,7 @@
 	<!-- svelte-ignore a11y-autofocus -->
 	<input
 		bind:value={url}
-		class="url-input"
+		class="width-100"
 		type="url"
 		pattern="https://.*"
 		{autofocus}

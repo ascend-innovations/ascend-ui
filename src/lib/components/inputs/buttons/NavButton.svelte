@@ -23,7 +23,7 @@
 <div class="navbar-button-wrapper">
 	<div class="indicator-wrapper">
 		<div class={`current-page-indicator ${currentPageLink ? 'current-page-link' : ''}`} />
-		<div class="navbar-button">
+		<div class="width-100">
 			<Button
 				callback={pageData.sublinks?.length > 0 ? toggleSubNav : callback}
 				classes={['btn-left', 'btn-full', 'btn-l', 'btn-white', 'btn-nav-hover']}

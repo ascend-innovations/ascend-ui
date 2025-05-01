@@ -1,8 +1,5 @@
 /* table body styles */
 
-.no-table-gap {
-    gap: 0;
-}
 .table-container {
     border: var(--neutral-stroke-100-s);
     border-radius: var(--border-radius-s);
@@ -34,6 +31,9 @@
 .table-body-row:last-child {
     border-bottom: none;
 }
+.pagination-container {
+    margin-top: var(--spacing09);
+}
 
 /* cell styles */
 
@@ -61,24 +61,13 @@
     }
 }
 .logo-link-text-container {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     height: 24px;
 
     & p {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
         font-weight: bold;
-    }
-
-    & a {
-        color: var(--neutral-400);
     }
 }
 .logo-link-link {
-    font-size: 11px;
     height: 19px;
 }
 .logo-link-link-height {

@@ -29,14 +29,14 @@
 		class="menu-header"
 		slot="menu-header"
 	>
-		<div class="profile-container">
+		<div class="menu-user-profile-container">
 			<ProfileIcon />
 			<div class="user-info">
 				{`${username} ${role}`}
 			</div>
 		</div>
 		{#if $$slots['profile-switcher']}
-			<div class="profile-switcher">
+			<div class="menu-profile-switcher">
 				<slot name="profile-switcher" />
 			</div>
 		{/if}
@@ -48,22 +48,3 @@
 		<LogoutMenuButton callback={logoutCallback} />
 	</div>
 </Menu>
-
-<style>
-	.menu-header {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing05);
-	}
-	.profile-container {
-		display: flex;
-		gap: var(--spacing05);
-	}
-	.user-info {
-		display: flex;
-		flex-direction: column;
-	}
-	.profile-switcher {
-		padding: var(--spacing06);
-	}
-</style>

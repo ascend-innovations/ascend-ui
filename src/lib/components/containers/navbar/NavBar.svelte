@@ -49,7 +49,7 @@
 			<div class="nav-page-list">
 				{#if navBarContents?.primaryPageList?.length}
 					{#each navBarContents.primaryPageList as pageData}
-						<div class="nav-button">
+						<div class="width-100">
 							<NavButton
 								callback={navClickCallback}
 								{navBarOpen}
@@ -62,7 +62,7 @@
 				{#if navBarContents?.secondaryPageList?.length}
 					<div class="navbar-separator" />
 					{#each navBarContents?.secondaryPageList as pageData}
-						<div class="nav-button">
+						<div class="width-100">
 							<NavButton
 								callback={navClickCallback}
 								{navBarOpen}

@@ -11,7 +11,7 @@
 		class="filter-label"
 	>
 		<svelte:component this={filter.icon} />
-		<p class="body-bold-xs filter-label-text">{text}</p>
+		<p class="body-bold-xs filter-label-text truncate-text">{text}</p>
 	</div>
 	<div slot="content">
 		{filter.tooltip}

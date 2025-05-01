@@ -1,11 +1,8 @@
-.accordion-details {
-    width: 100%;
-}
-
 .accordion-title {
     padding: var(--spacing09) 0;
     list-style: none;
     display: flex;
+    justify-content: space-between;
 }
 
 .accordion-icon {
