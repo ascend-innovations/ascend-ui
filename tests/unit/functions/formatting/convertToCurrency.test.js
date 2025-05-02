@@ -27,4 +27,3 @@ describe("Tests correct operation of convertToCurrency", ()=>{
 	})
 
 })
-

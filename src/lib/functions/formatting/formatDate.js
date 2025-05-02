@@ -11,5 +11,9 @@ export default function formatDate(timestamp, fullYear = false) {
 
 	year = fullYear ? year.toString() : year.toString().substring(2, 4)
 
+	if(isNaN(day) || isNaN(month) || isNaN(year)){
+		return `Invalid Date`
+	}
+
 	return `${month}/${day}/${year}`
 }
