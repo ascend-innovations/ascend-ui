@@ -1,8 +1,10 @@
 import { it, expect, describe } from 'vitest'
 import { abbreviateNumber } from '$lib'
 
-describe("Test that numbers are properly abbreviated nulls are handled properly.", () => {
-    it('Tests abbreviate function with proper input', () =>{
+const functionName = "abbreviateNumber"
+
+describe(`Tests the operations of ${functionName} with proper inputs`, ()=>{
+    it(`Tests ${functionName} using proper input`, ()=> {
         expect(abbreviateNumber(1000, 1000)).toBe("1.0K")
         expect(abbreviateNumber(2000, 1000)).toBe("2.0K")
         
@@ -33,7 +35,9 @@ describe("Test that numbers are properly abbreviated nulls are handled properly.
         expect(abbreviateNumber(100000000000000)).toBe("100.0T")
         expect(abbreviateNumber(200000000000000)).toBe("200.0T")
     })
+})
 
+describe(`Tests the operations of ${functionName} with inproper inputs`, ()=>{
     it('Tests abbreviate function with null values', () =>{
         expect(abbreviateNumber()).toBe('0')
         expect(abbreviateNumber(null)).toBe('0')
@@ -68,6 +72,5 @@ describe("Test that numbers are properly abbreviated nulls are handled properly.
 
         abbreviateNumber(['10000000', '20000000'])
         abbreviateNumber({number:10000000})
-
     }) 
 })

@@ -2,8 +2,9 @@ import { it, expect, describe } from 'vitest'
 import { consolodateMonths } from "$lib";
 import consolidateMonths from '$lib/functions/charts/consolidateMonths';
 
+const functionName = "consolodateMonths"
 
-describe("Tests that consolodateMonths proerly handles bad data ", () =>{
+describe(`Tests the operations of ${functionName} with proper inputs`, ()=>{
     let data = [
 		{ date: '2023-01-01T00:00:00-05:00', series: 'CIT', value: 1400.33 },
 		{ date: '2023-01-15T00:00:00-05:00', series: 'CIT', value: 1600.12 },
@@ -54,9 +55,7 @@ describe("Tests that consolodateMonths proerly handles bad data ", () =>{
     }
     let testDate = new Date("2023-01-01T05:00:00.000Z")
     let consolodatedMonths = consolidateMonths(chartData, "date", "value")
-    
-    //console.log(consolodatedMonths)
-    
+        
     it('Tests consolodateMonths with proper input', () =>{
         
         expect(consolodatedMonths[0]).toEqual(
@@ -68,11 +67,13 @@ describe("Tests that consolodateMonths proerly handles bad data ", () =>{
         )
     })
     
-    it("Tests that consolodateMonths is of proper length", ()=> {
+    it(`Tests ${functionName} is of proper length`, ()=> {
         expect(consolodatedMonths.length).toBe(12)
     })
+})
 
-    it("Tests that consolodateMonths does not crash on improper input", ()=> {
+describe(`Tests the operations of ${functionName} with inproper inputs`, ()=>{
+	it(`Tests ${functionName} using inproper input`, ()=> {
         let data2 = [
             { date: '2023-01-01T00:00:00-05:00', series: 'CIT', value: 1400.33 },
             { date: '2023-01-15T00:00:00-05:00', series: 'CIT', value: 1600.12 },
@@ -127,11 +128,13 @@ describe("Tests that consolodateMonths proerly handles bad data ", () =>{
 
         // console.log(consolodatedMonths2)
     })
-    it("Tests that consolodateMonths does not crash on too few entries", ()=> {
+    
+    it(`Tests ${functionName} does not crash on too few entries`, ()=> {
         let data3 = [
             { date: '2023-01-01T00:00:00-05:00', series: 'CIT', value: 1400.33 }
             ]
         
+        let domain = "date"   
         let chartData3 = JSON.parse(JSON.stringify(data3))
         for (let obj of chartData3) {
             obj[domain] = new Date(obj[domain])
@@ -141,4 +144,10 @@ describe("Tests that consolodateMonths proerly handles bad data ", () =>{
         
         // console.log(consolodatedMonths3)
     })
+})
+
+describe(`Tests ${functionName} for additional special cases:`, ()=>{
+	it(`Tests ${functionName} for additional special case: [case]:`, ()=>{ //repeat as need.
+		true
+	})
 })

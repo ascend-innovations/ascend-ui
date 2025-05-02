@@ -6,7 +6,7 @@ describe("stub", ()=>{it("stub", ()=>{true})})
 
 /*
 	This test is not currently functioning.
-	I don't believe this function is in place as the need for this function is dubious
+	I don't believe this function is in place as the operation of this function is dubious
 
 */
 /*
