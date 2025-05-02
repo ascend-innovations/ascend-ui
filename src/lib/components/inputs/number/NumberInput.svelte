@@ -20,7 +20,7 @@
 </script>
 
 <div
-	class="number-control"
+	class="number-control width-100"
 	style={styles.join(';')}
 >
 	<div class="text-title">
@@ -55,22 +55,3 @@
 	{/if}
 </div>
 
-<style>
-	.number-control {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing03);
-		width: 100%;
-	}
-
-	.number-input {
-		-moz-appearance: textfield;
-		appearance: textfield;
-	}
-
-	.number-input::-webkit-outer-spin-button,
-	.number-input::-webkit-inner-spin-button {
-		-webkit-appearance: none;
-		margin: 0;
-	}
-</style>

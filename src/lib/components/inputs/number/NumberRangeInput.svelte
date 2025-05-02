@@ -28,7 +28,7 @@
 </script>
 
 <div
-	class="number-range-input"
+	class="width-100"
 	style={styles?.join(';')}
 >
 	<Label
@@ -56,14 +56,3 @@
 		<InputError text={`${validationText}`} />
 	{/if}
 </div>
-
-<style>
-	.number-range-input {
-		width: 100%;
-	}
-	.input-control {
-		display: flex;
-		gap: var(--spacing09);
-		margin-bottom: var(--spacing03);
-	}
-</style>

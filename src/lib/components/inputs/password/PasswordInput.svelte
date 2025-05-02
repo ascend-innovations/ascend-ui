@@ -19,8 +19,8 @@
 		validationCallback
 </script>
 
-<div class="password-control">
-	<div class="password-title">
+<div class="password-control width-100">
+	<div class="password-title width-100">
 		{#if label}
 			<Label
 				{id}
@@ -60,19 +60,3 @@
 		<InputError text={`${validationText}`} />
 	{/if}
 </div>
-
-<style>
-	.password-control {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing03);
-		width: 100%;
-	}
-
-	.password-title {
-		display: flex;
-		gap: var(--spacing05);
-		justify-content: flex-start;
-		width: 100%;
-	}
-</style>

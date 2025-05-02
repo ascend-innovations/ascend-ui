@@ -23,7 +23,7 @@
 <div class="navbar-button-wrapper">
 	<div class="indicator-wrapper">
 		<div class={`current-page-indicator ${currentPageLink ? 'current-page-link' : ''}`} />
-		<div class="nav-button">
+		<div class="width-100">
 			<Button
 				callback={pageData.sublinks?.length > 0 ? toggleSubNav : callback}
 				classes={['btn-left', 'btn-full', 'btn-l', 'btn-white', 'btn-nav-hover']}
@@ -47,31 +47,3 @@
 		</div>
 	{/if}
 </div>
-
-<style>
-	.navbar-button-wrapper {
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-	}
-	.nav-button {
-		width: 100%;
-	}
-	.indicator-wrapper {
-		display: flex;
-	}
-	.current-page-indicator {
-		width: var(--spacing02);
-		border-radius: var(--border-radius-s);
-	}
-	.current-page-link {
-		background-color: var(--primary-base);
-	}
-	.sub-nav-wrapper {
-		margin-top: var(--spacing03);
-		overflow-y: hidden;
-	}
-	.closed {
-		height: 0;
-	}
-</style>

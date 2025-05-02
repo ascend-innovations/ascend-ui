@@ -4,7 +4,7 @@
 	export let text
 </script>
 
-<div class="error">
+<div class="validation-error width-100">
 	<div class="error-icon">
 		<AlertCircleSmallIcon />
 	</div>
@@ -12,12 +12,3 @@
 		{text}
 	</div>
 </div>
-
-<style>
-	.error {
-		display: flex;
-		gap: var(--spacing05);
-		width: 100%;
-		border-radius: var(--spacing04);
-	}
-</style>

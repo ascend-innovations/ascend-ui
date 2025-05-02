@@ -30,27 +30,3 @@
 		/>
 	</svg>
 </div>
-
-<style>
-	.progress-spinner-container {
-		align-items: center;
-		display: flex;
-		height: 100%;
-		justify-content: center;
-		width: 100%;
-	}
-	.progress-spinner {
-		animation-iteration-count: infinite;
-		animation-name: spin;
-		animation-timing-function: linear;
-		transition-property: transform;
-	}
-	@keyframes spin {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
-		}
-	}
-</style>

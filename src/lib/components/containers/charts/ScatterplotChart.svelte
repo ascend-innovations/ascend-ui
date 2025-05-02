@@ -214,7 +214,7 @@
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <svg
-	class="scatterplot-chart-svg"
+	class="chart-svg width-100"
 	viewBox="0 0 {width} {height}"
 >
 	<!-- Range Axis -->
@@ -225,7 +225,7 @@
 			y={height / 2 - 40}
 			transform="rotate(-90, {marginLeft - 15}, {height / 2})"
 			fill="var(--neutral-400)"
-			class="axis-label"
+			class="chart-axis-label"
 		>
 			{rangeLabel}
 		</text>
@@ -239,7 +239,7 @@
 			y2={yScale(tick)}
 		/>
 		<text
-			class="axis-label"
+			class="chart-axis-label"
 			fill="var(--neutral-400)"
 			text-anchor="end"
 			x={marginLeft - 15}
@@ -256,7 +256,7 @@
 				text-anchor="middle"
 				x={width / 2}
 				y={45}
-				class="axis-label"
+				class="chart-axis-label"
 				fill="var(--neutral-400)"
 			>
 				{domainLabel}
@@ -264,7 +264,7 @@
 		{/if}
 		{#each xScale.ticks(tickFormat) as tick, i}
 			<text
-				class="axis-label"
+				class="chart-axis-label"
 				fill="gray"
 				text-anchor="middle"
 				fill-opacity={textOpacitySwitch ? (i % 2 === 1 ? '0' : '1') : '1'}
@@ -292,7 +292,7 @@
 	</filter>
 	<circle
 		id={`${tooltipId}-outer-circle`}
-		class="circle"
+		class="scatterplot-circle"
 		fill="white"
 		cx={$coords.x}
 		cy={$coords.y}
@@ -312,7 +312,7 @@
 			r="16"
 		/>
 		<circle
-			class="point"
+			class="scatterplot-point"
 			on:mouseenter={enterTooltip}
 			on:mousemove={() => movingTooltip(point, seriesKey, i)}
 			on:mouseleave={leaveTooltip}
@@ -346,21 +346,3 @@
 	/>
 {/if}
 <ChartTooltip tooltipInfo={tooltipData} />
-
-<style>
-	.scatterplot-chart-svg {
-		display: block;
-		width: 100%;
-		height: 100%;
-	}
-	.axis-label {
-		font-size: 11px;
-	}
-	.point {
-		transition: all ease-out 300ms;
-	}
-	.circle {
-		opacity: 0;
-		filter: drop-shadow(2px 4px 4px var(--neutral-trans-200));
-	}
-</style>

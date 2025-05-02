@@ -8,9 +8,9 @@
 		title
 </script>
 
-<div class="alert">
-	<div class="alert-content">
-		<div class="alert-icon">
+<div class="alert-error">
+	<div class="alert-error-content">
+		<div class="alert-error-icon">
 			{#if icon}
 				<svelte:component this={icon} />
 			{/if}
@@ -38,48 +38,3 @@
 		</div>
 	{/if}
 </div>
-
-<style>
-	.alert {
-		background-color: var(--error-300);
-		border-radius: var(--spacing09);
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing06);
-		padding: var(--spacing09);
-	}
-	.alert-content {
-		display: flex;
-		gap: var(--spacing06);
-	}
-
-	@media screen and (min-width: 768px) {
-		.alert {
-			border: var(--spacing01) solid var(--neutral-050);
-			flex-direction: row;
-			justify-content: space-between;
-		}
-		.alert-icon {
-			align-items: center;
-			background-color: var(--neutral-500);
-			border-radius: var(--border-radius-full);
-			display: flex;
-			height: var(--spacing12);
-			justify-content: center;
-			padding: var(--spacing05);
-			width: var(--spacing12);
-		}
-		.alert-text {
-			color: var(--neutral-base);
-			display: flex;
-			flex-direction: column;
-			gap: var(--spacing03);
-			height: 100%;
-			justify-content: space-between;
-		}
-		.alert-control {
-			display: flex;
-			min-width: fit-content;
-		}
-	}
-</style>

@@ -117,9 +117,9 @@
 	}
 </script>
 
-<div class="svg-container">
+<div class="pie-chart-svg-container width-100">
 	<svg
-		class="pie-chart-svg"
+		class="width-100"
 		width={height}
 		{height}
 		viewBox="{-height / 2} {-height / 2} {height} {height}"
@@ -128,7 +128,7 @@
 			{#each arcs as slice, i}
 				<!-- svelte-ignore a11y-no-static-element-interactions -->
 				<path
-					class="arc"
+					class="arc-path"
 					on:mouseenter={enterTooltip}
 					on:mousemove={(e) => movingTooltip(e, slice, i)}
 					on:mouseleave={leaveTooltip}
@@ -141,20 +141,3 @@
 	</svg>
 	<ChartTooltip tooltipInfo={tooltipData} />
 </div>
-
-<style>
-	.svg-container {
-		display: block;
-		position: absolute;
-		width: 100%;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
-	.pie-chart-svg {
-		width: 100%;
-	}
-	.arc {
-		transition: all ease-out 300ms;
-	}
-</style>

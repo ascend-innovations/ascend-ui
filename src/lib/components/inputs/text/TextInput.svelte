@@ -66,19 +66,3 @@
 		<InputError text={`${validationText}`} />
 	{/if}
 </div>
-
-<style>
-	.text-control {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing03);
-		width: 100%;
-	}
-
-	.text-title {
-		display: flex;
-		gap: var(--spacing05);
-		justify-content: flex-start;
-		width: 100%;
-	}
-</style>

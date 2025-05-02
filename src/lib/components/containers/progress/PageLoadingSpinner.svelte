@@ -16,7 +16,7 @@
 >
     <div class="spinner-container">
         <svg
-            class="spinner"
+            class="page-loading-spinner-spinner"
             width="19" 
             height="19" 
             viewBox="0 0 19 19" 
@@ -31,42 +31,5 @@
             />
         </svg>
     </div>
-    <p class="text body-s">Loading...</p>
+    <p class="body-s neutral-400-text">Loading...</p>
 </div>
-
-<style>
-    .page-loading-spinner {
-        opacity: 1;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: var(--spacing03);
-        animation: fadeIn 500ms linear 1;
-    }
-    .text {
-        color: var(--neutral-400);
-    }
-    .spinner {
-		animation: spin 600ms linear infinite;
-		transition-property: transform;
-	}
-	@keyframes spin {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(360deg);
-		}
-	}
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-</style>

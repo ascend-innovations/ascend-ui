@@ -50,18 +50,3 @@
 		<InputError text={`${validationText}`} />
 	{/if}
 </div>
-
-<style>
-	.phone-number-control {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing03);
-	}
-
-	.phone-number-title {
-		display: flex;
-		gap: var(--spacing05);
-		justify-content: flex-start;
-		width: 100%;
-	}
-</style>

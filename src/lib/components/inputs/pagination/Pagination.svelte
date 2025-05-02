@@ -17,7 +17,7 @@
 			disabled={backButtonDisabled}
 		/>
 	</div>
-	<div class="page-number">
+	<div class="neutral-400-text">
 		Page {currentPage} of {totalPages}
 	</div>
 	<div class="next-button">
@@ -28,18 +28,3 @@
 		/>
 	</div>
 </div>
-
-<style>
-	.pagination-bar {
-		align-items: center;
-		background-color: var(--background-base);
-		bottom: 0;
-		display: flex;
-		height: var(--spacing12);
-		justify-content: space-between;
-		padding: var(--spacing09);
-	}
-	.page-number {
-		color: var(--neutral-400);
-	}
-</style>

@@ -1,0 +1,5 @@
+.validation-error {
+    display: flex;
+    gap: var(--spacing05);
+    border-radius: var(--spacing04);
+}

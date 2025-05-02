@@ -1,0 +1,17 @@
+.truncate-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.no-gap {
+    gap: 0;
+}
+.neutral-400-text {
+    color: var(--neutral-400);
+}
+.width-100 {
+    width: 100%;
+}
+.text-align-center {
+    text-align: center;
+}

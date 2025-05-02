@@ -1,0 +1,72 @@
+.card-tab-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing06);
+    max-height: calc(72dvh - var(--spacing06) - var(--spacing09) - var(--spacing13));
+    width: 100%;
+}
+.card-tab-content {
+    max-height: calc(72dvh - var(--spacing09));
+    width: 100%;
+}
+.tab {
+    align-items: center;
+    background-color: var(--background-base);
+    border-radius: 0;
+    display: flex;
+    justify-content: center;
+    min-width: var(--spacing16);
+}
+.tab:active,
+.tab:hover {
+    color: var(--neutral-400);
+    border-bottom: var(--spacing00) solid var(--primary-base);
+}
+.selected {
+    border-bottom: var(--spacing01) solid var(--primary-base);
+}
+.selected:active,
+.selected:hover {
+    border-bottom: var(--spacing01) solid var(--primary-base);
+}
+.tab-bar {
+    align-items: center;
+    display: flex;
+    max-height: var(--spacing13);
+    width: 100%;
+}
+.tab-list {
+    align-items: center;
+    border-bottom: var(--border-neutral);
+    display: flex;
+    gap: var(--spacing09);
+    overflow-x: hidden;
+    padding-left: 1px;
+    padding-top: 1px;
+    width: 100%;
+}
+.tab-nav-left-button,
+.tab-nav-right-button {
+    position: relative;
+}
+.tab-nav-left-button {
+    left: 10px;
+}
+.tab-nav-right-button {
+    right: 10px;
+}
+.tab-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing06);
+    width: 100%;
+}
+.tab-contents {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing10);
+    padding-top: var(--spacing10);
+    width: 100%;
+}

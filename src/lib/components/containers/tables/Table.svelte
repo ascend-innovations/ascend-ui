@@ -20,13 +20,3 @@
 		{columns}
 	/>
 </section>
-
-<style>
-	.no-gap {
-		gap: 0;
-	}
-	.table-container {
-		border: var(--neutral-stroke-100-s);
-		border-radius: var(--border-radius-s);
-	}
-</style>

@@ -1,0 +1,64 @@
+.menu {
+    background-color: var(--white-base);
+    border-radius: 0 0 var(--spacing11) var(--spacing11);
+    border: var(--spacing00) solid var(--neutral-100);
+    color: var(--white-900);
+    position: absolute;
+    right: var(--spacing09);
+    top: var(--spacing14);
+    width: var(--spacing21);
+    z-index: 420;
+}
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing09) var(--spacing06) var(--spacing09) var(--spacing10);
+}
+.menu-button {
+    width: 100%;
+}
+.menu-list {
+    align-items: flex-start;
+    background-color: var(--background-base);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing01);
+    width: 100%;
+    padding: 0 var(--spacing06);
+}
+.open-menu-overlay {
+    bottom: 0;
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 420;
+}
+.closed-menu-overlay {
+    display: none;
+}
+.menu-open {
+    display: block;
+}
+.menu-closed {
+    display: none;
+}
+.menu-header {
+    display: flex;
+    gap: var(--spacing05);
+}
+.menu-footer {
+    padding: var(--spacing06);
+}
+.menu-user-info {
+    display: flex;
+    flex-direction: column;
+}
+.menu-user-profile-container {
+    display: flex;
+    gap: var(--spacing05);
+}
+.menu-profile-switcher {
+    padding: var(--spacing06);
+}

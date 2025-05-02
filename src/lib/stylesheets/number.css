@@ -1,0 +1,37 @@
+.characters-remaining {
+    color: var(--neutral-400);
+    font-size: var(--body-small-xs-font-size);
+    font-weight: 600;
+    line-height: 150%;
+    text-align: right;
+}
+.character-counter-error {
+    color: var(--error-700);
+}
+.number-control {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing03);
+}
+
+.number-input {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.number-input::-webkit-outer-spin-button,
+.number-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.input-control {
+    display: flex;
+    gap: var(--spacing09);
+    margin-bottom: var(--spacing03);
+}
+.zip-control {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing03);
+    width: 12ch;
+}

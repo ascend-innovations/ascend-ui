@@ -69,25 +69,3 @@
 		<InputError text={`${validationText}`} />
 	{/if}
 </div>
-
-<style>
-	.textarea-title {
-		display: flex;
-		gap: var(--spacing05);
-		justify-content: flex-start;
-		width: 100%;
-	}
-	.textarea-control {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing03);
-		width: 100%;
-	}
-	.textarea-content {
-		background-color: transparent;
-		border-radius: var(--border-radius-s);
-		border: var(--neutral-stroke-100-s);
-		padding: var(--spacing05) var(--spacing09);
-		resize: none;
-	}
-</style>

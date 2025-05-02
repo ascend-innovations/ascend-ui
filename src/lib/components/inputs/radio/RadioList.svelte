@@ -25,13 +25,3 @@
 		<InputError text={`${validationText}`} />
 	{/if}
 </div>
-
-<style>
-	.radio-list {
-		align-items: flex-start;
-		align-self: stretch;
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing06);
-	}
-</style>

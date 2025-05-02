@@ -22,7 +22,7 @@
 		<input
 			autocomplete={label}
 			bind:value
-			class={validValue === false ? 'error' : ''}
+			class="form-text-input {validValue === false ? 'form-text-input-error' : ''}"
 			id={label}
 			{name}
 			on:blur={validationCallback}
@@ -33,7 +33,7 @@
 		<input
 			autocomplete={label}
 			bind:value
-			class={validValue === false ? 'error' : ''}
+			class="form-text-input {validValue === false ? 'form-text-input-error' : ''}"
 			id={label}
 			{name}
 			on:blur={validationCallback}
@@ -44,7 +44,7 @@
 		<input
 			autocomplete={label}
 			bind:value
-			class={validValue === false ? 'error' : ''}
+			class="form-text-input {validValue === false ? 'form-text-input-error' : ''}"
 			id={label}
 			{name}
 			on:blur={validationCallback}
@@ -56,25 +56,3 @@
 		<InputError text={validationMessage} />
 	{/if}
 </div>
-
-<style>
-	.login-element {
-		align-items: flex-start;
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing05);
-		width: 100%;
-	}
-	input {
-		border-radius: var(--spacing04);
-		border: var(--spacing01) solid var(--neutral-100);
-		padding: var(--spacing05) var(--spacing09);
-		width: 100%;
-	}
-	input:invalid {
-		border: var(--spacing01) solid var(--error-base);
-	}
-	.error {
-		border-color: var(--error-500);
-	}
-</style>

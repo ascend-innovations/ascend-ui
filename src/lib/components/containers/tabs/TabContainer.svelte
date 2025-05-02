@@ -14,7 +14,7 @@
 		{tabList}
 		on:tabselect={(event) => handleTabSelection(event)}
 	/>
-	<div class="tab-content">
+	<div class="width-100">
 		{#if tabList[currentTab]?.content && tabList[currentTab]?.data}
 			<svelte:component
 				this={tabList[currentTab].content}
@@ -23,16 +23,3 @@
 		{/if}
 	</div>
 </div>
-
-<style>
-	.tab-container {
-		align-items: center;
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing06);
-		width: 100%;
-	}
-	.tab-content {
-		width: 100%;
-	}
-</style>

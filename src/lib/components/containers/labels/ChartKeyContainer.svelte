@@ -7,7 +7,7 @@
 		column = false
 </script>
 
-<div class="key-container {column ? 'column' : ''}">
+<div class="chart-key-container {column ? 'chart-key-column' : ''}">
 	{#each data as d, i}
 		<ChartKey
 			color={colors[i]}
@@ -15,16 +15,3 @@
 		/>
 	{/each}
 </div>
-
-<style>
-	.key-container {
-		margin-top: var(--spacing09);
-		display: flex;
-		flex-direction: row;
-		gap: var(--spacing05);
-	}
-
-	.column {
-		flex-direction: column;
-	}
-</style>

@@ -13,9 +13,3 @@
 	{id}
 	{required}
 />
-
-<style>
-	.time-input {
-		width: 100%;
-	}
-</style>

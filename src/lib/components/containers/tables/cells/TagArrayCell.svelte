@@ -4,7 +4,7 @@
 	export let column, row
 </script>
 
-<div class="tag-array">
+<div class="table-cell-tag-array">
 	{#each row[column.key] as tag}
 		<Tag
 			content={tag}
@@ -12,10 +12,3 @@
 		/>
 	{/each}
 </div>
-
-<style>
-	.tag-array {
-		display: flex;
-		gap: var(--spacing03);
-	}
-</style>

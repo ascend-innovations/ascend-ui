@@ -14,7 +14,7 @@
 				></strong
 			>
 		</div>
-		<div class="link-buttons">
+		<div class="footer-link-buttons">
 			{#if termsAndConditionsURL}
 				<TermsAndConditionsButton url={termsAndConditionsURL} />
 			{/if}
@@ -27,20 +27,3 @@
 		</div>
 	</div>
 </PageFooter>
-
-<style>
-	.footer-bar {
-		align-items: center;
-		background-color: var(--background-base);
-		display: flex;
-		height: var(--spacing13);
-		justify-content: space-between;
-		margin-top: auto;
-		padding: 0 var(--spacing09);
-		width: 100%;
-	}
-	.link-buttons {
-		display: flex;
-		gap: var(--spacing06);
-	}
-</style>

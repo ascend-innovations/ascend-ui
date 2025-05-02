@@ -20,8 +20,8 @@
 		styles={['padding:0']}
 	/>
 	{#if tabList?.length}
-		<div class="pill-container">
-			<div class="tabs-container">
+		<div class="dashboard-pill-container">
+			<div class="dashboard-tabs-container">
 				<TabBar
 					bind:tabList
 					{currentTab}
@@ -34,17 +34,3 @@
 		</div>
 	{/if}
 </div>
-
-<style>
-	.dashboard-page-title {
-		width: 100%;
-	}
-	.pill-container {
-		display: flex;
-		justify-content: space-between;
-		margin-top: var(--spacing09);
-	}
-	.tabs-container {
-		width: 82.5%;
-	}
-</style>

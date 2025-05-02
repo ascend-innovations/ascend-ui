@@ -16,22 +16,8 @@
 	{styles}
 	{url}
 >
-	<div class="card-wrapper">
-		<div class="body-bold-body-xs semibold card-color-override truncate-text">{title}</div>
+	<div class="card-wrapper no-gap">
+		<div class="body-bold-body-xs semibold neutral-400-text truncate-text">{title}</div>
 		<div class="headline-l-xl">{value}</div>
 	</div>
 </Card>
-
-<style>
-	.card-color-override {
-		color: var(--neutral-400);
-	}
-	.truncate-text {
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
-	.card-wrapper {
-		gap: 0px;
-	}
-</style>

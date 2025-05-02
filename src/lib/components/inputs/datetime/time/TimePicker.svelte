@@ -29,16 +29,3 @@
 		<InputError text={`${validationText}`} />
 	{/if}
 </div>
-
-<style>
-	.time-picker-selector {
-		width: 100%;
-	}
-
-	.time-picker {
-		display: flex;
-		gap: var(--spacing03);
-		flex-direction: column;
-		width: 100%;
-	}
-</style>

@@ -20,7 +20,7 @@
 		</div>
 		<div class="sso-card-body">
 			<h4 class="headline-l-m">{data.name}</h4>
-			<p class="body-m">{data.description}</p>
+			<p class="body-m neutral-400-text">{data.description}</p>
 			<Tag
 				content={data.role}
 				type="neutral-subtle"

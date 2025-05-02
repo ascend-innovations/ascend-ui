@@ -26,18 +26,19 @@
 	style={column?.styles?.join(';')}
 >
 	{#if row[column.logoKey]}
-		<div class="logo">
+		<div class="logo-link-logo">
 			<img
 				src={row[column.logoKey]}
 				alt="logo"
 			/>
 		</div>
 	{/if}
-	<div class="text-container {row[column.linkKey] ? 'link-height' : ''}">
-		<p>{row[column.key]}</p>
+	<div class="logo-link-text-container truncate-text {row[column.linkKey] ? 'logo-link-link-height' : ''}">
+		<p class="truncate-text">{row[column.textKey]}</p>
 		{#if row[column.linkKey]}
-			<p class="link">
+			<p class="logo-link-link truncate-text body-xxs">
 				<a
+					class="neutral-400-text"
 					href={`${prefix}${prefix === 'tel:' ? phone : row[column.linkKey]}`}
 					target="_blank">{row[column.linkKey]}</a
 				>
@@ -45,53 +46,3 @@
 		{/if}
 	</div>
 </div>
-
-<style>
-	.logo-link-cell {
-		display: flex;
-		gap: var(--spacing06);
-		align-items: center;
-	}
-	.logo {
-		padding: var(--spacing02);
-		border: 1px solid var(--neutral-100);
-		border-radius: var(--spacing02);
-		min-width: 48px;
-		width: 48px;
-		height: 48px;
-
-		& img {
-			display: inline-block;
-			width: 100%;
-			height: auto;
-			position: relative;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
-	}
-	.text-container {
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		height: 24px;
-
-		& p {
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			font-weight: bold;
-		}
-
-		& a {
-			color: var(--neutral-400);
-		}
-	}
-	.link {
-		font-size: 11px;
-		height: 19px;
-	}
-	.link-height {
-		height: 43px;
-	}
-</style>

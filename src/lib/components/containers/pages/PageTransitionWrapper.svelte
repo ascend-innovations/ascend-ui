@@ -4,7 +4,7 @@
 </script>
 
 <div
-    class="animation"
+    class="page-transition-wrapper"
     in:fly={{ y: 50, duration: 1000, delay: delayIn ? 500 : 0 }}
     out:fade={{ duration: 500 }}
     on:outroend={() => window.scrollTo(0, 0)}
@@ -12,9 +12,3 @@
 >
     <slot />
 </div>
-
-<style>
-    .animation {
-        width: 100%;
-    }
-</style>

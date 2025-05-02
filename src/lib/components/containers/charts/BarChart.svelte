@@ -310,7 +310,7 @@
 <svelte:window bind:innerWidth />
 
 <svg
-	class="bar-chart-svg"
+	class="chart-svg width-100"
 	viewBox="0 0 {width} {height}"
 >
 	<!-- Side Axis -->
@@ -326,7 +326,7 @@
 			/>
 			{#each chartData as d}
 				<text
-					class="axis-label"
+					class="chart-axis-label"
 					fill="gray"
 					text-anchor="start"
 					x={-100}
@@ -342,7 +342,7 @@
 					x={marginLeft}
 					y={height / 2 - 40}
 					transform="rotate(-90, {marginLeft - 15}, {height / 2})"
-					class="axis-label"
+					class="chart-axis-label"
 					fill="var(--neutral-400)"
 				>
 					{rangeLabel}
@@ -357,7 +357,7 @@
 					y2={yScale(tick)}
 				/>
 				<text
-					class="axis-label"
+					class="chart-axis-label"
 					fill="var(--neutral-400)"
 					x={marginLeft - 15}
 					y={yScale(tick) + 5}
@@ -380,7 +380,7 @@
 					text-anchor="middle"
 					x={width / 2}
 					y={45}
-					class="axis-label"
+					class="chart-axis-label"
 					fill="var(--neutral-400)"
 				>
 					{domainLabel}
@@ -415,7 +415,7 @@
 					{#if vertical}
 						<!-- svelte-ignore a11y-no-static-element-interactions -->
 						<path
-							class="bar"
+							class="bar-chart-path"
 							on:mouseenter={enterTooltip}
 							on:mousemove={(e) => movingTooltip(e, d, series.key, i)}
 							on:mouseleave={leaveTooltip}
@@ -453,7 +453,7 @@
 					<!-- svelte-ignore a11y-no-static-element-interactions -->
 					<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 					<path
-						class="bar"
+						class="bar-chart-path"
 						on:mouseenter={enterTooltip}
 						on:mousemove={(e) => movingTooltip(e, d, d[seriesKey], i)}
 						on:mouseleave={leaveTooltip}
@@ -511,19 +511,3 @@
 	/>
 {/if}
 <ChartTooltip tooltipInfo={tooltipData} />
-
-<style>
-	.bar-chart-svg {
-		display: block;
-		width: 100%;
-		height: 100%;
-	}
-
-	.axis-label {
-		font-size: 11px;
-	}
-
-	.bar {
-		transition: all ease-out 300ms;
-	}
-</style>

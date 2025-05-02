@@ -19,3 +19,200 @@ body {
 	height: 100vh;
 	width: var(--full-width);
 }
+.page {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	height: calc(100vh - var(--spacing14));
+	justify-content: flex-start;
+	overflow: auto;
+	width: 100%;
+}
+.dashboard-page-title {
+	width: 100%;
+}
+.dashboard-pill-container {
+	display: flex;
+	justify-content: space-between;
+	margin-top: var(--spacing09);
+}
+.dashboard-tabs-container {
+	width: 82.5%;
+}
+.error-401-page,
+.error-404-page {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+.error-401-banner-wrapper,
+.error-404-banner-wrapper {
+	width: var(--spacing32);
+}
+.error-401-content,
+.error-404-content {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing10);
+	justify-content: space-between;
+	text-align: center;
+	width: var(--spacing27);
+}
+.error-401-button-row,
+.error-404-button-row {
+	align-items: space-between;
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing09);
+	width: 100%;
+}
+.error-page-contact {
+	color: var(--neutral-800);
+	font-weight: bold;
+}
+.login-page {
+	align-items: center;
+	background-position: center;
+	background-size: cover;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+}
+.page-body {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing09);
+	margin: 0 auto;
+	padding-bottom: var(--spacing15);
+}
+.full,
+.thin,
+.wide {
+	align-items: start;
+	padding: 0 var(--spacing09);
+}
+.page-header {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing09);
+}
+.page-description {
+	margin-bottom: var(--spacing09);
+	text-align: center;
+	width: var(--spacing27);
+}
+.page-footer {
+	bottom: 0;
+	height: var(--spacing15);
+	margin-top: auto;
+	position: sticky;
+	right: 0;
+	width: 100%;
+}
+.registration-page {
+	align-items: center;
+	background-position: center;
+	background-size: cover;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+}
+.sso-otp-form-container,
+.sso-otp-button-row,
+.sso-landing-footer,
+.sso-login-button-row,
+.page-transition-wrapper {
+	width: 100%;
+}
+.sso-landing-footer-bar {
+	color: var(--neutral-400);
+	align-items: center;
+	background-color: var(--background-base);
+	display: flex;
+	height: var(--spacing13);
+	justify-content: space-between;
+	margin-top: auto;
+	padding: 0 var(--spacing09);
+	width: 100%;
+
+	& a {
+		color: inherit;
+	}
+}
+.sso-landing-footer-link-buttons {
+	display: flex;
+	gap: var(--spacing06);
+}
+.sso-otp-form,
+.sso-login-form {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing10);
+	width: 100%;
+}
+.sso-otp-miscellaneous-links,
+.sso-login-miscellaneous-links {
+	color: var(--neutral-400);
+	display: flex;
+	gap: var(--spacing06);
+
+	& a {
+		color: inherit;
+	}
+}
+.sso-otp-submit,
+.sso-login-submit {
+	align-items: center;
+	border-radius: var(--btn-border-radius);
+	border: none;
+	cursor: pointer;
+	text-decoration: none;
+}
+/* .sso-login-account-info {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+} */
+.sso-otp-button-row {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--spacing03);
+	color: var(--neutral-400);
+}
+.sso-otp-email-instructions {
+	color: var(--neutral-400);
+	text-align: center;
+}
+.sso-otp-resend-form {
+	margin-top: var(--spacing09);
+}
+
+@media screen and (min-width: 768px) {
+	.login-page {
+		padding: unset;
+	}
+	.full {
+		padding: 0 var(--spacing14);
+		width: 100%;
+	}
+	.thin {
+		width: var(--spacing27);
+	}
+	.wide {
+		width: var(--spacing34);
+	}
+	.registration-page {
+		padding: unset;
+	}
+}

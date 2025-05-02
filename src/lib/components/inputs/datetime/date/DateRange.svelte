@@ -42,11 +42,3 @@
 		<InputError text={`${validationText}`} />
 	{/if}
 </div>
-
-<style>
-	.date-range {
-		display: flex;
-		/* justify-content: space-between; */
-		gap: var(--spacing09);
-	}
-</style>

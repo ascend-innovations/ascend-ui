@@ -34,12 +34,13 @@
 	loginHeader="Enter Passcode"
 	ascendLogo
 >
-	<div class="form-container">
+	<div class="sso-otp-form-container">
 		<form
+			class="sso-otp-form"
 			method="POST"
 			action="?/verifyOtp"
 		>
-			<p class="email-instructions">Enter the one-time passcode sent to your email to continue.</p>
+			<p class="sso-otp-email-instructions">Enter the one-time passcode sent to your email to continue.</p>
 			<FormTextInput
 				name="otp"
 				bind:value={otp}
@@ -57,14 +58,14 @@
 
 			<div class="login-button-row">
 				<input
-					class="btn-full btn-l btn-primary btn-rect semibold"
+					class="btn-full btn-l btn-primary btn-rect semibold sso-otp-submit"
 					type="submit"
 					value="Verify"
 				/>
 			</div>
 		</form>
 		<form
-			class="resend-form"
+			class="sso-otp-resend-form"
 			method="POST"
 			action="?/resendOtp"
 		>
@@ -72,15 +73,15 @@
 				<InputError text={form.resend_message} />
 			{/if}
 
-			<div class="login-button-row resend-section">
+			<div class="sso-otp-button-row resend-section">
 				<p class="body-xs">Didn't get an email?</p>
 				<input
-					class="btn-link resend-button semibold neutral-color"
+					class="btn-link resend-button semibold body-xs neutral-400-text"
 					type="submit"
 					value="Resend Code"
 				/>
 			</div>
-			<div class="miscellaneous-links">
+			<div class="sso-otp-miscellaneous-links">
 				<a
 					class="body-xs"
 					target="_blank"
@@ -95,50 +96,3 @@
 		</form>
 	</div>
 </LoginPage>
-
-<style>
-	.login-button-row {
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: var(--spacing03);
-		color: var(--neutral-400);
-	}
-	.neutral-color {
-		color: var(--neutral-400);
-		font-size: 13px;
-	}
-	.email-instructions {
-		color: var(--neutral-400);
-		text-align: center;
-	}
-	.miscellaneous-links {
-		color: var(--neutral-400);
-		display: flex;
-		gap: var(--spacing06);
-
-		& a {
-			color: inherit;
-		}
-	}
-	.form-container {
-		width: 100%;
-	}
-	.resend-form {
-		margin-top: var(--spacing09);
-	}
-	form {
-		align-items: center;
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing10);
-		width: 100%;
-	}
-	input[type='submit'] {
-		align-items: center;
-		border-radius: var(--btn-border-radius);
-		border: none;
-		cursor: pointer;
-	}
-</style>
