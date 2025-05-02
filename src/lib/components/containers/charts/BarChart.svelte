@@ -248,7 +248,6 @@
 	onMount(() => {
 		if (browser) {
 			tooltip = d3.select(`#${tooltipId}`)
-			console.log('mounted tooltip: ', tooltip)
 		}
 	})
 
@@ -267,7 +266,6 @@
 	}
 
 	function enterTooltip(e) {
-		console.log('enter tooltip: ', tooltip)
 		tooltip.style('opacity', 1)
 	}
 
