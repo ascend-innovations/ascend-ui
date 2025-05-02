@@ -54,7 +54,7 @@ describe("Tests that consolodateYears proerly handles bad data ", () =>{
     }
     let testDate = new Date("2024-01-01T05:00:00.000Z")
     let consolidatedYears = consolidateYears(chartData, "date", "value")
-    console.log(consolidatedYears)
+    //console.log(consolidatedYears)
     it('Tests consolidateYears with proper input', () =>{
         
         expect(consolidatedYears[0]).toEqual(
@@ -122,7 +122,7 @@ describe("Tests that consolodateYears proerly handles bad data ", () =>{
         let testDate2 = new Date("2023-01-01T05:00:00.000Z")
         let consolidatedYears = consolidateYears(chartData2, "date", "value")
 
-        console.log(consolidatedYears)
+        //console.log(consolidatedYears)
 
     })
 
@@ -138,6 +138,6 @@ describe("Tests that consolodateYears proerly handles bad data ", () =>{
         let testDate3 = new Date("2023-01-01T05:00:00.000Z")
         let consolodatedMonths3 = consolodateYears(chartData3, "date", "value")
         
-        console.log(consolodatedMonths3)
+        //console.log(consolodatedMonths3)
     })
 })

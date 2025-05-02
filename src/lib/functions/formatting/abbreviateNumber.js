@@ -4,7 +4,7 @@ export default function abbreviateNumber(number, start = 10000) {
 	let isPositive = (number >= 0)
 	number = Math.abs(number)
 	if(!number){
-		console.error("Null value passed to abbreviateNumber")
+		console.warn("Null value passed to abbreviateNumber")
 		return abvNumber = "0"
 	}
 	else if (number >= 1000000000000) {

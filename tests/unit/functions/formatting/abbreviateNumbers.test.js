@@ -58,16 +58,16 @@ describe("Test that numbers are properly abbreviated nulls are handled properly.
 
     it('Tests abbreviate function empty arrays and objects', () =>{
         
-        console.log("Abbreviate number", abbreviateNumber([]))
-        console.log("Abbreviate number", abbreviateNumber({}))
-        console.log("Abbreviate number", abbreviateNumber(['100']))
-        console.log("Abbreviate number", abbreviateNumber({number:'100'}))
+        abbreviateNumber([])
+        abbreviateNumber({})
+        abbreviateNumber(['100'])
+        abbreviateNumber({number:'100'})
 
-        console.log("Abbreviate number", abbreviateNumber(['10000000']))
-        console.log("Abbreviate number", abbreviateNumber({number:'10000000'}))
+        abbreviateNumber(['10000000'])
+        abbreviateNumber({number:'10000000'})
 
-        console.log("Abbreviate number", abbreviateNumber(['10000000', '20000000']))
-        console.log("Abbreviate number", abbreviateNumber({number:10000000}))
+        abbreviateNumber(['10000000', '20000000'])
+        abbreviateNumber({number:10000000})
 
     }) 
 })
