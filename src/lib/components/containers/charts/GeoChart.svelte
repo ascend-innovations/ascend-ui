@@ -75,9 +75,18 @@
 			// Construct and render markers with their info popups attached
 			if (data.type !== 'Feature') {
 				for (let point of data) {
-					const icon = L.icon({
-						iconUrl: point.marker,
-					})
+					let icon
+					if (point.html) {
+						icon = L.divIcon({
+							className: 'map-marker',
+							html: point.marker,
+						})
+					} else {
+						icon = L.icon({
+							iconUrl: point.marker,
+						})
+					}
+
 
 					const popup = L.popup({
 						offset: [24, 24],

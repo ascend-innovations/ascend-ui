@@ -27,6 +27,7 @@ export default function consolidateMonths(data, domain, range) {
 	}
 	for (let month of months) {
 		month[range] = Math.round(month[range])
+		month[domain] = new Date(`${month[domain].getFullYear()}-${month[domain].getMonth() + 1}`)
 	}
 	return months
 }

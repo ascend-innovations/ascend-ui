@@ -57,7 +57,7 @@
 	$: height = chartHeight
 	$: textOpacitySwitch = innerWidth < 678
 	let marginLeft = 50
-	let marginRight = 15
+	let marginRight = 20
 	let marginTop = 24
 	let marginBottom = domainLabel ? 50 : 24
 	let avgArray = []
@@ -107,14 +107,42 @@
 	$: if (chartData !== undefined) {
 		for (let obj of chartData) {
 			obj[domain] = new Date(obj[domain])
+			obj[range] = parseFloat(obj[range])
 		}
+		chartData.sort((a, b) => a[domain] - b[domain])
 		const min = d3.min(chartData, (d) => d[domain])
 		const max = d3.max(chartData, (d) => d[domain])
 		dayInterval = d3.timeDay.count(min, max)
 		monthInterval = d3.timeMonth.count(min, max)
 		yearInterval = d3.timeYear.count(min, max)
 		if (stacked) {
-			// todo
+			// if (quarters) {
+			// 	labelFormat = formatQuarter
+			// 	tickFormat = d3.timeQuarter
+			// } else if (fiscalQuarters) {
+			// 	labelFormat = formatFiscalQuarter
+			// 	tickFormat = d3.timeQuarter
+			// } else if (fiscalYears) {
+			// 	labelFormat = formatFiscalYear
+			// 	tickFormat = d3.timeYear
+			// } else if (yearInterval >= 2 && yearInterval <= 20) {
+			// 	console.log('years')
+			// 	labelFormat = formatYear
+			// 	tickFormat = d3.timeYear
+			// 	everyOther = false
+			// 	chartData = [...consolidateYears(chartData, domain, range)]
+			// 	if (yearInterval >= 11) everyOther = true
+			// } else if (monthInterval >= 2 && monthInterval <= 23) {
+			// 	labelFormat = formatMonthYear // eo
+			// 	tickFormat = d3.timeMonth
+			// 	everyOther = false
+			// 	chartData = [...consolidateMonths(chartData, domain, range)]
+			// 	if (monthInterval >= 13) everyOther = true
+			// } else if (dayInterval <= 31) {
+			// 	labelFormat = formatMonthDay
+			// 	tickFormat = d3.timeDay
+			// 	everyOther = false
+			// }
 		} else {
 			if (quarters) {
 				labelFormat = formatQuarter
@@ -257,14 +285,16 @@
 			mouseValue = d[1] - d[0]
 			tooltipData.line = xScale(d.data[0])
 			tooltipData.circlePosition = yScale(d[1])
-			tooltipData.valueOne = fullDate ? formatFull(d.data[0]) : yearOnly ? formatYear(d.data[0]) : monthOnly ? formatMonth(d.data[0]) : monthDay ? formatMonthDay(d.data[0]) : monthYear ? formatMonthYear(d.data[0]) : quarters ? formatQuarter(d.data[0]) : formatFull(d.data[0])
+			tooltipData.valueOne = labelFormat(d.data[0])
+			// tooltipData.valueOne = fullDate ? formatFull(d.data[0]) : yearOnly ? formatYear(d.data[0]) : monthOnly ? formatMonth(d.data[0]) : monthDay ? formatMonthDay(d.data[0]) : monthYear ? formatMonthYear(d.data[0]) : quarters ? formatQuarter(d.data[0]) : formatFull(d.data[0])
 			coords.set({ x: xScale(d.data[0]), y: yScale(d[1]) })
 			tooltipData.x = $coords.x - tooltipWidth / 2
 			tooltipData.y = $coords.y - tooltipHeight - 40
 		} else {
 			mouseValue = chartData[i][range]
 			tooltipData.circlePosition = yScale(mouseValue)
-			tooltipData.valueOne = fullDate ? formatFull(chartData[i][domain]) : yearOnly ? formatYear(chartData[i][domain]) : monthOnly ? formatMonth(chartData[i][domain]) : monthDay ? formatMonthDay(chartData[i][domain]) : monthYear ? formatMonthYear(chartData[i][domain]) : quarters ? formatQuarter(d.data[0]) : formatFull(chartData[i][domain])
+			tooltipData.valueOne = labelFormat(chartData[i][domain])
+			// tooltipData.valueOne = fullDate ? formatFull(chartData[i][domain]) : yearOnly ? formatYear(chartData[i][domain]) : monthOnly ? formatMonth(chartData[i][domain]) : monthDay ? formatMonthDay(chartData[i][domain]) : monthYear ? formatMonthYear(chartData[i][domain]) : quarters ? formatQuarter(d.data[0]) : formatFull(chartData[i][domain])
 			coords.set({ x: xScale(chartData[i][domain]), y: yScale(mouseValue) })
 			tooltipData.x = $coords.x - tooltipWidth / 2
 			tooltipData.y = $coords.y - tooltipHeight - 40
@@ -331,7 +361,7 @@
 			x={marginLeft - 15}
 			y={yScale(tick) + 5}
 		>
-			{abbreviateNumber(tick, 1000)}
+			{currency ? '$' + abbreviateNumber(tick, 1000) : '' + abbreviateNumber(tick, 1000)}
 		</text>
 	{/each}
 

@@ -2,6 +2,19 @@
 	import SelectorInput from '$lib/components/inputs/selectors/SelectorInput.svelte'
 	import { Chart, Page, PageBody, StatusTag, PageTransitionWrapper } from '$lib/index.js'
 
+	let svgpin = `<div style="position:relative;">
+			<svg width="48" height="61" viewBox="0 0 48 61" fill="none">
+				<path d="M4.6144 36.9987C-6.21162 21.3611 4.98056 0 23.9999 0C43.0193 0 54.2115 21.3611 43.3855 36.9987L28.5877 58.3733C26.3688 61.5783 21.6311 61.5783 19.4122 58.3733L4.6144 36.9987Z" fill="#A04B4B"/>
+  				<path fill-rule="evenodd" clip-rule="evenodd" d="M6.25879 35.8603L21.0566 57.2349C22.4801 59.2911 25.5197 59.2911 26.9433 57.2349L41.7411 35.8602C51.6488 21.5491 41.406 2 23.9999 2C6.59389 2 -3.64892 21.5491 6.25879 35.8603ZM23.9999 0C4.98056 0 -6.21162 21.3611 4.6144 36.9987L19.4122 58.3733C21.6311 61.5783 26.3688 61.5783 28.5877 58.3733L43.3855 36.9987C54.2115 21.3611 43.0193 0 23.9999 0Z" fill="#F8EDEB"/>
+				<circle cx="24" cy="24" r="16" fill="white"/>
+			</svg>
+			<svg style="position: absolute;left:24px;top: 19%;transform:translateX(-50%);" width="24" height="24" viewBox="0 0 24 24" fill="none">
+				<path d="M15.5 11.5H14.5L13 14.5L11 8.5L9.5 11.5H8.5M11.9932 5.13581C9.9938 2.7984 6.65975 2.16964 4.15469 4.31001C1.64964 6.45038 1.29697 10.029 3.2642 12.5604C4.75009 14.4724 8.97129 18.311 10.948 20.0749C11.3114 20.3991 11.4931 20.5613 11.7058 20.6251C11.8905 20.6805 12.0958 20.6805 12.2805 20.6251C12.4932 20.5613 12.6749 20.3991 13.0383 20.0749C15.015 18.311 19.2362 14.4724 20.7221 12.5604C22.6893 10.029 22.3797 6.42787 19.8316 4.31001C17.2835 2.19216 13.9925 2.7984 11.9932 5.13581Z" stroke="#140D31" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+		</div>`
+
+	let pin = 'https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/hospital-pin.svg'
+
 	let newGeoData = [
     {
         "count": 2,
@@ -16,7 +29,8 @@
         },
         "lat": "39.956579705882355",
         "lng": "-82.99637",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+		"html": "true",
+        "marker": svgpin
     },
     {
         "count": 1,
@@ -31,7 +45,7 @@
         },
         "lat": "39.7466037790724",
         "lng": "-84.21846334262618",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+        "marker": pin
     },
     {
         "count": 1,
@@ -46,7 +60,7 @@
         },
         "lat": "39.774028",
         "lng": "-84.169785",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+        "marker": pin
     },
     {
         "count": 1,
@@ -61,7 +75,7 @@
         },
         "lat": "39.7577977",
         "lng": "-84.1958771",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+        "marker": pin
     },
     {
         "count": 1,
@@ -76,7 +90,7 @@
         },
         "lat": "39.74524605",
         "lng": "-84.18604426125285",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+        "marker": pin
     },
     {
         "count": 1,
@@ -91,7 +105,7 @@
         },
         "lat": "39.75999523076923",
         "lng": "-84.19780969230769",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+        "marker": pin
     },
     {
         "count": 2,
@@ -106,7 +120,7 @@
         },
         "lat": "39.73863097959184",
         "lng": "-84.1649025510204",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+        "marker": pin
     },
     {
         "count": 2,
@@ -121,7 +135,7 @@
         },
         "lat": "39.7638755",
         "lng": "-84.1935741",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+        "marker": pin
     },
     {
         "count": 1,
@@ -136,7 +150,7 @@
         },
         "lat": "39.749291",
         "lng": "-84.199271",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+        "marker": pin
     },
     {
         "count": 1,
@@ -151,7 +165,7 @@
         },
         "lat": "39.74467867805528",
         "lng": "-84.19565849496281",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+        "marker": pin
     },
     {
         "count": 1,
@@ -166,7 +180,7 @@
         },
         "lat": "39.39595183513435",
         "lng": "-84.54178957396414",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
+        "marker": pin
     },
     {
         "count": 2,
@@ -181,111 +195,7 @@
         },
         "lat": "39.705709526484625",
         "lng": "-84.20325425252015",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
-    },
-    {
-        "count": 1,
-        "type": "provider",
-        "name": "We Care Arts",
-        "address": {
-            "full_address": "3035 Wilmington Pike, Kettering, OH 45429",
-            "street": "3035 Wilmington Pike",
-            "city": "Kettering",
-            "state": "OH",
-            "zip": "45429"
-        },
-        "lat": "39.70296976384365",
-        "lng": "-84.14193812556123",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
-    },
-    {
-        "count": 1,
-        "type": "provider",
-        "name": "Women's Recovery Center",
-        "address": {
-            "full_address": "6209 Storer Ave, Cleveland, OH 44102",
-            "street": "6209 Storer Ave",
-            "city": "Cleveland",
-            "state": "OH",
-            "zip": "44102"
-        },
-        "lat": "41.46226081818182",
-        "lng": "-81.72850972727272",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/provider-pin.svg"
-    },
-    {
-        "count": 1,
-        "type": "jail",
-        "name": "Putnam County Sheriff's Office",
-        "address": {
-            "full_address": "1035 Heritage Trail, Ottawa, OH 45875",
-            "street": "1035 Heritage Trail",
-            "city": "Ottawa",
-            "state": "OH",
-            "zip": "45875"
-        },
-        "lat": "41.0057956",
-        "lng": "-84.03914312838722",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/jail-pin.svg"
-    },
-    {
-        "count": 1,
-        "type": "jail",
-        "name": "Highland County Jail",
-        "address": {
-            "full_address": "130 Homestead Dr, Hillsboro, OH 45133",
-            "street": "130 Homestead Dr",
-            "city": "Hillsboro",
-            "state": "OH",
-            "zip": "45133"
-        },
-        "lat": "39.234917439995485",
-        "lng": "-83.61752128580763",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/jail-pin.svg"
-    },
-    {
-        "count": 1,
-        "type": "jail",
-        "name": "Clermont County Jail",
-        "address": {
-            "full_address": "4700 E Filager Rd, Batavia, OH 45103",
-            "street": "4700 E Filager Rd",
-            "city": "Batavia",
-            "state": "OH",
-            "zip": "45103"
-        },
-        "lat": "39.094554",
-        "lng": "-84.185891",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/jail-pin.svg"
-    },
-    {
-        "count": 1,
-        "type": "jail",
-        "name": "Shelby County Jail",
-        "address": {
-            "full_address": "555 Gearhart Rd, Sidney, OH 45365",
-            "street": "555 Gearhart Rd",
-            "city": "Sidney",
-            "state": "OH",
-            "zip": "45365"
-        },
-        "lat": "40.2725665",
-        "lng": "-84.1511522",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/jail-pin.svg"
-    },
-    {
-        "type": "home",
-        "address": {
-            "street": "5804 Prince Edward Way",
-            "city": "Huber Heights",
-            "state": "OH",
-            "zip": "45424",
-            "full_address": "5804 Prince Edward Way, Huber Heights OH 45424"
-        },
-        "full_address": "5804 Prince Edward Way, Huber Heights OH 45424",
-        "lat": "39.83767198475636",
-        "lng": "-84.13616387494658",
-        "marker": "https://ascnd.s3.us-east-2.amazonaws.com/familiar-faces/mcadamhs/home-pin.svg"
+        "marker": pin
     }
 ]
 
@@ -683,13 +593,1268 @@
 		{ date: '2025-4-30', value: 16, series: 'Scatter' },
 	]
 
+	let floatData = [
+    {
+      "date": "2025-03-24",
+      "value": "4.00"
+    },
+    {
+      "date": "2025-03-21",
+      "value": "5.00"
+    },
+    {
+      "date": "2025-03-20",
+      "value": "19.00"
+    },
+    {
+      "date": "2025-03-19",
+      "value": "29.00"
+    },
+    {
+      "date": "2025-03-18",
+      "value": "24.00"
+    },
+    {
+      "date": "2025-03-17",
+      "value": "23.00"
+    },
+    {
+      "date": "2025-03-16",
+      "value": "2.00"
+    },
+    {
+      "date": "2025-03-15",
+      "value": "3.00"
+    },
+    {
+      "date": "2025-03-14",
+      "value": "7.00"
+    },
+    {
+      "date": "2025-03-13",
+      "value": "31.00"
+    },
+    {
+      "date": "2025-03-12",
+      "value": "30.00"
+    },
+    {
+      "date": "2025-03-11",
+      "value": "22.00"
+    },
+    {
+      "date": "2025-03-10",
+      "value": "27.00"
+    },
+    {
+      "date": "2025-03-07",
+      "value": "20.00"
+    },
+    {
+      "date": "2025-03-06",
+      "value": "33.00"
+    },
+    {
+      "date": "2025-03-05",
+      "value": "19.00"
+    },
+    {
+      "date": "2025-03-04",
+      "value": "31.00"
+    },
+    {
+      "date": "2025-03-03",
+      "value": "24.00"
+    },
+    {
+      "date": "2025-03-02",
+      "value": "1.00"
+    },
+    {
+      "date": "2025-03-01",
+      "value": "6.00"
+    },
+    {
+      "date": "2025-02-28",
+      "value": "26.00"
+    },
+    {
+      "date": "2025-02-27",
+      "value": "46.00"
+    },
+    {
+      "date": "2025-02-26",
+      "value": "36.00"
+    },
+    {
+      "date": "2025-02-25",
+      "value": "24.00"
+    },
+    {
+      "date": "2025-02-24",
+      "value": "27.00"
+    },
+    {
+      "date": "2025-02-23",
+      "value": "1.00"
+    },
+    {
+      "date": "2025-02-21",
+      "value": "11.00"
+    },
+    {
+      "date": "2025-02-20",
+      "value": "42.00"
+    },
+    {
+      "date": "2025-02-19",
+      "value": "44.00"
+    },
+    {
+      "date": "2025-02-18",
+      "value": "33.00"
+    },
+    {
+      "date": "2025-02-17",
+      "value": "10.00"
+    },
+    {
+      "date": "2025-02-16",
+      "value": "1.00"
+    },
+    {
+      "date": "2025-02-14",
+      "value": "23.00"
+    },
+    {
+      "date": "2025-02-13",
+      "value": "44.00"
+    },
+    {
+      "date": "2025-02-12",
+      "value": "42.00"
+    },
+    {
+      "date": "2025-02-11",
+      "value": "49.00"
+    },
+    {
+      "date": "2025-02-10",
+      "value": "37.00"
+    },
+    {
+      "date": "2025-02-08",
+      "value": "1.00"
+    },
+    {
+      "date": "2025-02-07",
+      "value": "16.00"
+    },
+    {
+      "date": "2025-02-06",
+      "value": "55.00"
+    },
+    {
+      "date": "2025-02-05",
+      "value": "40.00"
+    },
+    {
+      "date": "2025-02-04",
+      "value": "47.00"
+    },
+    {
+      "date": "2025-02-03",
+      "value": "37.00"
+    },
+    {
+      "date": "2025-02-02",
+      "value": "2.00"
+    },
+    {
+      "date": "2025-02-01",
+      "value": "3.00"
+    },
+    {
+      "date": "2025-01-31",
+      "value": "23.00"
+    },
+    {
+      "date": "2025-01-30",
+      "value": "64.00"
+    },
+    {
+      "date": "2025-01-29",
+      "value": "42.00"
+    },
+    {
+      "date": "2025-01-28",
+      "value": "42.00"
+    },
+    {
+      "date": "2025-01-27",
+      "value": "36.00"
+    },
+    {
+      "date": "2025-01-26",
+      "value": "1.00"
+    },
+    {
+      "date": "2025-01-24",
+      "value": "27.00"
+    },
+    {
+      "date": "2025-01-23",
+      "value": "54.00"
+    },
+    {
+      "date": "2025-01-22",
+      "value": "30.00"
+    },
+    {
+      "date": "2025-01-21",
+      "value": "36.00"
+    },
+    {
+      "date": "2025-01-20",
+      "value": "17.00"
+    },
+    {
+      "date": "2025-01-19",
+      "value": "4.00"
+    },
+    {
+      "date": "2025-01-17",
+      "value": "20.00"
+    },
+    {
+      "date": "2025-01-16",
+      "value": "59.00"
+    },
+    {
+      "date": "2025-01-15",
+      "value": "40.00"
+    },
+    {
+      "date": "2025-01-14",
+      "value": "44.00"
+    },
+    {
+      "date": "2025-01-13",
+      "value": "44.00"
+    },
+    {
+      "date": "2025-01-12",
+      "value": "2.00"
+    },
+    {
+      "date": "2025-01-11",
+      "value": "2.00"
+    },
+    {
+      "date": "2025-01-10",
+      "value": "31.00"
+    },
+    {
+      "date": "2025-01-09",
+      "value": "65.00"
+    },
+    {
+      "date": "2025-01-08",
+      "value": "54.00"
+    },
+    {
+      "date": "2025-01-07",
+      "value": "43.00"
+    },
+    {
+      "date": "2025-01-06",
+      "value": "14.00"
+    },
+    {
+      "date": "2025-01-05",
+      "value": "2.00"
+    },
+    {
+      "date": "2025-01-04",
+      "value": "1.00"
+    },
+    {
+      "date": "2025-01-03",
+      "value": "17.00"
+    },
+    {
+      "date": "2025-01-02",
+      "value": "34.00"
+    },
+    {
+      "date": "2025-01-01",
+      "value": "9.00"
+    },
+    {
+      "date": "2024-12-31",
+      "value": "18.00"
+    },
+    {
+      "date": "2024-12-30",
+      "value": "26.00"
+    },
+    {
+      "date": "2024-12-29",
+      "value": "1.00"
+    },
+    {
+      "date": "2024-12-28",
+      "value": "2.00"
+    },
+    {
+      "date": "2024-12-27",
+      "value": "10.00"
+    },
+    {
+      "date": "2024-12-26",
+      "value": "14.00"
+    },
+    {
+      "date": "2024-12-25",
+      "value": "1.00"
+    },
+    {
+      "date": "2024-12-24",
+      "value": "6.00"
+    },
+    {
+      "date": "2024-12-23",
+      "value": "17.00"
+    },
+    {
+      "date": "2024-12-22",
+      "value": "1.00"
+    },
+    {
+      "date": "2024-12-21",
+      "value": "2.00"
+    },
+    {
+      "date": "2024-12-20",
+      "value": "15.00"
+    },
+    {
+      "date": "2024-12-19",
+      "value": "61.00"
+    },
+    {
+      "date": "2024-12-18",
+      "value": "40.00"
+    },
+    {
+      "date": "2024-12-17",
+      "value": "55.00"
+    },
+    {
+      "date": "2024-12-16",
+      "value": "43.00"
+    },
+    {
+      "date": "2024-12-15",
+      "value": "1.00"
+    },
+    {
+      "date": "2024-12-13",
+      "value": "31.00"
+    },
+    {
+      "date": "2024-12-12",
+      "value": "64.00"
+    },
+    {
+      "date": "2024-12-11",
+      "value": "48.00"
+    },
+    {
+      "date": "2024-12-10",
+      "value": "52.00"
+    },
+    {
+      "date": "2024-12-09",
+      "value": "40.00"
+    },
+    {
+      "date": "2024-12-06",
+      "value": "27.00"
+    },
+    {
+      "date": "2024-12-05",
+      "value": "70.00"
+    },
+    {
+      "date": "2024-12-04",
+      "value": "47.00"
+    },
+    {
+      "date": "2024-12-03",
+      "value": "59.00"
+    },
+    {
+      "date": "2024-12-02",
+      "value": "44.00"
+    },
+    {
+      "date": "2024-12-01",
+      "value": "9.00"
+    },
+    {
+      "date": "2024-11-29",
+      "value": "8.00"
+    },
+    {
+      "date": "2024-11-28",
+      "value": "2.00"
+    },
+    {
+      "date": "2024-11-27",
+      "value": "32.00"
+    },
+    {
+      "date": "2024-11-26",
+      "value": "49.00"
+    },
+    {
+      "date": "2024-11-25",
+      "value": "32.00"
+    },
+    {
+      "date": "2024-11-24",
+      "value": "3.00"
+    },
+    {
+      "date": "2024-11-23",
+      "value": "4.00"
+    },
+    {
+      "date": "2024-11-22",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-11-21",
+      "value": "65.00"
+    },
+    {
+      "date": "2024-11-20",
+      "value": "42.00"
+    },
+    {
+      "date": "2024-11-19",
+      "value": "45.00"
+    },
+    {
+      "date": "2024-11-18",
+      "value": "34.00"
+    },
+    {
+      "date": "2024-11-17",
+      "value": "3.00"
+    },
+    {
+      "date": "2024-11-15",
+      "value": "23.00"
+    },
+    {
+      "date": "2024-11-14",
+      "value": "60.00"
+    },
+    {
+      "date": "2024-11-13",
+      "value": "49.00"
+    },
+    {
+      "date": "2024-11-12",
+      "value": "54.00"
+    },
+    {
+      "date": "2024-11-11",
+      "value": "37.00"
+    },
+    {
+      "date": "2024-11-10",
+      "value": "2.00"
+    },
+    {
+      "date": "2024-11-08",
+      "value": "22.00"
+    },
+    {
+      "date": "2024-11-07",
+      "value": "58.00"
+    },
+    {
+      "date": "2024-11-06",
+      "value": "53.00"
+    },
+    {
+      "date": "2024-11-05",
+      "value": "54.00"
+    },
+    {
+      "date": "2024-11-04",
+      "value": "48.00"
+    },
+    {
+      "date": "2024-11-03",
+      "value": "1.00"
+    },
+    {
+      "date": "2024-11-02",
+      "value": "1.00"
+    },
+    {
+      "date": "2024-11-01",
+      "value": "39.00"
+    },
+    {
+      "date": "2024-10-31",
+      "value": "100.00"
+    },
+    {
+      "date": "2024-10-30",
+      "value": "96.00"
+    },
+    {
+      "date": "2024-10-29",
+      "value": "113.00"
+    },
+    {
+      "date": "2024-10-28",
+      "value": "81.00"
+    },
+    {
+      "date": "2024-10-27",
+      "value": "29.00"
+    },
+    {
+      "date": "2024-10-26",
+      "value": "24.00"
+    },
+    {
+      "date": "2024-10-25",
+      "value": "67.00"
+    },
+    {
+      "date": "2024-10-24",
+      "value": "86.00"
+    },
+    {
+      "date": "2024-10-23",
+      "value": "101.00"
+    },
+    {
+      "date": "2024-10-22",
+      "value": "102.00"
+    },
+    {
+      "date": "2024-10-21",
+      "value": "79.00"
+    },
+    {
+      "date": "2024-10-20",
+      "value": "29.00"
+    },
+    {
+      "date": "2024-10-19",
+      "value": "27.00"
+    },
+    {
+      "date": "2024-10-18",
+      "value": "65.00"
+    },
+    {
+      "date": "2024-10-17",
+      "value": "101.00"
+    },
+    {
+      "date": "2024-10-16",
+      "value": "109.00"
+    },
+    {
+      "date": "2024-10-15",
+      "value": "128.00"
+    },
+    {
+      "date": "2024-10-14",
+      "value": "97.00"
+    },
+    {
+      "date": "2024-10-13",
+      "value": "26.00"
+    },
+    {
+      "date": "2024-10-12",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-10-11",
+      "value": "67.00"
+    },
+    {
+      "date": "2024-10-10",
+      "value": "91.00"
+    },
+    {
+      "date": "2024-10-09",
+      "value": "102.00"
+    },
+    {
+      "date": "2024-10-08",
+      "value": "117.00"
+    },
+    {
+      "date": "2024-10-07",
+      "value": "98.00"
+    },
+    {
+      "date": "2024-10-06",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-10-05",
+      "value": "24.00"
+    },
+    {
+      "date": "2024-10-04",
+      "value": "83.00"
+    },
+    {
+      "date": "2024-10-03",
+      "value": "105.00"
+    },
+    {
+      "date": "2024-10-02",
+      "value": "112.00"
+    },
+    {
+      "date": "2024-10-01",
+      "value": "110.00"
+    },
+    {
+      "date": "2024-09-30",
+      "value": "94.00"
+    },
+    {
+      "date": "2024-09-29",
+      "value": "27.00"
+    },
+    {
+      "date": "2024-09-28",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-09-27",
+      "value": "87.00"
+    },
+    {
+      "date": "2024-09-26",
+      "value": "98.00"
+    },
+    {
+      "date": "2024-09-25",
+      "value": "114.00"
+    },
+    {
+      "date": "2024-09-24",
+      "value": "114.00"
+    },
+    {
+      "date": "2024-09-23",
+      "value": "100.00"
+    },
+    {
+      "date": "2024-09-22",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-09-21",
+      "value": "26.00"
+    },
+    {
+      "date": "2024-09-20",
+      "value": "84.00"
+    },
+    {
+      "date": "2024-09-19",
+      "value": "125.00"
+    },
+    {
+      "date": "2024-09-18",
+      "value": "110.00"
+    },
+    {
+      "date": "2024-09-17",
+      "value": "130.00"
+    },
+    {
+      "date": "2024-09-16",
+      "value": "121.00"
+    },
+    {
+      "date": "2024-09-15",
+      "value": "27.00"
+    },
+    {
+      "date": "2024-09-14",
+      "value": "28.00"
+    },
+    {
+      "date": "2024-09-13",
+      "value": "78.00"
+    },
+    {
+      "date": "2024-09-12",
+      "value": "137.00"
+    },
+    {
+      "date": "2024-09-11",
+      "value": "126.00"
+    },
+    {
+      "date": "2024-09-10",
+      "value": "148.00"
+    },
+    {
+      "date": "2024-09-09",
+      "value": "129.00"
+    },
+    {
+      "date": "2024-09-08",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-09-07",
+      "value": "27.00"
+    },
+    {
+      "date": "2024-09-06",
+      "value": "101.00"
+    },
+    {
+      "date": "2024-09-05",
+      "value": "108.00"
+    },
+    {
+      "date": "2024-09-04",
+      "value": "124.00"
+    },
+    {
+      "date": "2024-09-03",
+      "value": "135.00"
+    },
+    {
+      "date": "2024-09-02",
+      "value": "26.00"
+    },
+    {
+      "date": "2024-09-01",
+      "value": "34.00"
+    },
+    {
+      "date": "2024-08-31",
+      "value": "26.00"
+    },
+    {
+      "date": "2024-08-30",
+      "value": "75.00"
+    },
+    {
+      "date": "2024-08-29",
+      "value": "119.00"
+    },
+    {
+      "date": "2024-08-28",
+      "value": "126.00"
+    },
+    {
+      "date": "2024-08-27",
+      "value": "141.00"
+    },
+    {
+      "date": "2024-08-26",
+      "value": "99.00"
+    },
+    {
+      "date": "2024-08-25",
+      "value": "26.00"
+    },
+    {
+      "date": "2024-08-24",
+      "value": "26.00"
+    },
+    {
+      "date": "2024-08-23",
+      "value": "73.00"
+    },
+    {
+      "date": "2024-08-22",
+      "value": "109.00"
+    },
+    {
+      "date": "2024-08-21",
+      "value": "125.00"
+    },
+    {
+      "date": "2024-08-20",
+      "value": "118.00"
+    },
+    {
+      "date": "2024-08-19",
+      "value": "95.00"
+    },
+    {
+      "date": "2024-08-18",
+      "value": "26.00"
+    },
+    {
+      "date": "2024-08-17",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-08-16",
+      "value": "80.00"
+    },
+    {
+      "date": "2024-08-15",
+      "value": "121.00"
+    },
+    {
+      "date": "2024-08-14",
+      "value": "118.00"
+    },
+    {
+      "date": "2024-08-13",
+      "value": "127.00"
+    },
+    {
+      "date": "2024-08-12",
+      "value": "104.00"
+    },
+    {
+      "date": "2024-08-11",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-08-10",
+      "value": "24.00"
+    },
+    {
+      "date": "2024-08-09",
+      "value": "90.00"
+    },
+    {
+      "date": "2024-08-08",
+      "value": "141.00"
+    },
+    {
+      "date": "2024-08-07",
+      "value": "143.00"
+    },
+    {
+      "date": "2024-08-06",
+      "value": "138.00"
+    },
+    {
+      "date": "2024-08-05",
+      "value": "101.00"
+    },
+    {
+      "date": "2024-08-04",
+      "value": "24.00"
+    },
+    {
+      "date": "2024-08-03",
+      "value": "24.00"
+    },
+    {
+      "date": "2024-08-02",
+      "value": "72.00"
+    },
+    {
+      "date": "2024-08-01",
+      "value": "116.00"
+    },
+    {
+      "date": "2024-07-31",
+      "value": "108.00"
+    },
+    {
+      "date": "2024-07-30",
+      "value": "128.00"
+    },
+    {
+      "date": "2024-07-29",
+      "value": "104.00"
+    },
+    {
+      "date": "2024-07-28",
+      "value": "24.00"
+    },
+    {
+      "date": "2024-07-27",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-07-26",
+      "value": "91.00"
+    },
+    {
+      "date": "2024-07-25",
+      "value": "97.00"
+    },
+    {
+      "date": "2024-07-24",
+      "value": "121.00"
+    },
+    {
+      "date": "2024-07-23",
+      "value": "137.00"
+    },
+    {
+      "date": "2024-07-22",
+      "value": "101.00"
+    },
+    {
+      "date": "2024-07-21",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-07-20",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-07-19",
+      "value": "82.00"
+    },
+    {
+      "date": "2024-07-18",
+      "value": "129.00"
+    },
+    {
+      "date": "2024-07-17",
+      "value": "112.00"
+    },
+    {
+      "date": "2024-07-16",
+      "value": "128.00"
+    },
+    {
+      "date": "2024-07-15",
+      "value": "102.00"
+    },
+    {
+      "date": "2024-07-14",
+      "value": "26.00"
+    },
+    {
+      "date": "2024-07-13",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-07-12",
+      "value": "81.00"
+    },
+    {
+      "date": "2024-07-11",
+      "value": "112.00"
+    },
+    {
+      "date": "2024-07-10",
+      "value": "130.00"
+    },
+    {
+      "date": "2024-07-09",
+      "value": "109.00"
+    },
+    {
+      "date": "2024-07-08",
+      "value": "103.00"
+    },
+    {
+      "date": "2024-07-07",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-07-06",
+      "value": "28.00"
+    },
+    {
+      "date": "2024-07-05",
+      "value": "78.00"
+    },
+    {
+      "date": "2024-07-04",
+      "value": "24.00"
+    },
+    {
+      "date": "2024-07-03",
+      "value": "109.00"
+    },
+    {
+      "date": "2024-07-02",
+      "value": "119.00"
+    },
+    {
+      "date": "2024-07-01",
+      "value": "96.00"
+    },
+    {
+      "date": "2024-06-30",
+      "value": "28.00"
+    },
+    {
+      "date": "2024-06-29",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-06-28",
+      "value": "98.00"
+    },
+    {
+      "date": "2024-06-27",
+      "value": "112.00"
+    },
+    {
+      "date": "2024-06-26",
+      "value": "118.00"
+    },
+    {
+      "date": "2024-06-25",
+      "value": "108.00"
+    },
+    {
+      "date": "2024-06-24",
+      "value": "100.00"
+    },
+    {
+      "date": "2024-06-23",
+      "value": "31.00"
+    },
+    {
+      "date": "2024-06-22",
+      "value": "27.00"
+    },
+    {
+      "date": "2024-06-21",
+      "value": "93.00"
+    },
+    {
+      "date": "2024-06-20",
+      "value": "115.00"
+    },
+    {
+      "date": "2024-06-19",
+      "value": "83.00"
+    },
+    {
+      "date": "2024-06-18",
+      "value": "143.00"
+    },
+    {
+      "date": "2024-06-17",
+      "value": "103.00"
+    },
+    {
+      "date": "2024-06-16",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-06-15",
+      "value": "27.00"
+    },
+    {
+      "date": "2024-06-14",
+      "value": "90.00"
+    },
+    {
+      "date": "2024-06-13",
+      "value": "125.00"
+    },
+    {
+      "date": "2024-06-12",
+      "value": "133.00"
+    },
+    {
+      "date": "2024-06-11",
+      "value": "112.00"
+    },
+    {
+      "date": "2024-06-10",
+      "value": "106.00"
+    },
+    {
+      "date": "2024-06-09",
+      "value": "30.00"
+    },
+    {
+      "date": "2024-06-08",
+      "value": "29.00"
+    },
+    {
+      "date": "2024-06-07",
+      "value": "98.00"
+    },
+    {
+      "date": "2024-06-06",
+      "value": "105.00"
+    },
+    {
+      "date": "2024-06-05",
+      "value": "107.00"
+    },
+    {
+      "date": "2024-06-04",
+      "value": "117.00"
+    },
+    {
+      "date": "2024-06-03",
+      "value": "103.00"
+    },
+    {
+      "date": "2024-06-02",
+      "value": "27.00"
+    },
+    {
+      "date": "2024-06-01",
+      "value": "34.00"
+    },
+    {
+      "date": "2024-05-31",
+      "value": "86.00"
+    },
+    {
+      "date": "2024-05-30",
+      "value": "104.00"
+    },
+    {
+      "date": "2024-05-29",
+      "value": "125.00"
+    },
+    {
+      "date": "2024-05-28",
+      "value": "139.00"
+    },
+    {
+      "date": "2024-05-27",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-05-26",
+      "value": "22.00"
+    },
+    {
+      "date": "2024-05-25",
+      "value": "24.00"
+    },
+    {
+      "date": "2024-05-24",
+      "value": "82.00"
+    },
+    {
+      "date": "2024-05-23",
+      "value": "107.00"
+    },
+    {
+      "date": "2024-05-22",
+      "value": "106.00"
+    },
+    {
+      "date": "2024-05-21",
+      "value": "133.00"
+    },
+    {
+      "date": "2024-05-20",
+      "value": "104.00"
+    },
+    {
+      "date": "2024-05-19",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-05-18",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-05-17",
+      "value": "88.00"
+    },
+    {
+      "date": "2024-05-16",
+      "value": "113.00"
+    },
+    {
+      "date": "2024-05-15",
+      "value": "128.00"
+    },
+    {
+      "date": "2024-05-14",
+      "value": "135.00"
+    },
+    {
+      "date": "2024-05-13",
+      "value": "93.00"
+    },
+    {
+      "date": "2024-05-12",
+      "value": "23.00"
+    },
+    {
+      "date": "2024-05-11",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-05-10",
+      "value": "86.00"
+    },
+    {
+      "date": "2024-05-09",
+      "value": "120.00"
+    },
+    {
+      "date": "2024-05-08",
+      "value": "143.00"
+    },
+    {
+      "date": "2024-05-07",
+      "value": "138.00"
+    },
+    {
+      "date": "2024-05-06",
+      "value": "110.00"
+    },
+    {
+      "date": "2024-05-05",
+      "value": "25.00"
+    },
+    {
+      "date": "2024-05-04",
+      "value": "24.00"
+    },
+    {
+      "date": "2024-05-03",
+      "value": "91.00"
+    },
+    {
+      "date": "2024-05-02",
+      "value": "126.00"
+    },
+    {
+      "date": "2024-05-01",
+      "value": "138.00"
+    },
+    {
+      "date": "2024-04-30",
+      "value": "127.00"
+    }
+  ]
+
 	$: geoData = 'realData'
 
 	export let data
-
-	let emptyData
-
-	// $: combinedData = JSON.parse(JSON.stringify(data.boardDemographics.age_group))
 </script>
 
 <Page>
@@ -784,7 +1949,7 @@
 				<Chart
 					tooltipId="area"
 					type="area"
-					data={citData}
+					data={floatData}
 					title="Simple Area Chart"
 					domain="date"
 					range="value"
