@@ -1,10 +1,10 @@
-.url-control {
+.url-input-control {
     display: flex;
     flex-direction: column;
     gap: var(--spacing03);
 }
 
-.url-title {
+.url-input__title {
     display: flex;
     gap: var(--spacing05);
     justify-content: flex-start;

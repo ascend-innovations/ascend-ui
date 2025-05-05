@@ -17,7 +17,7 @@
 </script>
 
 <div class="phone-number-control">
-	<div class="phone-number-title">
+	<div class="phone-number-control__title">
 		{#if label}
 			<Label
 				{id}
@@ -36,7 +36,7 @@
 	<input
 		bind:value={phoneNumber}
 		on:blur={validationCallback}
-		class="phone-number-input {validValue === false ? 'error' : ''}"
+		class="phone-number-control__input {validValue === false ? 'error' : ''}"
 		style={styles.join(';')}
 		type="tel"
 		{id}

@@ -9,8 +9,8 @@
 		backButtonDisabled = false
 </script>
 
-<div class="pagination-bar">
-	<div class="back-button">
+<div class="pagination">
+	<div class="pagination__back-button">
 		<BackButton
 			arrow={true}
 			callback={leftClickCallback}
@@ -20,7 +20,7 @@
 	<div class="neutral-400-text">
 		Page {currentPage} of {totalPages}
 	</div>
-	<div class="next-button">
+	<div class="pagination__next-button">
 		<NextButton
 			arrow={true}
 			callback={rightClickCallback}

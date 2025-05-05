@@ -19,16 +19,16 @@
 	on:click={checkBox}
 	on:keyUp={checkBox}
 >
-	<div class="checkbox-left-option-column">
+	<div class="checkbox-option__left">
 		<CheckboxInput
 			bind:checked
 			callback={checkBox}
 		/>
 	</div>
-	<div class="checkbox-right-option-column">
-		<div class="option-name semibold">{name}</div>
+	<div class="checkbox-option__right">
+		<div class="semibold">{name}</div>
 		{#if description}
-			<div class="option-description">{description}</div>
+			{description}
 		{/if}
 	</div>
 </div>

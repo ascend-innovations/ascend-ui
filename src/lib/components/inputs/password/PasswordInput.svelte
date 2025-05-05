@@ -20,7 +20,7 @@
 </script>
 
 <div class="password-control width-100">
-	<div class="password-title width-100">
+	<div class="password-control__title width-100">
 		{#if label}
 			<Label
 				{id}
@@ -44,7 +44,7 @@
 	<input
 		bind:value={password}
 		on:blur={validationCallback}
-		class="password-input"
+		class="password-control__input"
 		style={styles.join(';')}
 		type="password"
 		{autofocus}

@@ -16,7 +16,7 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div
-	class="checkbox-container"
+	class="checkbox"
 	on:click|preventDefault={checkBox}
 >
 	<input
@@ -25,7 +25,7 @@
 		{value}
 	/>
 	<div
-		class="checkmark"
+		class="checkbox__checkmark"
 		style={`background-color: ${checked ? 'var(--primary-500);' : ''}`}
 	>
 		{#if isChecked}

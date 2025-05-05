@@ -15,7 +15,7 @@
 				sublinks: [
 					{
 						text: 'Accordions',
-						url: '/containers/accordions/',
+						url: '/containers/accordions',
 					},
 					{
 						text: 'ActionBars',
@@ -23,7 +23,7 @@
 					},
 					{
 						text: 'Alerts',
-						url: '/containers/alerts/',
+						url: '/containers/alerts',
 					},
 					{
 						text: 'Cards',
@@ -31,7 +31,7 @@
 					},
 					{
 						text: 'Charts',
-						url: '/containers/charts/',
+						url: '/containers/charts',
 					},
 					{
 						text: 'Labels',
@@ -67,22 +67,60 @@
 					},
 					{
 						text: 'Tooltips',
-						url: '/containers/tooltips/',
+						url: '/containers/tooltips',
 					},
 					
 				],
 			},
 			{
+				startOpen: true,
 				text: 'Inputs',
 				url: '#',
 				sublinks: [
 					{
-						text: 'Toggles',
-						url: '/containers/toggles',
+						text: 'Buttons',
+						url: '/inputs/buttons'
 					},
+					{
+						text: 'Checkboxes',
+						url: '/inputs/checkboxes'
+					},
+					{
+						text: 'Email',
+						url: '/inputs/email'
+					},
+					{	
+						text: 'Numbers',
+						url: '/inputs/numbers'
+					},
+					{
+						text: 'Radios',
+						url: '/inputs/radio'
+					},
+					{
+						text: 'Selectors',
+						url: '/inputs/selectors'
+					},
+					{
+						text: 'Text',
+						url: '/inputs/text'
+					},
+					{
+						text: 'Toggles',
+						url: '/inputs/toggles',
+					},
+					{
+						text: 'URLs',
+						url: '/inputs/urls'
+					},
+					{
+						text: 'Validation',
+						url: '/inputs/validation'
+					}
 				]
 			},
 			{
+				startOpen: true,
 				text: 'Icons',
 				url: '#',
 				sublinks: [
@@ -94,12 +132,12 @@
 </script>
 
 <Shell>
-	<NavBar
+	<!-- <NavBar
 		keepOpen={true}
 		openHeaderComponent={NavIcon}
 		closedHeaderComponent={NavIcon}
 		{navBarContents}
-	/>
+	/> -->
 	<Main>
 		<HeaderBar>
 			<ProfileButton url="/" />

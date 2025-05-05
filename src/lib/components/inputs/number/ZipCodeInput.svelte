@@ -24,7 +24,7 @@
 	<!-- svelte-ignore a11y-autofocus -->
 	<input
 		bind:value={zip}
-		class="zip-input"
+		class="zip-control__input"
 		maxlength="5"
 		minlength="5"
 		type="text"

@@ -18,7 +18,7 @@ select:hover {
     border-radius: var(--spacing05);
     border: var(--spacing00) solid var(--neutral-100);
 }
-.multi-selector-control {
+.multi-selector__control {
     min-width: 260px;
     display: flex;
     flex-direction: column;
@@ -27,10 +27,10 @@ select:hover {
     overflow: hidden;
     border-radius: var(--spacing05);
 }
-.open-selector-control {
+.multi-selector__control--open {
     border-radius: var(--spacing05);
 }
-.multiselect-label-wrapper {
+.multi-selector__label {
     display: flex;
     justify-content: space-between;
     padding: var(--spacing05) var(--spacing05) var(--spacing05) var(--spacing09);
@@ -38,7 +38,7 @@ select:hover {
     /* border: var(--spacing00) solid var(--neutral-100); */
     cursor: pointer;
 }
-.multiselect-list-content {
+.multi-selector__list {
     width: 100%;
     top: 100%;
     left: 0;
@@ -49,12 +49,12 @@ select:hover {
     /* border: var(--spacing00) solid var(--neutral-100); */
     z-index: 1;
 }
-.multiselect-search-bar-wrapper {
+.multi-selector__search-bar {
     padding-left: var(--spacing05);
     padding-right: var(--spacing05);
     padding-top: var(--spacing05);
 }
-.multiselect-options-list {
+.multi-selector__options-list {
     padding: var(--spacing05);
     max-height: 220px;
     overflow-y: scroll;
@@ -65,10 +65,10 @@ select:hover {
         padding-top: var(--spacing05);
     }
 }
-.custom-select-option {
+.checkbox-select {
     padding: var(--spacing03);
 }
-.custom-select-label {
+.checkbox-select__label {
     display: flex;
     gap: var(--spacing05);
     font-weight: 700;

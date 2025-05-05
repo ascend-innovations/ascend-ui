@@ -1,29 +1,34 @@
-.date-time {
+.date-time-selector__inputs {
     display: flex;
     gap: var(--spacing09);
 }
-.date-picker {
+.date-picker-selector__input {
     display: flex;
     flex-direction: column;
     gap: var(--spacing03);
 }
-.date-range {
+.date-range-selector__inputs {
     display: flex;
     /* justify-content: space-between; */
     gap: var(--spacing09);
 }
-.month-picker {
+.month-selector__input {
     display: flex;
     flex-direction: column;
     gap: var(--spacing03);
 }
-.month-range {
+.month-range-selector__inputs {
     display: flex;
     justify-content: space-between;
     gap: var(--spacing09);
 }
-.time-picker {
+.time-picker-selector__input {
     display: flex;
     gap: var(--spacing03);
     flex-direction: column;
+}
+.date-time-selector {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing03);
 }

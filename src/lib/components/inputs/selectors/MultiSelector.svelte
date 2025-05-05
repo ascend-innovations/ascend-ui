@@ -78,12 +78,12 @@
 <div class="multi-selector">
 	<div
 		{id}
-		class="multi-selector-control {open ? 'open-selector-control' : ''}"
+		class="multi-selector__control {open ? 'multi-selector__control--open' : ''}"
 		style={styles.join(';')}
 		aria="select"
 	>
 		<div
-			class="multiselect-label-wrapper"
+			class="multi-selector__label"
 			on:click={openToggle}
 		>
 			<Label
@@ -98,9 +98,9 @@
 			{/if}
 		</div>
 		{#if open}
-			<div class="multiselect-list-content">
+			<div class="multi-selector__list">
 				{#if searchable}
-					<div class="multiselect-search-bar-wrapper">
+					<div class="multi-selector__search-bar">
 						<SearchBar
 							bind:query
 							callback={searchCallback}
@@ -109,7 +109,7 @@
 					</div>
 				{/if}
 				<div
-					class="options-list"
+					class="multi-selector__options-list"
 					on:click={() => (selectedValues = optionList)}
 				>
 					{#if optionList.length === 0}

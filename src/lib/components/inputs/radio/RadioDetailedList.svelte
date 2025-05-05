@@ -27,21 +27,21 @@
 <div class="radio-list">
 	{#each list as item}
 		<div
-			class="radio-list-item"
+			class="radio-list__item"
 			on:click|stopPropagation={() => selectValue(item.value)}
 			on:keyup|stopPropagation={() => selectValue(item.value)}
 		>
-			<div class="radio-list-item-left-column">
+			<div class="radio-list__item-left">
 				<RadioInput
 					bind:group
 					value={item.value}
 				/>
 			</div>
-			<div class="item-right-column">
+			<div class="radio-list__item-right">
 				<div class="item-title primary-headline-l-xs semibold">
 					{item.name}
 				</div>
-				<div class="radio-list-item-description">
+				<div class="radio-list__item-description">
 					{item.description}
 				</div>
 			</div>

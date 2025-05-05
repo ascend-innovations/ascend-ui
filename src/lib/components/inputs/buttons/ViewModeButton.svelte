@@ -6,16 +6,19 @@
 	}
 </script>
 
+// PROPOSE SCRAP THIS SINCE ITS FUNCTION CAN BE DUPLICATED BY
+// TOGGLE SWITCH
+
 <div class="view-mode">
 	<button
 		on:click={toggle}
-		class={`view-mode-btn ${listView ? 'list-view-selected' : ''}`}
+		class={`view-mode__button ${listView ? 'view-mode--list' : ''}`}
 	>
 		L
 	</button>
 	<button
 		on:click={toggle}
-		class={`view-mode-btn ${listView ? '' : 'grid-view-selected'}`}
+		class={`view-mode__button ${listView ? '' : 'view-mode--grid'}`}
 	>
 		G
 	</button>

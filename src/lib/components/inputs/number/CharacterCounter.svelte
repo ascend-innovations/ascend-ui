@@ -3,6 +3,6 @@
 		text = ''
 </script>
 
-<div class={`characters-remaining width-100 ${text.length > maxlength ? 'error' : ''}`}>
+<div class={`character-counter width-100 ${text.length > maxlength ? 'character-counter--error' : ''}`}>
 	{text.length}/{maxlength}
 </div>

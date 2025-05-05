@@ -4,7 +4,7 @@
     gap: var(--spacing03);
 }
 
-.phone-number-title {
+.phone-number-control__title {
     display: flex;
     gap: var(--spacing05);
     justify-content: flex-start;

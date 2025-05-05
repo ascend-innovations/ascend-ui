@@ -7,8 +7,8 @@
 	$: currentPageLink = $page.url.pathname === sublink?.url
 </script>
 
-<div class="subnav-button-wrapper">
-	<div class={`subnav-current-page-indicator ${currentPageLink ? 'subnav-current-page-link' : ''}`}></div>
+<div class="subnav-button">
+	<div class={`current-page-indicator ${currentPageLink ? 'current-page-link' : ''}`}></div>
 	<div class="width-100">
 		<Button
 			classes={['padding-left', 'btn-full', 'btn-left', 'btn-l', 'btn-white', 'btn-nav-hover']}

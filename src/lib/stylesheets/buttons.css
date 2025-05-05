@@ -15,7 +15,7 @@ button {
 	display: flex;
 }
 
-.btn-content-wrapper {
+.button__content-wrapper {
 	align-items: center;
 	border-radius: var(--btn-border-radius);
 	display: flex;
@@ -26,17 +26,17 @@ button {
 }
 
 .button-contents,
-.block-content,
-.inline-content {
+.button-contents--block,
+.button-contents--inline {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
-.block-content {
+.button-contents--block {
 	flex-direction: column;
 	gap: var(--spacing03);
 }
-.inline-content {
+.button-contents--inline {
 	flex-direction: row;
 	gap: var(--spacing05);
 }
@@ -50,7 +50,7 @@ button {
 	padding: var(--spacing01);
 	width: var(--spacing15);
 }
-.view-mode-btn {
+.view-mode__button {
 	align-items: center;
 	border-radius: var(--btn-border-radius);
 	border: none;
@@ -60,10 +60,10 @@ button {
 	text-align: center;
 	width: 100%;
 }
-.list-view-selected {
+.view-mode--list {
 	background-color: white;
 }
-.grid-view-selected {
+.view-mode--grid {
 	background-color: white;
 }
 .table-column-header-button {
@@ -76,15 +76,15 @@ button {
 	padding: 0;
 	width: 100%;
 }
-.subnav-button-wrapper {
+.subnav-button {
 	display: flex;
 	width: 100%;
 }
-.subnav-current-page-indicator {
+.current-page-indicator {
 	width: var(--spacing02);
 	border-radius: var(--border-radius-s);
 }
-.subnav-current-page-link {
+.current-page-link {
 	background-color: var(--primary-base);
 }
 .submit-button {
@@ -104,35 +104,32 @@ button {
 	text-decoration: none;
 }
 .sample-button {
-	margin: 50px 0;
+	margin: 20px;
 }
-.button-name {
+.sample-button__name {
 	font-weight: bold;
-	font-size: 24px;
+	font-size: 16px;
 	margin-bottom: 12px;
 }
-.navbar-button-wrapper {
+.navbar-button {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 }
-.nav-indicator-wrapper {
+.navbar-button__indicator-wrapper {
 	display: flex;
 }
-.nav-current-page-indicator {
-	width: var(--spacing02);
-	border-radius: var(--border-radius-s);
-}
-.nav-current-page-link {
-	background-color: var(--primary-base);
-}
-.sub-nav-wrapper {
+.navbar-button__subnav-wrapper {
 	overflow-y: hidden;
 }
 .navbar-closed {
 	height: 0;
 }
-.link-button-link {
+.subnav--closed {
+	height: 0;
+	overflow: hidden;
+}
+.link-button {
 	align-items: center;
 	background-color: transparent;
 	border-radius: var(--btn-border-radius);

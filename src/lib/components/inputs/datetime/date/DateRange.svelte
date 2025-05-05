@@ -18,7 +18,7 @@
 	class="date-range-selector"
 	style={styles.join(';')}
 >
-	<div class="date-range">
+	<div class="date-range-selector__inputs">
 		<DatePicker
 			bind:date={start}
 			id={`start-${id}`}

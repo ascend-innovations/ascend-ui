@@ -430,3 +430,6 @@ export { default as ToggleSwitch } from '$lib/components/inputs/toggles/ToggleSw
 
 // Validation
 export { default as InputError } from '$lib/components/inputs/validation/InputError.svelte'
+
+// Url
+export { default as UrlInput } from '$lib/components/inputs/url/UrlInput.svelte'

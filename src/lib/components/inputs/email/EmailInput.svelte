@@ -15,7 +15,7 @@
 </script>
 
 <div class="email-control">
-	<div class="email-title">
+	<div class="email-control__title">
 		<Label
 			{id}
 			{label}
@@ -32,7 +32,7 @@
 	<input
 		bind:value={email}
 		on:blur={validationCallback}
-		class="email-input"
+		class="email-control__input"
 		pattern=".+@.+\..+"
 		style={styles.join(';')}
 		type="email"

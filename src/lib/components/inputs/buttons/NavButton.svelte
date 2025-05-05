@@ -20,8 +20,8 @@
 	$: currentPageLink = $page.url.pathname.includes(pageData?.url)
 </script>
 
-<div class="navbar-button-wrapper width-100">
-	<div class="nav-indicator-wrapper">
+<div class="navbar-button width-100">
+	<div class="navbar-button__indicator-wrapper">
 		<div class={`current-page-indicator ${currentPageLink ? 'current-page-link' : ''}`} />
 		<div class="width-100">
 			<Button
@@ -36,7 +36,7 @@
 		</div>
 	</div>
 	{#if pageData.sublinks?.length > 0}
-		<div class="sub-nav-wrapper {open ? 'open' : 'closed'}">
+		<div class="navbar-button__subnav-wrapper {open ? 'subnav--open' : 'subnav--closed'}">
 			{#each pageData.sublinks as sublink}
 				<SubNavButton
 					{callback}

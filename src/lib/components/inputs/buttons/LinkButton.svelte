@@ -16,7 +16,7 @@
 
 <a
 	class={`
-		link-button-link
+		link-button
 		semibold
 		${classes?.includes('btn-full') ? 'btn-full' : 'btn-fit'}
 	`}
@@ -30,7 +30,7 @@
 >
 	<div
 		class={`
-			btn-content-wrapper
+			button__content-wrapper
 			${classes?.join(' ') ?? ''}
 			${disabled ? 'btn-disabled' : ''}
 		`}

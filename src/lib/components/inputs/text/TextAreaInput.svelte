@@ -18,12 +18,13 @@
 		tag = null,
 		text = '',
 		validValue = true,
-		validationText = ''
+		validationText = '',
+		characterCount = true
 </script>
 
 <div class="textarea-control">
 	{#if label || tag}
-		<div class="textarea-title">
+		<div class="textarea-control__title">
 			{#if label}
 				<Label
 					{id}
@@ -45,7 +46,7 @@
 	{/if}
 	<textarea
 		bind:value={text}
-		class="textarea-content border-neutral-100-s border-radius-s"
+		class="textarea-control__content border-neutral-100-s border-radius-s"
 		name={name || label}
 		on:input={callback || ''}
 		style={styles.join(';')}
@@ -59,7 +60,7 @@
 		{rows}
 		{tabindex}
 	/>
-	{#if maxlength}
+	{#if maxlength && characterCount}
 		<CharacterCounter
 			{maxlength}
 			{text}

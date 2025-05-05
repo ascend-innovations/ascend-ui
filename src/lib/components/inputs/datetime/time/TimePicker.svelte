@@ -14,7 +14,7 @@
 	class="time-picker-selector width-100"
 	style={styles.join(';')}
 >
-	<div class="time-picker width-100">
+	<div class="time-picker-selector__input width-100">
 		<Label
 			{id}
 			{label}

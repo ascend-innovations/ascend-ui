@@ -1,7 +1,9 @@
 <script>
-	import { DatePicker, TimePicker, InputError } from '$lib/index.js'
+	import { DatePicker, TimePicker, InputError, Label } from '$lib/index.js'
 
 	export let date,
+		id,
+		label,
 		dateId,
 		required,
 		time,
@@ -12,10 +14,14 @@
 </script>
 
 <div
-	class="date-time-picker width-100"
+	class="date-time-selector width-100"
 	style={styles.join(';')}
 >
-	<div class="date-time width-100">
+	<Label 
+		{id}
+		{label}
+	/>
+	<div class="date-time-selector__inputs width-100">
 		<DatePicker
 			bind:date
 			id={dateId}

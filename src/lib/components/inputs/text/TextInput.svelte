@@ -23,7 +23,7 @@
 
 <div class="text-control">
 	{#if label || tag}
-		<div class="text-title">
+		<div class="text-control__title">
 			{#if label}
 				<Label
 					{id}
@@ -49,7 +49,7 @@
 		bind:value={text}
 		on:blur={validationCallback}
 		on:change={changeCallback}
-		class="text-input"
+		class="text-control__input"
 		style={styles.join(';')}
 		type="text"
 		{autofocus}

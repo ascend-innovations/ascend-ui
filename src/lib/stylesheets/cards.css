@@ -47,14 +47,14 @@
 .login-card {
 	align-items: flex-start;
 	background-color: var(--white-trans-900);
-	border-radius: var(--spacing11);
+	border-radius: var(--spacing09);
 	border: var(--spacing00) solid var(--neutral-trans-100);
 	box-shadow: var(--neutral-shadow-s);
 	display: flex;
 	flex-direction: column;
 	gap: var(--spacing11);
 	height: fit-content;
-	padding: var(--spacing13);
+	padding: var(--spacing09);
 	width: var(--spacing27);
 }
 .registration-card {
@@ -69,6 +69,10 @@
 	height: fit-content;
 	padding: var(--spacing13);
 	width: var(--spacing27);
+}
+.login-card__header {
+	font-size: var(--heading-s-xxl-font-size);
+	font-weight: 700;
 }
 .login-card__ascend-icon {
 	& img {
@@ -111,5 +115,12 @@
 @media screen and (min-width: 768px) {
 	.card-header__title {
 		font-size: var(--heading-s-l-font-size);
+	}
+	.login-card {
+		padding: var(--spacing12);
+		border-radius: var(--spacing11);
+	}
+	.login-card__header {
+		font-size: var(--heading-l-xxl-font-size);
 	}
 }

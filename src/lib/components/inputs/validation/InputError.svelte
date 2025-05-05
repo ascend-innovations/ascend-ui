@@ -8,7 +8,7 @@
 	<div class="error-icon">
 		<AlertCircleSmallIcon />
 	</div>
-	<div class="error-text">
+	<div class="validation-error__text">
 		{text}
 	</div>
 </div>

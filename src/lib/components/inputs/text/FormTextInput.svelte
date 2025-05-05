@@ -11,7 +11,7 @@
 		validationCallback
 </script>
 
-<div class="login-element">
+<div class="form-text">
 	<label
 		for={label}
 		class="body-m-semibold"
@@ -22,7 +22,7 @@
 		<input
 			autocomplete={label}
 			bind:value
-			class="form-text-input {validValue === false ? 'form-text-input-error' : ''}"
+			class="form-text__input {validValue === false ? 'form-text__input--error' : ''}"
 			id={label}
 			{name}
 			on:blur={validationCallback}
@@ -33,7 +33,7 @@
 		<input
 			autocomplete={label}
 			bind:value
-			class="form-text-input {validValue === false ? 'form-text-input-error' : ''}"
+			class="form-text__input {validValue === false ? 'form-text__input--error' : ''}"
 			id={label}
 			{name}
 			on:blur={validationCallback}
@@ -44,7 +44,7 @@
 		<input
 			autocomplete={label}
 			bind:value
-			class="form-text-input {validValue === false ? 'form-text-input-error' : ''}"
+			class="form-text__input {validValue === false ? 'form-text__input--error' : ''}"
 			id={label}
 			{name}
 			on:blur={validationCallback}

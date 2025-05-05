@@ -13,17 +13,17 @@
 
 <form
 	role="search"
-	class="search-bar-input-control"
+	class="search-bar-control"
 >
 	<button
 		on:click={callback}
-		class="search-bar-button"
+		class="search-bar-control__button"
 	>
 		<svelte:component this={SearchSmallIcon} />
 	</button>
 	<input
 		bind:value={query}
-		class="search-bar"
+		class="search-bar-control__content"
 		on:input={callback}
 		style={styles.join(';')}
 		type="search"

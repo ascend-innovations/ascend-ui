@@ -23,7 +23,7 @@
 	class="number-control width-100"
 	style={styles.join(';')}
 >
-	<div class="text-title">
+	<div class="number-control__title">
 		{#if label}
 			<Label
 				{id}
@@ -37,7 +37,7 @@
 	<!-- svelte-ignore a11y-autofocus -->
 	<input
 		bind:value
-		class="number-input"
+		class="number-control__input"
 		{max}
 		{min}
 		on:blur={validationCallback}

@@ -14,7 +14,7 @@
 <div class="button-contents">
 	{#if text}
 		{#if topIcon}
-			<div class="block-content">
+			<div class="button-contents--block">
 				{#if loading}
 					<ProgressSpinner active={true} />
 				{:else}
@@ -23,7 +23,7 @@
 				{text}
 			</div>
 		{:else if bottomIcon}
-			<div class="block-content">
+			<div class="button-contents--block">
 				{text}
 				{#if loading}
 					<ProgressSpinner active={true} />
@@ -32,7 +32,7 @@
 				{/if}
 			</div>
 		{:else if leftIcon && rightIcon}
-			<div class="inline-content">
+			<div class="button-contents--inline">
 				{#if loading}
 					<ProgressSpinner active={true} />
 				{:else}
@@ -42,7 +42,7 @@
 				<svelte:component this={rightIcon} />
 			</div>
 		{:else if leftIcon}
-			<div class="inline-content">
+			<div class="button-contents--inline">
 				{#if loading}
 					<ProgressSpinner active={true} />
 				{:else}
@@ -51,7 +51,7 @@
 				{text}
 			</div>
 		{:else if rightIcon}
-			<div class="inline-content">
+			<div class="button-contents--inline">
 				{text}
 				{#if loading}
 					<ProgressSpinner active={true} />
@@ -60,7 +60,7 @@
 				{/if}
 			</div>
 		{:else}
-			<div class="block-content">
+			<div class="button-contents--block">
 				{#if loading}
 					<ProgressSpinner active={true} />
 				{:else}
@@ -69,7 +69,7 @@
 			</div>
 		{/if}
 	{:else}
-		<div class="block-content">
+		<div class="button-contents--block">
 			{#if loading}
 				<ProgressSpinner active={true} />
 			{:else}

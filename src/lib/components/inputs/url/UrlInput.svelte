@@ -17,24 +17,22 @@
 </script>
 
 <div
-	class="url-control width-100"
+	class="url-input-control width-100"
 	style={styles.join(';')}
 >
-	<div class="url-title">
-		<div class="url-title width-100">
-			<Label
-				{id}
-				{label}
+	<div class="url-input__title width-100">
+		<Label
+			{id}
+			{label}
+		/>
+		{#if tag !== null}
+			<Tag
+				content={tag?.content || ''}
+				icon={tag?.icon || null}
+				side={tag?.side || ''}
+				type={tag?.type || ''}
 			/>
-			{#if tag !== null}
-				<Tag
-					content={tag?.content || ''}
-					icon={tag?.icon || null}
-					side={tag?.side || ''}
-					type={tag?.type || ''}
-				/>
-			{/if}
-		</div>
+		{/if}
 	</div>
 
 	{#if description}
@@ -43,7 +41,7 @@
 	<!-- svelte-ignore a11y-autofocus -->
 	<input
 		bind:value={url}
-		class="width-100"
+		class="url-control__input width-100"
 		type="url"
 		pattern="https://.*"
 		{autofocus}

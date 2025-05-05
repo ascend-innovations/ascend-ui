@@ -8,26 +8,26 @@
     border-left: var(--spacing08) solid transparent;
     border-bottom: var(--spacing06) solid white;
 }
-.login-element {
+.form-text {
     align-items: flex-start;
     display: flex;
     flex-direction: column;
     gap: var(--spacing05);
     width: 100%;
 }
-.form-text-input {
+.form-text__input {
     border-radius: var(--spacing04);
     border: var(--spacing01) solid var(--neutral-100);
     padding: var(--spacing05) var(--spacing09);
     width: 100%;
 }
-.form-text-input:invalid {
+.form-text__input:invalid {
     border: var(--spacing01) solid var(--error-base);
 }
-.form-text-input-error {
+.form-text__input--error {
     border-color: var(--error-500);
 }
-.search-bar-input-control {
+.search-bar-control {
     align-items: center;
     border-radius: var(--spacing05);
     border: var(--neutral-stroke-100-s);
@@ -35,18 +35,18 @@
     gap: var(--spacing05);
     padding: var(--spacing03) var(--spacing05);
 }
-.search-bar-button {
+.search-bar-control__button {
     background: none;
     border: none;
     cursor: pointer;
 }
-.search-bar {
+.search-bar-control__content {
     all: unset;
     background: none;
     border: none;
     width: var(--spacing18);
 }
-.textarea-title {
+.textarea-control__title {
     display: flex;
     gap: var(--spacing05);
     justify-content: flex-start;
@@ -58,7 +58,7 @@
     gap: var(--spacing03);
     width: 100%;
 }
-.textarea-content {
+.textarea-control__content {
     background-color: transparent;
     border-radius: var(--border-radius-s);
     border: var(--neutral-stroke-100-s);
@@ -71,7 +71,7 @@
     gap: var(--spacing03);
     width: 100%;
 }
-.text-title {
+.text-control__title {
     display: flex;
     gap: var(--spacing05);
     justify-content: flex-start;

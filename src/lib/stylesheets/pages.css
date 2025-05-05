@@ -82,6 +82,7 @@ body {
 	position: fixed;
 	right: 0;
 	top: 0;
+	padding: var(--spacing09);
 }
 .page-body {
 	display: flex;
@@ -157,7 +158,7 @@ body {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
-	gap: var(--spacing10);
+	gap: var(--spacing09);
 	width: 100%;
 }
 .sso-otp__miscellaneous-links,

@@ -3,8 +3,8 @@
 </script>
 
 <div class="sample-button">
-	<div class="button-name">
+	<slot />
+	<div class="sample-button__name">
 		{name}
 	</div>
-	<slot />
 </div>

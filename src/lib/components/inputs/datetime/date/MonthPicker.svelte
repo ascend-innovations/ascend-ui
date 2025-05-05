@@ -14,7 +14,7 @@
 	class="month-selector"
 	style={styles.join(';')}
 >
-	<div class="month-picker">
+	<div class="month-selector__input">
 		<Label
 			{id}
 			{label}

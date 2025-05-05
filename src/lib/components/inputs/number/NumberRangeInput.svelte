@@ -28,14 +28,14 @@
 </script>
 
 <div
-	class="width-100"
+	class="number-range-control width-100"
 	style={styles?.join(';')}
 >
 	<Label
 		{id}
 		{label}
 	/>
-	<div class="input-control">
+	<div class="number-range-control__inputs">
 		<NumberInput
 			bind:value={start}
 			min={startMin}

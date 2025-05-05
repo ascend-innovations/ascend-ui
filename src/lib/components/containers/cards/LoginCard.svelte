@@ -14,7 +14,7 @@
 			/>
 		</div>
 	{/if}
-	<div class="headline-l-xxl width-100 text-align-center">{loginHeader}</div>
+	<div class="login-card__header width-100 text-align-center">{loginHeader}</div>
 	<slot />
 	{#if dialogCallback}
 		<div class="width-100">

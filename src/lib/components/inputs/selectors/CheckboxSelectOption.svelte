@@ -6,9 +6,9 @@
 		callback = null
 </script>
 
-<div class="custom-select-option">
+<div class="checkbox-select">
 	<!-- svelte-ignore a11y-label-has-associated-control -->
-	<label class="custom-select-label">
+	<label class="checkbox-select__label">
 		<CheckboxInput
 			bind:checked
 			{value}

@@ -47,8 +47,8 @@
 
 <Page>
 	<PageBody size="full">
-		<SSOLandingPage {data} />
+		<!-- <SSOLandingPage {data} /> -->
 		<!-- <SupabaseLoginPage /> -->
-		<!-- <SupabaseOtpLoginPage /> -->
+		<SupabaseOtpLoginPage />
 	</PageBody>
 </Page>

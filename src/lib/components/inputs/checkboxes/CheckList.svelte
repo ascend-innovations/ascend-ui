@@ -18,11 +18,11 @@
 </script>
 
 <div
-	class="check-list"
+	class="checklist"
 	style={styles.join(';')}
 >
 	{#each list as item}
-		<div class="check-item">
+		<div class="checklist__item">
 			<CheckOption
 				bind:checked={item.selected}
 				description={item.description}
@@ -31,10 +31,7 @@
 				{callback}
 			/>
 			{#if list.component}
-				<svelte:component
-					this={item.component}
-					class="check-component"
-				/>
+				<svelte:component this={item.component} />
 			{/if}
 		</div>
 	{/each}

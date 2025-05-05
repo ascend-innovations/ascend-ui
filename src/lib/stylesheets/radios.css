@@ -24,14 +24,14 @@ input[type="radio"]:checked {
     flex-direction: column;
     gap: var(--spacing06);
 }
-.radio-list-item {
+.radio-list__item {
     display: flex;
     gap: var(--spacing05);
 }
-.radio-list-item-left-column {
+.radio-list__item-left {
     margin-top: var(--spacing03);
 }
-.radio-list-item-description {
+.radio-list__item-description {
     margin-top: var(--spacing03);
     margin-bottom: var(--spacing05);
 }

@@ -24,7 +24,7 @@
 >
 	<div
 		class={`
-			btn-content-wrapper
+			button__content-wrapper
 			${classes?.join(' ') ?? ''}
 			${disabled ? 'btn-disabled' : ''}
 		`}

@@ -29,6 +29,7 @@
 			{required}
 			{rows}
 			{styles}
+			characterCount={false}
 		/>
 	</TextMessageBubble>
 	{#if maxlength}

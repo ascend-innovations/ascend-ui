@@ -1,11 +1,11 @@
-.characters-remaining {
+.character-counter {
     color: var(--neutral-400);
     font-size: var(--body-small-xs-font-size);
     font-weight: 600;
     line-height: 150%;
     text-align: right;
 }
-.character-counter-error {
+.character-counter--error {
     color: var(--error-700);
 }
 .number-control {
@@ -14,17 +14,17 @@
     gap: var(--spacing03);
 }
 
-.number-input {
+.number-control__input {
     -moz-appearance: textfield;
     appearance: textfield;
 }
 
-.number-input::-webkit-outer-spin-button,
-.number-input::-webkit-inner-spin-button {
+.number-control__input::-webkit-outer-spin-button,
+.number-control__input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-.input-control {
+.number-range-control__inputs {
     display: flex;
     gap: var(--spacing09);
     margin-bottom: var(--spacing03);
