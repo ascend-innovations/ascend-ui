@@ -26,17 +26,17 @@
 	style={column?.styles?.join(';')}
 >
 	{#if row[column.logoKey]}
-		<div class="logo-link-logo">
+		<div class="logo-link-cell__logo">
 			<img
 				src={row[column.logoKey]}
 				alt="logo"
 			/>
 		</div>
 	{/if}
-	<div class="logo-link-text-container truncate-text {row[column.linkKey] ? 'logo-link-link-height' : ''}">
+	<div class="logo-link-cell__text truncate-text {row[column.linkKey] ? 'logo-link-cell--link-height' : ''}">
 		<p class="truncate-text">{row[column.textKey]}</p>
 		{#if row[column.linkKey]}
-			<p class="logo-link-link truncate-text body-xxs">
+			<p class="logo-link-cell__link truncate-text body-xxs">
 				<a
 					class="neutral-400-text"
 					href={`${prefix}${prefix === 'tel:' ? phone : row[column.linkKey]}`}

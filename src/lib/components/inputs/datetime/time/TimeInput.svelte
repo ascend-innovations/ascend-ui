@@ -7,7 +7,7 @@
 
 <input
 	bind:value={time}
-	class="time-input"
+	class="time-input width-100"
 	style={styles.join(';')}
 	type="time"
 	{id}

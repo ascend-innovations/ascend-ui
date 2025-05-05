@@ -9,9 +9,9 @@
 	onMount(() => (palette = getGlobalColorPalette()))
 </script>
 
-<div class="progress-spinner-container">
+<div class="progress-spinner">
 	<svg
-		class="progress-spinner"
+		class="progress-spinner__spinner"
 		height="24"
 		style="animation-duration:1000ms;"
 		viewbox="0 0 20 20"

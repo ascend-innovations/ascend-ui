@@ -17,20 +17,20 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 
 <div
-	class={menuOpen ? 'open-menu-overlay' : 'closed-menu-overlay'}
+	class={menuOpen ? 'menu-overlay--open' : 'menu-overlay--closed'}
 	on:click={closeMenu}
 	on:mousewheel={closeMenu}
 />
 <div
-	class={`menu ${menuOpen ? 'menu-open' : 'menu-closed'}`}
+	class={`menu ${menuOpen ? 'menu--open' : 'menu--closed'}`}
 	transition:slide={{ axis: 'y' }}
 >
-	<div class="menu-header">
+	<div class="menu__header">
 		<slot name="menu-header" />
 	</div>
-	<div class="menu-list">
+	<div class="menu__list">
 		{#each menuList as menuItem}
-			<div class="menu-button">
+			<div class="menu__button width-100">
 				<Button
 					classes={['btn-left', 'btn-full', 'btn-l', 'btn-white', 'btn-rect']}
 					text={menuItem.name}
@@ -39,7 +39,7 @@
 			</div>
 		{/each}
 	</div>
-	<div class="menu-footer">
+	<div class="profile-menu__footer">
 		<slot name="menu-footer" />
 	</div>
 </div>

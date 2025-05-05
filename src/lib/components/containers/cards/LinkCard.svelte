@@ -12,11 +12,11 @@
 
 <a
 	href={url}
-	class="link-card"
+	class="card--link"
 >
 	<StandardCard
 		{callback}
-		classes={[...classes, 'card-hover-link']}
+		classes={[...classes]}
 		{icon}
 		{styles}
 		{title}

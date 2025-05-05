@@ -7,7 +7,7 @@
 
 <div class="login-card">
 	{#if ascendLogo}
-		<div class="login-card-ascend-icon width-100">
+		<div class="login-card__ascend-icon width-100">
 			<img
 				src={AscendLogoWithText}
 				alt="ascend-logo"
@@ -22,7 +22,7 @@
 			<p
 				on:click={dialogCallback}
 				on:keypress={dialogCallback}
-				class="account-profile-card-link"
+				class="login-card__account-link"
 			>
 				Create Account or Change Profile Info
 			</p>

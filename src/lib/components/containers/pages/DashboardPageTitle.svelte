@@ -20,15 +20,15 @@
 		styles={['padding:0']}
 	/>
 	{#if tabList?.length}
-		<div class="dashboard-pill-container">
-			<div class="dashboard-tabs-container">
+		<div class="dashboard-page-title__pill-container">
+			<div class="dashboard-page-title__tabs-container">
 				<TabBar
 					bind:tabList
 					{currentTab}
 					on:tabselect={(event) => handleTabSelection(event)}
 				/>
 			</div>
-			<div class="tabs-button">
+			<div class="dashboard-page-title__tabs-button">
 				<svelte:component this={tabButton} />
 			</div>
 		</div>

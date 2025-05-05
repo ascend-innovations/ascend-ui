@@ -1,5 +1,5 @@
 <script>
-	import { Page, PageBody, DefaultTooltipElement, TooltipElement, ClockRefreshIcon, NextButton, MetricCard, Card } from '$lib/index.js'
+	import { Page, PageBody, DefaultTooltipElement, TooltipElement, ClockRefreshIcon, NextButton, MetricCard, Card, ChartTooltip } from '$lib/index.js'
 </script>
 
 <Page>

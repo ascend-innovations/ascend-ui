@@ -1,9 +1,9 @@
-.text-message-content {
+.text-bubble__content {
     background-color: var(--neutral-100);
     border-radius: var(--spacing06) var(--spacing06) var(--spacing06) 0px;
     overflow: hidden;
 }
-.text-message-arrow {
+.text-bubble__arrow {
     background-color: var(--neutral-100);
     border-left: var(--spacing08) solid transparent;
     border-bottom: var(--spacing06) solid white;
@@ -71,19 +71,18 @@
     gap: var(--spacing03);
     width: 100%;
 }
-
 .text-title {
     display: flex;
     gap: var(--spacing05);
     justify-content: flex-start;
     width: 100%;
 }
-.text-message-bubble {
+.text-message-input-bubble {
     display: flex;
     flex-direction: column;
     gap: var(--spacing);
 }
-.text-counter {
+.text-message-input-bubble__counter {
     position: relative;
     top: calc(var(--spacing03) * -1);
 }

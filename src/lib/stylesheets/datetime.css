@@ -1,29 +1,16 @@
-.date-time-selector {
-    width: 100%;
-}
 .date-time {
     display: flex;
     gap: var(--spacing09);
-    width: 100%;
-}
-.date-input {
-    width: 100%;
 }
 .date-picker {
     display: flex;
     flex-direction: column;
     gap: var(--spacing03);
 }
-.date-picker-full-width {
-    width: 100%;
-}
 .date-range {
     display: flex;
     /* justify-content: space-between; */
     gap: var(--spacing09);
-}
-.month-input {
-    width: 100%;
 }
 .month-picker {
     display: flex;
@@ -35,16 +22,8 @@
     justify-content: space-between;
     gap: var(--spacing09);
 }
-.time-input {
-    width: 100%;
-}
-.time-picker-selector {
-    width: 100%;
-}
-
 .time-picker {
     display: flex;
     gap: var(--spacing03);
     flex-direction: column;
-    width: 100%;
 }

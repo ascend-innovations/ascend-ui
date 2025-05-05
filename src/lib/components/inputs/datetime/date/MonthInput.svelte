@@ -7,7 +7,7 @@
 
 <input
 	bind:value={month}
-	class="month-input"
+	class="month-input width-100"
 	style={styles.join(';')}
 	type="month"
 	{id}

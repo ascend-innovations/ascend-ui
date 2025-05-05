@@ -12,10 +12,10 @@
 	`}
 >
 	<div
-		class="text-message-content"
+		class="text-bubble__content"
 		style={`padding:${padding}`}
 	>
 		<slot />
 	</div>
-	<div class="text-message-arrow" />
+	<div class="text-bubble__arrow" />
 </div>

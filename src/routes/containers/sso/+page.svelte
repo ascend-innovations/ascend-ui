@@ -46,7 +46,9 @@
 </script>
 
 <Page>
-	<!-- <SSOLandingPage {data} /> -->
-	<SupabaseLoginPage />
-	<SupabaseOtpLoginPage />
+	<PageBody size="full">
+		<SSOLandingPage {data} />
+		<!-- <SupabaseLoginPage /> -->
+		<!-- <SupabaseOtpLoginPage /> -->
+	</PageBody>
 </Page>

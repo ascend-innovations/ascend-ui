@@ -1,6 +1,7 @@
 <script>
 	import SelectorInput from '$lib/components/inputs/selectors/SelectorInput.svelte'
 	import { Chart, Page, PageBody, StatusTag, PageTransitionWrapper } from '$lib/index.js'
+  import { page } from '$app/stores';
 
 	let svgpin = `<div style="position:relative;">
 			<svg width="48" height="61" viewBox="0 0 48 61" fill="none">
@@ -1871,19 +1872,14 @@
 				<Chart
 					tooltipId="simple-v"
 					type="bar"
-					vertical
-					sort="descending"
+					vertical={true}
 					title="Simple Vertical Bar Chart"
-					titleTooltip={{ content: 'This is a tooltip that will probably wrap. Maybe even twice.' }}
 					data={barData}
 					domain="x"
 					range="value"
 					valueOneLabel="Date"
 					valueTwoLabel="Value"
-					domainLabel="Blue"
-					rangeLabel="Big Measure"
 					barColors={['var(--secondary-base']}
-					rule="avg"
 					seriesKey="series"
 				/>
 			</div>

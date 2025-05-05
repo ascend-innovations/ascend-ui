@@ -13,7 +13,7 @@
 {#if toastList?.length > 0}
 	<div class="toast-area">
 		<div
-			class="toast-list"
+			class="toast-area__list"
 			transition:fade
 		>
 			{#each toastList as toast}

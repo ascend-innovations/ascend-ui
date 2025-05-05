@@ -1,16 +1,16 @@
-.accordion-title {
+.accordion__title {
     padding: var(--spacing09) 0;
     list-style: none;
     display: flex;
     justify-content: space-between;
 }
 
-.accordion-icon {
+.accordion__icon {
     display: inline-block;
     margin-left: auto;
 }
 
-.accordion-content {
+.accordion__content {
     margin-bottom: var(--spacing09);
 }
 

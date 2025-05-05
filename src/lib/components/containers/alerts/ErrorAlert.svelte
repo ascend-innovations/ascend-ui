@@ -8,15 +8,15 @@
 		title
 </script>
 
-<div class="alert-error">
-	<div class="alert-error-content">
-		<div class="alert-error-icon">
+<div class="alert alert--error">
+	<div class="alert__content">
+		<div class="alert__icon">
 			{#if icon}
 				<svelte:component this={icon} />
 			{/if}
 		</div>
 		<div class="alert-text">
-			<div class="alert-title headline-l-xs">
+			<div class="headline-l-xs">
 				{title}
 			</div>
 			{#if tag}
@@ -25,13 +25,13 @@
 					type="neutral-subtle"
 				/>
 			{/if}
-			<div class="alert-body body-s">
+			<div class="body-s">
 				{body}
 			</div>
 		</div>
 	</div>
 	{#if button}
-		<div class="alert-control">
+		<div class="alert__control">
 			<div class="alert-button">
 				<svelte:component this={button} />
 			</div>

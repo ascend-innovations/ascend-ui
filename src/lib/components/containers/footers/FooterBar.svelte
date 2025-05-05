@@ -14,7 +14,7 @@
 				></strong
 			>
 		</div>
-		<div class="footer-link-buttons">
+		<div class="footer-link__buttons">
 			{#if termsAndConditionsURL}
 				<TermsAndConditionsButton url={termsAndConditionsURL} />
 			{/if}

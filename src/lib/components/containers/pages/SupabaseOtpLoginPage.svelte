@@ -34,13 +34,13 @@
 	loginHeader="Enter Passcode"
 	ascendLogo
 >
-	<div class="sso-otp-form-container">
+	<div class="sso-otp__form-container">
 		<form
-			class="sso-otp-form"
+			class="sso-otp__form"
 			method="POST"
 			action="?/verifyOtp"
 		>
-			<p class="sso-otp-email-instructions">Enter the one-time passcode sent to your email to continue.</p>
+			<p class="neutral-400-text text-align-center">Enter the one-time passcode sent to your email to continue.</p>
 			<FormTextInput
 				name="otp"
 				bind:value={otp}
@@ -56,16 +56,16 @@
 				<InputError text={form.message} />
 			{/if}
 
-			<div class="login-button-row">
+			<div class="sso-otp__button">
 				<input
-					class="btn-full btn-l btn-primary btn-rect semibold sso-otp-submit"
+					class="btn-full btn-l btn-primary btn-rect semibold sso-otp__submit"
 					type="submit"
 					value="Verify"
 				/>
 			</div>
 		</form>
 		<form
-			class="sso-otp-resend-form"
+			class="sso-otp__resend-form"
 			method="POST"
 			action="?/resendOtp"
 		>
@@ -73,15 +73,15 @@
 				<InputError text={form.resend_message} />
 			{/if}
 
-			<div class="sso-otp-button-row resend-section">
+			<div class="sso-otp__button sso-otp__resend-section">
 				<p class="body-xs">Didn't get an email?</p>
 				<input
-					class="btn-link resend-button semibold body-xs neutral-400-text"
+					class="btn-link semibold body-xs neutral-400-text"
 					type="submit"
 					value="Resend Code"
 				/>
 			</div>
-			<div class="sso-otp-miscellaneous-links">
+			<div class="sso-otp__miscellaneous-links">
 				<a
 					class="body-xs"
 					target="_blank"

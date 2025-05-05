@@ -11,19 +11,14 @@
     gap: var(--spacing04);
     width: fit-content;
 }
-.chart-key-color-block {
+.chart-key__color-block {
     width: var(--spacing03);
     height: var(--spacing03);
     border-radius: 50%;
 }
-.chart-key-text {
-    font-size: 14px;
-    color: var(--neutral-400);
-}
-.chart-key-column {
+.chart-key--column {
     flex-direction: column;
 }
-
 .filter-container {
     display: flex;
     gap: var(--spacing06);
@@ -37,7 +32,7 @@
     gap: var(--spacing03);
     color: var(--neutral-400);
 }
-.filter-label-text {
+.filter-label__text {
     max-width: 300px;
 }
 .autosave-indicator {
@@ -52,12 +47,12 @@
     display: flex;
     gap: var(--spacing05);
 }
-.map-color-key-color-block {
+.map-color-key__color-block {
     display: flex;
 	align-items: center;
 	gap: var(--spacing03);
 }
-.map-color-key-shade {
+.map-color-key__shade {
     height: 8px;
     width: 8px;
     border-radius: 4px;

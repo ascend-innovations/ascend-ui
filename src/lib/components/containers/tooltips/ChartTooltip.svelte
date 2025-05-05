@@ -7,13 +7,13 @@
 	class="tooltip"
 	style="top:{tooltipInfo.y}px;left:{tooltipInfo.x}px;"
 >
-	<div class="tooltip-text">
-		<p class="tooltip-title"><b>{tooltipInfo.title}</b></p>
+	<div class="tooltip__text">
+		<p class="tooltip__title"><b>{tooltipInfo.title}</b></p>
 		{#if tooltipInfo.valueOneLabel}
-			<p class="tooltip-values"><span>{tooltipInfo.valueOneLabel}:</span> <b>{tooltipInfo.valueOne}</b></p>
+			<p class="tooltip__values"><span>{tooltipInfo.valueOneLabel}:</span> <b>{tooltipInfo.valueOne}</b></p>
 		{/if}
 		{#if tooltipInfo.valueTwoLabel}
-			<p class="tooltip-values"><span>{tooltipInfo.valueTwoLabel}:</span> <b>{tooltipInfo.currency ? '$' : ''}{tooltipInfo.valueTwo.toLocaleString()}</b></p>
+			<p class="tooltip__values"><span>{tooltipInfo.valueTwoLabel}:</span> <b>{tooltipInfo.currency ? '$' : ''}{tooltipInfo.valueTwo.toLocaleString()}</b></p>
 		{/if}
 	</div>
 </div>

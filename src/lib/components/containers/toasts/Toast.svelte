@@ -19,11 +19,11 @@
 </script>
 
 <div
-	class="toast-container"
+	class="toast"
 	transition:fade
 >
-	<div class="toast-body">
-		<div class="toast-icon-column">
+	<div class="toast__body">
+		<div class="toast__icon">
 			{#if toast.purpose === 'success'}
 				<SuccessCheckCircleSmallIcon />
 			{:else if toast.purpose === 'error'}
@@ -32,19 +32,19 @@
 				<Copy01SmallIcon colorOverride="var(--neutral-400)" />
 			{/if}
 		</div>
-		<div class="toast-text-column">
-			<div class="text-title headline-l-xs">{toast.title}</div>
-			<div class="toast-text-body">
+		<div class="toast__text">
+			<div class="headline-l-xs">{toast.title}</div>
+			<div class="toast__text-body">
 				<p>{toast.body}</p>
 			</div>
 		</div>
 		{#if toast.category === 'action'}
-			<div class="toast-close-column">
+			<div class="toast__close">
 				<CloseToastButton callback={() => closeToast(toast.id)} />
 			</div>
 		{/if}
 	</div>
 	{#if toast.action}
-		<div class="toast-actions" />
+		<div class="toast__actions" />
 	{/if}
 </div>

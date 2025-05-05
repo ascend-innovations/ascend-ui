@@ -8,7 +8,7 @@
 		sortMap = {}
 </script>
 
-<section class="no-gap {chart ? '' : 'table-container'}">
+<section class="no-gap {chart ? '' : 'table'}">
 	<TableHeaders
 		bind:list
 		{sortCallback}

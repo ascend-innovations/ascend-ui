@@ -31,7 +31,7 @@
 	}
 </script>
 
-<div class="table-header-row">
+<div class="table-header">
 	{#each columns as column}
 		<TableColumnHeaderCell
 			bind:list

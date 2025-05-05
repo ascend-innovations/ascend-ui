@@ -10,8 +10,8 @@
 		type="checkbox"
 		bind:checked
 	/>
-	<div class="toggle-icon-container border-radius-s">
-		<div class="toggle-button-icon">
+	<div class="toggle-button__icon-container border-radius-s">
+		<div class="toggle-button__icon">
 			<svelte:component this={icon} />
 		</div>
 	</div>

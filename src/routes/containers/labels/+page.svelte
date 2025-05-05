@@ -23,6 +23,8 @@
 		NotificationTextSmallIcon,
 		StarEmptySmallIcon,
 		AutoSaveIndicator,
+		MapColorKey,
+		ChartKeyContainer,
 	} from '$lib/index.js'
 
 	const filters = [
@@ -56,6 +58,37 @@
 		</div>
 		<div>
 			<AutoSaveIndicator saving={true} />
+		</div>
+		<div>
+			<ChartKeyContainer 
+				colors={['var(--primary-base)', 'var(--secondary-base', 'var(--tertiary-base)']}
+				seriesKey="series"
+				data={[
+					{
+						series: 'Primary'
+					},
+					{
+						series: 'Secondary'
+					},
+					{
+						series: 'Tertiary'
+					}
+				]}
+			/>
+		</div>
+		<div>
+			<MapColorKey 
+				colorData={[
+					{
+						text: 'Primary Base',
+						value: 'var(--primary-base)'
+					},
+					{
+						text: 'Secondary Base',
+						value: 'var(--secondary-base)'
+					}
+				]}
+			/>
 		</div>
 	</PageBody>
 </Page>

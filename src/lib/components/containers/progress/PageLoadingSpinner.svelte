@@ -14,9 +14,9 @@
     class="page-loading-spinner" 
     style={styles.join(';')}
 >
-    <div class="spinner-container">
+    <div class="spinner__container">
         <svg
-            class="page-loading-spinner-spinner"
+            class="page-loading-spinner__spinner"
             width="19" 
             height="19" 
             viewBox="0 0 19 19" 

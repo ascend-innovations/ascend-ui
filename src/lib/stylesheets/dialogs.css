@@ -33,9 +33,6 @@ dialog[open]::backdrop {
 	width: 100%;
 	z-index: 410;
 }
-.dialog-section {
-	width: 100%;
-}
 .dialog-section-heading {
 	color: var(--neutral-base);
 	margin: var(--spacing06) 0;

@@ -10,7 +10,7 @@
     height: 48px;
     background-color: white;
 }
-.toggle-icon-container {
+.toggle-button__icon-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -19,14 +19,14 @@
     z-index: 1;
     display: flex;
 }
-.toggle-button-icon {
+.toggle-button__icon {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-input:checked + .toggle-icon-container {
+input:checked + .toggle-button__icon-container {
     border: 1px solid var(--neutral-100);
 }
 .toggle-switch input {
@@ -41,14 +41,14 @@ input:checked + .toggle-icon-container {
     border: 1px solid var(--neutral-100);
     background-color: var(--neutral-100);
 }
-.slider-container {
+.toggle-switch__slider {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
 }
-.toggle-switch-icon-container {
+.toggle-switch__icon-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -57,14 +57,14 @@ input:checked + .toggle-icon-container {
     z-index: 1;
     display: flex;
 }
-.toggle-switch-icon {
+.toggle-switch__icon {
     width: 50%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.toggle-switch-left {
+.toggle-switch__left {
     position: absolute;
     top: 0;
     left: 0;
@@ -74,7 +74,7 @@ input:checked + .toggle-icon-container {
     background-color: white;
     transition: ease-out 300ms;
 }
-.toggle-switch-right {
+.toggle-switch__right {
     position: absolute;
     top: 0;
     right: 0;
@@ -84,11 +84,11 @@ input:checked + .toggle-icon-container {
     background-color: white;
     transition: ease-out 300ms;
 }
-input:checked + .slider-container .toggle-switch-left {
+input:checked + .toggle-switch__slider .toggle-switch__left {
     opacity: 0;
     transition: ease-out 300ms;
 }
-input:checked + .slider-container .toggle-switch-right {
+input:checked + .toggle-switch__slider .toggle-switch__right {
     opacity: 1;
     transition: ease-out 300ms;
 }

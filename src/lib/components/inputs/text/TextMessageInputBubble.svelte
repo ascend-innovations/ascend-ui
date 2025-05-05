@@ -15,7 +15,7 @@
 		text = ''
 </script>
 
-<div class="text-message-bubble">
+<div class="text-message-input-bubble">
 	<TextMessageBubble>
 		<TextAreaInput
 			bind:text
@@ -32,7 +32,7 @@
 		/>
 	</TextMessageBubble>
 	{#if maxlength}
-		<div class="text-counter">
+		<div class="text-message-input-bubble__counter">
 			<CharacterCounter
 				{maxlength}
 				{text}

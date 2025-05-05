@@ -11,7 +11,7 @@
 	}
 </script>
 
-<div class={`tab ${tabIndex === currentTab ? 'selected' : ''}`}>
+<div class={`tab ${tabIndex === currentTab ? 'tab--selected' : ''}`}>
 	<Button
 		callback={selectTab}
 		classes={['btn-tab', 'btn-full']}

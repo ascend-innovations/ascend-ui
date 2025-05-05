@@ -6,7 +6,7 @@
 	$: row = list[rowIndex]
 </script>
 
-<div class="table-body-row">
+<div class="table-row">
 	{#each columns as column}
 		<TableCell
 			bind:column

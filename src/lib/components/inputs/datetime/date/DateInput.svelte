@@ -8,7 +8,7 @@
 
 <input
 	bind:value={date}
-	class="date-input"
+	class="date-input width-100"
 	style={styles.join(';')}
 	type="date"
 	{id}

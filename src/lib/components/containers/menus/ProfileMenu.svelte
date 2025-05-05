@@ -26,23 +26,23 @@
 	{menuList}
 >
 	<div
-		class="menu-header"
+		class="profile-menu__header"
 		slot="menu-header"
 	>
-		<div class="menu-user-profile-container">
+		<div class="profile-menu__user-profile">
 			<ProfileIcon />
-			<div class="user-info">
+			<div class="user__info">
 				{`${username} ${role}`}
 			</div>
 		</div>
 		{#if $$slots['profile-switcher']}
-			<div class="menu-profile-switcher">
+			<div class="profile-menu__profile-switcher">
 				<slot name="profile-switcher" />
 			</div>
 		{/if}
 	</div>
 	<div
-		class="menu-footer"
+		class="profile-menu__footer"
 		slot="menu-footer"
 	>
 		<LogoutMenuButton callback={logoutCallback} />

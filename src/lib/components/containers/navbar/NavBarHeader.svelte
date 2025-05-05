@@ -9,7 +9,7 @@
 		url = '/'
 </script>
 
-<div class="nav-header">
+<div class="navbar__header">
 	{#if navBarOpen}
 		<a href={url}>
 			<svelte:component this={openHeaderComponent} />

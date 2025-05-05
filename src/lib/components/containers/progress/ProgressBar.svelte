@@ -13,7 +13,7 @@
 	style={styles.join(';')}
 >
 	<div
-		class={`progress-bar-fill ${type}`}
+		class={`progress-bar--fill ${type}`}
 		style={`width: ${percentageComplete}%`}
 	/>
 </div>

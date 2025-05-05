@@ -14,7 +14,7 @@
 		{tabList}
 		on:tabselect={(event) => handleTabSelection(event)}
 	/>
-	<div class="card-tab-content">
+	<div class="card-tab-container__content">
 		<svelte:component this={tabList[currentTab].content} />
 	</div>
 </div>

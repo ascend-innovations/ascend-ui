@@ -8,7 +8,7 @@
     padding: 0 var(--spacing09);
     width: 100%;
 }
-.footer-link-buttons {
+.footer-link__buttons {
     display: flex;
     gap: var(--spacing06);
 }

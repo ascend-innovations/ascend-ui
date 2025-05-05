@@ -14,7 +14,7 @@
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-	class={`card-wrapper ${classes?.join(' ') ?? ''}`}
+	class={`card ${classes?.join(' ') ?? ''}`}
 	style={styles?.join('; ')}
 	on:click={callback ? callback : ''}
 	on:keyup={callback ? callback : ''}
@@ -26,7 +26,7 @@
 		{titleButton}
 		{titleButtonText}
 	/>
-	<div class="card-content width-100 body-s-s">
+	<div class="card__content width-100 body-s-s">
 		<slot />
 	</div>
 </div>

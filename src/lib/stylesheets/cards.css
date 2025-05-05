@@ -1,4 +1,5 @@
-.card-wrapper {
+.card {
+	color: var(--neutral-light-base);
 	gap: var(--spacing05);
 	display: flex;
 	flex-direction: column;
@@ -11,7 +12,7 @@
 	display: flex;
 	flex-direction: column;
 	max-height: var(--spacing25);
-	justify-content: space-between;
+	/* justify-content: space-between; */
 	padding: var(--spacing10);
 	width: var(--spacing26);
 }
@@ -22,7 +23,7 @@
 	border: var(--spacing00) solid var(--neutral-trans-100);
 	display: flex;
 	flex-direction: column;
-	height: var(--spacing23);
+	/* height: var(--spacing23); */
 	justify-content: space-between;
 	padding: var(--spacing09);
 	width: var(--spacing22);
@@ -34,13 +35,13 @@
 	border: var(--spacing00) solid var(--neutral-trans-100);
 	display: flex;
 	flex-direction: column;
-	height: var(--spacing16);
+	/* height: var(--spacing16); */
 	justify-content: space-between;
 	padding: var(--spacing09) var(--spacing10);
 	width: var(--spacing22);
 }
-.link-card {
-	color: var(--neutral-light-base);
+.card--link {
+	border-radius: var(--spacing10);
 	text-decoration: none;
 }
 .login-card {
@@ -69,43 +70,46 @@
 	padding: var(--spacing13);
 	width: var(--spacing27);
 }
-.login-card-ascend-icon {
+.login-card__ascend-icon {
 	& img {
 		display: block;
 		margin: auto;
 	}
 }
-.card-title {
+.card-header__title {
 	color: var(--neutral-base);
 	font-size: var(--heading-s-m-font-size);
 }
-.card-icon-title-wrapper {
+.card-header {
 	display: flex;
 	gap: var(--spacing06);
 	align-items: center;
 }
-.card-content {
+.card__content {
 	display: flex;
 	flex-direction: column;
-	height: 100%;
-	justify-content: space-between;
+	/* height: 100%; */
+	/* justify-content: space-between; */
 }
-.card-additional-information-button {
+.card-header__button {
 	margin-left: auto;
 }
-.account-profile-card-link {
+.login-card__account-link {
 	border-bottom: var(--neutral-stroke-100-m);
 	cursor: pointer;
 	margin: auto;
 	width: fit-content;
 }
-.card-hover-link:hover {
+.card--link:hover {
 	box-shadow: var(--neutral-shadow-m);
 	text-decoration: none;
 }
+.card--link:active {
+	transform: scale(0.96);
+}
 
 @media screen and (min-width: 768px) {
-	.card-title {
+	.card-header__title {
 		font-size: var(--heading-s-l-font-size);
 	}
 }

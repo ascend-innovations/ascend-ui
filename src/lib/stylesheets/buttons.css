@@ -80,9 +80,6 @@ button {
 	display: flex;
 	width: 100%;
 }
-.subnav-button {
-	width: 100%;
-}
 .subnav-current-page-indicator {
 	width: var(--spacing02);
 	border-radius: var(--border-radius-s);

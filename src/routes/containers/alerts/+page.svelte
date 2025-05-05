@@ -4,33 +4,22 @@
 	import ExportDataButton from '$lib/components/inputs/buttons/ExportDataButton.svelte'
 	import { Page, Alert, PageBody, HandshakeSmallIcon, Button } from '$lib/index.js'
 
-	let colors = false,
-		inactiveStyles = ['width: 100%'],
-		activeStyles = ['width: 100%', 'border-color: var(--primary-base)', 'background-color: var(--primary-100)']
-	function changeColor() {
-		colors = !colors
-	}
 </script>
 
 <Page>
 	<PageBody size="full">
 		<h1>Alerts</h1>
 		<Alert
-			icon={colors ? AlertCircleSmallIcon : HandshakeSmallIcon}
+			icon={HandshakeSmallIcon}
 			title="This is an Alert!"
-			body="Please do something. I'm telling you necessary information."
+			body="Please do something. I'm telling you necessary information. So much information, lorem ipsum and all that jazz. Like so miuch it wraps a line and maybe messes up the icons alignment and I realize that css rule was supposed to be there all along."
 			button={ExportDataButton}
-			styles={colors ? activeStyles : inactiveStyles}
 		/>
 		<ErrorAlert 
 			icon={AlertCircleSmallIcon}
 			title="This is an Alert!"
 			body="Please do something. I'm telling you necessary information."
 			button={ExportDataButton}
-		/>
-		<Button
-			text="toggle"
-			callback={changeColor}
 		/>
 	</PageBody>
 </Page>

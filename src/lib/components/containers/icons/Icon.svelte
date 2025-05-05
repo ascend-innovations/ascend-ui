@@ -4,7 +4,7 @@
 </script>
 
 <div
-	class="icon-wrapper"
+	class="icon"
 	style={`${styles.join('; ')}`}
 >
 	<svg

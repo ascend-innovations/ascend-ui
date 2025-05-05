@@ -12,10 +12,10 @@
 </script>
 
 <div
-	class="date-time-selector"
+	class="date-time-picker width-100"
 	style={styles.join(';')}
 >
-	<div class="date-time">
+	<div class="date-time width-100">
 		<DatePicker
 			bind:date
 			id={dateId}

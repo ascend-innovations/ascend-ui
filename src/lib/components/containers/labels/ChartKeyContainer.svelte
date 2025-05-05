@@ -7,7 +7,7 @@
 		column = false
 </script>
 
-<div class="chart-key-container {column ? 'chart-key-column' : ''}">
+<div class="chart-key-container {column ? 'chart-key--column' : ''}">
 	{#each data as d, i}
 		<ChartKey
 			color={colors[i]}

@@ -4,8 +4,8 @@
 
 <div class="chart-key">
 	<div
-		class="chart-key-color-block"
+		class="chart-key__color-block"
 		style="background-color:{color};"
 	></div>
-	<p class="chart-key-text">{text}</p>
+	<p class="body-s neutral-400-text">{text}</p>
 </div>

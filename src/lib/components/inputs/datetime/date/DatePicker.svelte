@@ -16,7 +16,7 @@
 	class="date-picker-selector"
 	style={styles.join(';')}
 >
-	<div class="date-picker {fill ? 'date-picker-full-width' : ''}">
+	<div class="date-picker {fill ? 'width-100' : ''}">
 		<Label
 			{id}
 			{label}

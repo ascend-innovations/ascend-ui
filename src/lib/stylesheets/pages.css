@@ -31,12 +31,12 @@ body {
 .dashboard-page-title {
 	width: 100%;
 }
-.dashboard-pill-container {
+.dashboard-page-title__pill-container {
 	display: flex;
 	justify-content: space-between;
 	margin-top: var(--spacing09);
 }
-.dashboard-tabs-container {
+.dashboard-page-title__tabs-container {
 	width: 82.5%;
 }
 .error-401-page,
@@ -45,12 +45,12 @@ body {
 	display: flex;
 	flex-direction: column;
 }
-.error-401-banner-wrapper,
-.error-404-banner-wrapper {
+.error-401-page__banner-wrapper,
+.error-404-page__banner-wrapper {
 	width: var(--spacing32);
 }
-.error-401-content,
-.error-404-content {
+.error-401-page__content,
+.error-404-page__content {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
@@ -59,8 +59,8 @@ body {
 	text-align: center;
 	width: var(--spacing27);
 }
-.error-401-button-row,
-.error-404-button-row {
+.error-401-page__buttons,
+.error-404-page__buttons {
 	align-items: space-between;
 	display: flex;
 	flex-direction: column;
@@ -126,14 +126,14 @@ body {
 	right: 0;
 	top: 0;
 }
-.sso-otp-form-container,
-.sso-otp-button-row,
-.sso-landing-footer,
-.sso-login-button-row,
+.sso-otp__form-container,
+.sso-otp__button,
+.sso-landing__footer,
+.sso-login__button,
 .page-transition-wrapper {
 	width: 100%;
 }
-.sso-landing-footer-bar {
+.sso-landing__footer {
 	color: var(--neutral-400);
 	align-items: center;
 	background-color: var(--background-base);
@@ -148,30 +148,31 @@ body {
 		color: inherit;
 	}
 }
-.sso-landing-footer-link-buttons {
+.sso-landing__footer-links {
 	display: flex;
 	gap: var(--spacing06);
 }
-.sso-otp-form,
-.sso-login-form {
+.sso-otp__form,
+.sso-login__form {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
 	gap: var(--spacing10);
 	width: 100%;
 }
-.sso-otp-miscellaneous-links,
-.sso-login-miscellaneous-links {
+.sso-otp__miscellaneous-links,
+.sso-login__miscellaneous-links {
 	color: var(--neutral-400);
 	display: flex;
 	gap: var(--spacing06);
+	justify-content: center;
 
 	& a {
 		color: inherit;
 	}
 }
-.sso-otp-submit,
-.sso-login-submit {
+.sso-otp__submit,
+.sso-login__submit {
 	align-items: center;
 	border-radius: var(--btn-border-radius);
 	border: none;
@@ -183,19 +184,18 @@ body {
 	justify-content: center;
 	width: 100%;
 } */
-.sso-otp-button-row {
+.sso-otp__button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	gap: var(--spacing03);
 	color: var(--neutral-400);
 }
-.sso-otp-email-instructions {
-	color: var(--neutral-400);
-	text-align: center;
-}
-.sso-otp-resend-form {
+.sso-otp__resend-form {
 	margin-top: var(--spacing09);
+}
+.sso-otp__resend-section {
+	margin-bottom: var(--spacing06);
 }
 
 @media screen and (min-width: 768px) {

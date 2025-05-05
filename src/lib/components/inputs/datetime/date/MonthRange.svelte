@@ -13,7 +13,7 @@
 	class="month-range-selector"
 	style={styles.join(';')}
 >
-	<div class="month-range">
+	<div class="month-range flex">
 		<MonthPicker
 			bind:month={start}
 			id="start-date"

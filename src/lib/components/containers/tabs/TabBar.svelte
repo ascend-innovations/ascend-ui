@@ -13,7 +13,7 @@
 	$: tabOverflow = tabListWidth > tabBarMaxWidth
 
 	onMount(() => {
-		tabThing = document.getElementsByClassName('tab-list')[0]
+		tabThing = document.getElementsByClassName('tab-bar__list')[0]
 
 		tabBarMaxWidth = tabThing.clientWidth
 
@@ -41,7 +41,7 @@
 
 <div class="tab-bar">
 	{#if tabOverflow}
-		<div class="tab-nav-left-button">
+		<div class="tab-bar__left-button">
 			<Button
 				callback={scrollLeft}
 				classes={['btn-fit', 'btn-l', 'btn-square', 'btn-white']}
@@ -49,7 +49,7 @@
 			/>
 		</div>
 	{/if}
-	<div class="tab-list">
+	<div class="tab-bar__list">
 		{#each tabList as tab, tabIndex (tab.name)}
 			<Tab
 				bind:tab
@@ -61,7 +61,7 @@
 		{/each}
 	</div>
 	{#if tabOverflow}
-		<div class="tab-nav-right-button">
+		<div class="tab-bar__right-button">
 			<Button
 				callback={scrollRight}
 				classes={['btn-fit', 'btn-l', 'btn-square', 'btn-white']}

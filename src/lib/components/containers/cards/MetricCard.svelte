@@ -16,8 +16,8 @@
 	{styles}
 	{url}
 >
-	<div class="card-wrapper no-gap">
+	<div class="card no-gap">
 		<div class="body-bold-body-xs semibold neutral-400-text truncate-text">{title}</div>
-		<div class="headline-l-xl">{value}</div>
+		<div class="headline-l-xl neutral-base-text">{value}</div>
 	</div>
 </Card>

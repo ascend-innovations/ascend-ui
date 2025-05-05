@@ -1,8 +1,8 @@
-.sso-landing-page {
+.sso-landing {
 	padding: var(--spacing09);
 	width: 100%;
 }
-.sso-hero-image {
+.sso-landing__hero {
 	height: 250px;
 	border-radius: var(--spacing10);
 	display: flex;
@@ -12,23 +12,21 @@
 	gap: var(--spacing06);
 	background-position-y: 45%;
 }
-.sso-sections-container {
+.sso-landing__sections {
 	margin-top: 48px;
 }
-.sso-section {
+.sso-landing__section {
 	padding: var(--spacing09) 0;
 	margin-bottom: var(--spacing09);
 }
-.sso-landing-headline {
+.sso-landing__headline {
 	margin-bottom: var(--spacing09);
 }
-
-.sso-link {
-	width: 45%;
+.sso-card--link {
 	text-decoration: none;
 	justify-self: stretch;
 }
-.sso-link:hover {
+.sso-card--link:hover {
 	text-decoration: none;
 }
 .sso-card {
@@ -37,10 +35,10 @@
 	cursor: pointer;
 	height: 100%;
 }
-.sso-icon {
+.sso-card__icon {
 	margin-bottom: var(--spacing06);
 }
-.sso-card-body {
+.sso-card__body {
 	display: flex;
 	flex-direction: column;
 	gap: var(--spacing05);

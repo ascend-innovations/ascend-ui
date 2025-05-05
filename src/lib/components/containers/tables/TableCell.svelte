@@ -5,7 +5,7 @@
 </script>
 
 <div
-	class="table-column-body-cell"
+	class="table-cell"
 	style={`${column?.styles?.join(';')}`}
 >
 	{#if column?.type === 'array'}

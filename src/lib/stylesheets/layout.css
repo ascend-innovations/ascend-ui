@@ -39,7 +39,7 @@ main {
 
 *[class*='grid'] {
 	display: grid;
-	grid-template-columns: repeat(12, 1fr);
+	grid-template-columns: repeat(2, 1fr);
 	grid-gap: var(--spacing10);
 }
 *[class*='grid-xl'] {
@@ -97,14 +97,14 @@ main {
 	padding: var(--spacing11) var(--spacing14) var(--spacing10);
 	width: 100%;
 }
-.page-header-top-row {
+.page-header__top-row {
 	display: flex;
 }
-.page-header-middle-row {
+.page-header__middle-row {
 	margin: var(--spacing10) 0;
 	gap: var(--spacing10);
 }
-.page-header-bottom-row {
+.page-header__bottom-row {
 	align-items: center;
 	display: flex;
 	gap: var(--spacing09);

@@ -28,15 +28,15 @@
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-	class={`navbar ${navBarOpen ? 'nav-open' : 'nav-closed'}`}
+	class={`navbar ${navBarOpen ? 'nav--open' : 'nav--closed'}`}
 	transition:slide={{ axis: 'x' }}
 	on:mouseenter={openNavbar}
 	on:focus={openNavbar}
 	on:mouseleave={closeNavbar}
 	on:blur={closeNavbar}
 >
-	<div class="navbar-content">
-		<div class="navbar-upper-content">
+	<div class="navbar__content">
+		<div class="navbar__content--upper">
 			<NavBarHeader
 				{closedHeaderComponent}
 				{keepOpen}
@@ -46,7 +46,7 @@
 				{toggleNavbar}
 				{url}
 			/>
-			<div class="nav-page-list">
+			<div class="navbar__page-list">
 				{#if navBarContents?.primaryPageList?.length}
 					{#each navBarContents.primaryPageList as pageData}
 						<div class="width-100">
@@ -60,7 +60,7 @@
 					{/each}
 				{/if}
 				{#if navBarContents?.secondaryPageList?.length}
-					<div class="navbar-separator" />
+					<div class="navbar__separator" />
 					{#each navBarContents?.secondaryPageList as pageData}
 						<div class="width-100">
 							<NavButton
@@ -74,7 +74,7 @@
 				{/if}
 			</div>
 		</div>
-		<div class="navbar-lower-content">
+		<div class="navbar__content--lower">
 			{#if navBarContents?.bottomButtonLarge && navBarContents?.bottomButtonSmall}
 				{#if navBarOpen}
 					<svelte:component this={navBarContents?.bottomButtonLarge} />

@@ -31,7 +31,7 @@
 
 <LoginPage ascendLogo>
 	<form
-		class="sso-login-form"
+		class="sso-login__form"
 		method="post"
 		name="login"
 		action="?/login"
@@ -56,14 +56,14 @@
 			<InputError text={form.message} />
 		{/if}
 
-		<div class="sso-login-button-row">
+		<div class="sso-login__button">
 			<input
-				class="btn-full btn-l btn-primary btn-rect semibold sso-login-submit"
+				class="btn-full btn-l btn-primary btn-rect semibold sso-login__submit"
 				type="submit"
 				value="Login"
 			/>
 		</div>
-		<div class="sso-login-miscellaneous-links">
+		<div class="sso-login__miscellaneous-links">
 			<a
 				class="body-xs"
 				target="_blank"
