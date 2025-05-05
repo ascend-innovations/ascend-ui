@@ -1,4 +1,10 @@
 export default function formatTimeStamp(dateTimeString, reverse = false) {
+	if(dateTimeString === "" ||  typeof  dateTimeString === 'boolean' 
+		|| typeof dateTimeString === "undefined" || dateTimeString === null){
+		console.log('Invalid date time string')
+		return ''
+	}
+	
 	const dateTimeObject = new Date(dateTimeString)
 
 	if (isNaN(dateTimeObject)) {
