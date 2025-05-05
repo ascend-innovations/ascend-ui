@@ -8,6 +8,7 @@ export default function sanitizeUserInput(string) {
 		'=': '&#x3D;',
 		'>': '&gt;',
 		'`': '&#x60;',
+		'\\': '&#x5C;',
 	}
 	return String(string).replace(/[&<>"'`=/\\]/g, (match) => map[match])
 }
