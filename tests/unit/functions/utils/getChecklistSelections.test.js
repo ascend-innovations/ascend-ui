@@ -39,7 +39,6 @@ describe(`Tests the operations of ${functionName} with inproper inputs`, ()=>{
 		let list2 = []
 		expect(getChecklistSelections(list2)).toEqual([])
 
-
 	})
 })
 
