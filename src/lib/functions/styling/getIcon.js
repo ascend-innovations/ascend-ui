@@ -91,5 +91,11 @@ export default function getIcon(iconSize, iconName) {
 			NeutralExtraSmallIcon: NeutralExtraSmallIcon,
 		},
 	}
-	return iconDictionary[iconSize][iconName]
+	try{
+		return iconDictionary[iconSize][iconName]
+	} catch (e){
+		console.warn("Unable to load correct icon")
+		return undefined
+	}
+	
 }
