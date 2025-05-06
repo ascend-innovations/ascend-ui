@@ -94,7 +94,7 @@ export default function getIcon(iconSize, iconName) {
 	try{
 		return iconDictionary[iconSize][iconName]
 	} catch (e){
-		console.warn("Unable to load correct icon")
+		console.warn(`Unable to load correct icon for: [${iconSize}] [${iconName}]`)
 		return undefined
 	}
 	

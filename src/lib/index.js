@@ -330,6 +330,7 @@ export { default as todaysDate } from '$lib/functions/utils/todaysDate.js'
 
 // Validation
 export { default as isValidDate } from '$lib/functions/validation/isValidDate.js'
+export { default as isValidUrl} from '$lib/functions/validation/isValidUrl'
 export { default as isValidDateRange } from '$lib/functions/validation/isValidDateRange.js'
 export { default as isValidEmail } from '$lib/functions/validation/isValidEmail.js'
 export { default as isValidMobilePhone } from '$lib/functions/validation/isValidMobilePhone.js'

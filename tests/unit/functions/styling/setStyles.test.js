@@ -1,22 +1,29 @@
-import { describe, it, expect } from "vitest";
-//import { function } from "$lib";
+// @vitest-environment jsdom
+import { describe, it, expect, beforeEach } from 'vitest'
+import { setStyles } from '$lib'
 
-const functionName = " "
-
-describe(`Tests the operations of ${functionName} with proper inputs`, ()=>{
-	it(`Tests ${functionName} using proper input`, ()=> {
-		true
+describe('setStyles', () => {
+	beforeEach(() => {
+		// Clean up any previous styles
+		document.documentElement.removeAttribute('style')
 	})
-})
 
-describe(`Tests the operations of ${functionName} with inproper inputs`, ()=>{
-	it(`Tests ${functionName} using inproper input`, ()=> {
-		true
+	it('applies CSS custom properties to :root', () => {
+		setStyles({
+			'--primary-color': '#ff0000',
+			'--font-size': '18px'
+		})
+
+		expect(document.documentElement.style.getPropertyValue('--primary-color')).toBe('#ff0000')
+		expect(document.documentElement.style.getPropertyValue('--font-size')).toBe('18px')
 	})
-})
 
-describe(`Tests ${functionName} for additional special cases:`, ()=>{
-	it(`Tests ${functionName} for additional special case: [case]:`, ()=>{ //repeat as need.
-		true
+	it('overwrites existing variables', () => {
+		document.documentElement.style.setProperty('--font-size', '12px')
+
+		setStyles({ '--font-size': '30px' })
+
+
+		expect(document.documentElement.style.getPropertyValue('--font-size')).toBe('30px')
 	})
 })
