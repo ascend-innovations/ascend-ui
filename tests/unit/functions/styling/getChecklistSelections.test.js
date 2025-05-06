@@ -27,14 +27,19 @@ describe(`Tests the operations of ${functionName} with inproper inputs`, ()=>{
 			{ valuee: "O4", value: 'Option4', selected: undefined},
 			{ valuee: "O5", value: 'Option5', selected: null},
 			{ valuee: "O6", value: 'Option6', selected: ""},
-			{ valuee: "O7", value: 'Option7', selected: {}},
-			{ valuee: "O7", value: 'Option7', selected: 'hello'},
-			{ valuee: "O7", value: 'Option7', selected: 'false'},
-			{ valuee: "O7", value: 'Option7', selected: -1},
-			{ valuee: "O7", value: 'Option7', selected: 0},
-			]
-			expect(getChecklistSelections(list)).toEqual(['Option1', 'Option2', 'Option3'])
-			expect(getChecklistSelections(list, 'valuee')).toEqual(['O1', 'O2', 'O3'])
+			{ valuee: "O7", value: 'Option8', selected: {}},
+			{ valuee: "O7", value: 'Option9', selected: 'hello'},
+			{ valuee: "O7", value: 'Option10', selected: 'false'},
+			{ valuee: "O7", value: 'Option11', selected: -1},
+			{ valuee: "O7", value: 'Option12', selected: 0},
+		]
+		expect(getChecklistSelections(list)).toEqual(['Option1', 'Option2', 'Option3'])
+		expect(getChecklistSelections(list, 'valuee')).toEqual(['O1', 'O2', 'O3'])
+
+		let list2 = []
+		expect(getChecklistSelections(list2)).toEqual([])
+
+
 	})
 })
 
