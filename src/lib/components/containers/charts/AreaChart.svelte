@@ -169,6 +169,7 @@
 				labelFormat = formatMonthDay
 				tickFormat = d3.timeDay
 				everyOther = false
+				if (dayInterval >= 15) everyOther = true
 			}
 		}
 	}
