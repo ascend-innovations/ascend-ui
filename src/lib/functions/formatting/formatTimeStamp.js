@@ -8,7 +8,7 @@ export default function formatTimeStamp(dateTimeString, reverse = false) {
 	const dateTimeObject = new Date(dateTimeString)
 
 	if (isNaN(dateTimeObject)) {
-		console.log('Invalid date time string')
+		console.warn('Invalid date time string')
 		return ''
 	}
 
