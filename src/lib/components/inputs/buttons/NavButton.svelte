@@ -17,7 +17,7 @@
 		if (pageData.startOpen === true) open = true
 	})
 
-	$: currentPageLink = $page.url.pathname.includes(pageData?.url)
+	$: currentPageLink = $page.url.pathname === '/' ? $page.url.pathname === pageData?.url : $page.url.pathname.includes(pageData?.url)
 </script>
 
 <div class="navbar-button-wrapper">
