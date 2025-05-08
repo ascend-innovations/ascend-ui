@@ -11,6 +11,7 @@ export { default as CommunityIcon } from '$lib/assets/icons/m/CommunityIcon.svel
 export { default as CrisisIcon } from '$lib/assets/icons/m/CrisisIcon.svelte'
 export { default as GroupsIcon } from '$lib/assets/icons/m/GroupsIcon.svelte'
 export { default as HomeIcon } from '$lib/assets/icons/m/HomeIcon.svelte'
+export { default as IndividualSearchIcon } from '$lib/assets/icons/m/IndividualSearchIcon.svelte'
 export { default as JusticeIcon } from '$lib/assets/icons/m/JusticeIcon.svelte'
 export { default as MetricsIcon } from '$lib/assets/icons/m/MetricsIcon.svelte'
 export { default as NewNotificationIcon } from '$lib/assets/icons/m/NewNotificationIcon.svelte'
