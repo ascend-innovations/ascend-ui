@@ -394,7 +394,7 @@
 			{#if innerWidth >= 500}
 				{#each chartData as d}
 					<text
-						class="axis-label domain-ticks"
+						class="chart-axis-label domain-ticks"
 						fill="gray"
 						text-anchor="middle"
 						x={xScale(d[domain]) + xScale.bandwidth() / 2}
