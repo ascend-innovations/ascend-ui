@@ -1,9 +1,12 @@
 export default function convertToCurrency(amount, showCents = true) {
-	if (isNaN(amount)) {
+	
+	const valudatedNumber = Number(amount)
+
+	if (isNaN(valudatedNumber)) {
 		throw new Error('Invalid number')
 	}
 	// Ensure it's a number and round appropriately
-	amount = parseFloat(amount)
+	amount = parseFloat(valudatedNumber)
 	if (!showCents) {
 		amount = Math.round(amount)
 	}

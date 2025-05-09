@@ -1,4 +1,9 @@
 export default function parseURL(url) {
-	if (url) return [...url.split('/')]
-	else return ''
+	try{
+		if (url) return [...url.split('/')]
+		else return ''
+	} catch (e){
+		return ""
+	}
+	
 }

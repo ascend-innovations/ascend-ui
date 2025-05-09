@@ -96,6 +96,7 @@
 	// runs before data is updated. Lifecycle hooks do not work. Reactive blocks do not work
 	// maybe toy around with await blocks?
 	$: if (chartData !== undefined) {
+		console.log("chartData:", chartData)
 		opacity = Array(chartData.length).fill(1) // initialize area opacity array
 		for (let obj of chartData) {
 			obj[domain] = new Date(obj[domain])
