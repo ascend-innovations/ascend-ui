@@ -1,7 +1,7 @@
 <script>
 	import { InputError, validateCredentials, isValidEmail, validateSupabasePassword, Button, FormTextInput, LoginPage } from '$lib/index.js'
 
-	export let form, dialogCallback
+	export let form, dialogCallback, submitting=false
 
 	let emailValidationMessage, validEmail, validPassword, password, email
 
@@ -27,6 +27,7 @@
 
 		validPassword = true
 	}
+
 </script>
 
 <LoginPage ascendLogo>
@@ -34,6 +35,7 @@
 		method="post"
 		name="login"
 		action="?/login"
+		on:submit={() => (submitting = true)}
 	>
 		<FormTextInput
 			label="email"
@@ -60,6 +62,7 @@
 				class="btn-full btn-l btn-primary btn-rect semibold"
 				type="submit"
 				value="Login"
+				disabled={submitting}
 			/>
 		</div>
 		<div class="miscellaneous-links">

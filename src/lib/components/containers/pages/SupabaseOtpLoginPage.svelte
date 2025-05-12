@@ -3,7 +3,7 @@
 	import { createEventDispatcher } from 'svelte'
 	import { onMount } from 'svelte'
 
-	export let form
+	export let form, submitting=false
 
 	let otp, validOtp, otpValidationMessage
 
@@ -38,6 +38,7 @@
 		<form
 			method="POST"
 			action="?/verifyOtp"
+			on:submit={() => (submitting = true)}
 		>
 			<p class="email-instructions">Enter the one-time passcode sent to your email to continue.</p>
 			<FormTextInput
@@ -60,6 +61,7 @@
 					class="btn-full btn-l btn-primary btn-rect semibold"
 					type="submit"
 					value="Verify"
+					disabled={submitting}
 				/>
 			</div>
 		</form>
