@@ -8,7 +8,7 @@ export default async function createUserRecord(supabase, adminSupabase, portal_u
 	console.log(user)
 	console.log(details)
 
-	const createUserResponse = await adminSupabase.auth.admin.createUser(userData)
+	const createUserResponse = await adminSupabase.auth.admin.createUser(user)
 
 	if (createUserResponse.error) {
 		console.error('Error signing up:', createUserResponse.error.message)
