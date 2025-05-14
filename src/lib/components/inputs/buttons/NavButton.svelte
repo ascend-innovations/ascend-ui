@@ -6,8 +6,7 @@
 	export let callback,
 		navBarOpen,
 		open = false,
-		pageData = undefined,
-		preload
+		pageData = undefined
 
 	function toggleSubNav() {
 		open = !open
@@ -41,7 +40,6 @@
 				<SubNavButton
 					{callback}
 					{sublink}
-					{preload}
 				/>
 			{/each}
 		</div>

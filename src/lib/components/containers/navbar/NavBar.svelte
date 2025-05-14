@@ -6,7 +6,6 @@
 		hoverOpen = false,
 		keepOpen = true,
 		navBarContents,
-		preload,
 		url = '/',
 		closedHeaderComponent = undefined,
 		openHeaderComponent = undefined
@@ -42,7 +41,6 @@
 				{keepOpen}
 				{navBarOpen}
 				{openHeaderComponent}
-				{preload}
 				{toggleNavbar}
 				{url}
 			/>
@@ -54,7 +52,6 @@
 								callback={navClickCallback}
 								{navBarOpen}
 								{pageData}
-								{preload}
 							/>
 						</div>
 					{/each}
@@ -67,7 +64,6 @@
 								callback={navClickCallback}
 								{navBarOpen}
 								{pageData}
-								{preload}
 							/>
 						</div>
 					{/each}
