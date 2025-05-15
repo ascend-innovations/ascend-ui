@@ -367,7 +367,10 @@ export { default as OkButton } from '$lib/components/inputs/buttons/OkButton.sve
 export { default as PrivacyPolicyButton } from '$lib/components/inputs/buttons/PrivacyPolicyButton.svelte'
 export { default as ProfileButton } from '$lib/components/inputs/buttons/ProfileButton.svelte'
 export { default as SampleButton } from '$lib/components/inputs/buttons/SampleButton.svelte'
-export { default as StandardButton } from '$lib/components/inputs/buttons/StandardButton.svelte'
+//export { default as StandardButton } from '$lib/components/inputs/buttons/StandardButton.svelte'
+export { default as StandardButton } from '$lib/webComponents/inputs/Buttons/StandardButton/StandardButton.svelte'
+//src\lib\webComponents\inputs\Buttons\StandardButton\StandardButton.svelte
+
 export { default as SubmitButton } from '$lib/components/inputs/buttons/SubmitButton.svelte'
 export { default as SubNavButton } from '$lib/components/inputs/buttons/SubNavButton.svelte'
 export { default as TableColumnHeaderButton } from '$lib/components/inputs/buttons/TableColumnHeaderButton.svelte'
