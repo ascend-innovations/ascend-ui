@@ -3,7 +3,12 @@ export default async function getAllProfiles(locals, currentAppId, userOrg) {
 		app_id: currentAppId,
 		org_id: userOrg,
 	})
-	const profiles = response.data
 
-	return profiles
+    if (response.error) {
+		console.error('Error retrieving all app profiles:', response.error)
+		return { success: false, message: response.error.message }
+	}
+    console.log(`Successfully retrieved all app profiles for app ${currentAppId} and org ${userOrg}`)
+
+	return response.data
 }

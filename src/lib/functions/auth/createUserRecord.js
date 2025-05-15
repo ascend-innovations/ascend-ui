@@ -3,8 +3,6 @@ import createAuditLog from '$lib/functions/auth/createAuditLog.js'
 import sendAccountCreationEmail from '$lib/functions/auth/sendAccountCreationEmail.js'
 
 export default async function createUserRecord(supabase, adminSupabase, portal_url, sendgrid_password, userData, currentUser) {
-	console.log('******************** createUserRecord ********************')
-
 	const user = userData.user
 	const details = userData.details
 	const roles = userData.roles

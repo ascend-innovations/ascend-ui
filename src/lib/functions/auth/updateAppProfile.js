@@ -6,5 +6,11 @@ export default async function updateAppProfile(locals, targetUserId, currentAppI
 		logged_in_user_id: locals.user.id,
 	})
 
-	return response
+    if (response.error) {
+		console.error('Error updating app profile:', response.error)
+		return { success: false, message: response.error.message }
+	}
+    console.log(`Successfully updated app profile for user ${targetUserId}`)
+
+	return response.data
 }
