@@ -5,7 +5,7 @@ const functionName = "withinDateRange"
 
 describe(`Tests the operations of ${functionName} with proper inputs`, ()=>{
 	it(`Tests ${functionName} using proper input`, ()=> {
-		console.log(withinDateRange("4-30-2025", "5-1-2025", "5-1-2025" ))
+		//console.log(withinDateRange("4-30-2025", "5-1-2025", "5-1-2025" ))
 		expect(withinDateRange("4-30-2025", "5-1-2025", "5-1-2025" )).toBe(true)
 		expect(withinDateRange("5-1-2025", "4-30-2025", "5-1-2025" )).toBe(true)
 		expect(withinDateRange("4-30-2025", "5-1-2025", "5-2-2025" )).toBe(false)
