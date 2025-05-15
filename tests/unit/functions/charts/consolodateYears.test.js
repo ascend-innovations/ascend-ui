@@ -136,7 +136,7 @@ describe("Tests that consolodateYears proerly handles bad data ", () =>{
             obj[domain] = new Date(obj[domain])
         }
         let testDate3 = new Date("2023-01-01T05:00:00.000Z")
-        let consolodatedMonths3 = consolodateYears(chartData3, "date", "value")
+        let consolidatedYears3 = consolodateYears(chartData3, "date", "value")
         
         //console.log(consolodatedMonths3)
     })
