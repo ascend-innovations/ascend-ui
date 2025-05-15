@@ -52,14 +52,14 @@ export default async function createUserRecord(supabase, adminSupabase, portal_u
         let userRoles = roles.map(function (r) {
             return { role_id: r, user_id: userId }
         })
-        console.log('userOrganizations', userOrganizations)
+        console.log('userOrganization', userOrganization)
         console.log('userRoles', userRoles)
 
         if (userRoles) {
             console.log('Creating user role record')
             const userRolesResponse = await adminSupabase
                 .from('user_roles')
-                .insert(payload) // Supabase requires an array for inserts
+                .insert(userRoles) // Supabase requires an array for inserts
                 .select() // Returns the newly created record
 
             if (userRolesResponse.error) {
@@ -81,11 +81,11 @@ export default async function createUserRecord(supabase, adminSupabase, portal_u
             await createAuditLog(adminSupabase, userRolesAuditRecord)
         }
 
-        if (userOrganizations) {
+        if (userOrganization) {
             console.log('Creating organization user record')
             const organizationUserResponse = await adminSupabase
                 .from('organization_users')
-                .insert(payload) // Supabase requires an array for inserts
+                .insert(userOrganization) // Supabase requires an array for inserts
                 .select() // Returns the newly created record
 
             if (organizationUserResponse.error) {
