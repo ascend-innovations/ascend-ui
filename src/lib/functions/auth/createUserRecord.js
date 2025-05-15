@@ -5,7 +5,7 @@ import sendAccountCreationEmail from '$lib/functions/auth/sendAccountCreationEma
 export default async function createUserRecord(supabase, adminSupabase, portal_url, sendgrid_password, userData, currentUser) {
 	console.log('******************** createUserRecord ********************')
 
-	const user = UserData.user
+	const user = userData.user
 	const details = userData.details
 	const roles = userData.roles
 	const organizationId = userData.organization
