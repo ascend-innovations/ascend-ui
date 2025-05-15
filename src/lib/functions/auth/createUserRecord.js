@@ -6,7 +6,7 @@ import sendAccountCreationEmail from '$lib/functions/auth/sendAccountCreationEma
 export default async function createUserRecord(locals, adminSupabase, portal_url, sendgrid_password, userData) {
 	const currentUser = locals.user
 	let user = userData.user
-	user.password = userData.password
+	user.password = uuidv4()
 	user.email_confirm = true
 	let details = userData.details
 	details.active = true
