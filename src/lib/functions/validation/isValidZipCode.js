@@ -1,5 +1,9 @@
 import isPostalCode from 'validator/lib/isPostalCode'
 
 export default function isValidZipCode(zipCode, locale = 'US') {
-	return isPostalCode(zipCode, locale)
+	try{
+		return isPostalCode(zipCode, locale)
+	} catch(e) {
+		return false
+	}
 }

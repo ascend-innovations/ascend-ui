@@ -40,6 +40,13 @@ describe('tests paginateTable function', () => {
 		expect(pageData.currentPage).toBe(1)
 	})
 
+	it('paginates testing accidentally passing an incorrect next function', () => {
+		pageData = paginateTable(pageData, 'next', 10)
+		expect(pageData.leftIndex).toBe(0)
+		expect(pageData.rightIndex).toBe(10)
+		expect(pageData.currentPage).toBe(1)
+	})
+
 	it('paginates forward by a custom increment of 11', () => {
 		pageData = {
 			tableData: list,
@@ -49,7 +56,7 @@ describe('tests paginateTable function', () => {
 			currentPage: 1,
 			totalPages: Math.ceil(list.length / 11),
 		}
-		pageData = paginateTable(pageData, 'next', 11)
+		pageData = paginateTable(pageData, 'next', ()=>{} ,11)
 		expect(pageData.leftIndex).toBe(11)
 		expect(pageData.rightIndex).toBe(22)
 		expect(pageData.currentPage).toBe(2)
