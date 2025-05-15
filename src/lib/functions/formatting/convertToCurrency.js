@@ -6,7 +6,7 @@ export default function convertToCurrency(amount, showCents = true) {
 		throw new Error('Invalid number')
 	}
 	// Ensure it's a number and round appropriately
-	amount = parseFloat(valudatedNumber)
+	amount = parseFloat(valuedatedNumber)
 	if (!showCents) {
 		amount = Math.round(amount)
 	}
