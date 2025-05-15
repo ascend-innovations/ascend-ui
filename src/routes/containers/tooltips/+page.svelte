@@ -81,7 +81,6 @@
 
 <style>
 	.tooltips-content {
-		margin: auto;
 		display: flex;
 		flex-direction: column;
 		gap: var(--spacing12);

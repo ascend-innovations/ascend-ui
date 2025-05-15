@@ -6,8 +6,7 @@
 	export let callback,
 		navBarOpen,
 		open = false,
-		pageData = undefined,
-		preload
+		pageData = undefined
 
 	function toggleSubNav() {
 		open = !open
@@ -17,7 +16,7 @@
 		if (pageData.startOpen === true) open = true
 	})
 
-	$: currentPageLink = $page.url.pathname.includes(pageData?.url)
+	$: currentPageLink = pageData.url === '/' ? $page.url.pathname === '/' : $page.url.pathname.includes(pageData?.url)
 </script>
 
 <div class="navbar-button-wrapper">
@@ -41,7 +40,6 @@
 				<SubNavButton
 					{callback}
 					{sublink}
-					{preload}
 				/>
 			{/each}
 		</div>

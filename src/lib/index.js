@@ -11,6 +11,7 @@ export { default as CommunityIcon } from '$lib/assets/icons/m/CommunityIcon.svel
 export { default as CrisisIcon } from '$lib/assets/icons/m/CrisisIcon.svelte'
 export { default as GroupsIcon } from '$lib/assets/icons/m/GroupsIcon.svelte'
 export { default as HomeIcon } from '$lib/assets/icons/m/HomeIcon.svelte'
+export { default as IndividualSearchIcon } from '$lib/assets/icons/m/IndividualSearchIcon.svelte'
 export { default as JusticeIcon } from '$lib/assets/icons/m/JusticeIcon.svelte'
 export { default as MetricsIcon } from '$lib/assets/icons/m/MetricsIcon.svelte'
 export { default as NewNotificationIcon } from '$lib/assets/icons/m/NewNotificationIcon.svelte'
@@ -282,6 +283,10 @@ export { default as updateAppProfile } from '$lib/functions/auth/updateAppProfil
 export { default as getOrgInfo } from '$lib/functions/auth/getOrgInfo.js'
 export { default as consolodateMonths} from '$lib/functions/charts/consolidateMonths.js'
 export { default as consolodateYears} from '$lib/functions/charts/consolidateYears.js'
+export { default as sendAccountCreationEmail } from '$lib/functions/auth/sendAccountCreationEmail.js'
+export { default as createUserRecord } from '$lib/functions/auth/createUserRecord.js'
+export { default as createAuditLog } from '$lib/functions/auth/createAuditLog.js'
+
 // Filtering
 export { default as withinDateRange } from '$lib/functions/filtering/withinDateRange.js'
 export { default as withinTimeRange } from '$lib/functions/filtering/withinTimeRange.js'

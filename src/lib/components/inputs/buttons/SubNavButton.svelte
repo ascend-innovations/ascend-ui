@@ -2,7 +2,7 @@
 	import { Button } from '$lib/index.js'
 	import { page } from '$app/stores'
 
-	export let callback, preload, sublink
+	export let callback, sublink
 
 	$: currentPageLink = $page.url.pathname === sublink?.url
 </script>
@@ -16,7 +16,6 @@
 			text={sublink.text}
 			url={sublink?.url ?? ''}
 			{callback}
-			{preload}
 		/>
 	</div>
 </div>
