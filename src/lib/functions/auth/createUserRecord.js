@@ -1,12 +1,19 @@
 import { createClient } from '@supabase/supabase-js'
+import { v4 as uuidv4 } from 'uuid'
 import createAuditLog from '$lib/functions/auth/createAuditLog.js'
 import sendAccountCreationEmail from '$lib/functions/auth/sendAccountCreationEmail.js'
 
-export default async function createUserRecord(supabase, adminSupabase, portal_url, sendgrid_password, userData, currentUser) {
-	const user = userData.user
-	const details = userData.details
+export default async function createUserRecord(locals, adminSupabase, portal_url, sendgrid_password, userData) {
+	const currentUser = locals.user
+	let user = userData.user
+	user.password = userData.password
+	user.email_confirm = true
+	let details = userData.details
+	details.active = true
+	details.creator_id = currentUser.id
 	const roles = userData.roles
 	const organizationId = userData.organization
+	const supabase = locals.supabase
 
 	console.log('******************** payload ********************')
 	console.log(user)
