@@ -3,6 +3,7 @@ export default function parseURL(url) {
 		if (url) return [...url.split('/')]
 		else return ''
 	} catch (e){
+		console.warn("Invalid string passed to parseURL")
 		return ""
 	}
 	
