@@ -14,8 +14,11 @@ export default async function getProfileData(locals, currentAppId) {
 	}
 
 	if (profile.current_app) {
-		profile.has_access = true
-		profile.app_roles = profile.current_app.roles
+		profile.app_roles = profile.current_app.roles ?? []
+
+		if (profile.app_roles.length > 0) {
+		    profile.has_access = true
+		}
 	}
 
 	return profile
