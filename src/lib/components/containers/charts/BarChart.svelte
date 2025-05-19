@@ -50,7 +50,6 @@
 		xScale,
 		yScale,
 		stack,
-		opacity = [],
 		charactersPerBand,
 		rulePosition,
 		chartData,
@@ -164,39 +163,32 @@
 	}
 
 	function movingTooltip(e, d, r, s, i) {
+		let target = d3.select(e.target).node()
 		let tooltipHeight = tooltip.node().getBoundingClientRect().height
 		let tooltipWidth = tooltip.node().getBoundingClientRect().width
-		const [x, y] = d3.pointer(e)
+
 		tooltipData.x = e.offsetX - tooltipWidth / 2
 		tooltipData.title = s
 		tooltipData.y = e.offsetY - tooltipHeight - 20
-		changeOpacityOnHover(i)
+		changeOpacityOnHover(target)
 
-		if (stacked) {
-			tooltipData.valueOne = d
-			if (tooltipData.valueTwoLabel) tooltipData.valueTwo = r
-		} else {
-			tooltipData.valueOne = d
-			if (tooltipData.valueTwoLabel) tooltipData.valueTwo = r
-		}
+		tooltipData.valueOne = d
+		if (tooltipData.valueTwoLabel) tooltipData.valueTwo = r
 	}
 
 	function leaveTooltip(e) {
 		tooltip.style('opacity', 0)
-		resetOpacity()
-	}
-
-	function changeOpacityOnHover(i) {
-		opacity = opacity.map((o, index) => {
-			o = index === i ? 1 : 0.5
-			return o
+		
+		let bars = d3.selectAll(`.${tooltipId}-bars`).nodes()
+		bars.forEach((bar) => {
+			bar.setAttribute('opacity', 1)
 		})
 	}
 
-	function resetOpacity() {
-		opacity = opacity.map((o) => {
-			o = 1
-			return o
+	function changeOpacityOnHover(target) {
+		let bars = d3.selectAll(`.${tooltipId}-bars`).nodes()
+		bars.forEach((bar) => {
+			if (bar.getAttribute('opacity-id') !== target.getAttribute('opacity-id')) bar.setAttribute('opacity', 0.5)
 		})
 	}
 
@@ -329,7 +321,6 @@
 					.attr("fill", (d, i) => barColors[i])
 				.selectAll("path")
 				.data(D => D.map(d => (d.key = D.key, d)))
-				// .join("rect")
 				.enter().append("path")
 				.attr("d", (d) => {
 					return `
@@ -344,32 +335,9 @@
 				.attr("x", (d) => xScale(d.data[0]))
 				.attr("y", (d) => yScale(d[1]))
 				.attr("height", (d) => yScale(d[0]) - yScale(d[1]))
-
-			opacity = Array(stack.length).fill(1)
-
-			// Add touch targets
-			svg.append("g")
-				.selectAll()
-				.data(stack)
-				.join("g")
-					.attr("fill", "transparent")
-				.selectAll("path")
-				.data(D => D.map(d => (d.key = D.key, d)))
-				// .join("rect")
-				.enter().append("path")
-				.attr("d", (d) => {
-					return `
-						M${xScale(d.data[0])},${yScale(d[1]) + 4}
-						a4,4 0 0 1 4,-4
-						h${xScale.bandwidth() - 2 * 4}
-						a4,4 0 0 1 4,4
-						v${yScale(d[0]) - yScale(d[1]) - 4}
-						h${-xScale.bandwidth()}Z
-					`
-				})
-				.attr("x", (d) => xScale(d.data[0]))
-				.attr("y", (d) => yScale(d[1]))
-				.attr("height", (d) => yScale(d[0]) - yScale(d[1]))
+				.attr("opacity", 1)
+				.attr("opacity-id", (d) => `${d.key}`)
+				.attr("class", `${tooltipId}-bars bar-chart-path`)
 				.on("mouseover", (e) => enterTooltip(e))
 				.on("mousemove", (e, d) => movingTooltip(e, d.data[0], (d[1] - d[0]), d.key))
 				.on("mouseleave", (e) => leaveTooltip(e))
@@ -389,15 +357,16 @@
 						h${-xScale.bandwidth()}Z
 					`
 				})
+				.attr("class", `${tooltipId}-bars bar-chart-path`)
 				.attr("x", (d) => xScale(d[domain]))
 				.attr("y", (d) => yScale(d[range]))
 				.attr("height", (d) => yScale(0) - yScale(d[range]))
 				.attr("width", xScale.bandwidth())
+				.attr("opacity", 1)
+				.attr("opacity-id", (d) => `${d[domain]}`)
 				.on("mouseover", (e) => enterTooltip(e))
-				.on("mousemove", (e, d) => movingTooltip(e, d[domain], d[range], d[seriesKey]))
+				.on("mousemove", (e, d, i) => movingTooltip(e, d[domain], d[range], d[seriesKey], i))
 				.on("mouseleave", (e) => leaveTooltip(e))
-
-			opacity = Array(chartData.length).fill(1)
 		}
 
 		/**
