@@ -160,7 +160,7 @@
 
 		let mouseValue
 		if (stacked) {
-			changeOpacityOnHover(series)
+			changeOpacityOnHover(s)
 			mouseValue = d[1] - d[0]
 			tooltipData.valueOne = labelFormat(d.data[0])
 			coords.set({ x: xScale(d.data[0]), y: yScale(d[1]) })
@@ -194,23 +194,29 @@
 	}
 
 	function leaveTooltip(e) {
-		tooltip.style('opacity', 0)
-		tooltipLine.style('opacity', 0)
-		tooltipInnerCircle.style('opacity', 0)
+		tooltip.style('opacity', 0),
+		tooltipLine.style('opacity', 0),
+		tooltipInnerCircle.style('opacity', 0),
 		tooltipOuterCircle.style('opacity', 0)
-	}
-
-	function changeOpacityOnHover(i) {
-		opacity = opacity.map((o, index) => {
-			o = index === i ? 1 : 0.5
-			return o
+		
+		let areas = d3.selectAll(`.${tooltipId}-areas`).nodes()
+		let lines = d3.selectAll(`.${tooltipId}-line`).nodes()
+		areas.forEach((area) => {
+			area.setAttribute('opacity', 1)
+		})
+		lines.forEach((line) => {
+			line.setAttribute('opacity', 1)
 		})
 	}
 
-	function resetOpacity() {
-		opacity = opacity.map((o) => {
-			o = 1
-			return o
+	function changeOpacityOnHover(target) {
+		let areas = d3.selectAll(`.${tooltipId}-areas`).nodes()
+		let lines = d3.selectAll(`.${tooltipId}-line`).nodes()
+		areas.forEach((area) => {
+			if (area.getAttribute('opacity-id') !== target) area.setAttribute('opacity', 0.5)
+		})
+		lines.forEach((line) => {
+			if (line.getAttribute('opacity-id') !== target) line.setAttribute('opacity', 0.5)
 		})
 	}
 
@@ -399,6 +405,9 @@
 					.join('path')
 					.attr('d', area)
 					.attr('fill', (d, i) => `url(#${gradients[i]})`)
+					.attr('class', `${tooltipId}-areas area-chart-path`)
+					.attr('opacity', 1)
+					.attr('opacity-id', (d) => `${d.key}`)
 			}
 
 			stack.forEach((series, i) => {
@@ -406,6 +415,9 @@
 					.attr('fill', 'none')
 					.attr('stroke-width', 2)
 					.attr('stroke', lineColors[i])
+					.attr('class', `${tooltipId}-line area-chart-path`)
+					.attr('opacity', 1)
+					.attr('opacity-id', (d) => `${series.key}`)
 					.attr('d', stroke(series))
 			})
 
@@ -446,6 +458,9 @@
 				svg.append('path')
 					.attr('d', area(chartData))
 					.attr('fill', `url(#area-gradient-${tooltipId})`)
+					.attr('class', `${tooltipId} area-chart-path`)
+					.attr('opacity', 1)
+					.attr('opacity-id', `${chartData[0][seriesKey]}`)
 			}
 
 			svg.append('path')
