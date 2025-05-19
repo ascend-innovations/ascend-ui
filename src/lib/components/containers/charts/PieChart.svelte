@@ -29,18 +29,27 @@
 		valueTwoLabel,
 		sort = null,
 		ring = false,
-		tooltipId,
-		chartHeight = 306
-
-	let width = 306
-	let height = chartHeight
+		tooltipId
+		
 	let pie,
 		arcPath,
-		arcs,
-		opacity = []
-	$: chartData = JSON.parse(JSON.stringify(data)) // copies and removes references to original data
+		opacity = [],
+		chartData
 
-	$: {
+	let tooltip,
+		tooltipData = { y: 0, x: 0, title: '', tooltipId, valueOneLabel, valueOne: 0, currency }
+	if (valueTwoLabel) {
+		tooltipData.valueTwoLabel = valueTwoLabel
+		tooltipData.valueTwo = 0
+	}
+
+	function renderChart(chartContainer, width, height) {
+		let svg = d3.create('svg')
+			.classed('width-100', true)
+			.attr('width', height)
+			.attr('viewBox', `-${height / 2} -${height / 2} ${height} ${height}`)
+			.style('overflow', 'visible')
+
 		if (sort === 'ascending') {
 			pie = d3
 				.pie()
@@ -63,21 +72,45 @@
 			.innerRadius(ring ? width / 3.8 : 0)
 			.outerRadius(Math.min(width, height) / 2)
 
-		arcs = pie(chartData)
-
 		opacity = Array(chartData.length).fill(1)
-	}
 
-	let tooltip,
-		tooltipData = { y: 0, x: 0, title: '', tooltipId, valueOneLabel, valueOne: 0, currency }
-	if (valueTwoLabel) {
-		tooltipData.valueTwoLabel = valueTwoLabel
-		tooltipData.valueTwo = 0
+		svg.append('g')
+			// .attr('transform', `translate(${height / 2}, ${height / 2})`)
+			.selectAll('path')
+			.data(pie(chartData))
+			.join('path')
+			.classed('arc-path', true)
+			.attr('fill', (d, i) => arcColors[i])
+			.attr('opacity', (d, i) => opacity[i])
+			.attr('d', arcPath)
+			.on('mouseenter', enterTooltip)
+			.on('mousemove', (e, d, i) => movingTooltip(e, d, i))
+			.on('mouseleave', leaveTooltip)
+
+		chartContainer.append(() => svg.node())
 	}
 
 	onMount(() => {
 		if (browser) {
 			tooltip = d3.select(`#${tooltipId}`).style('opacity', 0)
+			let chartContainer = d3.select(`.${tooltipId}-chart`)
+
+			let height = chartContainer.node().parentNode.getBoundingClientRect().height
+
+			chartData = JSON.parse(JSON.stringify(data))
+
+			window.addEventListener('resize', () => {
+				// Recalculate the width and height of the chart sizer
+				let height = chartContainer.node().parentNode.getBoundingClientRect().height
+
+				// Remove the old chart
+				chartContainer.selectAll('*').remove()
+
+				// Redraw the chart
+				renderChart(chartContainer, height, height)
+			})
+
+			renderChart(chartContainer, height, height)
 		}
 	})
 
@@ -117,27 +150,6 @@
 	}
 </script>
 
-<div class="pie-chart-svg-container width-100">
-	<svg
-		class="width-100"
-		width={height}
-		{height}
-		viewBox="{-height / 2} {-height / 2} {height} {height}"
-	>
-		<g>
-			{#each arcs as slice, i}
-				<!-- svelte-ignore a11y-no-static-element-interactions -->
-				<path
-					class="arc-path"
-					on:mouseenter={enterTooltip}
-					on:mousemove={(e) => movingTooltip(e, slice, i)}
-					on:mouseleave={leaveTooltip}
-					fill={arcColors[i]}
-					opacity={opacity[i]}
-					d={arcPath(slice)}
-				/>
-			{/each}
-		</g>
-	</svg>
+<div class="{tooltipId}-chart pie-chart-svg-container width-100">
 	<ChartTooltip tooltipInfo={tooltipData} />
 </div>

@@ -1,8 +1,7 @@
 <script>
 	import * as d3 from 'd3'
-	import { abbreviateNumber, ChartTooltip, RuleTip, XCircleCloseExtraSmallIcon } from '$lib/index.js'
-	import { browser } from '$app/environment'
-	import { afterUpdate, onMount } from 'svelte'
+	import { ChartTooltip, RuleTip } from '$lib/index.js'
+	import { onMount } from 'svelte'
 
 	/**
 	 *  @param {array} data
@@ -27,7 +26,6 @@
 		barColors = [],
 		vertical = false,
 		horizontal = false,
-		timeseries,
 		stacked = false,
 		sort = null,
 		domain,
@@ -39,205 +37,24 @@
 		valueTwoLabel,
 		seriesKey = null,
 		tooltipId,
-		rule = null,
-		chartWidth = 700,
-		chartHeight = 400
+		rule = null
 
 	let innerWidth
-	$: width = chartWidth
-	$: height = chartHeight
 	let marginLeft = vertical ? 25 : 125
 	let marginRight = vertical ? 20 : 50
 	let marginTop = vertical ? 24 : 20
 	let marginBottom = vertical ? (domainLabel ? 50 : 24) : 20
 	let avgArray = []
 	let position = rule
-	let xScale,
+	let svg,
+		xScale,
 		yScale,
 		stack,
 		opacity = [],
 		charactersPerBand,
-		tickVals,
-		scaleWidth
-	$: chartData = JSON.parse(JSON.stringify(data)) // copies and removes references to original data
-
-	let formatFull = d3.utcFormat('%-m/%-d/%Y')
-	let formatYear = d3.utcFormat('%Y')
-	let formatMonth = d3.utcFormat('%b')
-	let formatMonthDay = d3.utcFormat('%-m/%-d')
-	let formatMonthYear = d3.utcFormat('%-m/%Y')
-	let formatQuarter = (d) => `Q${d3.utcFormat(`%q %Y`)(d)}`
-	let formatFiscalQuarter = (d) => {
-		if (Number(d3.utcFormat('%q')(d)) < 3) {
-			return `Q${Number(d3.utcFormat('%q')(d)) + 2} SFY${d3.utcFormat('%Y')(d)}`
-		} else {
-			return `Q${Number(d3.utcFormat('%q')(d)) - 2} SFY${Number(d3.utcFormat('%Y')(d)) + 1}`
-		}
-	} // offset by 2 quarters
-
-	$: tickFormat = d3.timeDay
-	$: labelFormat = formatFull
-
-	$: {
-		// Re-assign margins based on small screens
-		if (innerWidth < 768) {
-			if (vertical) {
-				marginLeft = rangeLabel ? 35 : 20
-			} else if (horizontal) {
-			}
-		} else if (innerWidth >= 768) {
-			if (vertical) {
-				marginLeft = rangeLabel ? 40 : 25
-			}
-		}
-
-		if (vertical) {
-			if (stacked) {
-				stack = d3
-					.stack()
-					.keys(d3.union(chartData.map((d) => d[seriesKey])))
-					.value(([, D], key) => D.get(key)[range])(
-					d3.index(
-						chartData,
-						(d) => d[domain],
-						(d) => d[seriesKey],
-					),
-				)
-
-				if (timeseries) {
-					// date parsing and quarter assignment
-				} else {
-					xScale = d3
-						.scaleBand()
-						.domain(chartData.map((d) => d[domain]))
-						.range([marginLeft, width - marginRight])
-						.padding(0.3)
-				}
-
-				yScale = d3
-					.scaleLinear()
-					.domain([0, d3.max(stack, (d) => d3.max(d, (d) => d[1]))])
-					.range([height - marginBottom, marginTop])
-
-				opacity = Array(stack.length).fill(1)
-			} else {
-				if (sort === 'ascending') {
-					xScale = d3
-						.scaleBand()
-						.domain(
-							d3.groupSort(
-								chartData,
-								([d]) => d[range],
-								(d) => d[domain],
-							),
-						)
-						.range([marginLeft, width - marginRight])
-						.padding(0.3)
-				} else if (sort === 'descending') {
-					xScale = d3
-						.scaleBand()
-						.domain(
-							d3.groupSort(
-								chartData,
-								([d]) => -d[range],
-								(d) => d[domain],
-							),
-						)
-						.range([marginLeft, width - marginRight])
-						.padding(0.3)
-				} else {
-					if (timeseries) {
-						// date parsing and quarter assignment
-					} else {
-						xScale = d3
-							.scaleBand()
-							.domain(chartData.map((d) => d[domain]))
-							.range([marginLeft, width - marginRight])
-							.padding(0.3)
-					}
-				}
-
-				yScale = d3
-					.scaleLinear()
-					.domain([0, d3.max(chartData, (d) => d[range])])
-					.range([height - marginBottom, marginTop])
-
-				opacity = Array(chartData.length).fill(1)
-
-				if (rule === 'avg') {
-					let avg = 0
-					chartData.forEach((el) => avgArray.push(el[range]))
-					avgArray.forEach((el) => (avg += el))
-					position = avg / avgArray.length
-				}
-			}
-		}
-
-		if (horizontal) {
-			if (stacked) {
-				stack = d3
-					.stack()
-					.keys(d3.union(chartData.map((d) => d[seriesKey])))
-					.value(([, D], key) => D.get(key)[domain])(
-					d3.index(
-						chartData,
-						(d) => d[range],
-						(d) => d[seriesKey],
-					),
-				)
-
-				yScale = d3
-					.scaleBand()
-					.domain(chartData.map((d) => d[range]))
-					.range([marginTop, height - marginBottom])
-					.padding(0.2)
-
-				xScale = d3
-					.scaleLinear()
-					.domain([0, d3.max(stack, (d) => d3.max(d, (d) => d[1]))])
-					.range([width - marginRight, marginLeft])
-			} else {
-				if (sort === 'ascending') {
-					yScale = d3
-						.scaleBand()
-						.domain(
-							d3.groupSort(
-								chartData,
-								([d]) => d[domain],
-								(d) => d[range],
-							),
-						)
-						.range([marginTop, height - marginBottom])
-						.padding(0.2)
-				} else if (sort === 'descending') {
-					yScale = d3
-						.scaleBand()
-						.domain(
-							d3.groupSort(
-								chartData,
-								([d]) => -d[domain],
-								(d) => d[range],
-							),
-						)
-						.range([marginTop, height - marginBottom])
-						.padding(0.2)
-				} else {
-					yScale = d3
-						.scaleBand()
-						.domain(chartData.map((d) => d[range]))
-						.range([marginTop, height - marginBottom])
-						.padding(0.2)
-				}
-
-				xScale = d3
-					.scaleLinear()
-					.domain([0, d3.max(chartData, (d) => d[domain])])
-					.range([width - marginRight, marginLeft])
-			}
-		}
-	}
-
-	let tooltip,
+		rulePosition,
+		chartData,
+		tooltip,
 		tooltipData = { y: 0, x: 0, title: '', valueOneLabel, tooltipId, valueOne: 0, currency }
 
 	if (valueTwoLabel) {
@@ -245,31 +62,108 @@
 		tooltipData.valueTwo = 0
 	}
 
-	onMount(() => {
-		if (browser) {
-			tooltip = d3.select(`#${tooltipId}`)
-		}
-	})
+	// if (horizontal) {
+	// 	if (stacked) {
+	// 		stack = d3
+	// 			.stack()
+	// 			.keys(d3.union(chartData.map((d) => d[seriesKey])))
+	// 			.value(([, D], key) => D.get(key)[domain])(
+	// 			d3.index(
+	// 				chartData,
+	// 				(d) => d[range],
+	// 				(d) => d[seriesKey],
+	// 			),
+	// 		)
 
-	afterUpdate(() => {
-		tickVals = xScale.domain()
-		scaleWidth = xScale.bandwidth()
-		charactersPerBand = scaleWidth / 6
-	})
+	// 		yScale = d3
+	// 			.scaleBand()
+	// 			.domain(chartData.map((d) => d[range]))
+	// 			.range([marginTop, height - marginBottom])
+	// 			.padding(0.2)
 
-	function truncateTicks(tick) {
-		let value = tick
-		if (value.length > charactersPerBand) {
-			return value.slice(0, charactersPerBand) + '...'
+	// 		xScale = d3
+	// 			.scaleLinear()
+	// 			.domain([0, d3.max(stack, (d) => d3.max(d, (d) => d[1]))])
+	// 			.range([width - marginRight, marginLeft])
+	// 	} else {
+	// 		if (sort === 'ascending') {
+	// 			yScale = d3
+	// 				.scaleBand()
+	// 				.domain(
+	// 					d3.groupSort(
+	// 						chartData,
+	// 						([d]) => d[domain],
+	// 						(d) => d[range],
+	// 					),
+	// 				)
+	// 				.range([marginTop, height - marginBottom])
+	// 				.padding(0.2)
+	// 		} else if (sort === 'descending') {
+	// 			yScale = d3
+	// 				.scaleBand()
+	// 				.domain(
+	// 					d3.groupSort(
+	// 						chartData,
+	// 						([d]) => -d[domain],
+	// 						(d) => d[range],
+	// 					),
+	// 				)
+	// 				.range([marginTop, height - marginBottom])
+	// 				.padding(0.2)
+	// 		} else {
+	// 			yScale = d3
+	// 				.scaleBand()
+	// 				.domain(chartData.map((d) => d[range]))
+	// 				.range([marginTop, height - marginBottom])
+	// 				.padding(0.2)
+	// 		}
+
+	// 		xScale = d3
+	// 			.scaleLinear()
+	// 			.domain([0, d3.max(chartData, (d) => d[domain])])
+	// 			.range([width - marginRight, marginLeft])
+	// 	}
+	// }
+
+	function truncateTicks() {
+		let self = d3.select(this)
+		if (self.text().length > charactersPerBand) {
+			self.text(self.text().slice(0, charactersPerBand) + '...')
 		}
-		return value
+	}
+
+	function abbreviateNumber(start = 10000) {
+		let self = d3.select(this)
+		let abvNumber = ''
+		if (Number(self.text()) >= 1000000000000) {
+			abvNumber = `${(Number(self.text()) * 0.000000000001).toFixed(1)}T`
+		} else if (Number(self.text()) >= 1000000000) {
+			abvNumber = `${(Number(self.text()) * 0.000000001).toFixed(1)}B`
+		} else if (Number(self.text()) >= 1000000) {
+			abvNumber = `${(Number(self.text()) * 0.000001).toFixed(1)}M`
+		} else if (Number(self.text()) >= 10000) {
+			abvNumber = `${(Number(self.text()) * 0.001).toFixed(1)}K`
+		} else if (Number(self.text()) >= 1000) {
+			if (Number(self.text()) === 1000) {
+				abvNumber = `${(Number(self.text()) * 0.001).toFixed(1)}K`
+			} else {
+				let numberString = Number(self.text()).toString()
+				let numberArray = numberString.split('')
+				let firstNumber = numberArray[0]
+				let remainingNumbers = numberString.slice(1, numberArray.length)
+				abvNumber = `${firstNumber},${remainingNumbers}`
+			}
+		} else {
+			abvNumber = self.text() === '' ? '' : Number(self.text()).toString()
+		}
+		self.text(abvNumber)
 	}
 
 	function enterTooltip(e) {
 		tooltip.style('opacity', 1)
 	}
 
-	function movingTooltip(e, d, s, i) {
+	function movingTooltip(e, d, r, s, i) {
 		let tooltipHeight = tooltip.node().getBoundingClientRect().height
 		let tooltipWidth = tooltip.node().getBoundingClientRect().width
 		const [x, y] = d3.pointer(e)
@@ -279,11 +173,11 @@
 		changeOpacityOnHover(i)
 
 		if (stacked) {
-			tooltipData.valueOne = d.data[0]
-			if (tooltipData.valueTwoLabel) tooltipData.valueTwo = d[1] - d[0]
+			tooltipData.valueOne = d
+			if (tooltipData.valueTwoLabel) tooltipData.valueTwo = r
 		} else {
-			tooltipData.valueOne = d[domain]
-			if (tooltipData.valueTwoLabel) tooltipData.valueTwo = d[range]
+			tooltipData.valueOne = d
+			if (tooltipData.valueTwoLabel) tooltipData.valueTwo = r
 		}
 	}
 
@@ -305,209 +199,301 @@
 			return o
 		})
 	}
+
+	function renderChart(chartContainer, width, height, stacked) {
+		/**
+		 *	Create the SVG element
+		*/
+		svg = d3.create('svg')
+			.attr('viewBox', [0, 0, width, height])
+			.attr('class', 'chart-svg width-100')
+			.attr('id', tooltipId)
+		
+		/**
+		 *	Create the scales and
+		 *	series where applicable
+		*/
+		if (stacked) {
+			stack = d3
+				.stack()
+				.keys(d3.union(chartData.map((d) => d[seriesKey])))
+				.value(([, D], key) => D.get(key)[range])(
+				d3.index(
+					chartData,
+					(d) => d[domain],
+					(d) => d[seriesKey],
+				))
+
+			xScale = d3
+					.scaleBand()
+					.domain(chartData.map((d) => d[domain]))
+					.range([marginLeft, width - marginRight])
+					.padding(0.3)
+
+			yScale = d3
+				.scaleLinear()
+				.domain([0, d3.max(stack, (d) => d3.max(d, (d) => d[1]))])
+				.range([height - marginBottom, marginTop])
+		} else {
+			if (sort === 'ascending') {
+				xScale = d3
+					.scaleBand()
+					.domain(
+						d3.groupSort(
+							chartData,
+							([d]) => d[range],
+							(d) => d[domain],
+						),
+					)
+					.range([marginLeft, width - marginRight])
+					.padding(0.3)
+			} else if (sort === 'descending') {
+				xScale = d3
+					.scaleBand()
+					.domain(
+						d3.groupSort(
+							chartData,
+							([d]) => -d[range],
+							(d) => d[domain],
+						),
+					)
+					.range([marginLeft, width - marginRight])
+					.padding(0.3)
+			} else {
+				xScale = d3
+					.scaleBand()
+					.domain(chartData.map((d) => d[domain]))
+					.range([marginLeft, width - marginRight])
+					.padding(0.3)
+			}
+
+			charactersPerBand = xScale.bandwidth() / 6
+				
+			yScale = d3
+				.scaleLinear()
+				.domain([0, d3.max(chartData, (d) => d[range])])
+				.range([height - marginBottom, marginTop])
+		}
+			
+		/**
+		 * 	Create the axes
+		 */
+		// base axis
+		let baseAxis = svg.append("g")
+			.attr("transform", `translate(0,${height - marginBottom})`)
+			.attr("class", "domain-line chart-axis-label neutral-400-text")
+			.call(d3.axisBottom(xScale).tickSizeOuter(0))
+			.call(g => g.selectAll(".tick line").remove())
+			.call(g => g.select(".domain").remove())
+
+		baseAxis.select(".domain-line .domain")
+			.style("stroke", "var(--neutral-050)")
+			.attr("x1", marginLeft)
+			.attr("x2", width - marginRight)
+			
+		baseAxis.selectAll(".tick text")
+			.each(truncateTicks)
+
+		// side axis
+		let sideAxis = svg.append("g")
+			.attr("transform", `translate(${marginLeft},0)`)
+			.attr("class", "range chart-axis-label neutral-400-text")
+			.call(d3.axisLeft(yScale).tickFormat((yScale) => yScale.toFixed()))
+			.call(g => g.select(".range .domain").remove())
+			.call(g => g.append("text")
+				.attr("y", 10)
+				.attr("fill", "currentColor")
+				.attr("text-anchor", "start"))
+
+		sideAxis.selectAll(".range line")
+			.attr("x1", marginLeft)
+			.attr("x2", width - marginRight)
+			.style("stroke", "var(--neutral-050)")
+
+		sideAxis.selectAll(".range text")
+			.attr("x", marginLeft - 15)
+			.attr("text-anchor", "end")
+			.style("fill", "var(--neutral-400)")
+			.each(abbreviateNumber)
+
+		/**
+		 * 	Create the bars
+		 *		- if stacked, use the stack data
+		 *		- if not stacked, use the chartData
+		*/
+		if (stacked) {
+			svg.append("g")
+				.selectAll()
+				.data(stack)
+				.join("g")
+					.attr("fill", (d, i) => barColors[i])
+				.selectAll("path")
+				.data(D => D.map(d => (d.key = D.key, d)))
+				// .join("rect")
+				.enter().append("path")
+				.attr("d", (d) => {
+					return `
+						M${xScale(d.data[0])},${yScale(d[1]) + 4}
+						a4,4 0 0 1 4,-4
+						h${xScale.bandwidth() - 2 * 4}
+						a4,4 0 0 1 4,4
+						v${yScale(d[0]) - yScale(d[1]) - 4}
+						h${-xScale.bandwidth()}Z
+					`
+				})
+				.attr("x", (d) => xScale(d.data[0]))
+				.attr("y", (d) => yScale(d[1]))
+				.attr("height", (d) => yScale(d[0]) - yScale(d[1]))
+
+			opacity = Array(stack.length).fill(1)
+
+			// Add touch targets
+			svg.append("g")
+				.selectAll()
+				.data(stack)
+				.join("g")
+					.attr("fill", "transparent")
+				.selectAll("path")
+				.data(D => D.map(d => (d.key = D.key, d)))
+				// .join("rect")
+				.enter().append("path")
+				.attr("d", (d) => {
+					return `
+						M${xScale(d.data[0])},${yScale(d[1]) + 4}
+						a4,4 0 0 1 4,-4
+						h${xScale.bandwidth() - 2 * 4}
+						a4,4 0 0 1 4,4
+						v${yScale(d[0]) - yScale(d[1]) - 4}
+						h${-xScale.bandwidth()}Z
+					`
+				})
+				.attr("x", (d) => xScale(d.data[0]))
+				.attr("y", (d) => yScale(d[1]))
+				.attr("height", (d) => yScale(d[0]) - yScale(d[1]))
+				.on("mouseover", (e) => enterTooltip(e))
+				.on("mousemove", (e, d) => movingTooltip(e, d.data[0], (d[1] - d[0]), d.key))
+				.on("mouseleave", (e) => leaveTooltip(e))
+		} else {
+			svg.append("g")
+				.attr("fill", barColors[0])
+				.selectAll()
+				.data(chartData)
+				.enter().append("path")
+				.attr("d", (d) => {
+					return `
+						M${xScale(d[domain])},${yScale(d[range]) + 4}
+						a4,4 0 0 1 4,-4
+						h${xScale.bandwidth() - 2 * 4}
+						a4,4 0 0 1 4,4
+						v${height - yScale(d[range]) - marginBottom - 4}
+						h${-xScale.bandwidth()}Z
+					`
+				})
+				.attr("x", (d) => xScale(d[domain]))
+				.attr("y", (d) => yScale(d[range]))
+				.attr("height", (d) => yScale(0) - yScale(d[range]))
+				.attr("width", xScale.bandwidth())
+				.on("mouseover", (e) => enterTooltip(e))
+				.on("mousemove", (e, d) => movingTooltip(e, d[domain], d[range], d[seriesKey]))
+				.on("mouseleave", (e) => leaveTooltip(e))
+
+			opacity = Array(chartData.length).fill(1)
+		}
+
+		/**
+		 *	Add extra elements to the chart
+		*/
+		if (rangeLabel) {
+			svg.append("text")
+				.attr("x", marginLeft + 20)
+				.attr("y", height / 2 - 25)
+				.attr("text-anchor", "middle")
+				.attr("class", "chart-axis-label")
+				.attr("fill", "var(--neutral-400)")
+				.attr("transform", `rotate(-90, ${marginLeft}, ${height / 2})`)
+				.text(rangeLabel)
+		}
+
+		if (domainLabel) {
+			svg.append("text")
+				.attr("x", width / 2)
+				.attr("y", height - marginBottom + 40)
+				.attr("text-anchor", "middle")
+				.attr("class", "chart-axis-label")
+				.attr("fill", "var(--neutral-400)")
+				.text(domainLabel)
+		}
+
+		if (rule) {
+			if (rule === 'avg') {
+				// Calculate the average of the range
+				let avg = 0
+				chartData.forEach((el) => avgArray.push(el[range]))
+				avgArray.forEach((el) => (avg += el))
+				position = avg / avgArray.length
+			} else {
+				position = Number(rule)
+			}
+			svg.append("line")
+				.attr("class", "rule")
+				.attr("stroke", "var(--neutral-400)")
+				.attr("stroke-width", 1)
+				.attr("stroke-dasharray", "3 2")
+				.attr("x1", marginLeft)
+				.attr("x2", width)
+				.attr("y1", yScale(position))
+				.attr("y2", yScale(position))
+			
+			rulePosition = yScale(position) - 23
+		}
+		
+		/**
+		 *	Append to the chart container
+		*/
+		chartContainer.append(() => svg.node())
+	}
+
+	function mountChart() {
+		tooltip = d3.select(`#${tooltipId}`)
+		let chartContainer = d3.select(`.${tooltipId}-chart`)
+
+		let width = chartContainer.node().parentNode.getBoundingClientRect().width
+		let height = chartContainer.node().parentNode.getBoundingClientRect().height
+		chartData = JSON.parse(JSON.stringify(data))
+
+		marginLeft = innerWidth < 768 ? rangeLabel ? 35 : 20 : rangeLabel ? 40 : vertical ? 25 : 125
+		marginRight = innerWidth < 768 ? 5 : 20
+
+		window.addEventListener('resize', (e) => {
+			// Recalculate the width of the screen
+			innerWidth = e.target.innerWidth
+			marginLeft = innerWidth < 768 ? rangeLabel ? 35 : 20 : rangeLabel ? 40 : vertical ? 25 : 125
+
+			// Recalculate the width and height of the chart sizer
+			let width = chartContainer.node().parentNode.getBoundingClientRect().width
+			let height = chartContainer.node().parentNode.getBoundingClientRect().height
+
+			// Remove the old chart
+			chartContainer.selectAll('*').remove()
+
+			// Redraw the chart
+			renderChart(chartContainer, width, height, stacked)
+		})
+		
+		renderChart(chartContainer, width, height, stacked)
+	}
+
+	onMount(() => {
+		mountChart()
+	})
 </script>
 
-<svelte:window bind:innerWidth />
-
-<svg
-	class="chart-svg width-100"
-	viewBox="0 0 {width} {height}"
->
-	<!-- Side Axis -->
-	<g
-		class="side-axis"
-		transform="translate({marginLeft}, 0)"
-	>
-		{#if horizontal}
-			<line
-				stroke="var(--neutral-050)"
-				y1={marginTop}
-				y2={height - marginBottom}
-			/>
-			{#each chartData as d}
-				<text
-					class="chart-axis-label"
-					fill="gray"
-					text-anchor="start"
-					x={-100}
-					y={yScale(d[range]) + yScale.bandwidth() / 2 + 5}
-				>
-					{d[range]}
-				</text>
-			{/each}
-		{:else if vertical}
-			{#if rangeLabel}
-				<text
-					text-anchor="middle"
-					x={marginLeft}
-					y={height / 2 - 40}
-					transform="rotate(-90, {marginLeft - 15}, {height / 2})"
-					class="chart-axis-label"
-					fill="var(--neutral-400)"
-				>
-					{rangeLabel}
-				</text>
-			{/if}
-			{#each yScale.ticks() as tick}
-				<line
-					stroke="var(--neutral-050)"
-					x1={marginLeft}
-					x2={width - marginRight}
-					y1={yScale(tick)}
-					y2={yScale(tick)}
-				/>
-				<text
-					class="chart-axis-label"
-					fill="var(--neutral-400)"
-					x={marginLeft - 15}
-					y={yScale(tick) + 5}
-					text-anchor="end"
-				>
-					{abbreviateNumber(tick, 1000)}
-				</text>
-			{/each}
-		{/if}
-	</g>
-
-	<!-- Base Axis -->
-	<g
-		class="base-axis"
-		transform="translate(0,{height - marginBottom})"
-	>
-		{#if vertical}
-			{#if domainLabel}
-				<text
-					text-anchor="middle"
-					x={width / 2}
-					y={45}
-					class="chart-axis-label"
-					fill="var(--neutral-400)"
-				>
-					{domainLabel}
-				</text>
-			{/if}
-			<line
-				stroke="var(--neutral-050)"
-				x1={rangeLabel ? marginLeft + 40 : marginLeft + 20}
-				x2={width}
-			/>
-			{#if innerWidth >= 500}
-				{#each chartData as d}
-					<text
-						class="chart-axis-label domain-ticks"
-						fill="gray"
-						text-anchor="middle"
-						x={xScale(d[domain]) + xScale.bandwidth() / 2}
-						y={20}
-					>
-						{truncateTicks(d[domain])}
-					</text>
-				{/each}
-			{/if}
-		{/if}
-	</g>
-
-	<!-- Bars -->
-	{#if stacked}
-		<g class="bars">
-			{#each stack as series, i}
-				{#each series as d}
-					{#if vertical}
-						<!-- svelte-ignore a11y-no-static-element-interactions -->
-						<path
-							class="bar-chart-path"
-							on:mouseenter={enterTooltip}
-							on:mousemove={(e) => movingTooltip(e, d, series.key, i)}
-							on:mouseleave={leaveTooltip}
-							opacity={opacity[i]}
-							fill={barColors[i]}
-							d={`
-								M${xScale(d.data[0])},${yScale(d[1]) + 4}
-								a4,4 0 0 1 4,-4
-								h${xScale.bandwidth() - 2 * 4}
-								a4,4 0 0 1 4,4
-								v${yScale(d[0]) - yScale(d[1]) - 4}
-								h${-xScale.bandwidth()}Z
-							`}
-						/>
-					{:else if horizontal}
-						<!-- <path 
-							fill={barColors[i]}
-							d={`
-								M${marginLeft},${yScale(d[range]) + 4}
-								h${width - xScale(d[domain]) - marginRight - 4}
-								a4,4 0 0 1 4,4
-								v${yScale.bandwidth() - 2 * 4}
-								a-4,4 0 0 1 -4,4
-								h${-width + xScale(d[domain]) + marginRight + 4}Z
-							`}
-						/> -->
-					{/if}
-				{/each}
-			{/each}
-		</g>
-	{:else}
-		<g class="bars">
-			{#each chartData as d, i}
-				{#if vertical}
-					<!-- svelte-ignore a11y-no-static-element-interactions -->
-					<!-- svelte-ignore a11y-mouse-events-have-key-events -->
-					<path
-						class="bar-chart-path"
-						on:mouseenter={enterTooltip}
-						on:mousemove={(e) => movingTooltip(e, d, d[seriesKey], i)}
-						on:mouseleave={leaveTooltip}
-						opacity={opacity[i]}
-						fill={barColors.length > 1 ? barColors[i] : barColors[0]}
-						d={`
-							M${xScale(d[domain])},${yScale(d[range]) + 4}
-							a4,4 0 0 1 4,-4
-							h${xScale.bandwidth() - 2 * 4}
-							a4,4 0 0 1 4,4
-							v${height - yScale(d[range]) - marginBottom - 4}
-							h${-xScale.bandwidth()}Z
-						`}
-					/>
-				{:else if horizontal}
-					<!-- svelte-ignore a11y-no-static-element-interactions -->
-					<path
-						on:mouseenter={enterTooltip}
-						on:mousemove={(e) => movingTooltip(e, d, d[seriesKey])}
-						on:mouseleave={leaveTooltip}
-						fill={barColors.length > 1 ? barColors[i] : barColors[0]}
-						d={`
-							M${marginLeft},${yScale(d[range]) + 4}
-							h${width - xScale(d[domain]) - marginRight - 4}
-							a4,4 0 0 1 4,4
-							v${yScale.bandwidth() - 2 * 4}
-							a-4,4 0 0 1 -4,4
-							h${-width + xScale(d[domain]) + marginRight + 4}Z
-						`}
-					/>
-				{/if}
-			{/each}
-		</g>
-	{/if}
-
-	<!-- Rule -->
-	{#if rule}
-		<line
-			class="rule"
-			stroke="var(--neutral-400)"
-			stroke-width="1"
-			stroke-dasharray="3 2"
-			x1={marginLeft}
-			x2={width}
-			y1={rule === 'avg' ? yScale(position) : yScale(rule)}
-			y2={rule === 'avg' ? yScale(position) : yScale(rule)}
-		/>
-	{/if}
-</svg>
+<div class="{tooltipId}-chart"></div>
 
 {#if rule}
 	<RuleTip
 		value={rule}
-		position={yScale(position)}
+		position={rulePosition}
 	/>
 {/if}
 <ChartTooltip tooltipInfo={tooltipData} />

@@ -1853,6 +1853,11 @@
     }
   ]
 
+  floatData = floatData.map((d) => {
+      d.series = 'Series'
+      return d
+  })
+
 	$: geoData = 'realData'
 
 	export let data
@@ -1954,8 +1959,10 @@
 					valueOneLabel="date"
 					valueTwoLabel="value"
 					seriesKey="series"
+          lineColors={['var(--secondary-base)']}
+          areaColors={['var(--secondary-trans-500)']}
 				>
-					<div
+					<!-- <div
 						slot="chart-header"
 						style="margin-top: var(--spacing09);margin-bottom: var(--spacing09)"
 					>
@@ -1980,12 +1987,12 @@
 							optionList={['secondGeoData']}
 							bind:selectedValue={geoData}
 						/>
-					</div>
+					</div> -->
 				</Chart>
 			</div>
 			<div class="stacked-area-chart">
 				<Chart
-					tooltipId="stacked-area"
+					tooltipId="stacked-a"
 					type="area"
 					data={realStacked}
 					title="Stacked Area Chart"
@@ -1997,9 +2004,10 @@
 					valueTwoLabel="value"
 					yearOnly
 					stacked
+          lineColors={['var(--secondary-600)', 'var(--secondary-base)']}
 				/>
 			</div>
-			<div class="pie-chart">
+			<!-- <div class="pie-chart">
 				<Chart
 					tooltipId="pie"
 					type="pie"
@@ -2010,10 +2018,10 @@
 					seriesKey="name"
 					sort="descending"
 				/>
-			</div>
+			</div> -->
 			<div class="ring-chart">
 				<Chart
-					tooltipId="ring"
+					tooltipId="ring-chart"
 					type="pie"
 					data={pieData}
 					title="Ring Chart"
@@ -2025,7 +2033,7 @@
 					ring
 				/>
 			</div>
-			<div class="scatterplot-chart">
+			<!-- <div class="scatterplot-chart">
 				<Chart
 					tooltipId="scatter"
 					data={scatterData}
@@ -2038,7 +2046,7 @@
 					valueTwoLabel="value"
 					monthDay
 				/>
-			</div>
+			</div> -->
 			<!-- <div class="geo-chart">
 				<Chart
 					title="Map With Multiple Markers"
@@ -2052,7 +2060,7 @@
 					geoJSON={null}
 				/>
 			</div> -->
-			<div class="geo-chart">
+			<!-- <div class="geo-chart">
 				<Chart 
 					title="Map With Multiple Markers"
 					type="geo"
@@ -2065,7 +2073,7 @@
 					geoJSON={null}
 					data={newGeoData}
 				/>
-			</div>
+			</div> -->
 		</div>
 	</PageBody>
 	</PageTransitionWrapper>
@@ -2096,7 +2104,7 @@
 	.geo-chart {
 		width: 100%;
 		height: 650px;
-		margin: auto;
+		/* margin: auto; */
 		margin-bottom: var(--spacing13);
 
 		& .headline-s-m {

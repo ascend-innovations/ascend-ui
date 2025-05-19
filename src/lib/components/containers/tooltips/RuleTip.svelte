@@ -1,11 +1,10 @@
 <script>
-	export let value = 'avg',
-		position
+	export let value, position
 </script>
 
 <div
 	class="rule-tip"
-	style="top:{position - 23}px"
+	style="top:{position}px"
 >
 	<p>{value === 'avg' ? 'Avg.' : value}</p>
 </div>
