@@ -1,7 +1,6 @@
 <script>
 	import * as d3 from 'd3'
 	import { ChartTooltip } from '$lib/index.js'
-	import { browser } from '$app/environment'
 	import { onMount } from 'svelte'
 
 	/**
@@ -43,6 +42,39 @@
 		tooltipData.valueTwo = 0
 	}
 
+	function enterTooltip(e) {
+		tooltip.style('opacity', 1)
+	}
+
+	function movingTooltip(e, d, i) {
+		let target = d3.select(e.target).node()
+		let tooltipHeight = tooltip.node().getBoundingClientRect().height
+		let tooltipWidth = tooltip.node().getBoundingClientRect().width
+		
+		tooltipData.y = e.offsetY - tooltipHeight - 20
+		tooltipData.x = e.offsetX - tooltipWidth / 2
+		tooltipData.title = d.data[domain]
+		tooltipData.valueOne = d.data[range]
+		if (valueTwoLabel) tooltipData.valueTwo = d.data[valueTwoLabel]
+		changeOpacityOnHover(target)
+	}
+
+	function leaveTooltip(e) {
+		tooltip.style('opacity', 0)
+		
+		let arcs = d3.selectAll('.arc-path').nodes()
+		arcs.forEach((arc) => {
+			arc.setAttribute('opacity', 1)
+		})
+	}
+
+	function changeOpacityOnHover(target) {
+		let arcs = d3.selectAll('.arc-path').nodes()
+		arcs.forEach((arc, i) => {
+			if (arc.getAttribute('opacity-id') !== target.getAttribute('opacity-id')) arc.setAttribute('opacity', 0.5)
+		})
+	}
+
 	function renderChart(chartContainer, width, height) {
 		let svg = d3.create('svg')
 			.classed('width-100', true)
@@ -81,7 +113,8 @@
 			.join('path')
 			.classed('arc-path', true)
 			.attr('fill', (d, i) => arcColors[i])
-			.attr('opacity', (d, i) => opacity[i])
+			.attr('opacity', 1)
+			.attr('opacity-id', (d, i) => `opacity-${i}`)
 			.attr('d', arcPath)
 			.on('mouseenter', enterTooltip)
 			.on('mousemove', (e, d, i) => movingTooltip(e, d, i))
@@ -90,64 +123,31 @@
 		chartContainer.append(() => svg.node())
 	}
 
-	onMount(() => {
-		if (browser) {
-			tooltip = d3.select(`#${tooltipId}`).style('opacity', 0)
-			let chartContainer = d3.select(`.${tooltipId}-chart`)
+	function mountChart() {
+		tooltip = d3.select(`#${tooltipId}`).style('opacity', 0)
+		let chartContainer = d3.select(`.${tooltipId}-chart`)
 
+		let height = chartContainer.node().parentNode.getBoundingClientRect().height
+
+		chartData = JSON.parse(JSON.stringify(data))
+
+		window.addEventListener('resize', () => {
+			// Recalculate the width and height of the chart sizer
 			let height = chartContainer.node().parentNode.getBoundingClientRect().height
 
-			chartData = JSON.parse(JSON.stringify(data))
+			// Remove the old chart
+			chartContainer.selectAll('*').remove()
 
-			window.addEventListener('resize', () => {
-				// Recalculate the width and height of the chart sizer
-				let height = chartContainer.node().parentNode.getBoundingClientRect().height
-
-				// Remove the old chart
-				chartContainer.selectAll('*').remove()
-
-				// Redraw the chart
-				renderChart(chartContainer, height, height)
-			})
-
+			// Redraw the chart
 			renderChart(chartContainer, height, height)
-		}
+		})
+
+		renderChart(chartContainer, height, height)
+	}
+
+	onMount(() => {
+		mountChart()
 	})
-
-	function enterTooltip(e) {
-		tooltip.style('opacity', 1)
-	}
-
-	function movingTooltip(e, d, i) {
-		let tooltipHeight = tooltip.node().getBoundingClientRect().height
-		let tooltipWidth = tooltip.node().getBoundingClientRect().width
-		
-		tooltipData.y = e.offsetY - tooltipHeight - 20
-		tooltipData.x = e.offsetX - tooltipWidth / 2
-		tooltipData.title = d.data[domain]
-		tooltipData.valueOne = d.data[range]
-		if (valueTwoLabel) tooltipData.valueTwo = d.data[valueTwoLabel]
-		changeOpacityOnHover(i)
-	}
-
-	function leaveTooltip(e) {
-		tooltip.style('opacity', 0)
-		resetOpacity()
-	}
-
-	function changeOpacityOnHover(i) {
-		opacity = opacity.map((o, index) => {
-			o = index === i ? 1 : 0.5
-			return o
-		})
-	}
-
-	function resetOpacity() {
-		opacity = opacity.map((o) => {
-			o = 1
-			return o
-		})
-	}
 </script>
 
 <div class="{tooltipId}-chart pie-chart-svg-container width-100">
