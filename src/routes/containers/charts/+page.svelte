@@ -2033,7 +2033,7 @@
 					ring
 				/>
 			</div>
-			<!-- <div class="scatterplot-chart">
+			<div class="scatterplot-chart">
 				<Chart
 					tooltipId="scatter"
 					data={scatterData}
@@ -2044,9 +2044,12 @@
 					seriesKey="series"
 					valueOneLabel="date"
 					valueTwoLabel="value"
+          rule="avg"
+          domainLabel="Date"
+          rangeLabel="Value"
 					monthDay
 				/>
-			</div> -->
+			</div>
 			<!-- <div class="geo-chart">
 				<Chart
 					title="Map With Multiple Markers"
