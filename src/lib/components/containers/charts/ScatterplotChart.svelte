@@ -1,6 +1,6 @@
 <script>
 	import * as d3 from 'd3'
-	import { RuleTip, ChartTooltip, abbreviateNumber } from '$lib/index.js'
+	import { RuleTip, ChartTooltip } from '$lib/index.js'
 	import { onMount } from 'svelte'
 	import { spring } from 'svelte/motion'
 	import { browser } from '$app/environment'
@@ -42,14 +42,9 @@
 		monthYear,
 		quarters = false,
 		fiscalQuarters = false,
-		line = false,
-		stacked = false,
-		chartWidth = 700,
-		chartHeight = 400
+		stacked = false
 
 	let innerWidth
-	$: width = chartWidth
-	$: height = chartHeight
 	$: textOpacitySwitch = innerWidth < 678
 	let marginLeft = 50
 	let marginRight = 15
@@ -57,11 +52,13 @@
 	let marginBottom = domainLabel ? 50 : 24
 	let avgArray = []
 	let position = rule
-	$: chartData = JSON.parse(JSON.stringify(data))
+	let rulePosition
+	let chartData
 
-	let xScale,
+	let svg,
+		xScale,
 		yScale,
-		opacity = []
+		charactersPerBand
 
 	let formatFull = d3.utcFormat('%-m/%-d/%Y')
 	let formatYear = d3.utcFormat('%Y')
@@ -93,10 +90,97 @@
 		},
 	)
 
-	// runs before data is updated. Lifecycle hooks do not work. Reactive blocks do not work
-	// maybe toy around with await blocks?
-	$: if (chartData !== undefined) {
-		opacity = Array(chartData.length).fill(1) // initialize area opacity array
+	$: {
+		if (innerWidth < 768) {
+			marginLeft = rangeLabel ? 70 : 35
+		} else if (innerWidth >= 768) {
+			marginLeft = rangeLabel ? 80 : 50
+		}
+	}
+
+	let tooltip,
+		tooltipOuterCircle,
+		tooltipData = { y: 0, x: 0, circlePosition: 0, title: '', tooltipId, valueOneLabel, valueOne: 0, currency }
+
+	if (valueTwoLabel) {
+		tooltipData.valueTwoLabel = valueTwoLabel
+		tooltipData.valueTwo = 0
+	}
+
+	function truncateTicks() {
+		let self = d3.select(this)
+		if (self.text().length > charactersPerBand) {
+			self.text(self.text().slice(0, charactersPerBand) + '...')
+		}
+	}
+
+	function abbreviateNumber(start = 10000) {
+		let self = d3.select(this)
+		let abvNumber = ''
+		if (Number(self.text()) >= 1000000000000) {
+			abvNumber = `${(Number(self.text()) * 0.000000000001).toFixed(1)}T`
+		} else if (Number(self.text()) >= 1000000000) {
+			abvNumber = `${(Number(self.text()) * 0.000000001).toFixed(1)}B`
+		} else if (Number(self.text()) >= 1000000) {
+			abvNumber = `${(Number(self.text()) * 0.000001).toFixed(1)}M`
+		} else if (Number(self.text()) >= 10000) {
+			abvNumber = `${(Number(self.text()) * 0.001).toFixed(1)}K`
+		} else if (Number(self.text()) >= 1000) {
+			if (Number(self.text()) === 1000) {
+				abvNumber = `${(Number(self.text()) * 0.001).toFixed(1)}K`
+			} else {
+				let numberString = Number(self.text()).toString()
+				let numberArray = numberString.split('')
+				let firstNumber = numberArray[0]
+				let remainingNumbers = numberString.slice(1, numberArray.length)
+				abvNumber = `${firstNumber},${remainingNumbers}`
+			}
+		} else {
+			abvNumber = self.text() === '' ? '' : Number(self.text()).toString()
+		}
+		if (currency) abvNumber = abvNumber === '' ? '' : '$' + abvNumber
+		self.text(abvNumber)
+	}
+
+	function enterTooltip(e) {
+		tooltip.style('opacity', 1)
+		tooltipOuterCircle.style('opacity', 1)
+	}
+
+	function movingTooltip(e, p, s, i) {
+		changeOpacityOnHover(i)
+		let tooltipWidth = tooltip.node().getBoundingClientRect().width
+		tooltipData.line = xScale(chartData[i][domain])
+		tooltipData.title = s
+		tooltipData.valueOne = fullDate ? formatFull(p[domain]) : yearOnly ? formatYear(p[domain]) : monthOnly ? formatMonth(p[domain]) : monthDay ? formatMonthDay(p[domain]) : monthYear ? formatMonthYear(p[domain]) : quarters ? formatQuarter(p[domain]) : formatFull(p[domain])
+		if (tooltipData.valueTwoLabel) tooltipData.valueTwo = p[range]
+		coords.set({ x: xScale(p[domain]), y: yScale(p[range]) })
+		tooltipData.x = $coords.x - tooltipWidth / 2
+		tooltipData.y = $coords.y - 100
+	}
+
+	function leaveTooltip(e) {
+		tooltip.style('opacity', 0)
+		tooltipOuterCircle.style('opacity', 0)
+	}
+
+	function changeOpacityOnHover(i) {
+		
+	}
+
+	function renderChart(chartContainer, width, height) {
+		/**
+		 *	Create the SVG element
+		*/
+		svg = d3.create('svg')
+			.attr('viewBox', [0, 0, width, height])
+			.attr('class', 'chart-svg width-100')
+			.attr('id', tooltipId)
+
+		/**
+		 *	Create the scales and
+		 *	series where applicable
+		*/
 		for (let obj of chartData) {
 			obj[domain] = new Date(obj[domain])
 		}
@@ -105,6 +189,7 @@
 		dayInterval = d3.timeDay.count(min, max)
 		monthInterval = d3.timeMonth.count(min, max)
 		yearInterval = d3.timeYear.count(min, max)
+
 		if (stacked) {
 			// todo
 		} else {
@@ -132,18 +217,6 @@
 				everyOther = false
 			}
 		}
-	}
-
-	$: {
-		if (innerWidth < 768) {
-			marginLeft = rangeLabel ? 70 : 35
-		} else if (innerWidth >= 768) {
-			marginLeft = rangeLabel ? 80 : 50
-		}
-
-		for (let point of chartData) {
-			point[domain] = new Date(point[domain])
-		}
 
 		xScale = d3
 			.scaleTime()
@@ -154,136 +227,197 @@
 			.scaleLinear()
 			.domain([0, d3.max(chartData, (d) => d[range])])
 			.range([height - marginBottom, marginTop])
+
+		/**
+		 * 	Create the axes
+		 */
+		charactersPerBand = width / chartData.length / 6
+
+		let baseAxis = svg
+			.append('g')
+			.attr('transform', `translate(0,${height - marginBottom})`)
+			.attr('class', 'domain-line chart-axis-label neutral-400-text')
+			.call(d3.axisBottom(xScale).tickFormat(labelFormat).tickSizeOuter(0))
+			.call((g) => g.selectAll('.tick line').remove())
+			.call((g) => g.select('.domain').remove())
+
+		baseAxis
+			.select('.domain-line .domain')
+			.style('stroke', 'var(--neutral-050)')
+			.attr('x1', marginLeft)
+			.attr('x2', width - marginRight)
+
+		baseAxis.selectAll('.tick text').attr('y', 15).each(truncateTicks)
+		
+		let sideAxis = svg
+			.append('g')
+			.attr('transform', `translate(${marginLeft - (rangeLabel ? 75 : 60)},0)`)
+			.attr('class', 'range chart-axis-label neutral-400-text')
+			.call(d3.axisLeft(yScale).tickFormat((yScale) => yScale.toFixed()))
+			.call((g) => g.select('.range .domain').remove())
+			.call((g) => g.append('text').attr('y', 10).attr('fill', 'currentColor').attr('text-anchor', 'start'))
+
+		sideAxis
+			.selectAll('.range line')
+			.attr('x1', rangeLabel ? marginLeft - 5 : marginLeft)
+			.attr('x2', width - marginRight)
+			.style('stroke', 'var(--neutral-050)')
+
+		sideAxis
+			.selectAll('.range text')
+			.attr('x', marginLeft - 15)
+			.attr('text-anchor', 'end')
+			.style('fill', 'var(--neutral-400)')
+			.each(abbreviateNumber)
+		/**
+		 * 	Create the chart
+		 */
+		// tooltip circle
+		let filter = svg.append('filter')
+			.attr('id', 'shadow')
+			.attr('dx', 0)
+			.attr('dy', 0)
+			.attr('stdDeviation', 0.5)
+
+		svg.append('g')
+			.selectAll('circle')
+			.data(chartData)
+			.join('circle')
+			.attr('class', 'tooltip-outer-circle')
+			.attr('cx', (d) => xScale(d[domain]))
+			.attr('cy', (d) => yScale(d[range]))
+			.attr('r', 16)
+			.attr('fill', 'var(--background-base)')
+			.attr('shadow', 'url(#shadow)')
+
+		// touch targets
+		svg.append('g')
+			.selectAll('circle')
+			.data(chartData)
+			.join('circle')
+			.attr('class', 'scatterplot-touch-target')
+			.attr('cx', (d) => xScale(d[domain]))
+			.attr('cy', (d) => yScale(d[range]))
+			.attr('r', 16)
+			.attr('fill', 'transparent')
+			.on('mouseenter', enterTooltip)
+			.on('mousemove', (e, d) => {
+				movingTooltip(e, d, seriesKey, chartData.indexOf(d))
+			})
+			.on('mouseleave', leaveTooltip)
+
+		svg.append('g')
+			.attr('class', 'scatterplot')
+			.selectAll('circle')
+			.data(chartData)
+			.join('circle')
+			.attr('class', 'scatterplot-point')
+			.attr('cx', (d) => xScale(d[domain]))
+			.attr('cy', (d) => yScale(d[range]))
+			.attr('r', 4)
+			.style('fill', pointColor)
+			.style('opacity', 1)
+			.on('mouseenter', enterTooltip)
+			.on('mousemove', (e, d) => {
+				movingTooltip(e, d, seriesKey, chartData.indexOf(d))
+			})
+			.on('mouseleave', leaveTooltip)
+		
+		/**
+		 *	Add extra elements to the chart
+		*/
+		if (rangeLabel) {
+			svg.append("text")
+				.attr("x", marginLeft + 20)
+				.attr("y", height / 2 - 55)
+				.attr("text-anchor", "middle")
+				.attr("class", "chart-axis-label")
+				.attr("fill", "var(--neutral-400)")
+				.attr("transform", `rotate(-90, ${marginLeft}, ${height / 2})`)
+				.text(rangeLabel)
+		}
+
+		if (domainLabel) {
+			svg.append("text")
+				.attr("x", width / 2)
+				.attr("y", height - marginBottom + 45)
+				.attr("text-anchor", "middle")
+				.attr("class", "chart-axis-label")
+				.attr("fill", "var(--neutral-400)")
+				.text(domainLabel)
+		}
+
+		if (rule) {
+			if (rule === 'avg') {
+				// Calculate the average of the range
+				let avg = 0
+				chartData.forEach((el) => avgArray.push(el[range]))
+				avgArray.forEach((el) => (avg += el))
+				position = avg / avgArray.length
+			} else {
+				position = Number(rule)
+			}
+			svg.append('line')
+				.attr('class', 'rule')
+				.attr('x1', marginLeft)
+				.attr('x2', width - marginRight)
+				.attr('y1', yScale(position))
+				.attr('y2', yScale(position))
+				.style('stroke', 'var(--neutral-400)')
+				.style('stroke-width', 1)
+				.style('stroke-dasharray', '3 2')
+
+			rulePosition = yScale(position) - 23
+		}
+
+		/**
+		 *	Append to the chart container
+		*/
+		chartContainer.append(() => svg.node())
 	}
 
-	let tooltip,
-		tooltipOuterCircle,
-		tooltipData = { y: 0, x: 0, circlePosition: 0, title: '', tooltipId, valueOneLabel, valueOne: 0, currency }
+	function mountChart() {
+		tooltip = d3.select(`#${tooltipId}`)
+		tooltipOuterCircle = d3.select(`#${tooltipId}-outer-circle`)
+		let chartContainer = d3.select(`.${tooltipId}-chart`)
 
-	if (valueTwoLabel) {
-		tooltipData.valueTwoLabel = valueTwoLabel
-		tooltipData.valueTwo = 0
+		let width = chartContainer.node().parentNode.getBoundingClientRect().width
+		let height = chartContainer.node().parentNode.getBoundingClientRect().height
+
+		marginLeft = innerWidth < 768 ? rangeLabel ? 35 : 20 : rangeLabel ? 75 : 50
+
+		chartData = JSON.parse(JSON.stringify(data))
+
+		window.addEventListener('resize', (e) => {
+			innerWidth = e.target.innerWidth
+
+			let width = chartContainer.node().parentNode.getBoundingClientRect().width
+			let height = chartContainer.node().parentNode.getBoundingClientRect().height
+
+			marginLeft = innerWidth < 768 ? rangeLabel ? 35 : 20 : rangeLabel ? 75 : 50
+		
+			chartData = JSON.parse(JSON.stringify(data))
+
+			// remove the old chart
+			chartContainer.selectAll('*').remove()
+
+			renderChart(chartContainer, width, height)
+		})
+
+		renderChart(chartContainer, width, height)
 	}
 
 	onMount(() => {
-		if (browser) {
-			tooltip = d3.select(`#${tooltipId}`)
-			tooltipOuterCircle = d3.select(`#${tooltipId}-outer-circle`)
-		}
+		mountChart()
 	})
-
-	function enterTooltip(e) {
-		tooltip.style('opacity', 1)
-		tooltipOuterCircle.style('opacity', 1)
-	}
-
-	function movingTooltip(p, s, i) {
-		changeOpacityOnHover(i)
-		let tooltipWidth = tooltip.node().getBoundingClientRect().width
-		tooltipData.line = xScale(chartData[i][domain])
-		tooltipData.title = s
-		tooltipData.valueOne = fullDate ? formatFull(p[domain]) : yearOnly ? formatYear(p[domain]) : monthOnly ? formatMonth(p[domain]) : monthDay ? formatMonthDay(p[domain]) : monthYear ? formatMonthYear(p[domain]) : quarters ? formatQuarter(p[domain]) : formatFull(p[domain])
-		if (tooltipData.valueTwoLabel) tooltipData.valueTwo = p[range]
-		coords.set({ x: xScale(p[domain]), y: yScale(p[range]) })
-		tooltipData.x = $coords.x - tooltipWidth / 2
-		tooltipData.y = $coords.y - 100
-	}
-
-	function leaveTooltip(e) {
-		tooltip.style('opacity', 0)
-		tooltipOuterCircle.style('opacity', 0)
-		resetOpacity()
-	}
-
-	function changeOpacityOnHover(i) {
-		opacity = opacity.map((o, index) => {
-			o = index === i ? 1 : 0.5
-			return o
-		})
-	}
-
-	function resetOpacity() {
-		opacity = opacity.map((o) => {
-			o = 1
-			return o
-		})
-	}
 </script>
 
 <svelte:window bind:innerWidth />
 
-<!-- svelte-ignore a11y-no-static-element-interactions -->
-<svg
-	class="chart-svg width-100"
-	viewBox="0 0 {width} {height}"
->
-	<!-- Range Axis -->
-	{#if rangeLabel}
-		<text
-			text-anchor="middle"
-			x={marginLeft}
-			y={height / 2 - 40}
-			transform="rotate(-90, {marginLeft - 15}, {height / 2})"
-			fill="var(--neutral-400)"
-			class="chart-axis-label"
-		>
-			{rangeLabel}
-		</text>
-	{/if}
-	{#each yScale.ticks() as tick}
-		<line
-			stroke="var(--neutral-050)"
-			x1={marginLeft}
-			x2={width - marginRight}
-			y1={yScale(tick)}
-			y2={yScale(tick)}
-		/>
-		<text
-			class="chart-axis-label"
-			fill="var(--neutral-400)"
-			text-anchor="end"
-			x={marginLeft - 15}
-			y={yScale(tick) + 5}
-		>
-			{abbreviateNumber(tick, 1000)}
-		</text>
-	{/each}
-
-	<!-- Domain Axis -->
-	<g transform="translate(0,{height - marginBottom})">
-		{#if domainLabel}
-			<text
-				text-anchor="middle"
-				x={width / 2}
-				y={45}
-				class="chart-axis-label"
-				fill="var(--neutral-400)"
-			>
-				{domainLabel}
-			</text>
-		{/if}
-		{#each xScale.ticks(tickFormat) as tick, i}
-			<text
-				class="chart-axis-label"
-				fill="gray"
-				text-anchor="middle"
-				fill-opacity={textOpacitySwitch ? (i % 2 === 1 ? '0' : '1') : '1'}
-				x={xScale(tick)}
-				y={22}
-			>
-				{#if everyOther}
-					{i % 2 === 1 ? labelFormat(tick) : ''}
-				{:else if quarters || fiscalQuarters}
-					{i % 3 === 1 ? labelFormat(tick) : ''}
-				{:else}
-					{labelFormat(tick)}
-				{/if}
-			</text>
-		{/each}
-	</g>
+<div class="{tooltipId}-chart"></div>
 
 	<!-- Tooltip Circles -->
-	<filter id="shadow">
+	<!-- <filter id="shadow">
 		<feDropShadow
 			dx="0"
 			dy="0"
@@ -297,35 +431,10 @@
 		cx={$coords.x}
 		cy={$coords.y}
 		r="9"
-	/>
-
-	<!-- Scatter Points -->
-	{#each chartData as point, i}
-		<!-- first circle is a cursor target -->
-		<circle
-			opacity="0"
-			on:mouseenter={enterTooltip}
-			on:mousemove={() => movingTooltip(point, seriesKey, i)}
-			on:mouseleave={leaveTooltip}
-			cx={xScale(point[domain])}
-			cy={yScale(point[range])}
-			r="16"
-		/>
-		<circle
-			class="scatterplot-point"
-			on:mouseenter={enterTooltip}
-			on:mousemove={() => movingTooltip(point, seriesKey, i)}
-			on:mouseleave={leaveTooltip}
-			fill={pointColor}
-			opacity={opacity[i]}
-			cx={xScale(point[domain])}
-			cy={yScale(point[range])}
-			r="4"
-		/>
-	{/each}
+	/> -->
 
 	<!-- Rule -->
-	{#if rule}
+	<!-- {#if rule}
 		<line
 			class="rule"
 			stroke="var(--neutral-400)"
@@ -337,12 +446,12 @@
 			y2={rule === 'avg' ? yScale(position) : yScale(rule)}
 		/>
 	{/if}
-</svg>
+</svg> -->
 
 {#if rule}
 	<RuleTip
 		value={rule}
-		position={yScale(position)}
+		position={rulePosition}
 	/>
 {/if}
 <ChartTooltip tooltipInfo={tooltipData} />

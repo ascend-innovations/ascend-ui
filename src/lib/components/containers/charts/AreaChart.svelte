@@ -306,8 +306,6 @@
 				.line()
 				.x((d) => xScale(d.data[0]))
 				.y((d) => yScale(d[1]))
-
-			opacity = Array(stack[0].length).fill(1) // initialize area opacity array
 		} else {
 			xScale = d3
 				.scaleTime()
