@@ -45,7 +45,7 @@ export default async function createUserRecord(locals, adminSupabase, portal_url
 
     console.log('Updating user profile with details:', details)
 	// Insert additional user details into the profiles table
-	const profileUpdateResponse = await supabase.from('profiles').update(details).eq('id', userId) // Finds the user by ID
+	const profileUpdateResponse = await adminSupabase.from('profiles').update(details).eq('id', userId) // Finds the user by ID
 
 	if (profileUpdateResponse.error) {
 		console.error('Error updating user profile:', profileUpdateResponse.error.message)
