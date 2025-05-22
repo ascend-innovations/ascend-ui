@@ -12,7 +12,12 @@
 	<div class="nav-button body-xs">
 		<Button
 			classes={['padding-left', 'btn-full', 'btn-left', 'btn-l', 'btn-white', 'btn-nav-hover']}
-			styles={['padding-top: var(--spacing02)', 'padding-bottom: var(--spacing02)', 'text-decoration: none', `${currentPageLink ? 'font-weight:bold' : ''}`]}
+			styles={[
+				'padding-top: var(--spacing02)',
+				'padding-bottom: var(--spacing02)',
+				'text-decoration: none',
+				`${currentPageLink ? 'font-weight:bold' : ''}`,
+			]}
 			text={sublink.text}
 			url={sublink?.url ?? ''}
 			{callback}

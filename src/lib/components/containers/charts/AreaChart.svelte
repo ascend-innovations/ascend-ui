@@ -250,7 +250,18 @@
 		tooltipLine,
 		tooltipInnerCircle,
 		tooltipOuterCircle,
-		tooltipData = { y: 0, x: 0, line: 0, circlePosition: 0, color: '', title: '', tooltipId, valueOneLabel, valueOne: 0, currency }
+		tooltipData = {
+			y: 0,
+			x: 0,
+			line: 0,
+			circlePosition: 0,
+			color: '',
+			title: '',
+			tooltipId,
+			valueOneLabel,
+			valueOne: 0,
+			currency,
+		}
 
 	if (valueTwoLabel) {
 		tooltipData.valueTwoLabel = valueTwoLabel
@@ -510,7 +521,21 @@
 						{:else}
 							{labelFormat(tick)}
 						{/if} -->
-						{fullDate ? formatFull(item.data[0]) : yearOnly ? formatYear(item.data[0]) : monthOnly ? formatMonth(item.data[0]) : monthDay ? formatMonthDay(item.data[0]) : monthYear ? formatMonthYear(item.data[0]) : quarters ? formatQuarter(item.data[0]) : fiscalYears ? formatFiscalYear(item.data[0]) : formatFull(item.data[0])}
+						{fullDate
+							? formatFull(item.data[0])
+							: yearOnly
+								? formatYear(item.data[0])
+								: monthOnly
+									? formatMonth(item.data[0])
+									: monthDay
+										? formatMonthDay(item.data[0])
+										: monthYear
+											? formatMonthYear(item.data[0])
+											: quarters
+												? formatQuarter(item.data[0])
+												: fiscalYears
+													? formatFiscalYear(item.data[0])
+													: formatFull(item.data[0])}
 					</text>
 				{/each}
 			{/each}

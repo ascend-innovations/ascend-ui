@@ -64,7 +64,8 @@
 				currentPage={pageData.currentPage}
 				totalPages={pageData.totalPages}
 				leftClickCallback={() => (pageData = paginateTable(pageData, 'previous'))}
-				rightClickCallback={() => (pageData = paginateTable(pageData, 'next', fetchNext ? serverFetchNext : null))}
+				rightClickCallback={() =>
+					(pageData = paginateTable(pageData, 'next', fetchNext ? serverFetchNext : null))}
 			/>
 		</div>
 	{/if}

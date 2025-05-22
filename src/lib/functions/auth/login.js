@@ -21,7 +21,10 @@ export default async function login(supabase, email, password) {
 		console.log('User profile is inactive.')
 		// Sign out the user
 		await supabase.auth.signOut()
-		return { success: false, message: 'Your account is inactive. Please contact your administrator for assistance.' }
+		return {
+			success: false,
+			message: 'Your account is inactive. Please contact your administrator for assistance.',
+		}
 	}
 
 	// Step 3: Mark the user as starting MFA

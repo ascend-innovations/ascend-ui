@@ -1,5 +1,14 @@
 <script>
-	import { Page, PageBody, DefaultTooltipElement, TooltipElement, ClockRefreshIcon, NextButton, MetricCard, Card } from '$lib/index.js'
+	import {
+		Page,
+		PageBody,
+		DefaultTooltipElement,
+		TooltipElement,
+		ClockRefreshIcon,
+		NextButton,
+		MetricCard,
+		Card,
+	} from '$lib/index.js'
 </script>
 
 <Page>
@@ -14,13 +23,18 @@
 				</div>
 			</div>
 			<div>
-				<DefaultTooltipElement>Lots of tooltip text. So much that it may wrap to two or more lines. Ideally it will be three.</DefaultTooltipElement>
+				<DefaultTooltipElement
+					>Lots of tooltip text. So much that it may wrap to two or more lines. Ideally it will be three.</DefaultTooltipElement
+				>
 				<div>
 					<p>Large Tooltip</p>
 				</div>
 			</div>
 			<div>
-				<DefaultTooltipElement>Lots of tooltip text. So much that it may wrap to two or more lines. Ideally it will be three. This amount overflows so that we go way over the alloted 3 lines. It works but we should avoid this.</DefaultTooltipElement>
+				<DefaultTooltipElement
+					>Lots of tooltip text. So much that it may wrap to two or more lines. Ideally it will be three. This
+					amount overflows so that we go way over the alloted 3 lines. It works but we should avoid this.</DefaultTooltipElement
+				>
 				<div>
 					<p>Overflowed Tooltip</p>
 				</div>
@@ -28,7 +42,9 @@
 			<div>
 				<TooltipElement>
 					<div slot="element">
-						<p style="text-decoration:underline;text-decoration-color:var(--neutral-100);cursor:pointer">Simple Text</p>
+						<p style="text-decoration:underline;text-decoration-color:var(--neutral-100);cursor:pointer">
+							Simple Text
+						</p>
 					</div>
 					<div slot="content">This text requires some explanation...</div>
 				</TooltipElement>

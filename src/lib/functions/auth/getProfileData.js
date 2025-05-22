@@ -17,7 +17,7 @@ export default async function getProfileData(locals, currentAppId) {
 		profile.app_roles = profile.current_app.roles ?? []
 
 		if (profile.app_roles.length > 0) {
-		    profile.has_access = true
+			profile.has_access = true
 		}
 	}
 

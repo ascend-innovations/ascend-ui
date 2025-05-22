@@ -5,11 +5,11 @@ export default async function deactivateUserProfile(locals, targetUserId, curren
 		logged_in_user_id: locals.user.id,
 	})
 
-    if (response.error) {
+	if (response.error) {
 		console.error('Error deactivating user profile:', response.error)
 		return { success: false, message: response.error.message }
 	}
-    console.log(`Successfully deactivated profile for user ${targetUserId}`)
+	console.log(`Successfully deactivated profile for user ${targetUserId}`)
 
 	return response.data
 }

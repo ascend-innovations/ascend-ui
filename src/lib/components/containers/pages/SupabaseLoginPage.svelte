@@ -1,5 +1,13 @@
 <script>
-	import { InputError, validateCredentials, isValidEmail, validateSupabasePassword, Button, FormTextInput, LoginPage } from '$lib/index.js'
+	import {
+		InputError,
+		validateCredentials,
+		isValidEmail,
+		validateSupabasePassword,
+		Button,
+		FormTextInput,
+		LoginPage,
+	} from '$lib/index.js'
 
 	export let form, dialogCallback
 

@@ -4,12 +4,11 @@ export default async function getAppRoles(locals, currentAppId) {
 		logged_in_user_id: locals.user.id,
 	})
 
-    if (response.error) {
+	if (response.error) {
 		console.error('Error retrieving all app roles:', response.error)
 		return { success: false, message: response.error.message }
 	}
-    console.log(`Successfully retrieved all app roles for app ${currentAppId}`)
-
+	console.log(`Successfully retrieved all app roles for app ${currentAppId}`)
 
 	return response.data
 }

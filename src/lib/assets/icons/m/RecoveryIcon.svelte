@@ -25,7 +25,7 @@
 		stroke-linecap="round"
 		stroke-linejoin="round"
 		stroke-width="2"
-		stroke={colorOverride || palette.primary}
+		stroke={colorOverride || palette.neutral}
 	/>
 	<path
 		d="M17.5332 1.09961L15.5 3.13216L17.4669 5.09961"

@@ -10,7 +10,7 @@ export default async function createAuditLog(supabase, payload) {
 		console.error('Error inserting audit log:', response.error.message)
 		throw new Error(`Failed to create audit log: ${response.error.message}`)
 	}
-    console.log('Audit Log created successfully')
+	console.log('Audit Log created successfully')
 
 	return response.data
 }
