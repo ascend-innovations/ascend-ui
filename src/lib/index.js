@@ -331,6 +331,7 @@ export { default as paginateTable } from '$lib/functions/tables/paginateTable.js
 export { default as getChecklistSelections } from '$lib/functions/utils/getChecklistSelections.js'
 export { default as hexToRGB } from '$lib/functions/utils/hexToRGB.js'
 export { default as todaysDate } from '$lib/functions/utils/todaysDate.js'
+export {default as createObjectArrayFromCSV} from '$lib/functions/utils/createObjectArrayFromCSV.js'
 
 // Validation
 export { default as isValidDate } from '$lib/functions/validation/isValidDate.js'
