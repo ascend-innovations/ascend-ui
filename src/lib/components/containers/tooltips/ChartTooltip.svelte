@@ -13,7 +13,10 @@
 			<p class="values"><span>{tooltipInfo.valueOneLabel}:</span> <b>{tooltipInfo.valueOne}</b></p>
 		{/if}
 		{#if tooltipInfo.valueTwoLabel}
-			<p class="values"><span>{tooltipInfo.valueTwoLabel}:</span> <b>{tooltipInfo.currency ? '$' : ''}{tooltipInfo.valueTwo.toLocaleString()}</b></p>
+			<p class="values">
+				<span>{tooltipInfo.valueTwoLabel}:</span>
+				<b>{tooltipInfo.currency ? '$' : ''}{tooltipInfo.valueTwo.toLocaleString()}</b>
+			</p>
 		{/if}
 	</div>
 </div>

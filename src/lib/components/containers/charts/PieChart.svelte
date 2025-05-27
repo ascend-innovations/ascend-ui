@@ -88,7 +88,7 @@
 	function movingTooltip(e, d, i) {
 		let tooltipHeight = tooltip.node().getBoundingClientRect().height
 		let tooltipWidth = tooltip.node().getBoundingClientRect().width
-		
+
 		tooltipData.y = e.offsetY - tooltipHeight - 20
 		tooltipData.x = e.offsetX - tooltipWidth / 2
 		tooltipData.title = d.data[domain]

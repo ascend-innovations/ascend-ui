@@ -1,5 +1,9 @@
 <script>
-	import { ArrowDownExtraSmallIcon, ArrowUpExtraSmallIcon, ChevronSelectorVerticalExtraSmallIcon } from '$lib/index.js'
+	import {
+		ArrowDownExtraSmallIcon,
+		ArrowUpExtraSmallIcon,
+		ChevronSelectorVerticalExtraSmallIcon,
+	} from '$lib/index.js'
 
 	export let callback,
 		order,

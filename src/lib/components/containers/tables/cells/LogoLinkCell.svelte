@@ -16,7 +16,8 @@
 		} else {
 			prefix = 'tel:'
 			phone = row[column.linkKey]
-			row[column.linkKey] = `${row[column.linkKey]?.slice(0, 3)}-${row[column.linkKey]?.slice(3, 6)}-${row[column.linkKey]?.slice(6)}`
+			row[column.linkKey] =
+				`${row[column.linkKey]?.slice(0, 3)}-${row[column.linkKey]?.slice(3, 6)}-${row[column.linkKey]?.slice(6)}`
 		}
 	}
 </script>

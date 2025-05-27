@@ -100,7 +100,14 @@
 			key: 'name',
 			linkKey: 'link',
 			type: 'link',
-			styles: ['flex: 2', 'max-width: 223px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+			styles: [
+				'flex: 2',
+				'max-width: 223px',
+				'white-space: nowrap',
+				'overflow: hidden',
+				'text-overflow: ellipsis',
+				'font-weight: bold',
+			],
 		},
 		{
 			title: 'Email',
@@ -125,7 +132,11 @@
 			component: StatusTag,
 			key: 'status',
 			type: 'tag',
-			tagMap: { approved: 'warning', pending: 'neutral', tooltips: { approved: 'Provider listing has been published to the external LocalHelpNow directory.' } },
+			tagMap: {
+				approved: 'warning',
+				pending: 'neutral',
+				tooltips: { approved: 'Provider listing has been published to the external LocalHelpNow directory.' },
+			},
 			styles: ['flex: 1'],
 		},
 		{

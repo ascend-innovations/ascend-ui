@@ -1,15 +1,33 @@
 :root {
-	--neutral-shadow-s: 0px var(--spacing01) var(--spacing02) var(--spacing02) var(--neutral-trans-025), 0px var(--spacing02) var(--spacing05) 0px var(--neutral-trans-000);
-	--neutral-shadow-m: 0px var(--spacing01) var(--spacing02) var(--spacing02) var(--neutral-trans-050), 0px var(--spacing02) var(--spacing05) 0px var(--neutral-trans-025);
-	--neutral-shadow-l: 0px var(--spacing02) var(--spacing03) var(--spacing02) var(--neutral-trans-050), 0px var(--spacing04) 30px 0px var(--neutral-trans-025);
+	--neutral-shadow-s:
+		0px var(--spacing01) var(--spacing02) var(--spacing02) var(--neutral-trans-025),
+		0px var(--spacing02) var(--spacing05) 0px var(--neutral-trans-000);
+	--neutral-shadow-m:
+		0px var(--spacing01) var(--spacing02) var(--spacing02) var(--neutral-trans-050),
+		0px var(--spacing02) var(--spacing05) 0px var(--neutral-trans-025);
+	--neutral-shadow-l:
+		0px var(--spacing02) var(--spacing03) var(--spacing02) var(--neutral-trans-050),
+		0px var(--spacing04) 30px 0px var(--neutral-trans-025);
 
-	--primary-shadow-s: 0px var(--spacing01) var(--spacing02) var(--spacing02) var(--primary-trans-050), 0px var(--spacing02) var(--spacing05) 0px var(--primary-trans-025);
-	--primary-shadow-m: 0px var(--spacing01) var(--spacing02) var(--spacing02) var(--primary-trans-100), 0px var(--spacing02) var(--spacing05) 0px var(--primary-trans-050);
-	--primary-shadow-l: 0px var(--spacing02) var(--spacing03) var(--spacing02) var(--primary-trans-100), 0px var(--spacing04) 30px 0px var(--primary-trans-050);
+	--primary-shadow-s:
+		0px var(--spacing01) var(--spacing02) var(--spacing02) var(--primary-trans-050),
+		0px var(--spacing02) var(--spacing05) 0px var(--primary-trans-025);
+	--primary-shadow-m:
+		0px var(--spacing01) var(--spacing02) var(--spacing02) var(--primary-trans-100),
+		0px var(--spacing02) var(--spacing05) 0px var(--primary-trans-050);
+	--primary-shadow-l:
+		0px var(--spacing02) var(--spacing03) var(--spacing02) var(--primary-trans-100),
+		0px var(--spacing04) 30px 0px var(--primary-trans-050);
 
-	--secondary-shadow-s: 0px var(--spacing01) var(--spacing02) var(--spacing02) var(--secondary-trans-025), 0px var(--spacing02) var(--spacing05) 0px var(--secondary-trans-000);
-	--secondary-shadow-m: 0px var(--spacing01) var(--spacing02) var(--spacing02) var(--secondary-trans-050), 0px var(--spacing02) var(--spacing05) 0px var(--secondary-trans-025);
-	--secondary-shadow-l: 0px var(--spacing02) var(--spacing03) var(--spacing02) var(--secondary-trans-050), 0px var(--spacing04) 30px 0px var(--secondary-trans-025);
+	--secondary-shadow-s:
+		0px var(--spacing01) var(--spacing02) var(--spacing02) var(--secondary-trans-025),
+		0px var(--spacing02) var(--spacing05) 0px var(--secondary-trans-000);
+	--secondary-shadow-m:
+		0px var(--spacing01) var(--spacing02) var(--spacing02) var(--secondary-trans-050),
+		0px var(--spacing02) var(--spacing05) 0px var(--secondary-trans-025);
+	--secondary-shadow-l:
+		0px var(--spacing02) var(--spacing03) var(--spacing02) var(--secondary-trans-050),
+		0px var(--spacing04) 30px 0px var(--secondary-trans-025);
 }
 
 *[class*='neutral-shadow-s'] {

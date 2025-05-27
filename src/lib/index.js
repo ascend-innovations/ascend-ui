@@ -281,6 +281,10 @@ export { default as getProfileData } from '$lib/functions/auth/getProfileData.js
 export { default as getAllProfiles } from '$lib/functions/auth/getAllProfiles.js'
 export { default as updateAppProfile } from '$lib/functions/auth/updateAppProfile.js'
 export { default as getOrgInfo } from '$lib/functions/auth/getOrgInfo.js'
+export { default as sendAccountCreationEmail } from '$lib/functions/auth/sendAccountCreationEmail.js'
+export { default as createUserRecord } from '$lib/functions/auth/createUserRecord.js'
+export { default as createAuditLog } from '$lib/functions/auth/createAuditLog.js'
+export { default as getAppRoles } from '$lib/functions/auth/getAppRoles.js'
 
 // Filtering
 export { default as withinDateRange } from '$lib/functions/filtering/withinDateRange.js'

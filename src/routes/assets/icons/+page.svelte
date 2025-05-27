@@ -1,5 +1,18 @@
 <script>
-	import { AdministratorsIcon, GroupsIcon, MetricsIcon, NewNotificationIcon, NotificationsIcon, Content, Page, ProfileIcon, SubscribersIcon, TemplatesIcon } from '$lib/index.js'
+	import {
+		CommunityIcon,
+		CrisisIcon,
+		RecoveryIcon,
+		AdministratorsIcon,
+		GroupsIcon,
+		MetricsIcon,
+		NewNotificationIcon,
+		NotificationsIcon,
+		Page,
+		ProfileIcon,
+		SubscribersIcon,
+		TemplatesIcon,
+	} from '$lib/index.js'
 </script>
 
 <Page>
@@ -8,6 +21,24 @@
 		<h2>Administrator</h2>
 		<div class="sample-container">
 			<AdministratorsIcon />
+		</div>
+	</div>
+	<div class="icon-sample">
+		<h2>CommunityIcon</h2>
+		<div class="sample-container">
+			<CommunityIcon />
+		</div>
+	</div>
+	<div class="icon-sample">
+		<h2>CrisisIcon</h2>
+		<div class="sample-container">
+			<CrisisIcon />
+		</div>
+	</div>
+	<div class="icon-sample">
+		<h2>RecoveryIcon</h2>
+		<div class="sample-container">
+			<RecoveryIcon />
 		</div>
 	</div>
 	<div class="icon-sample">

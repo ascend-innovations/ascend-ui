@@ -6,8 +6,7 @@
 	export let callback,
 		navBarOpen,
 		open = false,
-		pageData = undefined,
-		preload
+		pageData = undefined
 
 	function toggleSubNav() {
 		open = !open
@@ -31,7 +30,11 @@
 				text={navBarOpen ? pageData?.text : ''}
 				url={pageData?.url ?? ''}
 				styles={['text-decoration: none']}
-				rightIcon={pageData.sublinks?.length > 0 ? (open ? NavButtonChevronUpIcon : NavButtonChevronDownIcon) : ''}
+				rightIcon={pageData.sublinks?.length > 0
+					? open
+						? NavButtonChevronUpIcon
+						: NavButtonChevronDownIcon
+					: ''}
 			/>
 		</div>
 	</div>
@@ -41,7 +44,6 @@
 				<SubNavButton
 					{callback}
 					{sublink}
-					{preload}
 				/>
 			{/each}
 		</div>

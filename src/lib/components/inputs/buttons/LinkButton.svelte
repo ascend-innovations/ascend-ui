@@ -5,7 +5,6 @@
 		classes,
 		disabled,
 		leftIcon = null,
-		preload = true,
 		rightIcon = null,
 		styles = [],
 		text = '',
@@ -19,9 +18,6 @@
 		semibold
 		${classes?.includes('btn-full') ? 'btn-full' : 'btn-fit'}
 	`}
-	data-sveltekit-preload-code={preload ? '' : 'off'}
-	data-sveltekit-preload-data={preload ? '' : 'off'}
-	data-sveltekit-reload={preload ? '' : 'off'}
 	href={disabled ? '#' : url}
 	style={styles.join(';')}
 	target={target ? '_blank' : ''}

@@ -182,7 +182,19 @@
 		let tooltipWidth = tooltip.node().getBoundingClientRect().width
 		tooltipData.line = xScale(chartData[i][domain])
 		tooltipData.title = s
-		tooltipData.valueOne = fullDate ? formatFull(p[domain]) : yearOnly ? formatYear(p[domain]) : monthOnly ? formatMonth(p[domain]) : monthDay ? formatMonthDay(p[domain]) : monthYear ? formatMonthYear(p[domain]) : quarters ? formatQuarter(p[domain]) : formatFull(p[domain])
+		tooltipData.valueOne = fullDate
+			? formatFull(p[domain])
+			: yearOnly
+				? formatYear(p[domain])
+				: monthOnly
+					? formatMonth(p[domain])
+					: monthDay
+						? formatMonthDay(p[domain])
+						: monthYear
+							? formatMonthYear(p[domain])
+							: quarters
+								? formatQuarter(p[domain])
+								: formatFull(p[domain])
 		if (tooltipData.valueTwoLabel) tooltipData.valueTwo = p[range]
 		coords.set({ x: xScale(p[domain]), y: yScale(p[range]) })
 		tooltipData.x = $coords.x - tooltipWidth / 2
