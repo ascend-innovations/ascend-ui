@@ -1,4 +1,4 @@
-export default function convertHoursToMinutes(timestamp, formatString = "HH:MM", dropSeconds=true) {
+export default function convertTimestampToMinutes(timestamp, formatString = "HH:MM", dropSeconds=true) {
     /**
      * Converts a time string (e.g., "12:30:45") into the total number of minutes.
      *
