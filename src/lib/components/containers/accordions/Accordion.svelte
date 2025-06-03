@@ -1,6 +1,6 @@
 <script>
 	import { browser } from '$app/environment'
-	import { ChevronSingleDownSmallIcon, ChevronSingleUpSmallIcon } from '$lib/index.js'
+	import { ChevronSingleDownSmallIcon } from '$lib/index.js'
 	import { onMount } from 'svelte'
 
 	export let title,
@@ -8,35 +8,37 @@
 
 	let detailsElement,
 		summaryElement,
+		chevron,
 		open = defaultOpen
 
 	function detailsClick(e) {
 		open = !summaryElement.parentElement.open
+		chevron.style.transform = !open ? 'rotate(180deg)' : 'rotate(0deg)'
 	}
 
 	onMount(() => {
 		if (browser) {
+			detailsElement = document.getElementById(`${title}-details`)
+			summaryElement = document.getElementById(`${title}-details__summary`)
+			chevron = document.querySelector(`#${title}-details__summary .accordion__icon`)
 			detailsElement.open = defaultOpen
+			if (defaultOpen) {
+				chevron.style.transform = 'rotate(180deg)'
+			}
+
+			detailsElement.addEventListener('toggle', (e) => detailsClick(e))
 		}
 	})
 </script>
 
-<details bind:this={detailsElement} class="accordion width-100">
-	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<!-- svelte-ignore a11y-no-static-element-interactions -->
+<details id={`${title}-details`} class="accordion width-100">
 	<summary
-		bind:this={summaryElement}
-		id={`${title}__details`}
+		id={`${title}-details__summary`}
 		class="accordion__title"
-		on:click={(e) => detailsClick(e)}
 	>
 		<h3 class="headline-l-s">{title}</h3>
 		<span class="accordion__icon">
-			{#if summaryElement?.id === `${title}__details` && open}
-				<svelte:component this={ChevronSingleUpSmallIcon} />
-			{:else}
-				<svelte:component this={ChevronSingleDownSmallIcon} />
-			{/if}
+			<ChevronSingleDownSmallIcon />
 		</span>
 	</summary>
 	<div class="accordion__content">
