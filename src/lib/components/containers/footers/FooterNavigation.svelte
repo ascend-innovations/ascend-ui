@@ -24,7 +24,10 @@
 				classes={content?.right?.first?.classes}
 				text={content?.right?.first?.text ?? ''}
 				url={content?.right?.first?.url ?? ''}
-				styles={[`height: ${content?.right?.first?.height ?? ''}`, `width: ${content?.right?.first?.width ?? ''}`]}
+				styles={[
+					`height: ${content?.right?.first?.height ?? ''}`,
+					`width: ${content?.right?.first?.width ?? ''}`,
+				]}
 			/>
 		{/if}
 		{#if content?.right?.second}
@@ -32,7 +35,10 @@
 				classes={content?.right?.second?.classes}
 				text={content?.right?.second?.text ?? ''}
 				url={content?.right?.second?.url ?? ''}
-				styles={[`height: ${content?.right?.second?.height ?? ''}`, `width: ${content?.right?.second?.width ?? ''}`]}
+				styles={[
+					`height: ${content?.right?.second?.height ?? ''}`,
+					`width: ${content?.right?.second?.width ?? ''}`,
+				]}
 			/>
 		{/if}
 		{#if content?.right?.next}

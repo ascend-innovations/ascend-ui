@@ -40,7 +40,16 @@
 
 						const popup = L.popup()
 							.setLatLng(geoPoly.getBounds().getCenter())
-							.setContent(`${infoLink ? `<a href=${zip[linkKey]} style="color:inherit;text-decoration:none;">` : ''}` + `<div {id} class="geo-chart-tooltip" style="max-width:260px;">` + `<p style="font-size:16px;"><b>${zip.properties['zip_code']}</b></p>` + `<div>` + `<p style="font-size:14px;">${pillText}: ${zip[pillKey]}</p>` + `</div>` + `</div>` + `${infoLink ? '</a>' : ''}`)
+							.setContent(
+								`${infoLink ? `<a href=${zip[linkKey]} style="color:inherit;text-decoration:none;">` : ''}` +
+									`<div {id} class="geo-chart-tooltip" style="max-width:260px;">` +
+									`<p style="font-size:16px;"><b>${zip.properties['zip_code']}</b></p>` +
+									`<div>` +
+									`<p style="font-size:14px;">${pillText}: ${zip[pillKey]}</p>` +
+									`</div>` +
+									`</div>` +
+									`${infoLink ? '</a>' : ''}`,
+							)
 
 						geoPoly.bindPopup(popup)
 					}
@@ -86,7 +95,6 @@
 							iconUrl: point.marker,
 						})
 					}
-
 
 					const popup = L.popup({
 						offset: [24, 24],

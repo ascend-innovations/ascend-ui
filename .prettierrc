@@ -1,6 +1,6 @@
 {
 	"editor:formatOnSave": true,
-	"printWidth": 400,
+	"printWidth": 120,
 	"semi": false,
 	"singleAttributePerLine": true,
 	"singleQuote": true,

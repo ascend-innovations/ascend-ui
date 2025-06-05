@@ -153,7 +153,20 @@
 	--white-base: white;
 	--white-trans-base: var(--white-trans-900);
 
-	--gradiant-100: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 4.13%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 100%);
+	--gradiant-100: linear-gradient(
+		90deg,
+		rgba(0, 0, 0, 0.6) 4.13%,
+		rgba(0, 0, 0, 0.5) 100%,
+		rgba(0, 0, 0, 0.5) 100%,
+		rgba(0, 0, 0, 0.5) 100%,
+		rgba(0, 0, 0, 0.5) 100%,
+		rgba(0, 0, 0, 0.5) 100%,
+		rgba(0, 0, 0, 0.5) 100%,
+		rgba(0, 0, 0, 0.5) 100%,
+		rgba(0, 0, 0, 0.5) 100%,
+		rgba(0, 0, 0, 0.5) 100%,
+		rgba(0, 0, 0, 0.5) 100%
+	);
 	--gradiant-200: linear-gradient(58.7deg, #2a2737 3.84%, #3f3d4b 107.29%);
 	--gradiant-300: linear-gradient(82.66deg, rgba(0, 0, 0, 0.46) 32.47%, rgba(0, 0, 0, 0) 83.34%);
 	--gradiant-400: linear-gradient(248.95deg, rgba(255, 221, 71, 0.06) 0.95%, rgba(42, 39, 55, 0.6) 65.49%);

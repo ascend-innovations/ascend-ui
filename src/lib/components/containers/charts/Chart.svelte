@@ -1,5 +1,14 @@
 <script>
-	import { AreaChart, BarChart, CardHeader, ChartKeyContainer, GeoChart, PieChart, TableChart, ScatterplotChart } from '$lib/index.js'
+	import {
+		AreaChart,
+		BarChart,
+		CardHeader,
+		ChartKeyContainer,
+		GeoChart,
+		PieChart,
+		TableChart,
+		ScatterplotChart,
+	} from '$lib/index.js'
 	import AlertCircleSmallIcon from '$lib/assets/icons/s/AlertCircleSmallIcon.svelte'
 	import { afterUpdate } from 'svelte'
 
@@ -45,10 +54,40 @@
 		fiscalYears,
 		titleTooltip = null,
 		titleButton = false,
-		barColors = ['var(--secondary-600)', 'var(--secondary-base)', 'var(--secondary-400)', 'var(--secondary-300)', 'var(--secondary-200)', 'var(--secondary-100)', 'var(--secondary-050)'],
-		areaColors = ['var(--secondary-trans-600)', 'var(--secondary-trans-500)', 'var(--secondary-trans-400)', 'var(--secondary-trans-300)', 'var(--secondary-trans-200)', 'var(--secondary-trans-100)'],
-		lineColors = ['var(--secondary-600)', 'var(--secondary-base)', 'var(--secondary-400)', 'var(--secondary-300)', 'var(--secondary-200)', 'var(--secondary-100)'],
-		arcColors = ['var(--secondary-600)', 'var(--secondary-base)', 'var(--secondary-400)', 'var(--secondary-300)', 'var(--secondary-200)', 'var(--secondary-100)', 'var(--secondary-050)'],
+		barColors = [
+			'var(--secondary-600)',
+			'var(--secondary-base)',
+			'var(--secondary-400)',
+			'var(--secondary-300)',
+			'var(--secondary-200)',
+			'var(--secondary-100)',
+			'var(--secondary-050)',
+		],
+		areaColors = [
+			'var(--secondary-trans-600)',
+			'var(--secondary-trans-500)',
+			'var(--secondary-trans-400)',
+			'var(--secondary-trans-300)',
+			'var(--secondary-trans-200)',
+			'var(--secondary-trans-100)',
+		],
+		lineColors = [
+			'var(--secondary-600)',
+			'var(--secondary-base)',
+			'var(--secondary-400)',
+			'var(--secondary-300)',
+			'var(--secondary-200)',
+			'var(--secondary-100)',
+		],
+		arcColors = [
+			'var(--secondary-600)',
+			'var(--secondary-base)',
+			'var(--secondary-400)',
+			'var(--secondary-300)',
+			'var(--secondary-200)',
+			'var(--secondary-100)',
+			'var(--secondary-050)',
+		],
 		pointColor = 'var(--secondary-600)'
 
 	let chartWidth,

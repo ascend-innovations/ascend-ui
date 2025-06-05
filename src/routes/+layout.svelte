@@ -1,6 +1,16 @@
 <script>
 	import './styles.css'
-	import { AscendLogoIcon, HeaderBar, HomeIcon, Main, NavBar, ProfileButton, Shell, TemplatesIcon, ToastArea } from '$lib/index.js'
+	import {
+		AscendLogoIcon,
+		HeaderBar,
+		HomeIcon,
+		Main,
+		NavBar,
+		ProfileButton,
+		Shell,
+		TemplatesIcon,
+		ToastArea,
+	} from '$lib/index.js'
 
 	const NavIcon = AscendLogoIcon
 

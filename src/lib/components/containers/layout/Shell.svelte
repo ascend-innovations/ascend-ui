@@ -2,8 +2,8 @@
 	export let styles = []
 </script>
 
-<div 
-	class="shell" 
+<div
+	class="shell"
 	style={styles.join(';')}
 >
 	<slot />

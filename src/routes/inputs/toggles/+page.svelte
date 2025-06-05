@@ -1,6 +1,12 @@
 <script>
 	import ToggleButton from '$lib/components/inputs/toggles/ToggleButton.svelte'
-	import { Page, PageBody, ToggleSwitch, ChevronDoubleLeftSmallIcon, ChevronDoubleRightSmallIcon } from '$lib/index.js'
+	import {
+		Page,
+		PageBody,
+		ToggleSwitch,
+		ChevronDoubleLeftSmallIcon,
+		ChevronDoubleRightSmallIcon,
+	} from '$lib/index.js'
 </script>
 
 <Page>

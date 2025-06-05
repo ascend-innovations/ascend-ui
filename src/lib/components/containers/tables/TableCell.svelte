@@ -1,5 +1,20 @@
 <script>
-	import { ArrayCell, BooleanCell, ButtonCell, CheckboxCell, DateCell, FullYearDateCell, DateTimeCell, DefaultCell, EditableCell, LogoLinkCell, RadioCell, TagArrayCell, TagCell, LinkCell } from '$lib/index'
+	import {
+		ArrayCell,
+		BooleanCell,
+		ButtonCell,
+		CheckboxCell,
+		DateCell,
+		FullYearDateCell,
+		DateTimeCell,
+		DefaultCell,
+		EditableCell,
+		LogoLinkCell,
+		RadioCell,
+		TagArrayCell,
+		TagCell,
+		LinkCell,
+	} from '$lib/index'
 
 	export let column, row
 </script>
