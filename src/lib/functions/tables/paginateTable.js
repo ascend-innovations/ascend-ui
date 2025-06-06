@@ -10,7 +10,11 @@ export default function paginateTable(data, direction, fetchNext = null, pageSiz
 
 	if (direction === 'next') {
 		if (fetchNext) {
-			fetchNext()
+			try {
+				fetchNext()
+			} catch(e){
+				return data
+			}
 		}
 		if (data.currentPage < data.totalPages) {
 			data.leftIndex += pageSize
