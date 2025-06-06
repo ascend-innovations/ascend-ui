@@ -5,6 +5,7 @@
 		classes,
 		disabled,
 		leftIcon = null,
+		loading,
 		rightIcon = null,
 		styles = [],
 		text = '',
@@ -34,6 +35,7 @@
 		<ButtonContents
 			{bottomIcon}
 			{leftIcon}
+			{loading}
 			{rightIcon}
 			{text}
 			{topIcon}
