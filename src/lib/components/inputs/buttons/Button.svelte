@@ -31,6 +31,7 @@
 			{classes}
 			{disabled}
 			{leftIcon}
+			{loading}
 			{rightIcon}
 			{styles}
 			{text}
