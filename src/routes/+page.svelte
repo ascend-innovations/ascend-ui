@@ -1,8 +1,4 @@
-<script>
-	import { MainContent } from '$lib/index.js'
-</script>
-
-<MainContent>
+<div class="main-content">
 	<h1>Ascend UI Component Library</h1>
 	<p><a href="/containers/alerts">Alerts</a></p>
 	<p><a href="/containers/charts">Charts</a></p>
@@ -20,4 +16,4 @@
 	<p><a href="/inputs/numbers">Numbers</a></p>
 	<p><a href="/inputs/toggles">Toggles</a></p>
 	<p><a href="/inputs/selectors">Selectors</a></p>
-</MainContent>
+</div>

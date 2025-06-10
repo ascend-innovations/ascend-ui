@@ -1,8 +1,8 @@
 <script>
 	import './styles.css'
-	import { AscendLogoIcon, HeaderBar, HomeIcon, Main, NavBar, ProfileButton, Shell, TemplatesIcon, ToastArea } from '$lib/index.js'
-	import Page from './+page.svelte'
-	import PageBody from '$lib/components/containers/pages/PageBody.svelte'
+	import { AscendLogoIcon, HeaderBar, HomeIcon, NavBar, ProfileButton, TemplatesIcon, ToastArea } from '$lib/index.js'
+	import { onMount } from 'svelte'
+	import { browser } from '$app/environment'
 
 	const NavIcon = AscendLogoIcon
 
@@ -122,27 +122,76 @@
 			{
 				startOpen: true,
 				text: 'Icons',
-				url: '#',
-				sublinks: [
-
-				]
+				url: '/assets/icons',
 			}
 		],
 	}
+
+	onMount(() => {
+		if (browser) {
+			let keepOpen = true
+			let navbar = document.querySelector('.navbar')
+			let navbarHeaderOpen = document.querySelector('.navbar__header--open')
+			let navbarHeaderClosed = document.querySelector('.navbar__header--closed')
+			let toggleButton = document.querySelector('.navbar__header .navbar__toggle-button')
+
+			toggleButton.addEventListener('click', () => {
+				toggleButton.style.transform = keepOpen ? 'rotate(180deg)' : 'rotate(0deg)'
+				navbar.classList.toggle('nav--open')
+				navbar.classList.toggle('nav--closed')
+				keepOpen = !keepOpen
+			})
+
+			if (!keepOpen) {
+				navbar.addEventListener('mouseenter', () => {
+					toggleButton.style.display = 'block'
+					navbarHeaderClosed.style.display = 'none'
+					navbarHeaderOpen.style.display = 'flex'
+					navbar.classList.add('nav--open')
+					navbar.classList.remove('nav--closed')
+				})
+				navbar.addEventListener('focus', () => {
+					toggleButton.style.display = 'block'
+					navbarHeaderClosed.style.display = 'none'
+					navbarHeaderOpen.style.display = 'flex'
+					navbar.classList.add('nav--open')
+					navbar.classList.remove('nav--closed')
+				})
+				navbar.addEventListener('mouseleave', () => {
+					toggleButton.style.display = 'none'
+					navbarHeaderClosed.style.display = 'flex'
+					navbarHeaderOpen.style.display = 'none'
+					navbar.classList.remove('nav--open')
+					navbar.classList.add('nav--closed')
+				})
+				navbar.addEventListener('blur', () => {
+					toggleButton.style.display = 'none'
+					navbarHeaderClosed.style.display = 'flex'
+					navbarHeaderOpen.style.display = 'none'
+					navbar.classList.remove('nav--open')
+					navbar.classList.add('nav--closed')
+				})
+			}
+		}
+	})
 </script>
 
-<Shell>
-	<!-- <NavBar
+<div class="shell">
+	<NavBar
 		keepOpen={true}
 		openHeaderComponent={NavIcon}
 		closedHeaderComponent={NavIcon}
 		{navBarContents}
-	/> -->
-	<Main>
+	/>
+	<main class="main">
 		<HeaderBar>
 			<ProfileButton url="/" />
 		</HeaderBar>
-		<slot />
-	</Main>
+		<div class="page">
+			<div class="page-body full">
+				<slot />
+			</div>
+		</div>
+	</main>
 	<ToastArea />
-</Shell>
+</div>

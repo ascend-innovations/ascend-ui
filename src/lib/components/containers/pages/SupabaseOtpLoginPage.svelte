@@ -45,11 +45,17 @@
 				name="otp"
 				bind:value={otp}
 				label="One-Time Passcode"
-				placeholder="Enter Passcode"
-				type="password"
 				validValue={validOtp}
 				validationCallback={otpValidation}
 				validationMessage={otpValidationMessage}
+			/>
+			<input
+				value={password}
+				class="form-text__input {validPassword === false ? 'form-text__input--error' : ''}"
+				id="password"
+				name="password"
+				placeholder="Enter your password"
+				type="password"
 			/>
 
 			{#if form?.message}

@@ -1,7 +1,7 @@
 <script>
 	import CheckboxInput from '$lib/components/inputs/checkboxes/CheckboxInput.svelte'
 	import CheckOption from '$lib/components/inputs/checkboxes/CheckOption.svelte'
-	import { CheckDone01SmallIcon, CheckList, MainContent } from '$lib/index.js'
+	import { CheckDone01SmallIcon, CheckList } from '$lib/index.js'
 
 	const list = [
 		{
@@ -25,18 +25,16 @@
 	}
 </script>
 
-<MainContent>
-	<h1>Checkboxes</h1>
-	<CheckList
-		{list}
-		{callback}
-	/>
-	<CheckboxInput
-		value="no"
-		{callback}
-	/>
-	<CheckOption
-		name="yes"
-		{callback}
-	/>
-</MainContent>
+<h1>Checkboxes</h1>
+<CheckList
+	{list}
+	{callback}
+/>
+<CheckboxInput
+	value="no"
+	{callback}
+/>
+<CheckOption
+	name="yes"
+	{callback}
+/>

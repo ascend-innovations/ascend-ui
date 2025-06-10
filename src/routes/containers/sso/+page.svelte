@@ -1,5 +1,5 @@
 <script>
-	import { Page, PageBody, SSOLandingPage, SupabaseLoginPage, SupabaseOtpLoginPage } from '$lib/index.js'
+	import { SSOLandingPage, SupabaseLoginPage, SupabaseOtpLoginPage } from '$lib/index.js'
 
 	let data = {
 		has_apps: true,
@@ -45,10 +45,6 @@
 	}
 </script>
 
-<Page>
-	<PageBody size="full">
-		<!-- <SSOLandingPage {data} /> -->
-		<!-- <SupabaseLoginPage /> -->
-		<SupabaseOtpLoginPage />
-	</PageBody>
-</Page>
+<!-- <SSOLandingPage {data} /> -->
+<SupabaseLoginPage />
+<!-- <SupabaseOtpLoginPage /> -->

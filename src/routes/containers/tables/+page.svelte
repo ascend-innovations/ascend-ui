@@ -1,5 +1,5 @@
 <script>
-	import { EditButton, Page, PageBody, RadioInput, StatusTag, Table, PaginatedTable } from '$lib/index'
+	import { EditButton, RadioInput, StatusTag, Table, PaginatedTable } from '$lib/index'
 
 	function generateRandomData() {
 		const names = ['John Doe', 'Jane Smith', 'Michael Johnson', 'Emily Davis', 'David Wilson']
@@ -165,15 +165,11 @@
 	]
 </script>
 
-<Page>
-	<PageBody size="full">
-		<!-- <Table
-			{columns}
-			bind:list
-		/> -->
-		<PaginatedTable
-			{columns}
-			{list}
-		/>
-	</PageBody>
-</Page>
+<!-- <Table
+	{columns}
+	bind:list
+/> -->
+<PaginatedTable
+	{columns}
+	{list}
+/>

@@ -1,6 +1,6 @@
 <script>
 	import SelectorInput from '$lib/components/inputs/selectors/SelectorInput.svelte'
-	import { Chart, Page, PageBody, StatusTag, PageTransitionWrapper } from '$lib/index.js'
+	import { Chart, StatusTag, PageTransitionWrapper } from '$lib/index.js'
   import { page } from '$app/stores';
 
 	let svgpin = `<div style="position:relative;">
@@ -1863,224 +1863,215 @@
 	export let data
 </script>
 
-<Page>
-	<PageTransitionWrapper>
-	<PageBody
-		size="full"
-		styles={['max-width: 1440px', 'margin: auto']}
-	>
-		<div class="header">
-			<h1>Charts</h1>
-		</div>
-		<div class="chart-container">
-			<div class="simple-v-bar">
-				<Chart
-					tooltipId="simple-v"
-					type="bar"
-					vertical={true}
-					title="Simple Vertical Bar Chart"
-					data={barData}
-					domain="x"
-					range="value"
-					valueOneLabel="Date"
-					valueTwoLabel="Value"
-					barColors={['var(--secondary-base']}
-					seriesKey="series"
-				/>
-			</div>
+<div class="header">
+  <h1>Charts</h1>
+</div>
+<div class="chart-container">
+  <div class="simple-v-bar">
+    <Chart
+      tooltipId="simple-v"
+      type="bar"
+      vertical={true}
+      title="Simple Vertical Bar Chart"
+      data={barData}
+      domain="x"
+      range="value"
+      valueOneLabel="Date"
+      valueTwoLabel="Value"
+      barColors={['var(--secondary-base']}
+      seriesKey="series"
+    />
+  </div>
 
-			<!-- <div class="table-chart">
-				<Chart 
-					title="Table Chart"
-					type="table"
-					data={tableData}
-					titleButton={{
-						text: 'See More',
-						url: '/'
-					}}
-					tableColumns={tableColumns}
-				/>
-			</div> -->
+  <!-- <div class="table-chart">
+    <Chart 
+      title="Table Chart"
+      type="table"
+      data={tableData}
+      titleButton={{
+        text: 'See More',
+        url: '/'
+      }}
+      tableColumns={tableColumns}
+    />
+  </div> -->
 
-			<!-- <div class="simple-h-bar">
-				<Chart
-					tooltipId="simple-h"
-					type="bar"
-					horizontal
-					title="Simple Horizontal Bar Chart"
-					data={barData}
-					domain="value"
-					range="x"
-				/>
-			</div> -->
-			<div class="stacked-v-bar">
-				<Chart
-					tooltipId="stacked-v"
-					type="bar"
-					vertical
-					stacked={true}
-					data={stackedBarData}
-					title="Stacked Vertical Bar Chart"
-					domain="x"
-					range="value"
-					valueOneLabel="x"
-					valueTwoLabel="value"
-					labelKey="name"
-					seriesKey="name"
-					lineColors={['var(--primary-700)', 'var(--primary-base)', 'var(--primary-300)']}
-					areaColors={['var(--primary-trans-700)', 'var(--primary-trans-500)', 'var(--primary-trans-300)']}
-				/>
-			</div>
-			<!-- <div class="stacked-h-bar">
-				<Chart
-					tooltipId="stacked-h"
-					type="bar"
-					horizontal
-					stacked
-					data={stackedBarData}
-					title="Stacked Horizontal Bar Chart"
-					domain="value"
-					range="x"
-					,
-					labelKey="name"
-					seriesKey="name"
-				/>
-			</div> -->
-			<div class="simple-area-chart">
-				<Chart
-					tooltipId="area"
-					type="area"
-					data={floatData}
-					title="Simple Area Chart"
-					domain="date"
-					range="value"
-					currency
-					yearOnly
-					valueOneLabel="date"
-					valueTwoLabel="value"
-					seriesKey="series"
-          lineColors={['var(--secondary-base)']}
-          areaColors={['var(--secondary-trans-500)']}
-				>
-					<!-- <div
-						slot="chart-header"
-						style="margin-top: var(--spacing09);margin-bottom: var(--spacing09)"
-					>
-						<SelectorInput
-							id="bar-selector"
-							label="Random Selector"
-							defaultOptionName={'realData'}
-							defaultOptionValue={'realData'}
-							optionList={['citData']}
-							bind:selectedValue={geoData}
-						/>
-					</div>
-					<div
-						slot="chart-footer"
-						style="margin-top: var(--spacing09)"
-					>
-						<SelectorInput
-							id="bar-selector"
-							label="Random Selector"
-							defaultOptionName={'realData'}
-							defaultOptionValue={'realData'}
-							optionList={['secondGeoData']}
-							bind:selectedValue={geoData}
-						/>
-					</div> -->
-				</Chart>
-			</div>
-			<div class="stacked-area-chart">
-				<Chart
-					tooltipId="stacked-a"
-					type="area"
-					data={realStacked}
-					title="Stacked Area Chart"
-					domain="date"
-					range="value"
-					seriesKey="name"
-					labelKey="name"
-					valueOneLabel="date"
-					valueTwoLabel="value"
-					yearOnly
-					stacked
-          lineColors={['var(--secondary-600)', 'var(--secondary-base)']}
-				/>
-			</div>
-			<!-- <div class="pie-chart">
-				<Chart
-					tooltipId="pie"
-					type="pie"
-					data={pieData}
-					title="Pie Chart"
-					domain="name"
-					range="value"
-					seriesKey="name"
-					sort="descending"
-				/>
-			</div> -->
-			<div class="ring-chart">
-				<Chart
-					tooltipId="ring-chart"
-					type="pie"
-					data={pieData}
-					title="Ring Chart"
-					domain="name"
-					range="value"
-					seriesKey="name"
-					valueOneLabel="Count"
-					valueTwoLabel="Percentage"
-					ring
-				/>
-			</div>
-			<div class="scatterplot-chart">
-				<Chart
-					tooltipId="scatter"
-					data={scatterData}
-					title="Scatterplot Chart"
-					type="scatter"
-					domain="date"
-					range="value"
-					seriesKey="series"
-					valueOneLabel="date"
-					valueTwoLabel="value"
-          rule="avg"
-          domainLabel="Date"
-          rangeLabel="Value"
-					monthDay
-				/>
-			</div>
-			<!-- <div class="geo-chart">
-				<Chart
-					title="Map With Multiple Markers"
-					type="geo"
-					mapId="first-map"
-					pillText="Active Children"
-					pillKey="count"
-					addressKey="full_address"
-					contentKey="zip"
-					data={realData}
-					geoJSON={null}
-				/>
-			</div> -->
-			<!-- <div class="geo-chart">
-				<Chart 
-					title="Map With Multiple Markers"
-					type="geo"
-					mapId="second-map"
-					pillText="Total Number of Claims"
-					pillKey="count"
-					addressKey="full_address"
-					infoTitleKey="name"
-					markers={markers}
-					geoJSON={null}
-					data={newGeoData}
-				/>
-			</div> -->
-		</div>
-	</PageBody>
-	</PageTransitionWrapper>
-</Page>
+  <!-- <div class="simple-h-bar">
+    <Chart
+      tooltipId="simple-h"
+      type="bar"
+      horizontal
+      title="Simple Horizontal Bar Chart"
+      data={barData}
+      domain="value"
+      range="x"
+    />
+  </div> -->
+  <div class="stacked-v-bar">
+    <Chart
+      tooltipId="stacked-v"
+      type="bar"
+      vertical
+      stacked={true}
+      data={stackedBarData}
+      title="Stacked Vertical Bar Chart"
+      domain="x"
+      range="value"
+      valueOneLabel="x"
+      valueTwoLabel="value"
+      labelKey="name"
+      seriesKey="name"
+      lineColors={['var(--primary-700)', 'var(--primary-base)', 'var(--primary-300)']}
+      areaColors={['var(--primary-trans-700)', 'var(--primary-trans-500)', 'var(--primary-trans-300)']}
+    />
+  </div>
+  <!-- <div class="stacked-h-bar">
+    <Chart
+      tooltipId="stacked-h"
+      type="bar"
+      horizontal
+      stacked
+      data={stackedBarData}
+      title="Stacked Horizontal Bar Chart"
+      domain="value"
+      range="x"
+      ,
+      labelKey="name"
+      seriesKey="name"
+    />
+  </div> -->
+  <div class="simple-area-chart">
+    <Chart
+      tooltipId="area"
+      type="area"
+      data={floatData}
+      title="Simple Area Chart"
+      domain="date"
+      range="value"
+      currency
+      yearOnly
+      valueOneLabel="date"
+      valueTwoLabel="value"
+      seriesKey="series"
+      lineColors={['var(--secondary-base)']}
+      areaColors={['var(--secondary-trans-500)']}
+    >
+      <!-- <div
+        slot="chart-header"
+        style="margin-top: var(--spacing09);margin-bottom: var(--spacing09)"
+      >
+        <SelectorInput
+          id="bar-selector"
+          label="Random Selector"
+          defaultOptionName={'realData'}
+          defaultOptionValue={'realData'}
+          optionList={['citData']}
+          bind:selectedValue={geoData}
+        />
+      </div>
+      <div
+        slot="chart-footer"
+        style="margin-top: var(--spacing09)"
+      >
+        <SelectorInput
+          id="bar-selector"
+          label="Random Selector"
+          defaultOptionName={'realData'}
+          defaultOptionValue={'realData'}
+          optionList={['secondGeoData']}
+          bind:selectedValue={geoData}
+        />
+      </div> -->
+    </Chart>
+  </div>
+  <div class="stacked-area-chart">
+    <Chart
+      tooltipId="stacked-a"
+      type="area"
+      data={realStacked}
+      title="Stacked Area Chart"
+      domain="date"
+      range="value"
+      seriesKey="name"
+      labelKey="name"
+      valueOneLabel="date"
+      valueTwoLabel="value"
+      yearOnly
+      stacked
+      lineColors={['var(--secondary-600)', 'var(--secondary-base)']}
+    />
+  </div>
+  <!-- <div class="pie-chart">
+    <Chart
+      tooltipId="pie"
+      type="pie"
+      data={pieData}
+      title="Pie Chart"
+      domain="name"
+      range="value"
+      seriesKey="name"
+      sort="descending"
+    />
+  </div> -->
+  <div class="ring-chart">
+    <Chart
+      tooltipId="ring-chart"
+      type="pie"
+      data={pieData}
+      title="Ring Chart"
+      domain="name"
+      range="value"
+      seriesKey="name"
+      valueOneLabel="Count"
+      valueTwoLabel="Percentage"
+      ring
+    />
+  </div>
+  <div class="scatterplot-chart">
+    <Chart
+      tooltipId="scatter"
+      data={scatterData}
+      title="Scatterplot Chart"
+      type="scatter"
+      domain="date"
+      range="value"
+      seriesKey="series"
+      valueOneLabel="date"
+      valueTwoLabel="value"
+      rule="avg"
+      domainLabel="Date"
+      rangeLabel="Value"
+      monthDay
+    />
+  </div>
+  <!-- <div class="geo-chart">
+    <Chart
+      title="Map With Multiple Markers"
+      type="geo"
+      mapId="first-map"
+      pillText="Active Children"
+      pillKey="count"
+      addressKey="full_address"
+      contentKey="zip"
+      data={realData}
+      geoJSON={null}
+    />
+  </div> -->
+  <!-- <div class="geo-chart">
+    <Chart 
+      title="Map With Multiple Markers"
+      type="geo"
+      mapId="second-map"
+      pillText="Total Number of Claims"
+      pillKey="count"
+      addressKey="full_address"
+      infoTitleKey="name"
+      markers={markers}
+      geoJSON={null}
+      data={newGeoData}
+    />
+  </div> -->
+</div>
 
 <style>
 	.header {

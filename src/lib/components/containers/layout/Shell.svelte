@@ -1,3 +1,0 @@
-<div class="shell">
-	<slot />
-</div>

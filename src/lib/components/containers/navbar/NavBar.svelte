@@ -1,58 +1,42 @@
 <script>
-	import { NavBarHeader, NavButton } from '$lib/index.js'
+	import { NavButton, ChevronDoubleLeftSmallIcon } from '$lib/index.js'
 	import { slide } from 'svelte/transition'
 
 	export let navClickCallback,
-		hoverOpen = false,
-		keepOpen = true,
 		navBarContents,
 		preload,
 		url = '/',
 		closedHeaderComponent = undefined,
 		openHeaderComponent = undefined
-
-	$: navBarOpen = hoverOpen || keepOpen
-
-	function toggleNavbar() {
-		keepOpen = !keepOpen
-	}
-
-	function openNavbar() {
-		hoverOpen = true
-	}
-
-	function closeNavbar() {
-		hoverOpen = false
-	}
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-	class={`navbar ${navBarOpen ? 'nav--open' : 'nav--closed'}`}
+	class='navbar nav--open'
 	transition:slide={{ axis: 'x' }}
-	on:mouseenter={openNavbar}
-	on:focus={openNavbar}
-	on:mouseleave={closeNavbar}
-	on:blur={closeNavbar}
 >
-	<div class="navbar__content">
+	<div class="navbar__content">	
 		<div class="navbar__content--upper">
-			<NavBarHeader
-				{closedHeaderComponent}
-				{keepOpen}
-				{navBarOpen}
-				{openHeaderComponent}
-				{preload}
-				{toggleNavbar}
-				{url}
-			/>
+			<div class="navbar__header">
+				<div class="navbar__header--open">
+					<a href={url}>
+						<svelte:component this={openHeaderComponent} />
+					</a>
+					<button class='btn-fit btn-m btn-square btn-white navbar__toggle-button'>
+						<ChevronDoubleLeftSmallIcon />
+					</button>
+				</div>
+				<div class="navbar__header--closed">
+					what
+					<svelte:component this={closedHeaderComponent} />
+				</div>
+			</div>
 			<div class="navbar__page-list">
 				{#if navBarContents?.primaryPageList?.length}
 					{#each navBarContents.primaryPageList as pageData}
 						<div class="width-100">
 							<NavButton
 								callback={navClickCallback}
-								{navBarOpen}
 								{pageData}
 								{preload}
 							/>
@@ -65,7 +49,6 @@
 						<div class="width-100">
 							<NavButton
 								callback={navClickCallback}
-								{navBarOpen}
 								{pageData}
 								{preload}
 							/>

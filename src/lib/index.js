@@ -168,9 +168,6 @@ export { default as GridList } from '$lib/components/containers/grids/GridList.s
 // Headers
 export { default as HeaderBar } from '$lib/components/containers/headers/HeaderBar.svelte'
 
-// Icons
-export { default as Icon } from '$lib/components/containers/icons/Icon.svelte'
-
 // Labels
 export { default as AutoSaveIndicator } from '$lib/components/containers/labels/AutoSaveIndicator.svelte'
 export { default as Label } from '$lib/components/containers/labels/Label.svelte'
@@ -180,18 +177,12 @@ export { default as FilterContainer } from '$lib/components/containers/labels/Fi
 export { default as FilterLabel } from '$lib/components/containers/labels/FilterLabel.svelte'
 export { default as MapColorKey } from '$lib/components/containers/labels/MapColorKey.svelte'
 
-// Layout
-export { default as Main } from '$lib/components/containers/layout/Main.svelte'
-export { default as MainContent } from '$lib/components/containers/layout/MainContent.svelte'
-export { default as Shell } from '$lib/components/containers/layout/Shell.svelte'
-
 // Menu
 export { default as Menu } from '$lib/components/containers/menus/Menu.svelte'
 export { default as ProfileMenu } from '$lib/components/containers/menus/ProfileMenu.svelte'
 
 // Navbar
 export { default as NavBar } from '$lib/components/containers/navbar/NavBar.svelte'
-export { default as NavBarHeader } from '$lib/components/containers/navbar/NavBarHeader.svelte'
 export { default as SimpleNavBar } from '$lib/components/containers/navbar/SimpleNavBar.svelte'
 
 // Pages
@@ -200,8 +191,6 @@ export { default as Error404Page } from '$lib/components/containers/pages/Error4
 export { default as Error401Page } from '$lib/components/containers/pages/Error401Page.svelte'
 export { default as LoginPage } from '$lib/components/containers/pages/LoginPage.svelte'
 export { default as MetaData } from '$lib/components/containers/pages/MetaData.svelte'
-export { default as Page } from '$lib/components/containers/pages/Page.svelte'
-export { default as PageBody } from '$lib/components/containers/pages/PageBody.svelte'
 export { default as PageDescription } from '$lib/components/containers/pages/PageDescription.svelte'
 export { default as PageFooter } from '$lib/components/containers/pages/PageFooter.svelte'
 export { default as PageHeader } from '$lib/components/containers/pages/PageHeader.svelte'
@@ -315,15 +304,16 @@ export { default as sortTable } from '$lib/functions/sorting/sortTable.js'
 
 // Styling
 export { default as getGlobalColorPalette } from '$lib/functions/styling/getGlobalColorPalette.js'
-export { default as getIcon } from '$lib/functions/styling/getIcon.js'
 export { default as setStyles } from '$lib/functions/styling/setStyles.js'
 
 // Tables
 export { default as paginateTable } from '$lib/functions/tables/paginateTable.js'
 
 // Utility
+export { default as getIcon } from '$lib/functions/utils/getIcon.js'
 export { default as getChecklistSelections } from '$lib/functions/utils/getChecklistSelections.js'
 export { default as hexToRGB } from '$lib/functions/utils/hexToRGB.js'
+export { default as resolveIconSvg } from '$lib/functions/utils/resolveIconSvg.js'
 export { default as todaysDate } from '$lib/functions/utils/todaysDate.js'
 
 // Validation
@@ -358,7 +348,6 @@ export { default as LinkButton } from '$lib/components/inputs/buttons/LinkButton
 export { default as LoginButton } from '$lib/components/inputs/buttons/LoginButton.svelte'
 export { default as LogoutButton } from '$lib/components/inputs/buttons/LogoutButton.svelte'
 export { default as LogoutMenuButton } from '$lib/components/inputs/buttons/LogoutMenuButton.svelte'
-export { default as NavBarToggleButton } from '$lib/components/inputs/buttons/NavBarToggleButton.svelte'
 export { default as NavButton } from '$lib/components/inputs/buttons/NavButton.svelte'
 export { default as NextButton } from '$lib/components/inputs/buttons/NextButton.svelte'
 export { default as OkButton } from '$lib/components/inputs/buttons/OkButton.svelte'
@@ -410,7 +399,6 @@ export { default as RadioList } from '$lib/components/inputs/radio/RadioList.sve
 export { default as RadioOption } from '$lib/components/inputs/radio/RadioOption.svelte'
 
 // Selectors
-export { default as CheckboxSelectOption } from '$lib/components/inputs/selectors/CheckboxSelectOption.svelte'
 export { default as MultiSelector } from '$lib/components/inputs/selectors/MultiSelector.svelte'
 export { default as SelectorInput } from '$lib/components/inputs/selectors/SelectorInput.svelte'
 

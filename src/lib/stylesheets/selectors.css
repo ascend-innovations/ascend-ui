@@ -39,6 +39,7 @@ select:hover {
     cursor: pointer;
 }
 .multi-selector__list {
+    display: none;
     width: 100%;
     top: 100%;
     left: 0;
@@ -65,10 +66,14 @@ select:hover {
         padding-top: var(--spacing05);
     }
 }
-.checkbox-select {
+.multi-selector__option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing05);
     padding: var(--spacing03);
+    cursor: pointer;
 }
-.checkbox-select__label {
+.multi-selector__option__label {
     display: flex;
     gap: var(--spacing05);
     font-weight: 700;

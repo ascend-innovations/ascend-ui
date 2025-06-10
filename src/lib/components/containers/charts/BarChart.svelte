@@ -459,10 +459,10 @@
 
 <div class="{tooltipId}-chart"></div>
 
-{#if rule}
+<!-- {#if rule}
 	<RuleTip
 		value={rule}
 		position={rulePosition}
 	/>
 {/if}
-<ChartTooltip tooltipInfo={tooltipData} />
+<ChartTooltip tooltipInfo={tooltipData} /> -->

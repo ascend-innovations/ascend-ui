@@ -1,5 +1,5 @@
 <script>
-	import { Page, ToastArea } from '$lib/index.js'
+	import { ToastArea } from '$lib/index.js'
 
 	const toastList = [
 		// {
@@ -46,29 +46,27 @@
 	]
 </script>
 
-<Page>
-	<h1>Toasts</h1>
-	<pre>
-		<code>
-		{`
-			const toastList = [
-				{
-					body: 'Yay!',
-					category: 'dismiss',
-					id: 0,
-					purpose: 'success',
-					title: 'Success!',
-				},
-				{
-					body: 'Oh no, what now?',
-					category: 'action',
-					id: 1,
-					purpose: 'error',
-					title: 'Error!',
-				}
-			]
-		`}
-		</code>
-	</pre>
-	<ToastArea {toastList} />
-</Page>
+<h1>Toasts</h1>
+<pre>
+	<code>
+	{`
+		const toastList = [
+			{
+				body: 'Yay!',
+				category: 'dismiss',
+				id: 0,
+				purpose: 'success',
+				title: 'Success!',
+			},
+			{
+				body: 'Oh no, what now?',
+				category: 'action',
+				id: 1,
+				purpose: 'error',
+				title: 'Error!',
+			}
+		]
+	`}
+	</code>
+</pre>
+<ToastArea {toastList} />
