@@ -1,4 +1,5 @@
 <script>
+	import HeartOctagon from '$lib/assets/icons/s/HeartOctagon.svelte'
 	import {
 		FilterContainer,
 		Page,
@@ -15,6 +16,7 @@
 		MedicalSquareSmallIcon,
 		MedicalCrossSmallIcon,
 		MedicalCircleSmallIcon,
+		MessageHeartSquare,
 		ProfilePlusSmallIcon,
 		Edit04SmallIcon,
 		UserEditSmallIcon,
