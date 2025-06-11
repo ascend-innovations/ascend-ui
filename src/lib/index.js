@@ -168,6 +168,9 @@ export { default as GridList } from '$lib/components/containers/grids/GridList.s
 // Headers
 export { default as HeaderBar } from '$lib/components/containers/headers/HeaderBar.svelte'
 
+// Icons
+export { default as Icon } from '$lib/components/containers/icons/Icon.svelte'
+
 // Labels
 export { default as AutoSaveIndicator } from '$lib/components/containers/labels/AutoSaveIndicator.svelte'
 export { default as Label } from '$lib/components/containers/labels/Label.svelte'
