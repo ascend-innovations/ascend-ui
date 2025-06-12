@@ -26,14 +26,21 @@
 
 	onMount(() => {
 		if (browser) {
-
-			let el = document.getElementById(`${id}-alert--error`);
+			let el = document.getElementById(`${id}-alert alert--error`);
 			if (!el) return;
+
+			if(title) {
+				const titleElement = el.querySelector('#alert__title');
+				if (titleElement) {
+					titleElement.innerText = title;
+				}
+			}
 
 			const bodyElement = el.querySelector('#alert__body');
 			if (bodyElement) {
 				bodyElement.innerHTML = body;
 			}
+
 			const alertIcon = el.querySelector('#alert__icon');
 			if (alertIcon) {
 				alertIcon.innerHTML = ''; 
@@ -61,34 +68,35 @@
 					alertButton.style.display = 'none';
 				}
 			}
+			
+			const tagElement = el.querySelector('#alert__tag');
+            if (tagElement) {
+                tagElement.innerHTML = '';
+                if (tag) {
+                    new Tag({
+                        target: tagElement,
+                        props: {
+                            content: tag,
+                            type: "neutral-subtle"
+                        }
+                    });
+                }
+            }
 		}
 	});
 </script>
 
-<div id={`${id}-alert--error`} class="alert alert--error">
+<div id={`${id}-alert alert--error`} class="alert alert--error">
 	<div class="alert__content">
-		<div id="alert__icon" class="alert__icon">
-		</div>
+		<div id="alert__icon" class="alert__icon"></div>
 		<div class="alert-text">
-			<div class="headline-l-xs">
-				{title}
-			</div>
-			<!-- {#if tag} 
-				<Tag
-					content={tag}
-					type="neutral-subtle"
-				/>
-			 {/if} -->
-			<div id="alery__tag" class="tag semibold neutral-subtle"></div>
-			<div id="alert__body" class="body-s">
-			</div> 
+			<div id="alert__title" class="headline-l-xs"></div>
+			<div id="alert__tag"></div>
+			<div id="alert__body" class="body-s"></div> 
 		</div>
 	</div>
-	<!-- {#if button} -->
 		<div class="alert__control">
 			<div id="alert__button" class="alert-button">
-				<!-- <svelte:component this={button} /> -->
 			</div>
 		</div>
-	<!-- {/if} -->
 </div>
