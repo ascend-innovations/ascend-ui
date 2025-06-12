@@ -1,7 +1,6 @@
 <script>
-	import Button from '$lib/components/inputs/buttons/Button.svelte'
-	import convertToCurrency from '$lib/functions/formatting/convertToCurrency'
 	import { MultiSelector } from '$lib/index.js'
+	import { onMount } from 'svelte'
 
 	const optionList = [
 		{ value: 'All', selected: false },
@@ -12,6 +11,8 @@
 		{ value: 'What?', selected: false },
 		{ value: 'Last', selected: false },
 	]
+
+	const newOptionsList = optionList.map((option) => option.value)
 </script>
 
 <h1>Selectors</h1>
@@ -20,6 +21,6 @@
 		id="zip-code"
 		label="Zip Code"
 		searchable
-		{optionList}
+		optionList={newOptionsList}
 	/>
 </div>
