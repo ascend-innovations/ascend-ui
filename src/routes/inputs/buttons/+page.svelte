@@ -1,5 +1,5 @@
 <script>
-	import { BackButton, CancelButton, ClearButton, CloseDialogButton, CloseToastButton, ContactUsButton, ContinueButton, ExportCSVButton, HomeButton, LoginButton, LogoutButton, NavBarToggleButton, NextButton, OkButton, ProfileButton, SampleButton } from '$lib/index.js'
+	import { BackButton, CancelButton, ClearButton, CloseDialogButton, CloseToastButton, ContactUsButton, ContinueButton, ExportCSVButton, HomeButton, LoginButton, LogoutButton/*, NavBarToggleButton*/, NextButton, OkButton, ProfileButton, SampleButton } from '$lib/index.js'
 </script>
 
 <h1>Buttons</h1>
@@ -38,9 +38,9 @@
 <SampleButton name="LogoutButton">
 	<LogoutButton />
 </SampleButton>
-<SampleButton name="NavBarToggleButton">
+<!-- <SampleButton name="NavBarToggleButton">
 	<NavBarToggleButton />
-</SampleButton>
+</SampleButton> -->
 <SampleButton name="NextButton">
 	<NextButton />
 </SampleButton>
