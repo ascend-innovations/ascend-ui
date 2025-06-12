@@ -26,6 +26,7 @@
 		icon,
 		checkMarkSvg = `<div
 			class="icon-wrapper"
+			style="pointer-events:none;"
 		>
 		<svg
 			fill="none"
