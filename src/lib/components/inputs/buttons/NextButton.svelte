@@ -2,7 +2,7 @@
 	import { ArrowRightSmallIcon, Button, ProgressSpinner } from '$lib/index.js'
 	import { onMount } from 'svelte'
 
-	export let arrow = true,
+	export let id='', arrow = true,
 		callback = null,
 		classes = ['btn-fit', 'btn-m', 'btn-square', 'btn-outline'],
 		disabled = false,
@@ -20,6 +20,7 @@
 </script>
 
 <Button
+	id={id}
 	rightIcon={icon}
 	{callback}
 	{classes}

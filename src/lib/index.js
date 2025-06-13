@@ -318,6 +318,7 @@ export { default as getChecklistSelections } from '$lib/functions/utils/getCheck
 export { default as hexToRGB } from '$lib/functions/utils/hexToRGB.js'
 export { default as resolveIconSvg } from '$lib/functions/utils/resolveIconSvg.js'
 export { default as todaysDate } from '$lib/functions/utils/todaysDate.js'
+export { default as idReferenceCounter } from '$lib/functions/utils/idReferenceCounter.js'
 
 // Validation
 export { default as isValidDate } from '$lib/functions/validation/isValidDate.js'
