@@ -2,7 +2,7 @@
 	import { Button, browserBack } from '$lib/index.js'
 
 	export let id="", 
-	callback = browserBack,
+		callback = browserBack,
 		url = ''
 </script>
 

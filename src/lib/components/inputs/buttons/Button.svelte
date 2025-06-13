@@ -1,5 +1,7 @@
 <script>
+	import { browser } from '$app/environment'
 	import { LinkButton, StandardButton } from '$lib/index.js'
+	import { onMount, onDestroy } from 'svelte'
 
 	export let id="", 
 		bottomIcon = null,
@@ -15,19 +17,75 @@
 		topIcon = null,
 		url = '',
 		target = false
+
+	let buttonInstance;
+
+	onMount(() => {
+		if(!browser) return;
+		
+		let el = document.getElementById(`${id}-button__wrapper`);
+
+		if (!el) return;
+
+		// Set styles
+		if (styles && styles.length > 0) {
+			el.style.cssText = styles.join(';');
+		}
+
+		el.className = `
+			button-wrapper
+			${classes.includes('btn-full') ? 'btn-full' : 'btn-fit'}
+			${disabled ? 'btn-disabled' : ''}
+		`;
+		
+		el.addEventListener('click', callback || (() => {}));
+		el.addEventListener('keypress', callback || (() => {}));
+	
+		const ButtonComponent = url?.length ? LinkButton : StandardButton;
+		 buttonInstance = new ButtonComponent({
+            target: el,
+            props: {
+                id,
+                bottomIcon,
+                callback,
+                classes,
+                disabled,
+                leftIcon,
+                loading,
+                preload,
+                rightIcon,
+                styles,
+                text,
+                topIcon,
+                url,
+                target
+            }
+        });
+	
+	
+	});
+
+	onDestroy(() => {
+		if(!browser) return;
+		let el = document.getElementById(`${id}-button__wrapper`);
+
+		if (el) {
+			el.removeEventListener('click', callback);
+			el.removeEventListener('keypress', callback);
+		}
+
+		buttonInstance?.$destroy();
+		buttonInstance = null;
+    });
+		
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<div
+<div id={`${id}-button__wrapper`}
 	on:click={callback || ''}
 	on:keypress={callback || ''}
-	class={`
-		button-wrapper
-		${classes.includes('btn-full') ? 'btn-full' : 'btn-fit'}
-		${disabled ? 'btn-disabled' : ''}
-	`}
 >
-	{#if url?.length}
+	<!-- {#if url?.length}
 		<LinkButton
 			{bottomIcon}
 			{classes}
@@ -54,5 +112,5 @@
 			{text}
 			{topIcon}
 		/>
-	{/if}
+	{/if} -->
 </div>
