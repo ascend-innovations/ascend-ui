@@ -81,36 +81,4 @@
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
-<div id={`${id}-button__wrapper`}
-	on:click={callback || ''}
-	on:keypress={callback || ''}
->
-	<!-- {#if url?.length}
-		<LinkButton
-			{bottomIcon}
-			{classes}
-			{disabled}
-			{leftIcon}
-			{preload}
-			{rightIcon}
-			{styles}
-			{text}
-			{topIcon}
-			{url}
-			{target}
-		/>
-	{:else}
-		<StandardButton
-			id={id}
-			{bottomIcon}
-			{classes}
-			{disabled}
-			{leftIcon}
-			{loading}
-			{rightIcon}
-			{styles}
-			{text}
-			{topIcon}
-		/>
-	{/if} -->
-</div>
+<div id={`${id}-button__wrapper`}></div>
