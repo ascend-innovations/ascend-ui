@@ -22,8 +22,6 @@
 		/>
 		</svg>
 		</div>`
-
-
 </script>
 
 <h1>Alerts</h1>
@@ -43,7 +41,7 @@
 
 <ErrorAlert 
 	id="error-alert-2"
-	icon={AlertCircleSmallIcon}
+	icon={checkMarkSvg}
 	title="This is an Alert!"
 	body="Please do something else."
 	tag={"This is a super cool tag!"}
