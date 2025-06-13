@@ -1,11 +1,12 @@
 <script>
-	import { Label, InputError } from '$lib/index.js'
+	import { Label, Tag, InputError } from '$lib/index.js'
 
 	export let autofocus = false,
 		changeCallback = null,
 		description = '',
 		id = '',
 		label = '',
+		tag = null,
 		max,
 		min,
 		placeholder = '',
@@ -23,11 +24,19 @@
 	class="number-control"
 	style={styles.join(';')}
 >
-	<div class="text-title">
+	<div class="number-title">
 		{#if label}
 			<Label
 				{id}
 				{label}
+			/>
+		{/if}
+		{#if tag !== null}
+			<Tag
+				content={tag?.content || ''}
+				icon={tag?.icon || null}
+				side={tag?.side || ''}
+				type={tag?.type || ''}
 			/>
 		{/if}
 	</div>
@@ -60,6 +69,13 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--spacing03);
+		width: 100%;
+	}
+
+	.number-title {
+		display: flex;
+		gap: var(--spacing05);
+		justify-content: flex-start;
 		width: 100%;
 	}
 
