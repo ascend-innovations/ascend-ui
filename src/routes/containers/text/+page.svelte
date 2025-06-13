@@ -5,7 +5,7 @@
 <h1>Text</h1>
 
 <TextMessageBubble 
-    width="50%"
+    width="80%"
     height="10%"
     padding="var(--spacing04)"
 >This is a text message bubble.</TextMessageBubble>
