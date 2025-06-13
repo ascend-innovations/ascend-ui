@@ -111,24 +111,6 @@ button {
 	font-size: 16px;
 	margin-bottom: 12px;
 }
-.navbar-button {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-}
-.navbar-button__indicator-wrapper {
-	display: flex;
-}
-.navbar-button__subnav-wrapper {
-	overflow-y: hidden;
-}
-.navbar-closed {
-	height: 0;
-}
-.subnav--closed {
-	height: 0;
-	overflow: hidden;
-}
 .link-button {
 	align-items: center;
 	background-color: transparent;

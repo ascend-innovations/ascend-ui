@@ -12,6 +12,9 @@
 .neutral-400-text {
     color: var(--neutral-400);
 }
+.transparent-text {
+    color: transparent;
+}
 .width-100 {
     width: 100%;
 }

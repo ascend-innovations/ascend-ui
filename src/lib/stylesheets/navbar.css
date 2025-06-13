@@ -64,6 +64,25 @@
     align-items: center;
 }
 
+.navbar-button {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+.navbar-button__indicator-wrapper {
+	display: flex;
+}
+.navbar-button__subnav-wrapper {
+	overflow-y: hidden;
+}
+.navbar-closed {
+	height: 0;
+}
+.subnav--closed {
+	height: 0;
+	overflow: hidden;
+}
+
 @media screen and (min-width: 768px) {
     .simple-navbar {
         flex-direction: row;

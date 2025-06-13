@@ -74,10 +74,13 @@
 			checkmarkBox.innerHTML = ''
 		}
 
-
+		let allTrue = true
 		for (let option of selectorOptionList.childNodes.values()) {
 			let input = option.querySelector('input')
 			if (input.getAttribute('data-is-checked') === 'true') {
+				if (input.value === 'All') {
+					
+				}
 				selectedValues.add(input.value)
 			}
 		}
