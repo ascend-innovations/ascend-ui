@@ -10,47 +10,62 @@
 		url = '/',
 		closedHeaderComponent = undefined,
 		openHeaderComponent = undefined,
-		navigationText = {}
+		allLinks = [],
+		keepOpen = true,
+		navbarOpen = true,
+		navbar,
+		navbarHeaderOpen,
+		navbarHeaderClosed,
+		toggleButton
 
 	function navbarFocus() {
-		toggleButton.style.display = 'block'
-		navbarHeaderClosed.style.display = 'none'
-		navbarHeaderOpen.style.display = 'flex'
-		navbar.classList.add('nav--open')
-		navbar.classList.remove('nav--closed')
+		if (!keepOpen) {
+			toggleButton.style.display = 'block'
+			navbarHeaderClosed.style.display = 'none'
+			navbarHeaderOpen.style.display = 'flex'
+			navbar.classList.add('nav--open')
+			navbar.classList.remove('nav--closed')
+			allLinks.forEach((link) => link.classList.remove('transparent-text'))
+		}
 	}
 	function navbarBlur() {
-		navbarOpen = false
-		toggleButton.style.display = 'none'
-		navbarHeaderClosed.style.display = 'flex'
-		navbarHeaderOpen.style.display = 'none'
-		navbar.classList.remove('nav--open')
-		navbar.classList.add('nav--closed')
+		console.log('blur', keepOpen)
+		if (!keepOpen) {
+			navbarOpen = false
+			toggleButton.style.display = 'none'
+			navbarHeaderClosed.style.display = 'flex'
+			navbarHeaderOpen.style.display = 'none'
+			navbar.classList.remove('nav--open')
+			navbar.classList.add('nav--closed')
+			allLinks.forEach((link) => link.classList.add('transparent-text'))
+		}
 	}
 
+	function toggleKeepOpen() {
+		toggleButton.style.transform = keepOpen ? 'rotate(180deg)' : 'rotate(0deg)'
+		keepOpen = !keepOpen
+		if (keepOpen) {
+			navbar.classList.add('nav--open')
+			navbar.classList.remove('nav--closed')
+		} else {
+			navbar.classList.remove('nav--open')
+			navbar.classList.add('nav--closed')
+		}
+	}
+ 
 	onMount(() => {
 		if (browser) {
-			let keepOpen = true
-			let navbarOpen = true
-			let navbar = document.querySelector('.navbar')
-			let navbarHeaderOpen = document.querySelector('.navbar__header--open')
-			let navbarHeaderClosed = document.querySelector('.navbar__header--closed')
-			let toggleButton = document.querySelector('.navbar__header .navbar__toggle-button')
+			navbar = document.querySelector('.navbar')
+			navbarHeaderOpen = document.querySelector('.navbar__header--open')
+			navbarHeaderClosed = document.querySelector('.navbar__header--closed')
+			toggleButton = document.querySelector('.navbar__header .navbar__toggle-button')
 
-			toggleButton.addEventListener('click', () => {
-				toggleButton.style.transform = keepOpen ? 'rotate(180deg)' : 'rotate(0deg)'
-				navbar.classList.toggle('nav--open')
-				navbar.classList.toggle('nav--closed')
-				allLinks.forEach((link) => link.classList.toggle('transparent-text'))
-				keepOpen = !keepOpen
-			})
+			toggleButton.addEventListener('click', toggleKeepOpen)
 
-			if (!keepOpen) {
-				navbar.addEventListener('mouseenter', navbarFocus)
-				navbar.addEventListener('focus', navbarFocus)
-				navbar.addEventListener('mouseleave', navbarBlur)
-				navbar.addEventListener('blur', navbarBlur)
-			}
+			navbar.addEventListener('mouseenter', navbarFocus)
+			navbar.addEventListener('focus', navbarFocus)
+			navbar.addEventListener('mouseleave', navbarBlur)
+			navbar.addEventListener('blur', navbarBlur)
 
 			let pageList = document.querySelector('.navbar__page-list')
 			for (let page of navBarContents?.primaryPageList || []) {
@@ -82,25 +97,39 @@
 				`
 				pageList.appendChild(pageNode)
 			}
-			
-			// let index = 0
-			// for (let link of document.querySelectorAll('.nav-link-text').values()) {
-			// 	navigationText[index] = {}
-			// 	navigationText[index][link.textContent.trim()] = []
-			// 	navigationText[index][link.textContent.trim()].push(link.textContent.trim())
-			// 	if (link.parentElement.querySelector('.subnav-button')) {
-			// 		navigationText[index].sublinks = []
-			// 		navigationText[index].sublinks = Array.from(link.parentElement.querySelectorAll('.subnav-button a')).map((a) => a.textContent.trim())
-			// 	}
 
-			// 	index++
-			// }
-
+			let secondaryPageList = document.querySelector('.navbar__secondary-page-list')
 			for (let secondaryPage of navBarContents?.secondaryPageList || []) {
-				
+				let pageNode = document.createElement('div')
+				pageNode.classList = 'navbar-button width-100'
+				pageNode.innerHTML = `
+					<div class="navbar-button__indicator-wrapper">
+						<div class="current-page-indicator ${window.location.href.includes(secondaryPage.url) ? 'current-page-link' : ''}"></div>
+						<div class="width-100">
+							<a href="${secondaryPage.url}" class="nav-link-text link-button btn-left btn-full btn-l btn-white btn-nav-hover width-100" style="display:block;text-decoration: none;">
+								${secondaryPage.text}
+							</a>
+
+							${secondaryPage.sublinks ? `
+								<div class="navbar-button__subnav-wrapper width-100 ${secondaryPage.startOpen ? 'subnav--open' : 'subnav--closed'}">
+									${secondaryPage.sublinks.map((sublink) => `
+										<div class=" current-page-indicator ${window.location.href.includes(secondaryPage.url) ? 'current-page-link' : ''}"></div>
+										<div 
+											class="subnav-button padding-left btn-full btn-left btn-l btn-white btn-nav-hover"
+											style="padding-top:var(--spacing02);padding-bottom:var(--spacing02);"
+										>
+											<a class="nav-link-text" style="display:block;text-decoration:none;" href="${sublink.url}">${sublink.text}</a>
+										</div>
+									`).join('')}
+								</div>
+							` : ''}
+						</div>
+					</div>
+				`
+				secondaryPageList.appendChild(pageNode)
 			}
 
-			let allLinks = document.querySelectorAll('.navbar-button') // grab links after they're added to the DOM
+			allLinks = document.querySelectorAll('.navbar-button') // grab links after they're added to the DOM
 		}
 	})
 </script>
@@ -125,31 +154,8 @@
 					<svelte:component this={closedHeaderComponent} />
 				</div>
 			</div>
-			<div class="navbar__page-list">
-				<!-- {#if navBarContents?.primaryPageList?.length}
-					{#each navBarContents.primaryPageList as pageData}
-						<div class="width-100">
-							<NavButton
-								callback={navClickCallback}
-								{pageData}
-								{preload}
-							/>
-						</div>
-					{/each}
-				{/if} -->
-				<!-- {#if navBarContents?.secondaryPageList?.length}
-					<div class="navbar__separator" />
-					{#each navBarContents?.secondaryPageList as pageData}
-						<div class="width-100">
-							<NavButton
-								callback={navClickCallback}
-								{pageData}
-								{preload}
-							/>
-						</div>
-					{/each}
-				{/if} -->
-			</div>
+			<div class="navbar__page-list"></div>
+			<div class="navbar__secondary-page-list"></div>
 		</div>
 		<div class="navbar__content--lower">
 			{#if navBarContents?.bottomButtonLarge && navBarContents?.bottomButtonSmall}
