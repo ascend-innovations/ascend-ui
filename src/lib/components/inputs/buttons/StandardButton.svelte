@@ -1,3 +1,4 @@
+<!-- svelte-ignore unused-export-let -->
 <script>
 	import { ButtonContents } from '$lib/index.js'
 	import { onMount } from 'svelte'
@@ -52,6 +53,7 @@
 <button id="{`${id}-button__standard`}">
 	<div id="button__content-wrapper">
 		<ButtonContents
+			{id}
 			{bottomIcon}
 			{disabled}
 			{leftIcon}
