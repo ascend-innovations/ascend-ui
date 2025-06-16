@@ -5,7 +5,7 @@
 
 	export let form, dialogCallback
 
-	let emailValidationMessage, validEmail, validPassword, emailInput, passwordInput, password, email
+	let emailValidationMessage, validEmail, validPassword, emailInput, passwordInput, password, email, errorSlot
 
 	function emailValidation() {
 		validEmail = isValidEmail(email)
@@ -34,9 +34,24 @@
 		if (browser) {
 			emailInput = document.getElementById('email')
 			passwordInput = document.getElementById('password')
+			errorSlot = document.querySelector('.sso-login__error')
 
 			emailInput.addEventListener('blur', emailValidation)
 			passwordInput.addEventListener('blur', passwordValidation)
+
+			if (form?.message) {
+				errorSlot.style.display = 'block'
+
+				new InputError({
+					target: errorSlot,
+					props: {
+						text: form.message
+					}
+				})
+				// errorSlot.innerHTML = form.message
+			} else {
+				errorSlot.style.display = 'none'
+			}
 		}
 	})
 </script>
@@ -86,6 +101,7 @@
 				type="password"
 			/>
 		</div>
+		<div class="sso-login__error" style="display:none;"></div>
 		<form
 			class="sso-login__form"
 			method="post"
@@ -123,7 +139,3 @@
 		</div> -->
 	</div>
 </div>
-
-		{#if form?.message}
-			<InputError text={form.message} />
-		{/if}
