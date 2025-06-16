@@ -1,3 +1,4 @@
+<!-- svelte-ignore unused-export-let -->
 <script>
 	import { ButtonContents } from '$lib/index.js'
 	import { onMount } from 'svelte'

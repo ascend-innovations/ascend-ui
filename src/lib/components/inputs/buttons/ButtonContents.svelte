@@ -17,16 +17,12 @@
 			if(!htmlElement) return;
 			htmlElement.innerHTML = '';
 			if (icon && typeof icon === 'function') {
-				console.log('icon function')
 				new icon({ target: htmlElement });
 			} else if (icon && icon instanceof HTMLElement) {
-				console.log('icon html element')
 				htmlElement.innerHTML = icon.innerHTML || '';
 			} else if (icon && icon instanceof String) { //html string literal
-				console.log('icon string')
 				htmlElement.innerHTML = icon;
 			} else {
-				console.log('icon none')
 				htmlElement.style.display = 'none';
 			}
 		}
