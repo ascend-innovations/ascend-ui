@@ -158,13 +158,14 @@
 			<div class="navbar__secondary-page-list"></div>
 		</div>
 		<div class="navbar__content--lower">
-			{#if navBarContents?.bottomButtonLarge && navBarContents?.bottomButtonSmall}
+			<!-- {#if navBarContents?.bottomButtonLarge && navBarContents?.bottomButtonSmall}
 				{#if navBarOpen}
 					<svelte:component this={navBarContents?.bottomButtonLarge} />
 				{:else}
 					<svelte:component this={navBarContents?.bottomButtonSmall} />
 				{/if}
-			{/if}
+			{/if} -->
+			<slot />
 		</div>
 	</div>
 </div>
