@@ -52,6 +52,7 @@
 <button id="{`${id}-button__standard`}">
 	<div id="button__content-wrapper">
 		<ButtonContents
+			{id}
 			{bottomIcon}
 			{disabled}
 			{leftIcon}

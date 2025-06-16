@@ -69,6 +69,7 @@
 >
 	<div id="button__content-wrapper">
 		<ButtonContents
+			{id}
 			{bottomIcon}
 			{leftIcon}
 			{rightIcon}
