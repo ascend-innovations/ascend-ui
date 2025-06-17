@@ -287,6 +287,7 @@ export { default as sendAccountCreationEmail } from '$lib/functions/auth/sendAcc
 export { default as createUserRecord } from '$lib/functions/auth/createUserRecord.js'
 export { default as createAuditLog } from '$lib/functions/auth/createAuditLog.js'
 export { default as getAppRoles } from '$lib/functions/auth/getAppRoles.js'
+export { default as getSupabaseSession } from '$lib/functions/auth/getSupabaseSession.js'
 
 // Filtering
 export { default as withinDateRange } from '$lib/functions/filtering/withinDateRange.js'
