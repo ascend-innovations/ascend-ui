@@ -26,8 +26,8 @@
 				htmlElement.style.display = 'none';
 			}
 		}
+	
 
-		
 		onMount(() => {
 			if (!browser) return;
 
@@ -110,9 +110,7 @@
 					innerWrapper.appendChild(iconNode);
 				}
 			}
-
 		});
-
 
 </script>
 
