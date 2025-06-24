@@ -17,6 +17,7 @@
 			const email = `${name.split(' ').join('.').toLowerCase()}@${getRandomItem(domains)}`
 			const status = getRandomItem(statuses)
 			const date = generateRandomDate()
+			const number = `$${Math.floor(Math.random() * 10000).toLocaleString()}`
 
 			data.push({
 				name: name,
@@ -24,6 +25,7 @@
 				link: 'https://google.com',
 				status: status,
 				date: date,
+				claim_cost: number,
 			})
 		}
 
@@ -138,6 +140,12 @@
 				tooltips: { approved: 'Provider listing has been published to the external LocalHelpNow directory.' },
 			},
 			styles: ['flex: 1'],
+		},
+		{
+			title: 'Number',
+			key: 'claim_cost',
+			type: 'text',
+			styles: ['flex: 1']
 		},
 		{
 			title: 'Date',
