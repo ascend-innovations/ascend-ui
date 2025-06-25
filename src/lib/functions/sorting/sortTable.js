@@ -12,7 +12,7 @@ export default function sortTable(columnKey, columnType, list, sortMap) {
 	else sortMap[columnKey] = 'oldest'
 
 	list = list.map((data) => {
-		if (columnKey.includes('dollar') || columnKey.includes('price') || columnKey.includes('number') || columnKey.includes('cost') || columnKey.includes('total') || columnKey.includes('amount')) {
+		if (columnKey === 'dollar') {
 			data[columnKey] = parseFloat(data[columnKey].replace(/[$,]/g, '')) // remove dollar sign and commas for sorting
 		}
 		return data
@@ -21,7 +21,7 @@ export default function sortTable(columnKey, columnType, list, sortMap) {
 	sortedList = sortArray(list, columnKey, columnType, sortMap[columnKey])
 
 	sortedList = sortedList.map((data) => {
-		if (columnKey.includes('dollar') || columnKey.includes('price') || columnKey.includes('number') || columnKey.includes('cost') || columnKey.includes('total') || columnKey.includes('amount')) {
+		if (columnKey === 'dollar') {
 			data[columnKey] = `$${data[columnKey].toLocaleString()}` // format back to dollar string
 		}
 		return data

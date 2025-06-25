@@ -144,7 +144,7 @@
 		{
 			title: 'Number',
 			key: 'claim_cost',
-			type: 'text',
+			type: 'dollar',
 			styles: ['flex: 1']
 		},
 		{
