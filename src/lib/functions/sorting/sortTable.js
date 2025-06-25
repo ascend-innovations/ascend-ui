@@ -11,21 +11,21 @@ export default function sortTable(columnKey, columnType, list, sortMap) {
 	if (previousSortOrder === 'oldest') sortMap[columnKey] = 'newest'
 	else sortMap[columnKey] = 'oldest'
 
-	list = list.map((data) => {
-		if (columnKey === 'dollar') {
+	if (columnType === 'dollar') {
+		list = list.map((data) => {
 			data[columnKey] = parseFloat(data[columnKey].replace(/[$,]/g, '')) // remove dollar sign and commas for sorting
-		}
-		return data
-	})
+			return data
+		})
+	}
 
 	sortedList = sortArray(list, columnKey, columnType, sortMap[columnKey])
 
-	sortedList = sortedList.map((data) => {
-		if (columnKey === 'dollar') {
+	if (columnType === 'dollar') {
+		sortedList = sortedList.map((data) => {
 			data[columnKey] = `$${data[columnKey].toLocaleString()}` // format back to dollar string
-		}
-		return data
-	})
+			return data
+		})
+	}
 
 	return sortedList
 }
