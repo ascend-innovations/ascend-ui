@@ -38,11 +38,16 @@
 		// sort the array on the store for this table type
 		pageData.tableData = sortArray(pageData.tableData, columnKey, columnType, sortMap[columnKey])
 		pageData.pageData = pageData.tableData.slice(0, pageLength)
-		;(pageData.currentPage = 1), (pageData.leftIndex = 0), (pageData.rightIndex = pageLength)
+		pageData.currentPage = 1
+		pageData.leftIndex = 0
+		pageData.rightIndex = pageLength
+
+		console.log('pageData: ', pageData)
 	}
 
 	async function serverFetchNext() {
 		if (pageData.currentPage % pageLength === 0) {
+			console.log('Fetching next page of data...')
 			const response = await fetchNext()
 			const body = await response.json()
 			pageData.tableData = pageData.tableData.cat(body.results)
