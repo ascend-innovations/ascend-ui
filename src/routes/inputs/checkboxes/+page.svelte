@@ -21,7 +21,6 @@
 	]
 
 	function callback(checked, value) {
-		console.log(checked, value)
 	}
 </script>
 

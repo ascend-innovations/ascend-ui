@@ -126,7 +126,6 @@
 				labelFormat = formatFiscalYear
 				tickFormat = d3.timeYear
 			} else if (yearInterval >= 2 && yearInterval <= 20) {
-				console.log('years')
 				labelFormat = formatYear
 				tickFormat = d3.timeYear
 				// everyOther = false

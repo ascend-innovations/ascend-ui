@@ -18,8 +18,6 @@ export default function paginateTable(data, direction, fetchNext = null, pageSiz
 			data.currentPage += 1
 			data.pageData = data.tableData.slice(data.leftIndex, data.rightIndex)
 		}
-
-		console.log('next', data)
 	}
 
 	return data

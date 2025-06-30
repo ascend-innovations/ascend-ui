@@ -8,8 +8,6 @@ export default function sortArray(unsortedArray, columnKey, columnType, sortOrde
 		let aItem = a[columnKey]
 		let bItem = b[columnKey]
 
-		console.log(columnType)
-
 		// sorting number-based values
 		if (numericValues.includes(columnType)) {
 			// convert items for 'number' columnType
