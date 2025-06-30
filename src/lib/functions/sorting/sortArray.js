@@ -1,5 +1,5 @@
 export default function sortArray(unsortedArray, columnKey, columnType, sortOrder) {
-	const numericValues = ['date', 'number']
+	const numericValues = ['date', 'number', 'dollar']
 
 	const booleanValues = ['boolean', 'checkbox', 'checklist', 'radiolist']
 
@@ -7,6 +7,8 @@ export default function sortArray(unsortedArray, columnKey, columnType, sortOrde
 	return unsortedArray.sort((a, b) => {
 		let aItem = a[columnKey]
 		let bItem = b[columnKey]
+
+		console.log(columnType)
 
 		// sorting number-based values
 		if (numericValues.includes(columnType)) {
@@ -19,6 +21,11 @@ export default function sortArray(unsortedArray, columnKey, columnType, sortOrde
 			else if (columnType === 'date') {
 				aItem = new Date(a[columnKey])
 				bItem = new Date(b[columnKey])
+			}
+			// convert items for 'dollar' columnType
+			else if (columnType === 'dollar') {
+				aItem = parseFloat(a[columnKey].replace(/[$,]/g, '')) // remove dollar sign and commas for sorting
+				bItem = parseFloat(b[columnKey].replace(/[$,]/g, '')) // remove dollar sign and commas for sorting
 			}
 			// return based on sort order
 			if (sortOrder === 'newest') return aItem - bItem

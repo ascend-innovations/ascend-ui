@@ -35,26 +35,10 @@
 		if (previousSortOrder === 'oldest') sortMap[columnKey] = 'newest'
 		else sortMap[columnKey] = 'oldest'
 
-		if (columnType === 'dollar') {
-			pageData.tableData = pageData.tableData.map((data) => {
-				data[columnKey] = parseFloat(data[columnKey].replace(/[$,]/g, '')) // remove dollar sign and commas for sorting
-				return data
-			})
-		}
-
-		let list = sortArray(pageData.tableData, columnKey, columnType, sortMap[columnKey])
+		// sort the array on the store for this table type
+		pageData.tableData = sortArray(pageData.tableData, columnKey, columnType, sortMap[columnKey])
 		pageData.pageData = pageData.tableData.slice(0, pageLength)
 		;(pageData.currentPage = 1), (pageData.leftIndex = 0), (pageData.rightIndex = pageLength)
-
-		if (columnType === 'dollar') {
-			list = list.map((data) => {
-				data[columnKey] = `$${data[columnKey].toLocaleString()}` // format back to dollar string
-				return data
-			})
-		}
-
-		// sort the array on the store for this table type
-		pageData.tableData = list
 	}
 
 	async function serverFetchNext() {
