@@ -1,6 +1,8 @@
 <script>
 	import SelectorInput from '$lib/components/inputs/selectors/SelectorInput.svelte'
+	import {getStackedColorPallet, getStackedColorPalletFromData} from '$lib/functions/styling/getStackedColorPallet.js'
 	import { Chart, Page, PageBody, StatusTag, PageTransitionWrapper } from '$lib/index.js'
+	import { get } from 'svelte/store'
 
 	let svgpin = `<div style="position:relative;">
 			<svg width="48" height="61" viewBox="0 0 48 61" fill="none">
@@ -211,23 +213,38 @@
 		{ x: 'Hospital 5', series: 'Source', value: 20 },
 	]
 
-	let stackedBarData = [
-		{ x: 'Jan', name: 'A', value: 40 },
-		{ x: 'Jan', name: 'B', value: 5 },
-		{ x: 'Jan', name: 'C', value: 35 },
-		{ x: 'Feb', name: 'A', value: 50 },
-		{ x: 'Feb', name: 'B', value: 15 },
-		{ x: 'Feb', name: 'C', value: 30 },
-		{ x: 'Mar', name: 'A', value: 35 },
-		{ x: 'Mar', name: 'B', value: 25 },
-		{ x: 'Mar', name: 'C', value: 20 },
-		{ x: 'Apr', name: 'A', value: 20 },
-		{ x: 'Apr', name: 'B', value: 35 },
-		{ x: 'Apr', name: 'C', value: 25 },
-		{ x: 'May', name: 'A', value: 10 },
-		{ x: 'May', name: 'B', value: 55 },
-		{ x: 'May', name: 'C', value: 33 },
-	]
+	// let stackedBarData = [
+	// 	{ x: 'Jan', name: 'A', value: 40 },
+	// 	{ x: 'Jan', name: 'B', value: 5 },
+	// 	{ x: 'Jan', name: 'C', value: 35 },
+	// 	{ x: 'Feb', name: 'A', value: 50 },
+	// 	{ x: 'Feb', name: 'B', value: 15 },
+	// 	{ x: 'Feb', name: 'C', value: 30 },
+	// 	{ x: 'Mar', name: 'A', value: 35 },
+	// 	{ x: 'Mar', name: 'B', value: 25 },
+	// 	{ x: 'Mar', name: 'C', value: 20 },
+	// 	{ x: 'Apr', name: 'A', value: 20 },
+	// 	{ x: 'Apr', name: 'B', value: 35 },
+	// 	{ x: 'Apr', name: 'C', value: 25 },
+	// 	{ x: 'May', name: 'A', value: 10 },
+	// 	{ x: 'May', name: 'B', value: 55 },
+	// 	{ x: 'May', name: 'C', value: 33 },
+	// ]
+
+	const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May'];
+    const names = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i)); // ['A', ..., 'Z']
+
+    let stackedBarData = [];
+
+    for (const month of months) {
+        for (const name of names) {
+            stackedBarData.push({
+                x: month,
+                name,
+                value: Math.floor(Math.random() * 60) + 1 // or any logic you want
+            });
+        }
+    }
 
 	let areaData = [
 		{ date: '2018', series: 'Source', value: 2505 },
@@ -1930,12 +1947,7 @@
 						valueTwoLabel="value"
 						labelKey="name"
 						seriesKey="name"
-						lineColors={['var(--primary-700)', 'var(--primary-base)', 'var(--primary-300)']}
-						areaColors={[
-							'var(--primary-trans-700)',
-							'var(--primary-trans-500)',
-							'var(--primary-trans-300)',
-						]}
+						barColors={getStackedColorPalletFromData(stackedBarData, "name")}
 					/>
 				</div>
 				<!-- <div class="stacked-h-bar">
@@ -2007,6 +2019,8 @@
 						labelKey="name"
 						valueOneLabel="date"
 						valueTwoLabel="value"
+						areaColors={getStackedColorPalletFromData(realStacked, "name", false, true)}
+						lineColors={getStackedColorPalletFromData(realStacked, "name", true, true)}
 						yearOnly
 						stacked
 					/>
