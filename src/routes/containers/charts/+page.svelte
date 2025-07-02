@@ -213,38 +213,38 @@
 		{ x: 'Hospital 5', series: 'Source', value: 20 },
 	]
 
-	// let stackedBarData = [
-	// 	{ x: 'Jan', name: 'A', value: 40 },
-	// 	{ x: 'Jan', name: 'B', value: 5 },
-	// 	{ x: 'Jan', name: 'C', value: 35 },
-	// 	{ x: 'Feb', name: 'A', value: 50 },
-	// 	{ x: 'Feb', name: 'B', value: 15 },
-	// 	{ x: 'Feb', name: 'C', value: 30 },
-	// 	{ x: 'Mar', name: 'A', value: 35 },
-	// 	{ x: 'Mar', name: 'B', value: 25 },
-	// 	{ x: 'Mar', name: 'C', value: 20 },
-	// 	{ x: 'Apr', name: 'A', value: 20 },
-	// 	{ x: 'Apr', name: 'B', value: 35 },
-	// 	{ x: 'Apr', name: 'C', value: 25 },
-	// 	{ x: 'May', name: 'A', value: 10 },
-	// 	{ x: 'May', name: 'B', value: 55 },
-	// 	{ x: 'May', name: 'C', value: 33 },
-	// ]
+	let stackedBarData = [
+		{ x: 'Jan', name: 'A', value: 40 },
+		{ x: 'Jan', name: 'B', value: 5 },
+		{ x: 'Jan', name: 'C', value: 35 },
+		{ x: 'Feb', name: 'A', value: 50 },
+		{ x: 'Feb', name: 'B', value: 15 },
+		{ x: 'Feb', name: 'C', value: 30 },
+		{ x: 'Mar', name: 'A', value: 35 },
+		{ x: 'Mar', name: 'B', value: 25 },
+		{ x: 'Mar', name: 'C', value: 20 },
+		{ x: 'Apr', name: 'A', value: 20 },
+		{ x: 'Apr', name: 'B', value: 35 },
+		{ x: 'Apr', name: 'C', value: 25 },
+		{ x: 'May', name: 'A', value: 10 },
+		{ x: 'May', name: 'B', value: 55 },
+		{ x: 'May', name: 'C', value: 33 },
+	]
 
-	const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May'];
-    const names = Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i)); // ['A', ..., 'Z']
+	// const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May'];
+    // const names = Array.from({ length: 15 }, (_, i) => String.fromCharCode(65 + i)); // ['A', ..., 'Z']
 
-    let stackedBarData = [];
+    // let stackedBarData = [];
 
-    for (const month of months) {
-        for (const name of names) {
-            stackedBarData.push({
-                x: month,
-                name,
-                value: Math.floor(Math.random() * 60) + 1 // or any logic you want
-            });
-        }
-    }
+    // for (const month of months) {
+    //     for (const name of names) {
+    //         stackedBarData.push({
+    //             x: month,
+    //             name,
+    //             value: Math.floor(Math.random() * 60) + 1 // or any logic you want
+    //         });
+    //     }
+    // }
 
 	let areaData = [
 		{ date: '2018', series: 'Source', value: 2505 },
