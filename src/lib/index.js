@@ -326,7 +326,8 @@ export { default as sortTable } from '$lib/functions/sorting/sortTable.js'
 export { default as getGlobalColorPalette } from '$lib/functions/styling/getGlobalColorPalette.js'
 export { default as getIcon } from '$lib/functions/styling/getIcon.js'
 export { default as setStyles } from '$lib/functions/styling/setStyles.js'
-
+export { default as getStackedColorPallet} from '$lib/functions/styling/getStackedColorPallet.js'
+export { default as getStackedColorPalletFromData} from '$lib/functions/styling/getStackedColorPalletFromData.js'
 // Tables
 export { default as paginateTable } from '$lib/functions/tables/paginateTable.js'
 

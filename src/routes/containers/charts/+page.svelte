@@ -1,8 +1,8 @@
 <script>
 	import SelectorInput from '$lib/components/inputs/selectors/SelectorInput.svelte'
-	import {getStackedColorPallet, getStackedColorPalletFromData} from '$lib/functions/styling/getStackedColorPallet.js'
+	import {getStackedColorPallet} from '$lib/functions/styling/getStackedColorPallet.js'
+	import {getStackedColorPalletFromData} from '$lib/functions/styling/getStackedColorPalletFromData.js'
 	import { Chart, Page, PageBody, StatusTag, PageTransitionWrapper } from '$lib/index.js'
-	import { get } from 'svelte/store'
 
 	let svgpin = `<div style="position:relative;">
 			<svg width="48" height="61" viewBox="0 0 48 61" fill="none">
@@ -232,7 +232,7 @@
 	]
 
 	// const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May'];
-    // const names = Array.from({ length: 15 }, (_, i) => String.fromCharCode(65 + i)); // ['A', ..., 'Z']
+    // const names = Array.from({ length: 100 }, (_, i) => String.fromCharCode(65 + i)); // ['A', ..., 'Z']
 
     // let stackedBarData = [];
 

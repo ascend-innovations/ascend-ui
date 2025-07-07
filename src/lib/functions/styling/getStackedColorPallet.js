@@ -1,4 +1,4 @@
-export function getStackedColorPallet(stackedLenght, useTrans = false, usePrimary = true){
+export default function getStackedColorPallet(stackedLenght, useTrans = false, usePrimary = true){
     let colorSequence = []
     if(usePrimary === true){
         if(useTrans === true) {
@@ -131,14 +131,4 @@ export function getStackedColorPallet(stackedLenght, useTrans = false, usePrimar
     } else {
         return colorSequence
     }
-
-}
-
-export function getStackedColorPalletFromData(data, seriesKey,  useTrans = false, usePrimary = true){
-    let seriesSet = new Set()
-    for (let currentEntry of data) {
-        seriesSet.add(currentEntry[seriesKey])
-    }
-
-    return getStackedColorPallet(seriesSet.size, useTrans, usePrimary)
 }
