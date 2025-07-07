@@ -1,7 +1,7 @@
 <script>
 	import SelectorInput from '$lib/components/inputs/selectors/SelectorInput.svelte'
-	import {getStackedColorPallet} from '$lib/functions/styling/getStackedColorPallet.js'
-	import {getStackedColorPalletFromData} from '$lib/functions/styling/getStackedColorPalletFromData.js'
+	import getStackedColorPallet from '$lib/functions/styling/getStackedColorPallet.js'
+	import getStackedColorPalletFromData from '$lib/functions/styling/getStackedColorPalletFromData.js'
 	import { Chart, Page, PageBody, StatusTag, PageTransitionWrapper } from '$lib/index.js'
 
 	let svgpin = `<div style="position:relative;">
