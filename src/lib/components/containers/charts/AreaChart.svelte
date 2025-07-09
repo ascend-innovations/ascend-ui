@@ -116,33 +116,32 @@
 		monthInterval = d3.timeMonth.count(min, max)
 		yearInterval = d3.timeYear.count(min, max)
 		if (stacked) {
-			// if (quarters) {
-			// 	labelFormat = formatQuarter
-			// 	tickFormat = d3.timeQuarter
-			// } else if (fiscalQuarters) {
-			// 	labelFormat = formatFiscalQuarter
-			// 	tickFormat = d3.timeQuarter
-			// } else if (fiscalYears) {
-			// 	labelFormat = formatFiscalYear
-			// 	tickFormat = d3.timeYear
-			// } else if (yearInterval >= 2 && yearInterval <= 20) {
-			// 	console.log('years')
-			// 	labelFormat = formatYear
-			// 	tickFormat = d3.timeYear
-			// 	everyOther = false
-			// 	chartData = [...consolidateYears(chartData, domain, range)]
-			// 	if (yearInterval >= 11) everyOther = true
-			// } else if (monthInterval >= 2 && monthInterval <= 23) {
-			// 	labelFormat = formatMonthYear // eo
-			// 	tickFormat = d3.timeMonth
-			// 	everyOther = false
-			// 	chartData = [...consolidateMonths(chartData, domain, range)]
-			// 	if (monthInterval >= 13) everyOther = true
-			// } else if (dayInterval <= 31) {
-			// 	labelFormat = formatMonthDay
-			// 	tickFormat = d3.timeDay
-			// 	everyOther = false
-			// }
+			if (quarters) {
+				labelFormat = formatQuarter
+				tickFormat = d3.timeQuarter
+			} else if (fiscalQuarters) {
+				labelFormat = formatFiscalQuarter
+				tickFormat = d3.timeQuarter
+			} else if (fiscalYears) {
+				labelFormat = formatFiscalYear
+				tickFormat = d3.timeYear
+			} else if (yearInterval >= 2 && yearInterval <= 20) {
+				labelFormat = formatYear
+				tickFormat = d3.timeYear
+				// everyOther = false
+				// chartData = [...consolidateYears(chartData, domain, range)]
+				if (yearInterval >= 11) everyOther = true
+			} else if (monthInterval >= 2 && monthInterval <= 23) {
+				labelFormat = formatMonthYear // eo
+				tickFormat = d3.timeMonth
+				// everyOther = false
+				// chartData = [...consolidateMonths(chartData, domain, range)]
+				if (monthInterval >= 13) everyOther = true
+			} else if (dayInterval <= 31) {
+				labelFormat = formatMonthDay
+				tickFormat = d3.timeDay
+				// everyOther = false
+			}
 		} else {
 			if (quarters) {
 				labelFormat = formatQuarter
@@ -250,7 +249,18 @@
 		tooltipLine,
 		tooltipInnerCircle,
 		tooltipOuterCircle,
-		tooltipData = { y: 0, x: 0, line: 0, circlePosition: 0, color: '', title: '', tooltipId, valueOneLabel, valueOne: 0, currency }
+		tooltipData = {
+			y: 0,
+			x: 0,
+			line: 0,
+			circlePosition: 0,
+			color: '',
+			title: '',
+			tooltipId,
+			valueOneLabel,
+			valueOne: 0,
+			currency,
+		}
 
 	if (valueTwoLabel) {
 		tooltipData.valueTwoLabel = valueTwoLabel
@@ -510,7 +520,21 @@
 						{:else}
 							{labelFormat(tick)}
 						{/if} -->
-						{fullDate ? formatFull(item.data[0]) : yearOnly ? formatYear(item.data[0]) : monthOnly ? formatMonth(item.data[0]) : monthDay ? formatMonthDay(item.data[0]) : monthYear ? formatMonthYear(item.data[0]) : quarters ? formatQuarter(item.data[0]) : fiscalYears ? formatFiscalYear(item.data[0]) : formatFull(item.data[0])}
+						{fullDate
+							? formatFull(item.data[0])
+							: yearOnly
+								? formatYear(item.data[0])
+								: monthOnly
+									? formatMonth(item.data[0])
+									: monthDay
+										? formatMonthDay(item.data[0])
+										: monthYear
+											? formatMonthYear(item.data[0])
+											: quarters
+												? formatQuarter(item.data[0])
+												: fiscalYears
+													? formatFiscalYear(item.data[0])
+													: formatFull(item.data[0])}
 					</text>
 				{/each}
 			{/each}

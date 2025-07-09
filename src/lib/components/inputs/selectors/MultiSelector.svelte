@@ -1,5 +1,13 @@
 <script>
-	import { Label, CheckboxSelectOption, ChevronSingleUpSmallIcon, ChevronSingleDownSmallIcon, InputError, SearchBar, getChecklistSelections } from '$lib/index.js'
+	import {
+		Label,
+		CheckboxSelectOption,
+		ChevronSingleUpSmallIcon,
+		ChevronSingleDownSmallIcon,
+		InputError,
+		SearchBar,
+		getChecklistSelections,
+	} from '$lib/index.js'
 	import { afterUpdate, beforeUpdate } from 'svelte'
 
 	export let id = '',

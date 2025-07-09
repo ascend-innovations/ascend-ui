@@ -15,7 +15,10 @@
 	<div class="error-401-content">
 		<h1 class="primary-headline-l-xxl">Unauthorized</h1>
 		<div class="error-401-text-row">
-			<p>You are not authorized to access the page you are trying to visit. Please contact your administrator to gain access to this page.</p>
+			<p>
+				You are not authorized to access the page you are trying to visit. Please contact your administrator to
+				gain access to this page.
+			</p>
 		</div>
 		<div class="error-401-button-row">
 			<div class="btn-content-wrapper">

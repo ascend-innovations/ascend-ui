@@ -1,7 +1,14 @@
 import { createClient } from '@supabase/supabase-js'
 import sgMail from '@sendgrid/mail'
 
-export default async function sendAccountCreationEmail(supabase, adminSupabase, email, userId, portal_url, sendgrid_password) {
+export default async function sendAccountCreationEmail(
+	supabase,
+	adminSupabase,
+	email,
+	userId,
+	portal_url,
+	sendgrid_password,
+) {
 	const genLinkResponse = await adminSupabase.auth.admin.generateLink({
 		type: 'recovery',
 		email: email,

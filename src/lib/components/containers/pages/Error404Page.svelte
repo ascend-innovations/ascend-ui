@@ -18,7 +18,8 @@
 		<h1 class="primary-headline-l-xxl">Page Not Found</h1>
 		<div class="error-404-text-row">
 			<p>
-				The page you are trying to visit doesn't exist or was removed. If you are unable to find what you're looking for, please contact us at <a href={emailAddress}>{emailString}</a>
+				The page you are trying to visit doesn't exist or was removed. If you are unable to find what you're
+				looking for, please contact us at <a href={emailAddress}>{emailString}</a>
 			</p>
 		</div>
 		{#if redirectButton}

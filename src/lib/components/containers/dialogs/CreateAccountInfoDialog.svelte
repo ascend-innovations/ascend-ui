@@ -23,8 +23,15 @@
 		class="dialog-body-slot-contents"
 		slot="body"
 	>
-		<p>Get in touch with your point of contact at Ascend Innovations via email to request a new administrator account be created, remove an existing account, or to update account details.</p>
-		<p>To add new users, include the user’s first and last name, email address, and whether they should be assigned the role of Supervisor or Editor. In order for requests to be completed, the request must come from a Supervisor-level user.</p>
+		<p>
+			Get in touch with your point of contact at Ascend Innovations via email to request a new administrator
+			account be created, remove an existing account, or to update account details.
+		</p>
+		<p>
+			To add new users, include the user’s first and last name, email address, and whether they should be assigned
+			the role of Supervisor or Editor. In order for requests to be completed, the request must come from a
+			Supervisor-level user.
+		</p>
 	</div>
 </Dialog>
 
