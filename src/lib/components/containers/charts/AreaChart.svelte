@@ -137,10 +137,11 @@
 				// everyOther = false
 				// chartData = [...consolidateMonths(chartData, domain, range)]
 				if (monthInterval >= 13) everyOther = true
-			} else if (dayInterval <= 31) {
+			} else if (dayInterval <= 60) {
 				labelFormat = formatMonthDay
 				tickFormat = d3.timeDay
 				// everyOther = false
+				if (dayInterval >= 15) everyOther = true
 			}
 		} else {
 			if (quarters) {
@@ -164,7 +165,7 @@
 				everyOther = false
 				chartData = [...consolidateMonths(chartData, domain, range)]
 				if (monthInterval >= 13) everyOther = true
-			} else if (dayInterval <= 31) {
+			} else if (dayInterval <= 60) {
 				labelFormat = formatMonthDay
 				tickFormat = d3.timeDay
 				everyOther = false
