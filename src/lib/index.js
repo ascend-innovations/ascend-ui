@@ -288,6 +288,7 @@ export { default as createUserRecord } from '$lib/functions/auth/createUserRecor
 export { default as createAuditLog } from '$lib/functions/auth/createAuditLog.js'
 export { default as getAppRoles } from '$lib/functions/auth/getAppRoles.js'
 export { default as getSupabaseSession } from '$lib/functions/auth/getSupabaseSession.js'
+export { default as resendResetPasswordLink } from '$lib/functions/auth/resendResetPasswordLink.js'
 
 // Filtering
 export { default as withinDateRange } from '$lib/functions/filtering/withinDateRange.js'

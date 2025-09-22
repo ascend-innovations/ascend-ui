@@ -1,4 +1,3 @@
-import { createClient } from '@supabase/supabase-js'
 import sgMail from '@sendgrid/mail'
 
 export default async function sendAccountCreationEmail(
