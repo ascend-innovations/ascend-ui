@@ -1,5 +1,5 @@
 export default function formatDate(timestamp, fullYear = false) {
-	timestamp = new Date(timestamp)
+	timestamp = new Date(`${timestamp}T00:00:00`)
 
 	let day = timestamp.getDate()
 	let month = timestamp.getMonth() + 1
