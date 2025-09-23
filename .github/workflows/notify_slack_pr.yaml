@@ -1,0 +1,10 @@
+name: Trigger Slack Notification for PR Review Label
+
+on:
+  pull_request:
+    types: [labeled]
+
+jobs:
+  send-slack-notification:
+    uses: ascend-innovations/github-workflow-templates/.github/workflows/notify-slack-on-review-label.yaml@main
+    secrets: inherit
