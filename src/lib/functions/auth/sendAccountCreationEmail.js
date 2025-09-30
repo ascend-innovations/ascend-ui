@@ -44,7 +44,7 @@ export default async function sendAccountCreationEmail(
 
 	console.log('Sending Email')
 	const baseURL = portal_url
-	const endpoint = '/reset-password'
+	const endpoint = '/password/reset'
 	sgMail.setApiKey(sendgrid_password)
 	const msg = {
 		to: email,

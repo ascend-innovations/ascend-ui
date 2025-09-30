@@ -145,6 +145,7 @@ export { default as MetricCard } from '$lib/components/containers/cards/MetricCa
 export { default as RegistrationCard } from '$lib/components/containers/cards/RegistrationCard.svelte'
 export { default as SSOCard } from '$lib/components/containers/cards/SSOCard.svelte'
 export { default as StandardCard } from '$lib/components/containers/cards/StandardCard.svelte'
+export { default as ResetCard } from '$lib/components/containers/cards/ResetCard.svelte'
 
 // Charts
 export { default as AreaChart } from '$lib/components/containers/charts/AreaChart.svelte'
@@ -214,6 +215,7 @@ export { default as RegistrationPage } from '$lib/components/containers/pages/Re
 export { default as SSOLandingPage } from '$lib/components/containers/pages/SSOLandingPage.svelte'
 export { default as SupabaseLoginPage } from '$lib/components/containers/pages/SupabaseLoginPage.svelte'
 export { default as SupabaseOtpLoginPage } from '$lib/components/containers/pages/SupabaseOtpLoginPage.svelte'
+export { default as ResetPage } from '$lib/components/containers/pages/ResetPage.svelte'
 
 // Progress
 export { default as PageLoadingSpinner } from '$lib/components/containers/progress/PageLoadingSpinner.svelte'

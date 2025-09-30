@@ -71,6 +71,9 @@
 			/>
 		</div>
 		<div class="miscellaneous-links">
+			<a class="body-xs" href="/password/forgot"><b>Forgot Password?</b></a>
+		</div>
+		<div class="miscellaneous-links">
 			<a
 				class="body-xs"
 				target="_blank"
