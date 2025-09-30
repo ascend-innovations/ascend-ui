@@ -9,7 +9,7 @@ export default function formatTimeStamp(dateTimeString, reverse = false) {
     const day = Number(dateParts[2])
     const hours = Number(timeParts[0] || 0)
     const minutes = Number(timeParts[1] || 0)
-    const seconds = Number(timeParts[2] || 0)
+    const seconds = Number(timeParts[2].replace('Z', '') || 0)
     const dateTimeObject = new Date(year, month, day, hours, minutes, seconds)
     if (isNaN(dateTimeObject.getTime())) {
         console.log('Invalid date time string')
