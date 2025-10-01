@@ -1,33 +1,73 @@
-import { jwtDecode } from 'jwt-decode'
+import { createSession } from '$lib/index.js'
 
-export default async function setPassword(supabase, formData, password) {
+export default async function setPassword(supabase, adminSupabase, formData) {
     const password = formData.get('password')
     const confirmPassword = formData.get('confirmPassword')
-    const sessionData = formData.get('data')
+    let token = formData.get('data')
+    let email = formData.get('email')
     let code = formData.get('code')
     let accessToken = formData.get('access_token')
     let refreshToken = formData.get('refresh_token')
     let userId = formData.get('user_id')
 
     if (code) {
-        let codeResponse = await locals.supabase.auth.exchangeCodeForSession(code)
+        let codeResponse = await supabase.auth.exchangeCodeForSession(code)
 
         if (codeResponse.data) {
             let session = codeResponse.data.session
             accessToken = session.access_token
             refreshToken = session.refresh_token
-            userId = codeResponse.data.user.id
+            userId = session.user.id
         } else {
             return {
                 success: false,
                 message: 'Token has expired',
             }
         }
-    } else if (sessionData) {
-		let decodedTokenData = JSON.parse(atob(sessionData))
-		accessToken = decodedTokenData.access_token
-		refreshToken = decodedTokenData.refresh_token
-		userId = jwtDecode(accessToken).sub
+    } else if (token && email) {
+        console.log('Token and email found')
+        const tokenCheckResponse = await adminSupabase
+            .from('signup_tokens')
+            .select('*')
+            .eq('token', token)
+            .eq('user_email', email)
+            .single()
+
+        if (tokenCheckResponse.error) {
+            return {
+                success: false,
+                message: 'Token not found',
+            }
+        }
+
+        const tokenData = tokenCheckResponse.data
+
+        if (tokenData) {
+            console.log('Token is active')
+            let session = await createSession(adminSupabase, email)
+
+            if (session?.error) {
+                return {
+                    success: false,
+                    message: 'Unable to create session',
+                }
+            }
+
+            accessToken = session.access_token
+            refreshToken = session.refresh_token
+            userId = session.user.id
+
+            console.log('Removing token')
+            const tokenDeleteResponse = await supabase
+                .from('signup_tokens')
+                .delete()
+                .eq('token', token)
+        } else {
+            return {
+                success: false,
+                message: 'Token invalid',
+            }
+        }
 	}
 
     if (password !== confirmPassword) {
@@ -37,6 +77,7 @@ export default async function setPassword(supabase, formData, password) {
             accessToken,
             refreshToken,
             userId,
+            email
         }
     }
 
@@ -54,6 +95,7 @@ export default async function setPassword(supabase, formData, password) {
 			accessToken,
 			refreshToken,
 			userId,
+			email
 		}
 	}
 	console.log('Token Verified')
@@ -78,6 +120,7 @@ export default async function setPassword(supabase, formData, password) {
 			accessToken,
 			refreshToken,
 			userId,
+			email
 		}
 	}
 

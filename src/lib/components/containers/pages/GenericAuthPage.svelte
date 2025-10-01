@@ -1,5 +1,5 @@
 <script>
-	import { ResetCard, AscendLoginBackground } from '$lib/index.js'
+	import { GenericAuthCard, AscendLoginBackground } from '$lib/index.js'
 
 	export let dialogCallback = null
 
@@ -10,12 +10,12 @@
 	class="login-page"
 	style={`background-image: url(${AscendLoginBackground})`}
 >
-	<ResetCard
+	<GenericAuthCard
 		{cardHeadline}
 		{dialogCallback}
 	>
 		<slot />
-	</ResetCard>
+	</GenericAuthCard>
 </div>
 
 <style>
