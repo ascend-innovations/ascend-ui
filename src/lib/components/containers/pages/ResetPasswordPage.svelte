@@ -69,7 +69,7 @@
 			label="New Password"
 			placeholder="Enter New Password"
 			name="password"
-			type="text"
+			type="password"
 			bind:value={password}
 			validValue={validPassword}
 			validationCallback={passwordValidation}
@@ -80,7 +80,7 @@
 			label="Re-Enter New Password"
 			placeholder="Re-Enter New Password"
 			name="confirmPassword"
-			type="text"
+			type="password"
 			bind:value={confirmPassword}
 			validValue={validConfirmPassword}
 			validationCallback={confirmPasswordValidation}

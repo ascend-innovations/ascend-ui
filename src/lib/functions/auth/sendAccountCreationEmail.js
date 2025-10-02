@@ -42,7 +42,10 @@ export default async function sendAccountCreationEmail(
 	sgMail.setApiKey(sendgrid_password)
 	const msg = {
 		to: email,
-		from: 'support@ascend-innovations.com',
+		from: {
+		    email: 'support@ascend-innovations.com',
+		    name: 'Ascend Innovations'
+        },
 		subject: 'Account Created',
 		html: `
             <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
