@@ -8,47 +8,44 @@ export default async function sendAccountCreationEmail(
 	portal_url,
 	sendgrid_password,
 ) {
-	const genLinkResponse = await adminSupabase.auth.admin.generateLink({
-		type: 'recovery',
-		email: email,
-		options: {
-			shouldCreateUser: false, // Ensures this is only for existing users
-		},
-	})
+	const tokenCheckResponse = await adminSupabase
+		.from('signup_tokens')
+		.select('*')
+		.eq('user_email', email)
 
-	if (genLinkResponse.error) {
-		console.error('Error generating password reset link:', genLinkResponse.error.message)
-		return { success: false, message: genLinkResponse.error.message }
+	if (tokenCheckResponse.count > 0) {
+		console.log('There is already an active Token, deleting')
+		const tokenUpdate = await adminSupabase
+			.from('signup_tokens')
+			.delete()
+			.eq('user_email', email)
+
+		if (tokenUpdate.error) {
+			return { success: false, message: tokenUpdate.error.message }
+		}
 	}
-	const userResetData = genLinkResponse.data
-	console.log('Password reset link generated successfully:', userResetData)
 
-	let optVerification = await adminSupabase.auth.verifyOtp({
-		type: 'email',
-		token_hash: userResetData.properties.hashed_token,
-	})
-	const session = optVerification.data.session
+	const tokenResponse = await adminSupabase
+		.from('signup_tokens')
+		.insert([{ 'user_email': email }]) // Supabase requires an array for inserts
+		.select()
+		.single()
 
-	if (optVerification.error) {
-		console.error('Error creating session:', optVerification.error.message)
-		return { success: false, message: optVerification.error.message }
+	if (tokenResponse.error) {
+		return { success: false, message: tokenResponse.error.message }
 	}
-	console.log('Session created successfully:', session)
-
-	let sessionData = {
-		access_token: session.access_token,
-		refresh_token: session.refresh_token,
-	}
-	let encodedSession = btoa(JSON.stringify(sessionData))
-	console.log('encodedSession:', encodedSession)
 
 	console.log('Sending Email')
 	const baseURL = portal_url
-	const endpoint = '/reset-password'
+	const endpoint = '/password/reset'
+	const token = tokenResponse.data.token
 	sgMail.setApiKey(sendgrid_password)
 	const msg = {
 		to: email,
-		from: 'support@ascend-innovations.com',
+		from: {
+		    email: 'support@ascend-innovations.com',
+		    name: 'Ascend Innovations'
+        },
 		subject: 'Account Created',
 		html: `
             <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -330,11 +327,11 @@ export default async function sendAccountCreationEmail(
                                     <p>An account has been created for you using this email address.</p>
                                     <p>To get started, you'll need to set your password.</p>
                                     <p>
-                                      <a style="color: #AA4111;" href="${baseURL}${endpoint}?data=${encodedSession}&email=${email}"
+                                      <a style="color: #AA4111;" href="${baseURL}${endpoint}?data=${token}&email=${email}"
                                         >Set Your Password</a
                                       >
                                     </p>
-                                    <p>This link will expire in 10 hours for security reasons.</p>
+                                    <p>This link will expire in 2 days for security reasons.</p>
                                   </td>
 
                                 </tr>

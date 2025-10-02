@@ -145,6 +145,7 @@ export { default as MetricCard } from '$lib/components/containers/cards/MetricCa
 export { default as RegistrationCard } from '$lib/components/containers/cards/RegistrationCard.svelte'
 export { default as SSOCard } from '$lib/components/containers/cards/SSOCard.svelte'
 export { default as StandardCard } from '$lib/components/containers/cards/StandardCard.svelte'
+export { default as GenericAuthCard } from '$lib/components/containers/cards/GenericAuthCard.svelte'
 
 // Charts
 export { default as AreaChart } from '$lib/components/containers/charts/AreaChart.svelte'
@@ -214,6 +215,9 @@ export { default as RegistrationPage } from '$lib/components/containers/pages/Re
 export { default as SSOLandingPage } from '$lib/components/containers/pages/SSOLandingPage.svelte'
 export { default as SupabaseLoginPage } from '$lib/components/containers/pages/SupabaseLoginPage.svelte'
 export { default as SupabaseOtpLoginPage } from '$lib/components/containers/pages/SupabaseOtpLoginPage.svelte'
+export { default as GenericAuthPage } from '$lib/components/containers/pages/GenericAuthPage.svelte'
+export { default as ResetPasswordPage } from '$lib/components/containers/pages/ResetPasswordPage.svelte'
+export { default as ForgotPasswordPage } from '$lib/components/containers/pages/ForgotPasswordPage.svelte'
 
 // Progress
 export { default as PageLoadingSpinner } from '$lib/components/containers/progress/PageLoadingSpinner.svelte'
@@ -277,7 +281,7 @@ export { default as TooltipElement } from '$lib/components/containers/tooltips/T
 // Auth
 export { default as login } from '$lib/functions/auth/login.js'
 export { default as resendOtp } from '$lib/functions/auth/resendOtp.js'
-export { default as setInitialPassword } from '$lib/functions/auth/setInitialPassword.js'
+export { default as setPassword } from '$lib/functions/auth/setPassword.js'
 export { default as verifyOtp } from '$lib/functions/auth/verifyOtp.js'
 export { default as getProfileData } from '$lib/functions/auth/getProfileData.js'
 export { default as getAllProfiles } from '$lib/functions/auth/getAllProfiles.js'
@@ -289,6 +293,7 @@ export { default as createAuditLog } from '$lib/functions/auth/createAuditLog.js
 export { default as getAppRoles } from '$lib/functions/auth/getAppRoles.js'
 export { default as getSupabaseSession } from '$lib/functions/auth/getSupabaseSession.js'
 export { default as resendResetPasswordLink } from '$lib/functions/auth/resendResetPasswordLink.js'
+export { default as createSession } from '$lib/functions/auth/createSession.js'
 
 // Filtering
 export { default as withinDateRange } from '$lib/functions/filtering/withinDateRange.js'
