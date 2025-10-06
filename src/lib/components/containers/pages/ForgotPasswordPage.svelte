@@ -1,11 +1,12 @@
 <script>
 	import { onMount } from 'svelte'
-	import { GenericAuthPage, StandardButton, FormTextInput, MailIcon } from '$lib/index.js'
+	import { GenericAuthPage, StandardButton, FormTextInput, MailIcon, isValidEmail } from '$lib/index.js'
 	import { createEventDispatcher } from 'svelte'
 
 	export let form
 
 	let email = form?.email ? form.email : ''
+	let validEmail, emailValidationMessage
 
 	const dispatch = createEventDispatcher()
 
@@ -17,6 +18,20 @@
 			dispatch('resetLinkSent', form)
 		}
 	})
+
+	function emailValidation() {
+		validEmail = isValidEmail(email)
+
+		if (!email) {
+			emailValidationMessage = 'Please enter your email'
+		} else {
+			if (!validEmail) {
+				emailValidationMessage = 'Invalid email'
+			}
+		}
+
+		return validEmail
+	}
 </script>
 
 <GenericAuthPage cardHeadline="Reset Password">
@@ -31,7 +46,10 @@
 		<FormTextInput
 			label="email"
 			name="email"
-			value={email}
+			bind:value={email}
+			validValue={validEmail}
+			validationCallback={emailValidation}
+			validationMessage={emailValidationMessage}
 		/>
 		<div class="login-button-row">
 			<StandardButton
