@@ -10,7 +10,7 @@ export default async function sendAccountCreationEmail(
 ) {
 	const tokenCheckResponse = await adminSupabase
 		.from('signup_tokens')
-		.select('*')
+		.select('*', { count: 'exact' })
 		.eq('user_email', email)
 
 	if (tokenCheckResponse.count > 0) {
