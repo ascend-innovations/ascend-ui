@@ -327,7 +327,7 @@ export default async function sendAccountCreationEmail(
                                     <p>An account has been created for you using this email address.</p>
                                     <p>To get started, you'll need to set your password.</p>
                                     <p>
-                                      <a style="color: #AA4111;" href="${baseURL}${endpoint}?data=${token}&email=${email}"
+                                      <a style="color: #AA4111;" href="${baseURL}${endpoint}?data=${token}&email=${encodeURIComponent(email)}"
                                         >Set Your Password</a
                                       >
                                     </p>
