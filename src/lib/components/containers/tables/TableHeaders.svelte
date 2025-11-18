@@ -7,7 +7,7 @@
 		sortMap = {}
 
 	// create sortMap object with keys that match the column's key with a value of empty string
-	if (sortMap.length === undefined || sortMap.length <= 0) {
+	if (!sortMap || !Object.keys(sortMap).length) {
 		Object.values(columns).forEach((column) => {
 			if (column.key !== undefined) sortMap[column.key] = ''
 		})
