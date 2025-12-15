@@ -1,5 +1,5 @@
 <script>
-	import { Label, Tag, InputError } from '$lib/index.js'
+	import { InputError, Label, Tag } from '$lib/index.js'
 
 	export let autofocus = false,
 		changeCallback = null,
@@ -18,7 +18,9 @@
 		text = '',
 		validationText = '',
 		validValue = true,
-		validationCallback = null
+		validationCallback = null,
+		readonly=false,
+		disabled=false
 </script>
 
 <div class="text-control">
@@ -61,6 +63,8 @@
 		{placeholder}
 		{required}
 		{tabindex}
+		{readonly}
+		{disabled}
 	/>
 	{#if validValue === false}
 		<InputError text={`${validationText}`} />

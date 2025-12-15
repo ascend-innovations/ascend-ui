@@ -1,5 +1,5 @@
 <script>
-	import { NumberInput, Label, InputError } from '$lib/index.js'
+	import { InputError, Label, NumberInput } from '$lib/index.js'
 
 	export let start,
 		startMin,
@@ -13,7 +13,11 @@
 		styles = [],
 		validValues = true,
 		changeCallback = validRange,
-		validationText
+		validationText,
+		startReadonly,
+		startDisabled,
+		endReadonly,
+		endDisabled
 
 	function validRange() {
 		if (start && end) {
@@ -42,6 +46,8 @@
 			max={startMax}
 			{step}
 			{changeCallback}
+			readonly={startReadonly}
+			disabled={startDisabled}
 		/>
 		<NumberInput
 			bind:value={end}
@@ -49,6 +55,8 @@
 			max={endMax}
 			{step}
 			{changeCallback}
+			readonly={endReadonly}
+			disabled={endDisabled}
 		/>
 	</div>
 

@@ -1,5 +1,6 @@
+
 <script>
-	import { Label, Tag, InputError } from '$lib/index.js'
+	import { InputError, Label, Tag } from '$lib/index.js'
 
 	export let email = '',
 		id = '',
@@ -11,7 +12,9 @@
 		tag = null,
 		validValue = true,
 		validationText = '',
-		validationCallback
+		validationCallback,
+		readonly=false,
+		disabled=false
 </script>
 
 <div class="email-control">
@@ -40,6 +43,8 @@
 		{placeholder}
 		{required}
 		{tabindex}
+		{readonly}
+		{disabled}
 	/>
 	{#if validValue === false}
 		<InputError text={`Please enter your ${label}`} />

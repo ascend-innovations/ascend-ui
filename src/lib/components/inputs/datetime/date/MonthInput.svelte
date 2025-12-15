@@ -2,7 +2,9 @@
 	export let month,
 		id = '',
 		required = false,
-		styles = []
+		styles = [],
+		disabled=false,
+		readonly=false
 </script>
 
 <input
@@ -12,6 +14,8 @@
 	type="month"
 	{id}
 	{required}
+	{disabled}
+	{readonly}
 />
 
 <style>
