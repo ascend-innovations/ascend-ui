@@ -1,5 +1,5 @@
 <script>
-	import { Page, PageBody, NumberRangeInput } from '$lib/index.js'
+	import { NumberRangeInput, Page, PageBody } from '$lib/index.js'
 
 	let validRange, validationText, start, end
 

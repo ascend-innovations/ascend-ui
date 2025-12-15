@@ -1,5 +1,5 @@
 <script>
-	import { Label, Tag, InputError } from '$lib/index.js'
+	import { InputError, Label, Tag } from '$lib/index.js'
 
 	export let id = '',
 		label = '',
@@ -13,7 +13,9 @@
 		tabindex = '',
 		validationText = '',
 		validationCallback,
-		validValue = true
+		validValue = true,
+		readonly=false,
+		disabled=false
 </script>
 
 <div class="phone-number-control">
@@ -45,6 +47,8 @@
 		{placeholder}
 		{required}
 		{tabindex}
+		{readonly}
+		{disabled}
 	/>
 	{#if validValue === false}
 		<InputError text={`${validationText}`} />
