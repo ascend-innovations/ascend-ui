@@ -3,7 +3,9 @@
 		id = '',
 		name = '',
 		required = false,
-		styles = []
+		styles = [],
+		disabled = false,
+		readonly = false
 </script>
 
 <input
@@ -14,6 +16,8 @@
 	{id}
 	{required}
 	{name}
+	{readonly}
+	{disabled}
 />
 
 <style>

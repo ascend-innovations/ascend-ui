@@ -2,7 +2,9 @@
 	export let id = '',
 		required = false,
 		styles = [],
-		time
+		time,
+		disabled=false,
+		readonly=false
 </script>
 
 <input
@@ -12,6 +14,8 @@
 	type="time"
 	{id}
 	{required}
+	{readonly}
+	{disabled}
 />
 
 <style>
