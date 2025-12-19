@@ -20,6 +20,8 @@
 				scheduled: 'neutral',
 				sent: 'success',
 				subscribed: 'success',
+				closed: 'neutral',
+				open: 'success'
 			}
 
 	$: statusType = statusColorMap[statusKey]
