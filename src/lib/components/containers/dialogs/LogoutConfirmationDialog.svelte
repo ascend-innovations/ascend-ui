@@ -4,6 +4,7 @@
 	export let store,
 		callback,
 		cancelCallback = cancel
+		url = "login"
 
 	let loading = false
 
@@ -43,7 +44,7 @@
 		<ConfirmButton
 			{loading}
 			callback={confirmLogout}
-			url="/login"
+			url={url}
 		/>
 	</div>
 </Dialog>
