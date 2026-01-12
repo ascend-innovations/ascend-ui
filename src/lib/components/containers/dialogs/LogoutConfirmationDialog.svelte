@@ -4,7 +4,7 @@
 	export let store,
 		callback,
 		cancelCallback = cancel,
-		url = "login"
+		url = "/login"
 
 	let loading = false
 
