@@ -3,7 +3,7 @@
 
 	export let store,
 		callback,
-		cancelCallback = cancel
+		cancelCallback = cancel,
 		url = "login"
 
 	let loading = false
