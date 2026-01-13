@@ -6,6 +6,7 @@
 	export let form
 
 	let otp, validOtp, otpValidationMessage
+	let origin = form?.origin ? form.origin : ''
 
 	const dispatch = createEventDispatcher()
 
@@ -24,6 +25,9 @@
 	}
 
 	onMount(() => {
+		const searchParams = new URLSearchParams(window.location.search)
+		origin = searchParams.get('origin') ? searchParams.get('origin') : ''
+
 		if (form?.otp_resend_message) {
 			dispatch('otpResent', form)
 		}
@@ -55,6 +59,14 @@
 				<InputError text={form.message} />
 			{/if}
 
+			<div class="hidden">
+				<FormTextInput
+					label="origin"
+					name="origin"
+					value={origin}
+				/>
+			</div>
+
 			<div class="login-button-row">
 				<input
 					class="btn-full btn-l btn-primary btn-rect semibold"
@@ -71,6 +83,14 @@
 			{#if form?.resend_message}
 				<InputError text={form.resend_message} />
 			{/if}
+
+			<div class="hidden">
+				<FormTextInput
+					label="origin"
+					name="origin"
+					value={origin}
+				/>
+			</div>
 
 			<div class="login-button-row resend-section">
 				<p class="body-xs">Didn't get an email?</p>
@@ -97,6 +117,9 @@
 </LoginPage>
 
 <style>
+	.hidden {
+		display: none;
+	}
 	.login-button-row {
 		width: 100%;
 		display: flex;

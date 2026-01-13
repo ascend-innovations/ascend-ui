@@ -8,12 +8,14 @@
 		FormTextInput,
 		LoginPage,
 	} from '$lib/index.js'
+	import { onMount } from 'svelte'
 
 	export let form, 
 		dialogCallback, 
 		forgotPasswordLink = "/password/forgot"
 
 	let emailValidationMessage, validEmail, validPassword, password, email
+	let origin = form?.origin ? form.origin : ''
 
 	function emailValidation() {
 		validEmail = isValidEmail(email)
@@ -37,6 +39,11 @@
 
 		validPassword = true
 	}
+
+	onMount(async () => {
+		const searchParams = new URLSearchParams(window.location.search)
+		origin = searchParams.get('origin') ? searchParams.get('origin') : ''
+	})
 </script>
 
 <LoginPage ascendLogo>
@@ -64,6 +71,14 @@
 		{#if form?.message}
 			<InputError text={form.message} />
 		{/if}
+
+		<div class="hidden">
+			<FormTextInput
+				label="origin"
+				name="origin"
+				value={origin}
+			/>
+		</div>
 
 		<div class="login-button-row">
 			<input
@@ -98,6 +113,9 @@
 </LoginPage>
 
 <style>
+	.hidden {
+		display: none;
+	}
 	.login-button-row {
 		width: 100%;
 	}
