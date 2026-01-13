@@ -41,8 +41,10 @@
 	}
 
 	onMount(async () => {
-		const searchParams = new URLSearchParams(window.location.search)
-		origin = searchParams.get('origin') ? searchParams.get('origin') : ''
+		if (!origin) {
+			const searchParams = new URLSearchParams(window.location.search)
+			origin = searchParams.get('origin') ? searchParams.get('origin') : ''
+		}
 	})
 </script>
 
