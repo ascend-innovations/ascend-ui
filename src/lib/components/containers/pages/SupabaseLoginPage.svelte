@@ -9,7 +9,9 @@
 		LoginPage,
 	} from '$lib/index.js'
 
-	export let form, dialogCallback
+	export let form, 
+		dialogCallback, 
+		forgotPasswordLink = "/password/forgot"
 
 	let emailValidationMessage, validEmail, validPassword, password, email
 
@@ -71,7 +73,7 @@
 			/>
 		</div>
 		<div class="miscellaneous-links">
-			<a class="body-xs" href="/password/forgot"><b>Forgot Password?</b></a>
+			<a class="body-xs" href={forgotPasswordLink}><b>Forgot Password?</b></a>
 		</div>
 		<div class="miscellaneous-links">
 			<a

@@ -3,7 +3,8 @@
 	import { GenericAuthPage, StandardButton, FormTextInput, MailIcon } from '$lib/index.js'
 	import { createEventDispatcher } from 'svelte'
 
-	export let form
+	export let form, 
+		loginLink = "/login"
 
 	let email = form?.email ? form.email : ''
 
@@ -44,7 +45,7 @@
 		<div class="miscellaneous-links">
 			<a
 				class="body-xs"
-				href="/login"><b>Login</b></a
+				href={loginLink}><b>Login</b></a
 			>
 		</div>
 		<div class="miscellaneous-links">
