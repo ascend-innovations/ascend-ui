@@ -79,6 +79,7 @@
 				maxZoom: 19,
 				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 				opacity: geoJSON ? 0.5 : 1,
+				referrerPolicy: 'strict-origin-when-cross-origin',
 			}).addTo(map)
 
 			// Construct and render markers with their info popups attached
